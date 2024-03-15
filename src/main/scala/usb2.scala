@@ -1,4 +1,4 @@
-package usb2_generator
+package usb2
 
 import chisel3._
 import chisel3.util._
