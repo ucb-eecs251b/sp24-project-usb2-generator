@@ -1,0 +1,119 @@
+package usb2
+
+// Standard imports
+import chisel3._
+import chisel3.util._
+import org.chipsalliance.cde.config.{Parameters, Field, Config}
+import freechips.rocketchip.diplomacy._
+import freechips.rocketchip.regmapper._
+import freechips.rocketchip.subsystem._
+import freechips.rocketchip.tilelink._
+
+import chisel3.experimental.{IntParam, BaseModule}
+import chisel3.experimental.{withClock, withReset, withClockAndReset} // Might not need
+import freechips.rocketchip.prci._
+import freechips.rocketchip.util.UIntIsOneOf
+
+class Usb2RxTop(dataWidth: Int) extends Module {
+    val io = IO(new Bundle {
+        // UTMI Outputs - renamed to same names as usb2.scala
+        val utmi_dataout = Output(SInt(dataWidth.W)); // Note that usb2.scala currently says 8-bit?  
+        val utmi_datain = Input(SInt(dataWidth.W)); // Need to discuss bidirectionality
+        val utmi_rx_valid = Output(UInt()); // Dataout is valid
+        val utmi_rx_active = Output(UInt()); // High when state machine detects SYNC packet in data
+        val utmi_rx_error = Output(UInt()); // High when the Rx block catches invalid data etc
+        // Needs to be discussed more, not at usb2.scala:
+        val utmi_linestate = Output(UInt(2.W)); // Reflects current state of the single ended receivers
+        
+        // UTMI Inputs
+        val utmi_reset = Input(UInt());
+        val utmi_clk = Input(Clock()); // How do we deal with implicit chisel clock if two clocks? is this unndeeded?
+
+        // Input from Rx Front End (needs to be discussed)
+        val cru_fs_vp = Input(SInt()); // Full-speed single-ended receive data, positive terminal
+        val cru_fs_vm = Input(SInt()); // Full-speed single-ended receive data, negative terminal
+         // Input from Clock Recovery Unit (needs to be discussed)
+        val cru_hs_vp = Input(SInt()); // High-speed single-ended receive data, positive terminal
+        val cru_hs_vm = Input(SInt()); // High-speed single-ended receive data, negative terminal
+        val cru_hs_toggle = Input(UInt()); // High if HS (CDRU)
+        val cru_clk = Input(Clock()); // Again might be unneededdue to implicit
+    })
+
+    withClockAndReset(io.utmi_clk, io.utmi_reset) { // might not need
+        // UTMI side
+    }
+    withClock(io.cru_clk) { // might not need
+        // CRU side
+    }
+
+   val Serial2ParallelConverter =  Module(new Serial2ParallelConverter(16));
+
+   val BitUnstuffer =  Module(new BitUnstuffer(16));
+
+   val NRZIDecoder =  Module(new NRZIDecoder(16));
+
+   val RxStateMachine =  Module(new RxStateMachine(16));
+
+}
+
+
+class Serial2ParallelConverter(dataWidth: Int) extends Module {
+    val io = IO(new Bundle {
+        val dataout = Output(SInt(dataWidth.W)); // Note that usb2.scala currently says 8-bit?  
+        val datain = Input(SInt(dataWidth.W)); // Need to discuss bidirectionality 
+
+        // Control signals from Rx State Machine
+        
+        val reset = Input(UInt()); 
+        val clk = Input(Clock()); // How do we deal with implicit chisel clock if two clocks? is this unndeeded?
+    })
+
+
+}
+
+class BitUnstuffer(dataWidth: Int) extends Module {
+    val io = IO(new Bundle {
+        val dataout = Output(SInt(dataWidth.W)); // Note that usb2.scala currently says 8-bit?  
+        val datain = Input(SInt(dataWidth.W)); // Need to discuss bidirectionality 
+
+        // Control signals from Rx State Machine
+        
+        val reset = Input(UInt()); 
+        val clk = Input(Clock()); // How do we deal with implicit chisel clock if two clocks? is this unndeeded?
+    })
+    
+
+}
+
+class NRZIDecoder(dataWidth: Int) extends Module {
+    val io = IO(new Bundle {
+        val dataout = Output(SInt(dataWidth.W)); // Note that usb2.scala currently says 8-bit?  
+        val datain = Input(SInt(dataWidth.W)); // Need to discuss bidirectionality 
+
+        // Control signals from Rx State Machine
+        
+        val reset = Input(UInt()); 
+        val clk = Input(Clock()); // How do we deal with implicit chisel clock if two clocks? is this unndeeded?
+    })
+    
+
+}
+
+class RxStateMachine(dataWidth: Int) extends Module {
+    val io = IO(new Bundle {
+        val dataout = Output(SInt(dataWidth.W)); // Note that usb2.scala currently says 8-bit?  
+        val datain = Input(SInt(dataWidth.W)); // Need to discuss bidirectionality 
+
+        val rx_valid = Output(UInt()); // Dataout is valid
+        val rx_active = Output(UInt()); // High when state machine detects SYNC packet in data
+        val rx_error = Output(UInt()); // High when the Rx block catches invalid data etc
+
+        // Control signals from Rx State Machine
+        
+        val reset = Input(UInt()); 
+        val clk = Input(Clock()); // How do we deal with implicit chisel clock if two clocks? is this unndeeded?
+
+        val hs_toggle = Input(UInt()); // High if HS (CDRU)
+    })
+    
+}
