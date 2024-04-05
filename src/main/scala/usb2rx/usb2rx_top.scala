@@ -29,73 +29,41 @@ class Usb2RxTop(dataWidth: Int) extends Module {
         val utmi_reset = Input(UInt());
         val utmi_clk = Input(Clock()); // How do we deal with implicit chisel clock if two clocks? is this unndeeded?
 
+        // Of the below, for now we can assume cru_hs_v and cru_clk are provided
+
         // Input from Rx Front End (needs to be discussed)
+        val cru_fs_v = Input(SInt()); // Non-differential full-speed single-ended receive data
+
         val cru_fs_vp = Input(SInt()); // Full-speed single-ended receive data, positive terminal
         val cru_fs_vm = Input(SInt()); // Full-speed single-ended receive data, negative terminal
          // Input from Clock Recovery Unit (needs to be discussed)
+        val cru_hs_v = Input(SInt()); // Non-differential high-speed single-ended receive data
+
         val cru_hs_vp = Input(SInt()); // High-speed single-ended receive data, positive terminal
         val cru_hs_vm = Input(SInt()); // High-speed single-ended receive data, negative terminal
+
         val cru_hs_toggle = Input(UInt()); // High if HS (CDRU)
-        val cru_clk = Input(Clock()); // Again might be unneededdue to implicit
+        val cru_clk = Input(Clock()); // Again might be unneeded due to implicit
     })
 
-    withClockAndReset(io.utmi_clk, io.utmi_reset) { // might not need
-        // UTMI side
+    /* Differential Handling */
+
+    // Optional
+
+    /* High Speed Mode */
+
+    withClockAndReset(io.utmi_clk, io.utmi_reset) { // 30 MHz HS; UTMI side
+        val RxStateMachine =  Module(new RxStateMachine(16));
     }
-    withClock(io.cru_clk) { // might not need
-        // CRU side
+    withClock(io.cru_clk) { // 480 MHz HS; CRU side
+        val NRZIDecoder =  Module(new NRZIDecoder(16));
+        val BitUnstuffer =  Module(new BitUnstuffer(16));
+        val Serial2ParallelConverter =  Module(new Serial2ParallelConverter(16));
     }
 
-   val Serial2ParallelConverter =  Module(new Serial2ParallelConverter(16));
+    /* Fast Speed Mode */
 
-   val BitUnstuffer =  Module(new BitUnstuffer(16));
-
-   val NRZIDecoder =  Module(new NRZIDecoder(16));
-
-   val RxStateMachine =  Module(new RxStateMachine(16));
-
-}
-
-
-class Serial2ParallelConverter(dataWidth: Int) extends Module {
-    val io = IO(new Bundle {
-        val dataout = Output(SInt(dataWidth.W)); // Note that usb2.scala currently says 8-bit?  
-        val datain = Input(SInt(dataWidth.W)); // Need to discuss bidirectionality 
-
-        // Control signals from Rx State Machine
-        
-        val reset = Input(UInt()); 
-        val clk = Input(Clock()); // How do we deal with implicit chisel clock if two clocks? is this unndeeded?
-    })
-
-
-}
-
-class BitUnstuffer(dataWidth: Int) extends Module {
-    val io = IO(new Bundle {
-        val dataout = Output(SInt(dataWidth.W)); // Note that usb2.scala currently says 8-bit?  
-        val datain = Input(SInt(dataWidth.W)); // Need to discuss bidirectionality 
-
-        // Control signals from Rx State Machine
-        
-        val reset = Input(UInt()); 
-        val clk = Input(Clock()); // How do we deal with implicit chisel clock if two clocks? is this unndeeded?
-    })
-    
-
-}
-
-class NRZIDecoder(dataWidth: Int) extends Module {
-    val io = IO(new Bundle {
-        val dataout = Output(SInt(dataWidth.W)); // Note that usb2.scala currently says 8-bit?  
-        val datain = Input(SInt(dataWidth.W)); // Need to discuss bidirectionality 
-
-        // Control signals from Rx State Machine
-        
-        val reset = Input(UInt()); 
-        val clk = Input(Clock()); // How do we deal with implicit chisel clock if two clocks? is this unndeeded?
-    })
-    
+    // Optional
 
 }
 
