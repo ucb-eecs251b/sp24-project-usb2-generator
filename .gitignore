@@ -1,1 +1,6 @@
 target/*
+.vscode
+.metals/
+.scala-build/
+project/
+.bloop/
