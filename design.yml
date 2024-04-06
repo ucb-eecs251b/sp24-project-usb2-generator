@@ -1,0 +1,32 @@
+# Specify Global Variables
+
+# Specify clock signals
+vlsi.inputs.clocks: [
+  {name: "clk", period: "5ns", uncertainty: "1ns"}
+]
+
+# Synthesis Constraints
+synthesis.inputs:
+  top_module: "ad_fifo"
+  input_files: ["src/ad_fifo.v", "src/token_control.v", "src/ad_fifo_cell.v"]
+
+# Placement Constraints
+vlsi.inputs.placement_constraints:
+  - path: "ad_fifo"
+    type: "toplevel"
+    x: 0
+    y: 0
+    width: 4000
+    height: 4000
+    margins:
+      left: 10
+      right: 10
+      top: 10
+      bottom: 10
+
+# Pin placement constraints
+vlsi.inputs.pin_mode: generated
+vlsi.inputs.pin.generate_mode: semi_auto
+vlsi.inputs.pin.assignments: [
+  {pins: "*", layers: ["met2", "met4"], side: "bottom"}
+]
