@@ -5,18 +5,18 @@ import chisel3.util._
 
 class Usb2tx_serializer(dWidth: Int) extends Module {
   val io = IO(new Bundle {
-    val din_p   = Input(UInt(dWidth.W))
-    val load    = Input(Bool())
+    val dataIn    = Input(UInt(dWidth.W))
+    val load      = Input(Bool())
 
-    val dout_s  = Output(Bool())
-    val valid   = Output(Bool())
+    val dataOut   = Output(Bool())
+    val valid     = Output(Bool())
   })
 
   val shiftRegister = RegInit(0.U(dWidth.W))
-  val validReg = RegInit(false.B)
+  val validReg      = RegInit(false.B)
 
   when(io.load) {
-    shiftRegister := io.din_p
+    shiftRegister := io.dataIn
     validReg := true.B
   }.otherwise {
     when(validReg) {
@@ -27,6 +27,6 @@ class Usb2tx_serializer(dWidth: Int) extends Module {
     }
   }
 
-  io.dout_s := shiftRegister(0) // Output the LSB
-  io.valid := validReg
+  io.dataOut := shiftRegister(0)
+  io.valid   := validReg
 }

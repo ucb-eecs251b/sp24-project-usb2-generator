@@ -18,7 +18,7 @@ class Usb2TxTop(dWidth: Int) extends Module {
       */
     //val din_lo8 = Input(UInt(8.W))
     //val din_hi8 = Input(UInt(8.W))
-    val valid_h = Input(Bool())
+    val validH = Input(Bool())
 
     /** Use queue instead ? */
     //val tx_ready_o = Output(Bool())
@@ -29,12 +29,12 @@ class Usb2TxTop(dWidth: Int) extends Module {
     /**  TX driver signals
       *  OUTPUT 
       */
-    val rpu_en      = Output(Bool())
+    val rpuEn     = Output(Bool())
       
-    val vpo         = Output(Bool())
-    val oeb         = Output(Bool())
-    val hs_data     = Output(Bool())
-    val hs_drive_en = Output(Bool())
-    val hs_cs_en    = Output(Bool())
+    val vpo       = Output(Bool())
+    val oeb       = Output(Bool())
+    val hsData    = Output(Bool())
+    val hsDriveEn = Output(Bool())
+    val hsCsEn    = Output(Bool())
   })
 }
