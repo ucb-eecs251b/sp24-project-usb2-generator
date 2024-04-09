@@ -32,12 +32,12 @@ class Usb2RxTop(dataWidth: Int) extends Module {
         // Of the below, for now we can assume cru_hs_v and cru_clk are provided
 
         // Input from Rx Front End (needs to be discussed)
-        val cru_fs_v = Input(SInt()); // Non-differential full-speed single-ended receive data
+        // val cru_fs_v = Input(SInt()); // Non-differential full-speed single-ended receive data
 
         val cru_fs_vp = Input(SInt()); // Full-speed single-ended receive data, positive terminal
         val cru_fs_vm = Input(SInt()); // Full-speed single-ended receive data, negative terminal
          // Input from Clock Recovery Unit (needs to be discussed)
-        val cru_hs_v = Input(SInt()); // Non-differential high-speed single-ended receive data
+        // val cru_hs_v = Input(SInt()); // Non-differential high-speed single-ended receive data
 
         val cru_hs_vp = Input(SInt()); // High-speed single-ended receive data, positive terminal
         val cru_hs_vm = Input(SInt()); // High-speed single-ended receive data, negative terminal
@@ -53,12 +53,12 @@ class Usb2RxTop(dataWidth: Int) extends Module {
     /* High Speed Mode */
 
     withClockAndReset(io.utmi_clk, io.utmi_reset) { // 30 MHz HS; UTMI side
-        val RxStateMachine =  Module(new RxStateMachine(16));
+        val RxStateMachine =  Module(new RxStateMachine(dataWidth));
     }
     withClock(io.cru_clk) { // 480 MHz HS; CRU side
-        val NRZIDecoder =  Module(new NRZIDecoder(16));
-        val BitUnstuffer =  Module(new BitUnstuffer(16));
-        val Serial2ParallelConverter =  Module(new Serial2ParallelConverter(16));
+        val NRZIDecoder =  Module(new NRZIDecoder(dataWidth));
+        val BitUnstuffer =  Module(new BitUnstuffer(dataWidth));
+        val Serial2ParallelConverter =  Module(new Serial2ParallelConverter(dataWidth));
     }
 
     /* Fast Speed Mode */
@@ -83,5 +83,59 @@ class RxStateMachine(dataWidth: Int) extends Module {
 
         val hs_toggle = Input(UInt()); // High if HS (CDRU)
     })
-    
+
+    object State extends ChiselEnum {
+        val RX_WAIT, STRIP_EOP, STRIP_SYNC,
+            RX_DATA, ERROR, ABORT, TERMINATE = Value
+    }
+
+    val state = RegInit(State.RX_WAIT) // inital state
+    when (io.reset) {
+        //TODO
+    }.otherwise {
+        switch(state) {
+            // is(State.RESET) {
+            //     when(io.in) {
+            //         state := State.sOne1
+            //     }
+            // }
+            is(State.RX_WAIT) {
+                when(io.in) {
+                    state := State.sOne1
+                }
+            }
+            is(State.STRIP_SYNC) {
+                when(io.in) {
+                    state := State.sTwo1s
+                }.otherwise {
+                    state := State.sNone
+                }
+            }
+            is(State.RX_DATA) {
+                when(!io.in) {
+                    state := State.sNone
+                }
+            }
+            is(State.STRIP_EOP) {
+                when(!io.in) {
+                    state := State.sNone
+                }
+            }
+            is(State.ERROR) {
+                when(!io.in) {
+                    state := State.sNone
+                }
+            }
+            is(State.ABORT) {
+                when(!io.in) {
+                    state := State.sNone
+                }
+            }
+            is(State.TERMINATE) {
+                when(!io.in) {
+                    state := State.sNone
+                }
+            }
+        }
+    }
 }

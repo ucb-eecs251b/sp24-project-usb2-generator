@@ -20,14 +20,14 @@ import freechips.rocketchip.util.UIntIsOneOf
  * The NRZI (Non Return to Zero Invert) decoding block decodes 
  * the incoming serial data. In NRZI encoding, a “1” is represented 
  * by no change in level and a “0” is represented by a change in level.
+ * The clock and reset for this block will be defined by WithClockandReset
+ * wrapper in usb2rx_top.scala.
  */
 
 class NRZIDecoder(dataWidth: Int) extends Module {
     val io = IO(new Bundle {
         val dataout = Output(UInt());
         val datain = Input(UInt());         
-        val reset = Input(UInt()); 
-        val clk = Input(Clock());
     })
     
     // Buffer with an implicit reset to 0
@@ -36,19 +36,4 @@ class NRZIDecoder(dataWidth: Int) extends Module {
     dataout := prev === datain
 }
 
-println(s"Testing NRZIDecoder")
-test(new Serial2ParallelConverter) { mod =>
-    val inSeq = Seq(0, 1, 1, 1, 0, 1, 1, 0, 0, 1)
-    val outSeq = Seq(0, 0, 1, 1, 0, 0, 1, 0, 1, 0)
-    var i = 0
-    for (i <- 20) {
-        // poke in repeated inSeq
-        val toPoke = inSeq(i % inSeq.length)
-        mod.io.datain.poke((toPoke != 0).B)
-        mod.clock.step(1)
-        // compare with expected state
-        mod.io.out.expect(outSeq(i % outSeq.length))
-    }
-}
-println(s"Testing NRZIDecoder: Success")
 
