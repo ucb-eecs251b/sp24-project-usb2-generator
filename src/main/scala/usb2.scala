@@ -31,6 +31,10 @@ case class Usb2Params(
   depth: Int = 32, 
   width: Int = 32,
 )
+{
+  require(width % 2 == 0, "No odd width allowed for USB2")
+  require(depth > 0, "Depth must be greater than 0")
+}
 
 
 class Usb2Top(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extends ClockSinkDomain(ClockSinkParameters())(p) {

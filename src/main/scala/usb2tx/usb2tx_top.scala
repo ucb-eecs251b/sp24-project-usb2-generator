@@ -16,13 +16,14 @@ class Usb2TxTop(dWidth: Int) extends Module {
     /** UTMI signals
       *  INPUT
       */
-    val din_lo8 = Input(UInt(8.W))
-    val din_hi8 = Input(UInt(8.W))
+    //val din_lo8 = Input(UInt(8.W))
+    //val din_hi8 = Input(UInt(8.W))
     val valid_h = Input(Bool())
 
     /** Use queue instead ? */
-    val tx_ready_o = Output(Bool())
-    val tx_valid_i = Input(Bool())
+    //val tx_ready_o = Output(Bool())
+    //val tx_valid_i = Input(Bool())
+    val in = Flipped(Decoupled(UInt(8.W)))
 
 
     /**  TX driver signals
