@@ -1,0 +1,18 @@
+[<global>] Level.INFO: Loading hammer-vlsi libraries and reading settings
+[<global>] Level.INFO: Loading technology 'hammer.technology.sky130'
+[<global>] Level.WARNING: Key technology.sky130.sky130_nda has a type str is not yet implemented
+[<global>] Level.WARNING: Key technology.sky130.sky130_cds has a type str is not yet implemented
+[<global>] Level.WARNING: Key technology.sky130.openram_lib has a type str is not yet implemented
+[<global>] Level.WARNING: Key technology.sky130.dffram_lib has a type Optional[str] is not yet implemented
+[<global>] Level.WARNING: Key technology.sky130.pdk_home has a type Optional[str] is not yet implemented
+[<global>] Level.WARNING: Key technology.sky130.lvs_deck_sources has a type Optional[list[str]] is not yet implemented
+[<global>] Level.WARNING: Key technology.sky130.io_file has a type str is not yet implemented
+[tech] Level.WARNING: The install path: /path/to/skywater-src-nda does not exist, looked at key technology.sky130.sky130_nda
+[tech] Level.INFO: Modifying CDL netlist: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_sc_hd/cdl/sky130_fd_sc_hd.cdl -> /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/sky130_fd_sc_hd.cdl
+[tech] Level.INFO: Modifying Verilog netlist: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v -> /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/sky130_fd_sc_hd.v
+[tech] Level.INFO: Fixing broken net references with select specify blocks.
+[tech] Level.INFO: Modifying Verilog netlist: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_sc_hd/verilog/primitives.v -> /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v
+[tech] Level.INFO: Modifying Technology LEF: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef -> /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/sky130_fd_sc_hd__nom.tlef
+[tech] Level.INFO: Modifying IO LEF: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lef/sky130_ef_io.lef -> /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/sky130_ef_io.lef
+[tech] Level.INFO: Fixing broken sky130_ef_io__analog_esd_pad LEF definition.
+[tech] Level.INFO: Loaded Sky130 Tech

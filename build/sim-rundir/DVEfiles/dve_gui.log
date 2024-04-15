@@ -1,0 +1,201 @@
+The file 'vcdplus.vpd' was opened successfully.
+The file '/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/vcdplus.vpd' was opened successfully.
+Error: [DVAP037] 
+Errors while sourcing the file '/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/DVEfiles/session.tcl':
+
+ Line 114: [DVSG007] 
+Signal ' "ad_fifo_tb.dut.cell_instance[20].cell_inst.dff2_q_rst"' cannot be found..
+The file '/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/vcdplus.vpd' was opened successfully.
+The file '/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/vcdplus.vpd' was opened successfully.
+The file '/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/vcdplus.vpd' was opened successfully.
+The file '/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/vcdplus.vpd' was opened successfully.
+The file '/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/vcdplus.vpd' was opened successfully.
+Error: [DVAP037] 
+Errors while sourcing the file '/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/DVEfiles/session.tcl':
+
+ Line 179: [DVSG007] 
+Signal ' "ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_d" "ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_q" "ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_d" "ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_q" "ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_d" "ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_q"' cannot be found.
+ Line 185: [DVSG007] 
+Signal ' "ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_d" "ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_q" "ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_d" "ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_q" "ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_d" "ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_q"' cannot be found.
+ Line 191: [DVSG007] 
+Signal ' "ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_d" "ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_q" "ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_d" "ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_q" "ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_d" "ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_q"' cannot be found.
+ Line 223: [DVSG007] 
+Signal ' "ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_d" "ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_q" "ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_d" "ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_q" "ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_d" "ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_q"' cannot be found.
+ Line 229: [DVSG007] 
+Signal ' "ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_d" "ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_q" "ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_d" "ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_q" "ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_d" "ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_q"' cannot be found.
+ Line 327: gui_list_set_insertion_bar: Cannot set the insertion bar, "ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_q" was not found.
+ Line 388: gui_list_set_insertion_bar: Cannot set the insertion bar, "ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_q" was not found..
+The file '/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/vcdplus.vpd' was opened successfully.
+The file '/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/vcdplus.vpd' was opened successfully.
+The file '/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/vcdplus.vpd' was opened successfully.
+The file '/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/vcdplus.vpd' was opened successfully.
+The file '/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/vcdplus.vpd' was opened successfully.
+The file '/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/vcdplus.vpd' was opened successfully.
+The file '/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/vcdplus.vpd' was opened successfully.
+Error: [DVAP037] 
+Errors while sourcing the file '/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/DVEfiles/session.tcl':
+
+ Line 308: [DVSG007] 
+Signal ' "ad_fifo_tb.dut.token"' cannot be found.
+ Line 317: Specified signals (V1:ad_fifo_tb.dut.token) not found.
+ Line 318: Specified signals (V1:ad_fifo_tb.dut.token) not found..
+---------------------------------------------
+
+The tool has just exited abnormally:
+
+
+Release = 'P-2019.06_Full64'  Architecture = 'linux64'  Program = 'DVE'
+
+'34496817 34532799 34534329 140567606256297'
+
+---------------------------------------------
+=======================DVE Context and Call Stack=========================
+Command line: /share/instsww/synopsys-new/vcs/P-2019.06/gui/dve/linux64/bin/dve.exe -vpd vcdplus.vpd
+
+--- Stack trace follows:
+[New LWP 2446195]
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+0x00007fd8724766c2 in waitpid () from /lib64/libc.so.6
+
+Thread 2 (Thread 0x7fd86b049700 (LWP 2446195)):
+#0  0x00007fd873c4745c in pthread_cond_wait@@GLIBC_2.3.2 () from /lib64/libpthread.so.0
+#1  0x00007fd873334975 in ?? () from /lib64/libX11.so.6
+#2  0x00007fd873334e0d in ?? () from /lib64/libX11.so.6
+#3  0x00007fd87332933c in XFreeFont () from /lib64/libX11.so.6
+#4  0x0000000002d5e4d7 in QFontEngineXLFD::~QFontEngineXLFD() ()
+#5  0x0000000002d5e5c1 in QFontEngineXLFD::~QFontEngineXLFD() ()
+#6  0x0000000002d5e60e in QFontEngineLatinXLFD::~QFontEngineLatinXLFD() ()
+#7  0x0000000002d5e6e1 in QFontEngineLatinXLFD::~QFontEngineLatinXLFD() ()
+#8  0x0000000002a8c55f in QFontCache::~QFontCache() ()
+#9  0x0000000002a8c7c1 in QFontCache::~QFontCache() ()
+#10 0x0000000002a8d3c5 in QSingleCleanupHandler<QFontCache>::~QSingleCleanupHandler() ()
+#11 0x00007fd8723ce26c in __run_exit_handlers () from /lib64/libc.so.6
+#12 0x00007fd8723ce3a0 in exit () from /lib64/libc.so.6
+#13 0x0000000002a1bf6c in ?? ()
+#14 0x00007fd873349cb2 in _XIOError () from /lib64/libX11.so.6
+#15 0x00007fd873347495 in _XEventsQueued () from /lib64/libX11.so.6
+#16 0x00007fd873322f2d in XCheckTypedEvent () from /lib64/libX11.so.6
+#17 0x00000000011b0e43 in ag::dveXThread::run() ()
+#18 0x0000000002a6f99a in QThreadInstance::start(void*) ()
+#19 0x00007fd873c411ca in start_thread () from /lib64/libpthread.so.0
+#20 0x00007fd8723b6e73 in clone () from /lib64/libc.so.6
+
+Thread 1 (Thread 0x7fd8761844c0 (LWP 2445835)):
+#0  0x00007fd8724766c2 in waitpid () from /lib64/libc.so.6
+#1  0x00007fd8723d8ce7 in do_system () from /lib64/libc.so.6
+#2  0x00007fd8756c889c in SNPSle_10ee25eff68cd8461c9146fa1d0b35e87067f3c8015b313e639d2928478c79b3f673f99203bcf8be64600612100082236bffb2007f1e0ef9 () from /share/instsww/synopsys-new/vcs/P-2019.06/linux64/lib/liberrorinf.so
+#3  0x00007fd8756c8e5b in SNPSle_10ee25eff68cd8461c9146fa1d0b35e87067f3c8015b313e81c34e9ac4c8988ef4a6e067b3aa9271e9f15440f9e8f69ebc77e2fd65860faa () from /share/instsww/synopsys-new/vcs/P-2019.06/linux64/lib/liberrorinf.so
+#4  0x00007fd8756ca4b0 in SNPSle_10ee25eff68cd8461c9146fa1d0b35e87067f3c8015b313efba706aab251478fa49e66610e453774633a6c152e7ef778f2202cda681f3d4e () from /share/instsww/synopsys-new/vcs/P-2019.06/linux64/lib/liberrorinf.so
+#5  0x00007fd8756c2ca3 in SNPSle_d35ca1ff70d465c2b9b1a72eee90a506fdd009d3de3db1de () from /share/instsww/synopsys-new/vcs/P-2019.06/linux64/lib/liberrorinf.so
+#6  0x00000000020eed78 in ag::logErrorMessage(ag::errorType, QString const&, bool) ()
+#7  0x00000000020ef3b9 in ?? ()
+#8  0x00007fd8723ce2a9 in __run_exit_handlers () from /lib64/libc.so.6
+#9  0x00007fd8723ce3a0 in exit () from /lib64/libc.so.6
+#10 0x0000000002a1bf6c in ?? ()
+#11 0x00007fd873349cb2 in _XIOError () from /lib64/libX11.so.6
+#12 0x00007fd873347495 in _XEventsQueued () from /lib64/libX11.so.6
+#13 0x00007fd873338e27 in XPending () from /lib64/libX11.so.6
+#14 0x0000000002a38e74 in QEventLoop::processEvents(unsigned int) ()
+#15 0x00000000011f59f8 in ag::ovaEventLoop::processEvents(unsigned int) ()
+#16 0x0000000002a863e9 in QEventLoop::enterLoop() ()
+#17 0x0000000002a8636a in QEventLoop::exec() ()
+#18 0x00000000011f541a in run_cci_event_loop ()
+#19 0x00000000011b2d88 in ag::ovaAppInst::enterEventLoop(int, char**) ()
+#20 0x0000000000ddce45 in main ()
+
+Process VmPeak: 499084 kb, VmSize: 463040 kb
+System Free Memory: 456151864 kb, System Free Swap: 27934312 kb
+
+No context available
+==========================================================================

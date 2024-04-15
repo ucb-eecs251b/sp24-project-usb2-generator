@@ -1,0 +1,820 @@
+# Preference setting overrides
+gui_create_pref_key -category {Globals} -key {load_detail_for_funcov} -value_type {bool} -value {false}
+
+# State setting overrides
+gui_state_default_create -off -ini
+gui_set_state_value -category Globals -key recent_databases -value {{gui_open_db -file vcdplus.vpd} {gui_open_db -file /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/vcdplus.vpd -design V1} {gui_open_db -file SramBistTest.vcd}}
+gui_set_state_value -category Layout -key child_console_size_x -value 2524
+gui_set_state_value -category Layout -key child_console_size_y -value 177
+gui_set_state_value -category Layout -key child_data_coltype -value 138
+gui_set_state_value -category Layout -key child_data_colvalue -value 188
+gui_set_state_value -category Layout -key child_data_colvariable -value 228
+gui_set_state_value -category Layout -key child_data_size_x -value 565
+gui_set_state_value -category Layout -key child_data_size_y -value 1026
+gui_set_state_value -category Layout -key child_hier_col3 -value {-1}
+gui_set_state_value -category Layout -key child_hier_colhier -value 279
+gui_set_state_value -category Layout -key child_hier_colpd -value 0
+gui_set_state_value -category Layout -key child_hier_coltype -value 150
+gui_set_state_value -category Layout -key child_hier_size_x -value 439
+gui_set_state_value -category Layout -key child_hier_size_y -value 1026
+gui_set_state_value -category Layout -key child_source_docknewline -value false
+gui_set_state_value -category Layout -key child_source_pos_x -value {-2}
+gui_set_state_value -category Layout -key child_source_pos_y -value {-21}
+gui_set_state_value -category Layout -key child_source_size_x -value 1523
+gui_set_state_value -category Layout -key child_source_size_y -value 1022
+gui_set_state_value -category Layout -key child_wave_colname -value 311
+gui_set_state_value -category Layout -key child_wave_colvalue -value 304
+gui_set_state_value -category Layout -key child_wave_left -value 619
+gui_set_state_value -category Layout -key child_wave_right -value 1510
+gui_set_state_value -category Layout -key main_pos_x -value 1
+gui_set_state_value -category Layout -key main_pos_y -value 22
+gui_set_state_value -category Layout -key main_size_x -value 2525
+gui_set_state_value -category Layout -key main_size_y -value 1323
+gui_set_state_value -category Layout -key stand_wave_child_docknewline -value false
+gui_set_state_value -category Layout -key stand_wave_child_pos_x -value {-2}
+gui_set_state_value -category Layout -key stand_wave_child_pos_y -value {-21}
+gui_set_state_value -category Layout -key stand_wave_child_size_x -value 2139
+gui_set_state_value -category Layout -key stand_wave_child_size_y -value 1025
+gui_set_state_value -category Layout -key stand_wave_top_pos_x -value 35
+gui_set_state_value -category Layout -key stand_wave_top_pos_y -value 76
+gui_set_state_value -category Layout -key stand_wave_top_size_x -value 2169
+gui_set_state_value -category Layout -key stand_wave_top_size_y -value 1203
+gui_create_state_key -category FindDialog -key m_pMatchCase -value_type bool -value false
+gui_create_state_key -category FindDialog -key m_pMatchWord -value_type bool -value false
+gui_create_state_key -category FindDialog -key m_pUseCombo -value_type string -value {}
+gui_create_state_key -category FindDialog -key m_pWrapAround -value_type bool -value true
+gui_state_default_create -off
+
+# Begin command logging
+gui_open_db -file vcdplus.vpd
+gui_list_select -id Data.1 -selected  { ad_fifo_tb.CRD   }
+gui_list_select -id Data.1 -selected  { ad_fifo_tb.CRD  ad_fifo_tb.Add  ad_fifo_tb.Drop  ad_fifo_tb.Clock  ad_fifo_tb.Reset  ad_fifo_tb.Underflow  ad_fifo_tb.Overflow  ad_fifo_tb.Data   }
+gui_open_window Wave
+gui_list_add -id Wave.1 -from Data.1 { ad_fifo_tb.CRD ad_fifo_tb.Add ad_fifo_tb.Drop ad_fifo_tb.Clock ad_fifo_tb.Reset ad_fifo_tb.Underflow ad_fifo_tb.Overflow ad_fifo_tb.Data } -insertionbar
+gui_zoom -window Wave.1 -full
+gui_wv_zoom_timerange -id  Wave.1 24177 221222
+gui_marker_move -id  Wave.1 C1 163000
+gui_wv_zoom_timerange -id  Wave.1 30040 205647
+gui_wv_scroll_hslidermove -id  Wave.1 0
+gui_marker_move -id  Wave.1 C1 4000
+gui_marker_move -id  Wave.1 C1 6000
+gui_marker_move -id  Wave.1 C1 12000
+gui_marker_move -id  Wave.1 C1 44000
+gui_marker_move -id  Wave.1 C1 3000
+gui_marker_move -id  Wave.1 C1 5000
+gui_marker_move -id  Wave.1 C1 7000
+gui_marker_move -id  Wave.1 C1 9000
+gui_marker_move -id  Wave.1 C1 11000
+gui_marker_move -id  Wave.1 C1 13000
+gui_marker_move -id  Wave.1 C1 15000
+gui_marker_move -id  Wave.1 C1 43000
+gui_wv_scrollright -id  Wave.1  line
+gui_wv_scrollright -id  Wave.1  line
+gui_wv_scrollright -id  Wave.1  line
+gui_wv_scrollright -id  Wave.1  line
+gui_wv_scrollright -id  Wave.1  line
+gui_wv_scrollright -id  Wave.1  line
+gui_wv_scrollright -id  Wave.1  line
+gui_wv_scrollright -id  Wave.1  line
+gui_wv_scrollright -id  Wave.1  line
+gui_wv_scrollright -id  Wave.1  line
+gui_wv_scrollright -id  Wave.1  line
+gui_marker_move -id  Wave.1 C1 167000
+gui_marker_move -id  Wave.1 C1 165000
+gui_marker_move -id  Wave.1 C1 167000
+gui_marker_move -id  Wave.1 C1 169000
+gui_marker_move -id  Wave.1 C1 207000
+gui_marker_move -id  Wave.1 C1 209000
+gui_marker_move -id  Wave.1 C1 211000
+gui_marker_move -id  Wave.1 C1 167000
+gui_marker_move -id  Wave.1 C1 169000
+gui_marker_move -id  Wave.1 C1 171000
+gui_list_expand -id  Hier.1   ad_fifo_tb
+gui_list_expand -id  Hier.1   ad_fifo_tb.dut
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[20].cell_inst} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst}   }
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[21].cell_inst} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst}   }
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[20].cell_inst} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_q}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_left}   }
+gui_list_select -id Data.1 { {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.clk}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.cell_output}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.dff2_q_rst}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.token}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_q}   }
+gui_list_add -id Wave.1 -from Data.1 { {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.clk} {ad_fifo_tb.dut.cell_instance[20].cell_inst.reset} {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.cell_output} {ad_fifo_tb.dut.cell_instance[20].cell_inst.dff2_q_rst} {ad_fifo_tb.dut.cell_instance[20].cell_inst.token} {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_q} } -insertionbar
+gui_list_select -id Wave.1 -selected  { {New Group}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_left}   }
+gui_list_select -id Wave.1 { {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.clk}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.cell_output}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.dff2_q_rst}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.token}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_q}   }
+gui_sg_create  Group2 
+gui_list_add_group -id  Wave.1   {Group2} 
+gui_list_move  -id  Wave.1    -sid  Wave.1   -after Group2 {{ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.clk} {ad_fifo_tb.dut.cell_instance[20].cell_inst.reset} {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.cell_output} {ad_fifo_tb.dut.cell_instance[20].cell_inst.dff2_q_rst} {ad_fifo_tb.dut.cell_instance[20].cell_inst.token} {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_q}}
+gui_list_select -id Wave.1 -selected  { ad_fifo_tb.Underflow   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_left}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_left}   }
+gui_wv_zoom_timerange -id  Wave.1 197661 260757
+gui_marker_move -id  Wave.1 C1 207000
+gui_scroll -window Wave.1 -hrel -.2
+gui_scroll -window Wave.1 -hrel -.2
+gui_scroll -window Wave.1 -hrel -.2
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_left}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_right}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_left}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_right}   }
+gui_marker_move -id  Wave.1 C1 213950
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_left}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.token}   }
+gui_save_session -reload -default_file
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {false}
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {true}
+gui_list_select -id Wave.1 -selected  { ad_fifo_tb.Data   }
+gui_zoom -window Wave.1 -full
+gui_marker_move -id  Wave.1 C1 177099
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.cell_output}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.token}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.cell_output}   }
+gui_list_select -id Wave.1 -selected  { ad_fifo_tb.Data   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.cell_output}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.token}   }
+gui_zoom -window Wave.1 -full
+gui_save_session -reload -default_file
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {false}
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {true}
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.cell_output}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.token}   }
+gui_list_select -id Wave.1 -selected  { ad_fifo_tb.Data   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.cell_output}   }
+gui_close_window -window TopLevel.2
+gui_list_select -id Hier.1 -current_item_name ad_fifo_tb -current_item_type Scope  -selected  { ad_fifo_tb   }
+gui_list_select -id Data.1 -selected  { ad_fifo_tb.CRD   }
+gui_list_select -id Data.1 -selected  { ad_fifo_tb.CRD  ad_fifo_tb.Add  ad_fifo_tb.Drop  ad_fifo_tb.Clock  ad_fifo_tb.Reset  ad_fifo_tb.Underflow  ad_fifo_tb.Overflow  ad_fifo_tb.Data   }
+gui_open_window Wave
+gui_list_add -id Wave.1 -from Data.1 { ad_fifo_tb.CRD ad_fifo_tb.Add ad_fifo_tb.Drop ad_fifo_tb.Clock ad_fifo_tb.Reset ad_fifo_tb.Underflow ad_fifo_tb.Overflow ad_fifo_tb.Data } -insertionbar
+gui_zoom -window Wave.1 -full
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[20].cell_inst} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.has_token_rst}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_left}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_left}   }
+gui_list_select -id Data.1 { {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.clk}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.cell_output}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.has_token_rst}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.token}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_q}   }
+gui_list_add -id Wave.1 -from Data.1 { {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.clk} {ad_fifo_tb.dut.cell_instance[20].cell_inst.reset} {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.cell_output} {ad_fifo_tb.dut.cell_instance[20].cell_inst.has_token_rst} {ad_fifo_tb.dut.cell_instance[20].cell_inst.token} {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_q} } -insertionbar
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_left}   }
+gui_list_select -id Wave.1 { {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.clk}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.cell_output}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.has_token_rst}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.token}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_q}   }
+gui_sg_create  Group4 
+gui_list_add_group -id  Wave.1   {Group4} 
+gui_list_move  -id  Wave.1    -sid  Wave.1   -after Group4 {{ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.clk} {ad_fifo_tb.dut.cell_instance[20].cell_inst.reset} {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.cell_output} {ad_fifo_tb.dut.cell_instance[20].cell_inst.has_token_rst} {ad_fifo_tb.dut.cell_instance[20].cell_inst.token} {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_q}}
+gui_list_select -id Wave.1 -selected  {  }
+gui_marker_move -id  Wave.1 C1 47750
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.has_token_rst}   }
+gui_wv_zoom_timerange -id  Wave.1 0 2418
+gui_wv_scroll_hslidermove -id  Wave.1 114017
+gui_zoom -window Wave.1 -full
+gui_list_select -id Data.1 -selected  {  }
+gui_list_expand -id  Hier.1   {ad_fifo_tb.dut.cell_instance[20].cell_inst}
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_d}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_q}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_q}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_d}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_q}   }
+gui_list_select -id Data.1 { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.token}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_rst}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_q}   }
+gui_list_add -id Wave.1 -from Data.1 { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.token} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_rst} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_q} } -insertionbar
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk}   }
+gui_list_select -id Wave.1 { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.token}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_rst}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_q}   }
+gui_sg_create  Group5 
+gui_list_add_group -id  Wave.1   {Group5} 
+gui_list_move  -id  Wave.1    -sid  Wave.1   -after Group5 {{ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.token} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_rst} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_q}}
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.token}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_rst}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_d}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_q}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_d}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_q}   }
+gui_save_session -reload -default_file
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {false}
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {true}
+gui_wv_zoom_timerange -id  Wave.1 179214 366588
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_d}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.token}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.has_token_rst}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.token}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk}   }
+gui_list_select -id Data.1 -selected  {  }
+gui_list_expand -id  Hier.1   {ad_fifo_tb.dut.cell_instance[21].cell_inst}
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC}   }
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC}   }
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC}   }
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk}   }
+gui_list_select -id Data.1 { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.token}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_rst}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_q}   }
+gui_open_window Wave
+gui_list_add -id Wave.2 -from Data.1 { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.token} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_rst} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_q} } -insertionbar
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.clk}   }
+gui_list_select -id Data.1 { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.reset}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_right}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_right}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_right}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_right}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.token}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_rst}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_q}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_q}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_q}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_q}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_q}   }
+gui_list_add -id Wave.2 -from Data.1 { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.clk} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.reset} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_right} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_right} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_right} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_right} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.token} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_rst} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_q} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_q} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_q} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_q} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_q} } -insertionbar
+gui_list_select -id Data.1 -selected  {  }
+gui_list_select -id Wave.2 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.clk}   }
+gui_list_select -id Wave.2 { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.reset}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_right}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_right}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_right}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_right}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.token}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_rst}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_q}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_q}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_q}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_q}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_q}   }
+gui_sg_create  Group7 
+gui_list_add_group -id  Wave.2   {Group7} 
+gui_list_move  -id  Wave.2    -sid  Wave.2   -after Group7 {{ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.clk} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.reset} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_right} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_right} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_right} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_right} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.token} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_rst} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_q} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_q} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_q} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_q} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_q}}
+gui_wv_zoom_timerange -id  Wave.2 0 496
+gui_wv_zoom_timerange -id  Wave.2 0 506
+gui_wv_zoom_timerange -id  Wave.2 0 505
+gui_wv_zoom_timerange -id  Wave.2 0 505
+gui_marker_move -id  Wave.2 C1 432
+gui_zoom -window Wave.2 -full
+gui_list_select -id Wave.2 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.token}   }
+gui_list_select -id Wave.2 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.token}   }
+gui_list_select -id Wave.2 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_d}   }
+gui_wv_zoom_timerange -id  Wave.2 187599 295943
+gui_list_select -id Wave.2 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left}   }
+gui_list_select -id Wave.2 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right}   }
+gui_list_select -id Wave.2 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_left}   }
+gui_list_select -id Wave.2 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right}   }
+gui_list_select -id Wave.2 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_left}   }
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[20].cell_inst} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst}   }
+gui_list_select -id Hier.1 -current_item_name ad_fifo_tb -current_item_type Scope  -selected  { ad_fifo_tb   }
+gui_list_select -id Hier.1 -current_item_name ad_fifo_tb.dut -current_item_type Scope  -selected  { ad_fifo_tb.dut   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.ptl[41:0]}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.ptr[41:0]}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.ptl[41:0]}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.ptl[41:0]}  {ad_fifo_tb.dut.ptr[41:0]}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.has_token_rst[40:0]}   }
+gui_list_select -id Data.1 -selected  { ad_fifo_tb.dut.cell_output   }
+gui_list_select -id Data.1 { ad_fifo_tb.dut.cell_output  ad_fifo_tb.dut.CRD  ad_fifo_tb.dut.Add  ad_fifo_tb.dut.Drop  ad_fifo_tb.dut.Clock  ad_fifo_tb.dut.Reset  ad_fifo_tb.dut.Underflow  ad_fifo_tb.dut.Overflow  ad_fifo_tb.dut.Data  {ad_fifo_tb.dut.crd[41:0]}  {ad_fifo_tb.dut.add[41:0]}  {ad_fifo_tb.dut.drop[41:0]}  {ad_fifo_tb.dut.ptr[41:0]}  {ad_fifo_tb.dut.ptl[41:0]}  ad_fifo_tb.dut.clk  ad_fifo_tb.dut.reset  ad_fifo_tb.dut.cell_output   }
+gui_open_window Wave
+gui_list_add -id Wave.3 -from Data.1 { ad_fifo_tb.dut.CRD ad_fifo_tb.dut.Add ad_fifo_tb.dut.Drop ad_fifo_tb.dut.Clock ad_fifo_tb.dut.Reset ad_fifo_tb.dut.Underflow ad_fifo_tb.dut.Overflow ad_fifo_tb.dut.Data {ad_fifo_tb.dut.crd[41:0]} {ad_fifo_tb.dut.add[41:0]} {ad_fifo_tb.dut.drop[41:0]} {ad_fifo_tb.dut.ptr[41:0]} {ad_fifo_tb.dut.ptl[41:0]} ad_fifo_tb.dut.clk ad_fifo_tb.dut.reset ad_fifo_tb.dut.cell_output } -insertionbar
+gui_zoom -window Wave.3 -full
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.ptr[41:0]}   }
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.ptl[41:0]}   }
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.ptr[41:0]}   }
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.ptl[41:0]}   }
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.ptr[41:0]}   }
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.ptl[41:0]}   }
+gui_wv_zoom_timerange -id  Wave.3 14506 27199
+gui_wv_scroll_hslidermove -id  Wave.3 0
+gui_wv_scroll_hslidermove -id  Wave.3 51300
+gui_zoom -window Wave.3 -full
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.ptr[41:0]}   }
+gui_marker_move -id  Wave.3 C1 209000
+gui_marker_move -id  Wave.3 C1 211000
+gui_marker_move -id  Wave.3 C1 209000
+gui_marker_move -id  Wave.3 C1 195534
+gui_marker_move -id  Wave.3 C1 191001
+gui_marker_move -id  Wave.3 C1 194325
+gui_marker_move -id  Wave.3 C1 209000
+gui_close_window -window TopLevel.4
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC}   }
+gui_list_select -id Wave.2 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_right}   }
+gui_list_select -id Wave.2 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.token}   }
+gui_list_select -id Wave.2 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_right}   }
+gui_list_select -id Wave.2 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_left}   }
+gui_list_select -id Hier.1 -current_item_name ad_fifo_tb -current_item_type Scope  -selected  { ad_fifo_tb   }
+gui_list_select -id Hier.1 -current_item_name ad_fifo_tb.dut -current_item_type Scope  -selected  { ad_fifo_tb.dut   }
+gui_list_select -id Data.1 -selected  {  }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.ptr[41:0]}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.ptl[41:0]}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.ptr[41:0]}  {ad_fifo_tb.dut.ptl[41:0]}   }
+gui_open_window Wave
+gui_list_add -id Wave.3 -from Data.1 { {ad_fifo_tb.dut.ptr[41:0]} {ad_fifo_tb.dut.ptl[41:0]} } -insertionbar
+gui_marker_move -id  Wave.3 C1 102
+gui_zoom -window Wave.3 -full
+gui_wv_zoom_timerange -id  Wave.3 200504 260685
+gui_wv_zoom_timerange -id  Wave.3 205618 209178
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.ptr[41:0]}   }
+gui_list_set_selected_property -id Wave.3 -radix binary
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.ptl[41:0]}   }
+gui_list_set_selected_property -id Wave.3 -radix binary
+gui_marker_move -id  Wave.3 C1 206949
+gui_marker_move -id  Wave.3 C1 206640
+gui_marker_move -id  Wave.3 C1 206927
+gui_marker_move -id  Wave.3 C1 206820
+gui_zoom -window Wave.3 -full
+gui_wv_zoom_timerange -id  Wave.3 198085 229839
+gui_wv_zoom_timerange -id  Wave.3 207916 213742
+gui_marker_move -id  Wave.3 C1 209971
+gui_marker_move -id  Wave.3 C1 210010
+gui_marker_move -id  Wave.3 C1 209971
+gui_marker_move -id  Wave.3 C1 209207
+gui_marker_move -id  Wave.3 C1 209247
+gui_marker_move -id  Wave.3 C1 209274
+gui_list_select -id Wave.2 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_right}   }
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC}   }
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[21].cell_inst} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst}   }
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC}   }
+gui_save_session -reload -default_file
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {false}
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {true}
+gui_list_select -id Wave.2 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_left}   }
+gui_list_select -id Wave.2 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_left}   }
+gui_list_select -id Wave.2 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.token}   }
+gui_list_select -id Wave.2 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_left}   }
+gui_list_select -id Data.1 -selected  {  }
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[21].cell_inst} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.ptr_left}   }
+gui_open_window Wave
+gui_list_add -id Wave.4 -from Data.1 { {ad_fifo_tb.dut.cell_instance[21].cell_inst.ptr_left} } -insertionbar
+gui_zoom -window Wave.4 -full
+gui_wv_zoom_timerange -id  Wave.4 206552 224093
+gui_close_window -window TopLevel.5
+gui_list_expand -id  Hier.1   {ad_fifo_tb.dut.cell_instance[21].cell_inst}
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_q}   }
+gui_close_window -window TopLevel.3
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk}   }
+gui_list_select -id Data.1 { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.token}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_rst}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_q}   }
+gui_open_window Wave
+gui_list_add -id Wave.4 -from Data.1 { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.token} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_rst} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_q} } -insertionbar
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.clk}   }
+gui_list_select -id Data.1 { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.reset}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_right}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_right}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_right}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_right}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.token}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_rst}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_q}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_q}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_q}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_q}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_q}   }
+gui_list_add -id Wave.4 -from Data.1 { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.clk} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.reset} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_right} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_right} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_right} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_right} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.token} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_rst} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_q} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_q} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_q} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_q} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_q} } -insertionbar
+gui_list_select -id Wave.4 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.clk}   }
+gui_list_select -id Wave.4 { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.reset}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_right}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_right}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_right}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_right}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.token}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_rst}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_q}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_q}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_q}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_q}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_q}   }
+gui_sg_create  Group12 
+gui_list_add_group -id  Wave.4   {Group12} 
+gui_list_move  -id  Wave.4    -sid  Wave.4   -after Group12 {{ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.clk} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.reset} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_right} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_right} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_right} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_right} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.token} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_rst} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_q} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_q} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_q} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_q} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_q}}
+gui_list_select -id Wave.4 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_q}   }
+gui_zoom -window Wave.4 -full
+gui_list_select -id Wave.4 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_left}   }
+gui_marker_move -id  Wave.4 C1 45149
+gui_marker_move -id  Wave.4 C1 256634
+gui_marker_move -id  Wave.4 C1 211000
+gui_marker_select -id  Wave.4 { C1 }
+gui_marker_move -id  Wave.4 C1 209000
+gui_list_select -id Wave.4 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_left}   }
+gui_list_select -id Wave.4 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_right}   }
+gui_list_select -id Wave.4 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_left}   }
+gui_list_select -id Wave.4 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_right}   }
+gui_list_select -id Wave.4 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left}   }
+gui_list_select -id Data.1 -selected  {  }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_left}   }
+gui_open_window Wave
+gui_list_add -id Wave.5 -from Data.1 { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_left} } -insertionbar
+gui_zoom -window Wave.5 -full
+gui_marker_move -id  Wave.5 C1 171980
+gui_marker_move -id  Wave.5 C1 225743
+gui_marker_move -id  Wave.5 C1 188020
+gui_marker_move -id  Wave.5 C1 130693
+gui_marker_move -id  Wave.5 C1 8020
+gui_close_window -window TopLevel.6
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[21].cell_inst} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst}   }
+gui_open_window Wave
+gui_list_add -id Wave.5 -from Data.1 { {ad_fifo_tb.dut.cell_instance[21].cell_inst.ptr_left} } -insertionbar
+gui_zoom -window Wave.5 -full
+gui_close_window -window TopLevel.6
+gui_save_session -reload -default_file
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {false}
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {true}
+gui_list_select -id Wave.4 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.token}   }
+gui_list_select -id Wave.4 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_left}   }
+gui_list_select -id Wave.1 -selected  { ad_fifo_tb.Data   }
+gui_zoom -window Wave.1 -full
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.cell_output}   }
+gui_list_select -id Wave.1 -selected  { ad_fifo_tb.Data   }
+gui_marker_move -id  Wave.1 C1 211000
+gui_marker_move -id  Wave.1 C1 209000
+gui_marker_move -id  Wave.1 C1 207000
+gui_marker_move -id  Wave.1 C1 209000
+gui_marker_move -id  Wave.1 C1 213000
+gui_marker_move -id  Wave.1 C1 215000
+gui_marker_move -id  Wave.1 C1 221000
+gui_save_session -reload -default_file
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {false}
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {true}
+gui_marker_move -id  Wave.1 C1 176000
+gui_marker_move -id  Wave.1 C1 174000
+gui_list_select -id Wave.1 -selected  { ad_fifo_tb.Underflow   }
+gui_list_select -id Wave.1 -selected  { ad_fifo_tb.Overflow   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_right}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_left}   }
+gui_save_session -reload -default_file
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {false}
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {true}
+gui_wv_zoom_timerange -id  Wave.1 196441 296172
+gui_marker_move -id  Wave.1 C1 209000
+gui_marker_move -id  Wave.1 C1 209978
+gui_marker_move -id  Wave.1 C1 209509
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left}   }
+gui_close_window -window TopLevel.2
+gui_close_window -window TopLevel.5
+gui_close_window -window TopLevel.4
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[2].cell_inst} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[2].cell_inst}   }
+gui_list_select -id Hier.1 -current_item_name ad_fifo_tb -current_item_type Scope  -selected  { ad_fifo_tb   }
+gui_list_select -id Hier.1 -current_item_name ad_fifo_tb.dut -current_item_type Scope  -selected  { ad_fifo_tb.dut   }
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[13].cell_inst} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[13].cell_inst}   }
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[20].cell_inst} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst}   }
+gui_list_expand -id  Hier.1   {ad_fifo_tb.dut.cell_instance[20].cell_inst}
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_left}   }
+gui_list_select -id Data.1 { {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.clk}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.cell_output}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.has_token_rst}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.token}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_q}   }
+gui_open_window Wave
+gui_list_add -id Wave.1 -from Data.1 { {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.clk} {ad_fifo_tb.dut.cell_instance[20].cell_inst.reset} {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.cell_output} {ad_fifo_tb.dut.cell_instance[20].cell_inst.has_token_rst} {ad_fifo_tb.dut.cell_instance[20].cell_inst.token} {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_q} } -insertionbar
+gui_zoom -window Wave.1 -full
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_left}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_right}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_right}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_right}   }
+gui_wv_zoom_timerange -id  Wave.1 203362 230296
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_marker_select -id  Wave.1 { C1 }
+gui_marker_move -id  Wave.1 C1 209000
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk}   }
+gui_list_select -id Data.1 { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.token}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_rst}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_q}   }
+gui_list_add -id Wave.1 -from Data.1 { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.token} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_rst} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_q} } -insertionbar
+gui_wv_zoom_timerange -id  Wave.1 162944 279084
+gui_wv_zoom_timerange -id  Wave.1 162944 283214
+gui_wv_zoom_timerange -id  Wave.1 162944 285243
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.clk}   }
+gui_list_select -id Wave.1 { {ad_fifo_tb.dut.cell_instance[20].cell_inst.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.cell_output}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.has_token_rst}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.token}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.token}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_rst}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_q}   }
+gui_sg_create  Group16 
+gui_list_add_group -id  Wave.1   {Group16} 
+gui_list_move  -id  Wave.1    -sid  Wave.1   -after Group16 {{ad_fifo_tb.dut.cell_instance[20].cell_inst.clk} {ad_fifo_tb.dut.cell_instance[20].cell_inst.reset} {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.cell_output} {ad_fifo_tb.dut.cell_instance[20].cell_inst.has_token_rst} {ad_fifo_tb.dut.cell_instance[20].cell_inst.token} {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.token} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_rst} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_q}}
+gui_marker_move -id  Wave.1 C1 170769
+gui_marker_move -id  Wave.1 C1 186201
+gui_list_select -id Wave.1 -selected  { Group16   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_right}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.clk}   }
+gui_list_select -id Wave.1 { {ad_fifo_tb.dut.cell_instance[20].cell_inst.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.cell_output}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.has_token_rst}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.token}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_q}   }
+gui_list_move  -id  Wave.1    -sid  Wave.1   -after {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_right} {{ad_fifo_tb.dut.cell_instance[20].cell_inst.clk} {ad_fifo_tb.dut.cell_instance[20].cell_inst.reset} {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptr_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.cell_output} {ad_fifo_tb.dut.cell_instance[20].cell_inst.has_token_rst} {ad_fifo_tb.dut.cell_instance[20].cell_inst.token} {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_q}} 
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[20].cell_inst} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst}   }
+gui_marker_move -id  Wave.1 C1 179101
+gui_marker_move -id  Wave.1 C1 185477
+gui_marker_move -id  Wave.1 C1 206271
+gui_marker_move -id  Wave.1 C1 209000
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.ptl_right}   }
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[21].cell_inst} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.crd_left}   }
+gui_list_expand -id  Hier.1   {ad_fifo_tb.dut.cell_instance[21].cell_inst}
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.clk}   }
+gui_list_select -id Data.1 { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.reset}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_right}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_right}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_right}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_right}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.token}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_rst}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_q}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_q}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_q}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_q}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_q}   }
+gui_open_window Wave
+gui_list_add -id Wave.2 -from Data.1 { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.clk} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.reset} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_right} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_right} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_right} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_right} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.token} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_rst} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_q} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_q} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_q} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_q} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_q} } -insertionbar
+gui_zoom -window Wave.2 -full
+gui_list_select -id Wave.2 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_right}   }
+gui_list_select -id Wave.2 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_left}   }
+gui_list_select -id Hier.1 -current_item_name ad_fifo_tb -current_item_type Scope  -selected  { ad_fifo_tb   }
+gui_list_select -id Hier.1 -current_item_name ad_fifo_tb.dut -current_item_type Scope  -selected  { ad_fifo_tb.dut   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.ptr[41:0]}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.ptr[41:0]}  {ad_fifo_tb.dut.ptl[41:0]}   }
+gui_open_window Wave
+gui_list_add -id Wave.3 -from Data.1 { {ad_fifo_tb.dut.ptr[41:0]} {ad_fifo_tb.dut.ptl[41:0]} } -insertionbar
+gui_zoom -window Wave.3 -full
+gui_marker_move -id  Wave.3 C1 211000
+gui_marker_move -id  Wave.3 C1 217000
+gui_scroll -window Wave.3 -hrel .2
+gui_marker_select -id  Wave.3 { C1 }
+gui_marker_move -id  Wave.3 C1 219000
+gui_marker_move -id  Wave.3 C1 209000
+gui_marker_move -id  Wave.3 C1 211000
+gui_marker_move -id  Wave.3 C1 217000
+gui_marker_move -id  Wave.3 C1 219000
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.add[41:0]}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.drop[41:0]}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.add[41:0]}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.add[41:0]}  {ad_fifo_tb.dut.drop[41:0]}   }
+gui_list_add -id Wave.3 -from Data.1 { {ad_fifo_tb.dut.add[41:0]} {ad_fifo_tb.dut.drop[41:0]} } -insertionbar
+gui_wv_zoom_timerange -id  Wave.3 165535 296873
+gui_wv_zoom_timerange -id  Wave.3 202351 229201
+gui_wv_zoom_timerange -id  Wave.3 207018 221066
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.add[41:0]}   }
+gui_list_set_selected_property -id Wave.3 -radix binary
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.drop[41:0]}   }
+gui_list_set_selected_property -id Wave.3 -radix binary
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.ptl[41:0]}   }
+gui_list_set_selected_property -id Wave.3 -radix binary
+gui_zoom -window Wave.3 -full
+gui_marker_move -id  Wave.3 C1 209000
+gui_wv_zoom_timerange -id  Wave.3 207599 231204
+gui_wv_zoom_timerange -id  Wave.3 208492 220604
+gui_wv_zoom_timerange -id  Wave.3 208494 217828
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.ptr[41:0]}   }
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.add[41:0]}   }
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.ptl[41:0]}   }
+gui_marker_move -id  Wave.3 C1 217000
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.token}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_left}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_right}   }
+gui_marker_move -id  Wave.1 C1 207000
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left}   }
+gui_close_window -window TopLevel.2
+gui_close_window -window TopLevel.4
+gui_close_window -window TopLevel.3
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[20].cell_inst} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst}   }
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC}   }
+gui_list_select -id Data.1 -selected  {  }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_left}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_right}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_right}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_right}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_right}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_right}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_right}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_right}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_right}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.token}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_right}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.token}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_right}   }
+gui_list_select -id Data.1 { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_left}   }
+gui_list_select -id Data.1 { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.token}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.token}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_rst}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_q}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_d}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_q}   }
+gui_open_window Wave
+gui_list_add -id Wave.1 -from Data.1 { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.clk} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.reset} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_right} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.token} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_rst} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.add_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.drop_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_q} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_d} {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.has_token_q} } -insertionbar
+gui_zoom -window Wave.1 -full
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC}   }
+gui_list_select -id Data.1 -selected  {  }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_q}   }
+gui_list_select -id Data.1 { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_q}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.clk}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.reset}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_right}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_right}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_right}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_right}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.token}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_rst}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_q}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_q}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_q}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_q}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_d}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_q}   }
+gui_list_create_group_when_add -wave -enable
+gui_list_add -id Wave.1 -from Data.1 { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.clk} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.reset} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_right} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_right} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_right} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_right} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.token} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_rst} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.add_q} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.drop_q} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_q} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_q} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_d} {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_q} } -insertionbar
+gui_wv_zoom_timerange -id  Wave.1 0 450606
+gui_wv_zoom_timerange -id  Wave.1 0 503297
+gui_marker_move -id  Wave.1 C1 296467
+gui_marker_move -id  Wave.1 C1 207000
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_right}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_left}   }
+gui_save_session -reload -default_file
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {false}
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {true}
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_left}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_right}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptr_left}   }
+gui_list_select -id Data.1 -selected  { ad_fifo_tb.CRD   }
+gui_list_select -id Data.1 -selected  { ad_fifo_tb.CRD  ad_fifo_tb.Add  ad_fifo_tb.Drop  ad_fifo_tb.Clock  ad_fifo_tb.Reset  ad_fifo_tb.Underflow  ad_fifo_tb.Overflow  ad_fifo_tb.Data   }
+gui_open_window Wave
+gui_list_add -id Wave.2 -from Data.1 { ad_fifo_tb.CRD ad_fifo_tb.Add ad_fifo_tb.Drop ad_fifo_tb.Clock ad_fifo_tb.Reset ad_fifo_tb.Underflow ad_fifo_tb.Overflow ad_fifo_tb.Data } -insertionbar
+gui_zoom -window Wave.2 -full
+gui_marker_move -id  Wave.2 C1 211978
+gui_marker_move -id  Wave.2 C1 217000
+gui_list_select -id Wave.1 -selected  { Group19   }
+gui_list_action -id  Wave.1 Group19
+gui_list_select -id Wave.1 -selected  { Group20   }
+gui_list_action -id  Wave.1 Group20
+gui_list_action -id  Wave.1 Group20
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.ptl_right}   }
+gui_list_select -id Wave.1 -selected  { Group20   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_d}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.TC.has_token_q}   }
+gui_marker_move -id  Wave.1 C1 215000
+gui_marker_move -id  Wave.1 C1 209000
+gui_marker_move -id  Wave.1 C1 211000
+gui_marker_move -id  Wave.1 C1 209000
+gui_marker_move -id  Wave.1 C1 217000
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right}   }
+gui_wv_zoom_timerange -id  Wave.1 208950 238021
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptr_right}   }
+gui_list_select -id Wave.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.TC.ptl_right}   }
+gui_save_session -reload -default_file
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {false}
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {true}
+gui_wv_zoom_timerange -id  Wave.2 201985 273149
+gui_marker_move -id  Wave.2 C1 217000
+gui_marker_move -id  Wave.2 C1 219000
+gui_marker_move -id  Wave.2 C1 217000
+gui_marker_move -id  Wave.2 C1 223000
+gui_marker_move -id  Wave.2 C1 225000
+gui_marker_move -id  Wave.2 C1 231000
+gui_marker_move -id  Wave.2 C1 233000
+gui_save_session -reload -default_file
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {false}
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {true}
+gui_zoom -window Wave.2 -full
+gui_list_select -id Wave.2 -selected  { ad_fifo_tb.Overflow   }
+gui_wv_zoom_timerange -id  Wave.2 178970 357638
+gui_zoom -window Wave.2 -full
+gui_wv_zoom_timerange -id  Wave.2 139906 399731
+gui_marker_move -id  Wave.2 C1 207000
+gui_scroll -window Wave.2 -hrel .2
+gui_marker_move -id  Wave.2 C1 208000
+gui_marker_move -id  Wave.2 C1 209000
+gui_wv_zoom_timerange -id  Wave.2 158588 321197
+gui_marker_move -id  Wave.2 C1 208000
+gui_marker_move -id  Wave.2 C1 209000
+gui_marker_move -id  Wave.2 C1 207000
+gui_marker_move -id  Wave.2 C1 205000
+gui_marker_move -id  Wave.2 C1 207000
+gui_marker_move -id  Wave.2 C1 209000
+gui_marker_move -id  Wave.2 C1 211000
+gui_marker_move -id  Wave.2 C1 213000
+gui_list_select -id Data.1 -selected  {  }
+gui_list_expand -id  Hier.1   ad_fifo_tb
+gui_list_select -id Hier.1 -current_item_name ad_fifo_tb.dut -current_item_type Scope  -selected  { ad_fifo_tb.dut   }
+gui_list_select -id Hier.1 -current_item_name ad_fifo_tb -current_item_type Scope  -selected  { ad_fifo_tb   }
+gui_list_expand -id  Hier.1   ad_fifo_tb.dut
+gui_list_select -id Hier.1 -current_item_name ad_fifo_tb.dut -current_item_type Scope  -selected  { ad_fifo_tb.dut   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.ptr[41:0]}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.ptr[41:0]}  {ad_fifo_tb.dut.ptl[41:0]}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.N[31:0]}   }
+gui_list_select -id Data.1 -selected  { ad_fifo_tb.dut.CRD   }
+gui_list_select -id Data.1 { ad_fifo_tb.dut.Add  ad_fifo_tb.dut.Drop  ad_fifo_tb.dut.Clock  ad_fifo_tb.dut.Reset  ad_fifo_tb.dut.Underflow  ad_fifo_tb.dut.Overflow  ad_fifo_tb.dut.Data  {ad_fifo_tb.dut.crd[41:0]}  {ad_fifo_tb.dut.add[41:0]}  {ad_fifo_tb.dut.drop[41:0]}  {ad_fifo_tb.dut.ptr[41:0]}  {ad_fifo_tb.dut.ptl[41:0]}  ad_fifo_tb.dut.clk  ad_fifo_tb.dut.reset  ad_fifo_tb.dut.cell_output  {ad_fifo_tb.dut.has_token_rst[40:0]}   }
+gui_open_window Wave
+gui_list_add -id Wave.3 -from Data.1 { ad_fifo_tb.dut.CRD ad_fifo_tb.dut.Add ad_fifo_tb.dut.Drop ad_fifo_tb.dut.Clock ad_fifo_tb.dut.Reset ad_fifo_tb.dut.Underflow ad_fifo_tb.dut.Overflow ad_fifo_tb.dut.Data {ad_fifo_tb.dut.crd[41:0]} {ad_fifo_tb.dut.add[41:0]} {ad_fifo_tb.dut.drop[41:0]} {ad_fifo_tb.dut.ptr[41:0]} {ad_fifo_tb.dut.ptl[41:0]} ad_fifo_tb.dut.clk ad_fifo_tb.dut.reset ad_fifo_tb.dut.cell_output {ad_fifo_tb.dut.has_token_rst[40:0]} } -insertionbar
+gui_zoom -window Wave.3 -full
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.drop[41:0]}   }
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.ptr[41:0]}   }
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.ptl[41:0]}   }
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.ptr[41:0]}   }
+gui_wv_zoom_timerange -id  Wave.3 152322 298284
+gui_marker_move -id  Wave.3 C1 209000
+gui_marker_move -id  Wave.3 C1 211000
+gui_marker_move -id  Wave.3 C1 209000
+gui_marker_move -id  Wave.3 C1 215000
+gui_marker_move -id  Wave.3 C1 217000
+gui_marker_move -id  Wave.3 C1 223000
+gui_marker_move -id  Wave.3 C1 229000
+gui_wv_scroll_hslidermove -id  Wave.3 2893
+gui_wv_scroll_hslidermove -id  Wave.3 2239
+gui_marker_move -id  Wave.3 C1 331000
+gui_wv_scroll_hslidermove -id  Wave.3 1178
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.N[31:0]}   }
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[0].cell_inst} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[0].cell_inst}   }
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[6].cell_inst} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[6].cell_inst}   }
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[12].cell_inst} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[12].cell_inst}   }
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[20].cell_inst} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst}   }
+gui_save_session -reload -default_file
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {false}
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {true}
+gui_close_window -window TopLevel.4
+gui_list_select -id Hier.1 -current_item_name ad_fifo_tb.dut -current_item_type Scope  -selected  { ad_fifo_tb.dut   }
+gui_list_select -id Data.1 -selected  { ad_fifo_tb.dut.CRD   }
+gui_list_select -id Data.1 { ad_fifo_tb.dut.Add  ad_fifo_tb.dut.Drop  ad_fifo_tb.dut.Clock  ad_fifo_tb.dut.Reset  ad_fifo_tb.dut.Underflow  ad_fifo_tb.dut.Overflow  ad_fifo_tb.dut.Data  {ad_fifo_tb.dut.crd[41:0]}  {ad_fifo_tb.dut.add[41:0]}  {ad_fifo_tb.dut.drop[41:0]}  {ad_fifo_tb.dut.ptr[41:0]}  {ad_fifo_tb.dut.ptl[41:0]}  ad_fifo_tb.dut.clk  ad_fifo_tb.dut.reset  ad_fifo_tb.dut.cell_output  {ad_fifo_tb.dut.has_token_rst[40:0]}  {ad_fifo_tb.dut.token[40:0]}   }
+gui_open_window Wave
+gui_list_add -id Wave.3 -from Data.1 { ad_fifo_tb.dut.CRD ad_fifo_tb.dut.Add ad_fifo_tb.dut.Drop ad_fifo_tb.dut.Clock ad_fifo_tb.dut.Reset ad_fifo_tb.dut.Underflow ad_fifo_tb.dut.Overflow ad_fifo_tb.dut.Data {ad_fifo_tb.dut.crd[41:0]} {ad_fifo_tb.dut.add[41:0]} {ad_fifo_tb.dut.drop[41:0]} {ad_fifo_tb.dut.ptr[41:0]} {ad_fifo_tb.dut.ptl[41:0]} ad_fifo_tb.dut.clk ad_fifo_tb.dut.reset ad_fifo_tb.dut.cell_output {ad_fifo_tb.dut.has_token_rst[40:0]} {ad_fifo_tb.dut.token[40:0]} } -insertionbar
+gui_zoom -window Wave.3 -full
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.token[40:0]}   }
+gui_marker_move -id  Wave.3 C1 53903
+gui_list_set_selected_property -id Wave.3 -radix binary
+gui_marker_move -id  Wave.3 C1 0
+gui_marker_move -id  Wave.3 C1 19381
+gui_marker_move -id  Wave.3 C1 41184
+gui_view_port_history -window Wave.3 -previous
+gui_zoom -window Wave.3 -full
+gui_marker_move -id  Wave.3 C1 185935
+gui_marker_move -id  Wave.3 C1 178668
+gui_save_session -reload -default_file
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {false}
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {true}
+gui_close_window -window TopLevel.4
+gui_list_expand -id  Hier.1   ad_fifo_tb.dut
+gui_list_select -id Data.1 -selected  {  }
+gui_save_session -reload -default_file
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {false}
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {true}
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.token_out[40:0]}   }
+gui_list_select -id Data.1 { {ad_fifo_tb.dut.token_out[40:0]}  ad_fifo_tb.dut.CRD  ad_fifo_tb.dut.Add  ad_fifo_tb.dut.Drop  ad_fifo_tb.dut.Clock  ad_fifo_tb.dut.Reset  ad_fifo_tb.dut.Underflow  ad_fifo_tb.dut.Overflow  ad_fifo_tb.dut.Data  {ad_fifo_tb.dut.crd[41:0]}  {ad_fifo_tb.dut.add[41:0]}  {ad_fifo_tb.dut.drop[41:0]}  {ad_fifo_tb.dut.ptr[41:0]}  {ad_fifo_tb.dut.ptl[41:0]}  ad_fifo_tb.dut.clk  ad_fifo_tb.dut.reset  ad_fifo_tb.dut.cell_output  {ad_fifo_tb.dut.has_token_rst[40:0]}  {ad_fifo_tb.dut.token_out[40:0]}   }
+gui_open_window Wave
+gui_list_add -id Wave.3 -from Data.1 { ad_fifo_tb.dut.CRD ad_fifo_tb.dut.Add ad_fifo_tb.dut.Drop ad_fifo_tb.dut.Clock ad_fifo_tb.dut.Reset ad_fifo_tb.dut.Underflow ad_fifo_tb.dut.Overflow ad_fifo_tb.dut.Data {ad_fifo_tb.dut.crd[41:0]} {ad_fifo_tb.dut.add[41:0]} {ad_fifo_tb.dut.drop[41:0]} {ad_fifo_tb.dut.ptr[41:0]} {ad_fifo_tb.dut.ptl[41:0]} ad_fifo_tb.dut.clk ad_fifo_tb.dut.reset ad_fifo_tb.dut.cell_output {ad_fifo_tb.dut.has_token_rst[40:0]} {ad_fifo_tb.dut.token_out[40:0]} } -insertionbar
+gui_zoom -window Wave.3 -full
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.token_out[40:0]}   }
+gui_marker_move -id  Wave.3 C1 211000
+gui_scroll -window Wave.3 -hrel .2
+gui_list_set_selected_property -id Wave.3 -radix decimal
+gui_marker_select -id  Wave.3 { C1 }
+gui_scroll -window Wave.3 -hrel .2
+gui_scroll -window Wave.3 -hrel .2
+gui_marker_move -id  Wave.3 C1 217000
+gui_list_set_selected_property -id Wave.3 -radix binary
+gui_scroll -window Wave.3 -hrel -.2
+gui_marker_move -id  Wave.3 C1 211000
+gui_marker_move -id  Wave.3 C1 217000
+gui_marker_move -id  Wave.3 C1 211000
+gui_marker_move -id  Wave.3 C1 217000
+gui_marker_move -id  Wave.3 C1 219000
+gui_marker_move -id  Wave.3 C1 225000
+gui_marker_move -id  Wave.3 C1 231000
+gui_marker_move -id  Wave.3 C1 233000
+gui_marker_move -id  Wave.3 C1 237000
+gui_marker_move -id  Wave.3 C1 235000
+gui_marker_move -id  Wave.3 C1 233000
+gui_scroll -window Wave.3 -hrel .2
+gui_scroll -window Wave.3 -hrel .2
+gui_marker_move -id  Wave.3 C1 143030
+gui_marker_move -id  Wave.3 C1 231000
+gui_wv_zoom_timerange -id  Wave.3 180909 387273
+gui_marker_move -id  Wave.3 C1 357281
+gui_marker_move -id  Wave.3 C1 225000
+gui_marker_move -id  Wave.3 C1 231000
+gui_marker_move -id  Wave.3 C1 233000
+gui_marker_move -id  Wave.3 C1 235000
+gui_marker_move -id  Wave.3 C1 237000
+gui_marker_move -id  Wave.3 C1 239000
+gui_marker_move -id  Wave.3 C1 241000
+gui_marker_move -id  Wave.3 C1 243000
+gui_marker_move -id  Wave.3 C1 245000
+gui_marker_move -id  Wave.3 C1 247000
+gui_marker_move -id  Wave.3 C1 249000
+gui_marker_move -id  Wave.3 C1 247000
+gui_marker_move -id  Wave.3 C1 245000
+gui_marker_move -id  Wave.3 C1 243000
+gui_marker_move -id  Wave.3 C1 241000
+gui_marker_move -id  Wave.3 C1 239000
+gui_marker_move -id  Wave.3 C1 237000
+gui_marker_move -id  Wave.3 C1 235000
+gui_marker_move -id  Wave.3 C1 233000
+gui_marker_move -id  Wave.3 C1 233000
+gui_marker_move -id  Wave.3 C1 231000
+gui_marker_move -id  Wave.3 C1 233000
+gui_marker_move -id  Wave.3 C1 235000
+gui_marker_move -id  Wave.3 C1 237000
+gui_marker_move -id  Wave.3 C1 239000
+gui_marker_move -id  Wave.3 C1 241000
+gui_marker_move -id  Wave.3 C1 243000
+gui_marker_move -id  Wave.3 C1 245000
+gui_marker_move -id  Wave.3 C1 247000
+gui_marker_move -id  Wave.3 C1 249000
+gui_marker_move -id  Wave.3 C1 251000
+gui_marker_move -id  Wave.3 C1 255000
+gui_marker_move -id  Wave.3 C1 259000
+gui_marker_move -id  Wave.3 C1 263000
+gui_marker_move -id  Wave.3 C1 267000
+gui_marker_move -id  Wave.3 C1 271000
+gui_marker_move -id  Wave.3 C1 275000
+gui_marker_move -id  Wave.3 C1 279000
+gui_marker_move -id  Wave.3 C1 283000
+gui_marker_move -id  Wave.3 C1 287000
+gui_marker_move -id  Wave.3 C1 291000
+gui_marker_move -id  Wave.3 C1 295000
+gui_marker_move -id  Wave.3 C1 299000
+gui_marker_move -id  Wave.3 C1 299000
+gui_marker_move -id  Wave.3 C1 303000
+gui_marker_move -id  Wave.3 C1 307000
+gui_marker_move -id  Wave.3 C1 225000
+gui_marker_move -id  Wave.3 C1 211367
+gui_marker_move -id  Wave.3 C1 203446
+gui_marker_move -id  Wave.3 C1 196775
+gui_marker_move -id  Wave.3 C1 190661
+gui_wv_scroll_hslidermove -id  Wave.3 1232
+gui_marker_move -id  Wave.3 C1 279000
+gui_marker_move -id  Wave.3 C1 291000
+gui_wv_zoom_timerange -id  Wave.3 171206 341856
+gui_wv_zoom_timerange -id  Wave.3 171206 315174
+gui_wv_zoom_timerange -id  Wave.3 171206 285019
+gui_wv_zoom_timerange -id  Wave.3 171206 336297
+gui_wv_zoom_timerange -id  Wave.3 171206 371456
+gui_wv_zoom_timerange -id  Wave.3 171206 389521
+gui_list_select -id Wave.3 -selected  {  }
+gui_wv_zoom_timerange -id  Wave.3 171206 373679
+gui_marker_move -id  Wave.3 C1 255000
+gui_marker_move -id  Wave.3 C1 263000
+gui_marker_move -id  Wave.3 C1 291000
+gui_marker_move -id  Wave.3 C1 315000
+gui_marker_move -id  Wave.3 C1 327000
+gui_marker_move -id  Wave.3 C1 331000
+gui_marker_move -id  Wave.3 C1 327000
+gui_list_select -id Wave.3 -selected  { ad_fifo_tb.dut.Data   }
+gui_marker_move -id  Wave.3 C1 210000
+gui_marker_move -id  Wave.3 C1 207000
+gui_marker_move -id  Wave.3 C1 209000
+gui_marker_move -id  Wave.3 C1 211000
+gui_marker_move -id  Wave.3 C1 209000
+gui_marker_move -id  Wave.3 C1 249860
+gui_list_expand -id  Hier.1   ad_fifo_tb.dut
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[20].cell_inst} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_right}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_left}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_left}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.token_out}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_left}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.token}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.token}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.token_out}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.token_out}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.token_out}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.cell_output}   }
+gui_list_add -id Wave.3 -from Data.1 { {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_left} {ad_fifo_tb.dut.cell_instance[20].cell_inst.token_out} {ad_fifo_tb.dut.cell_instance[20].cell_inst.cell_output} } -insertionbar
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_left}   }
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.cell_output}   }
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_left}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_left}   }
+gui_list_create_group_when_add -wave -disable
+gui_list_add -id Wave.3 -from Data.1 { {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_left} } -insertionbar
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_left}   }
+gui_list_move  -id  Wave.3    -sid  Wave.3   -after Group25 {{ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_left}}
+gui_wv_scroll_hslidermove -id  Wave.3 0
+gui_marker_move -id  Wave.3 C1 43000
+gui_marker_move -id  Wave.3 C1 45000
+gui_wv_scroll_hslidermove -id  Wave.3 954
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.cell_output}   }
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.token_out}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.cell_output}   }
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.drop_left}   }
+gui_delete_selected -id  Wave.3
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.token_out}   }
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_left}   }
+gui_list_select -id Wave.3 -selected  { {ad_fifo_tb.dut.cell_instance[20].cell_inst.crd_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.add_left}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.token_out}  {ad_fifo_tb.dut.cell_instance[20].cell_inst.cell_output}   }
+gui_delete_selected -id  Wave.3
+gui_list_select -id Wave.3 -selected  { Group25   }
+gui_list_select -id Hier.1 -current_item_name {ad_fifo_tb.dut.cell_instance[21].cell_inst} -current_item_type Scope  -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.crd_left}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.crd_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.add_left}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.crd_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.add_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.drop_left}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.crd_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.add_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.drop_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.token_out}   }
+gui_list_select -id Data.1 -selected  { {ad_fifo_tb.dut.cell_instance[21].cell_inst.crd_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.add_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.drop_left}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.token_out}  {ad_fifo_tb.dut.cell_instance[21].cell_inst.cell_output}   }
+gui_list_create_group_when_add -wave -enable
+gui_list_add -id Wave.3 -from Data.1 { {ad_fifo_tb.dut.cell_instance[21].cell_inst.crd_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.add_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.drop_left} {ad_fifo_tb.dut.cell_instance[21].cell_inst.token_out} {ad_fifo_tb.dut.cell_instance[21].cell_inst.cell_output} } -insertionbar
+gui_wv_scroll_hslidermove -id  Wave.3 1129
+gui_save_session -savedb relative -global { Breakpoint Bus Radix Expression TimeShift Compare SignalGroup Highlight Stack }  -file /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/session.vcdplus.vpd.tcl
+gui_marker_move -id  Wave.3 C1 258337
+gui_marker_move -id  Wave.3 C1 217000

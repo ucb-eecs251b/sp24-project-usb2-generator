@@ -1,0 +1,1365 @@
+[<global>] Level.INFO: Loading hammer-vlsi libraries and reading settings
+[<global>] Level.INFO: Loading technology 'hammer.technology.sky130'
+[<global>] Level.WARNING: Key technology.sky130.sky130_nda has a type str is not yet implemented
+[<global>] Level.WARNING: Key technology.sky130.openram_lib has a type str is not yet implemented
+[<global>] Level.WARNING: Key technology.sky130.dffram_lib has a type Optional[str] is not yet implemented
+[<global>] Level.WARNING: Key technology.sky130.pdk_home has a type Optional[str] is not yet implemented
+[<global>] Level.WARNING: Key technology.sky130.lvs_deck_sources has a type Optional[list[str]] is not yet implemented
+[<global>] Level.WARNING: Key technology.sky130.io_file has a type str is not yet implemented
+[tech] Level.ERROR: The install path: /path/to/skywater-src-nda does not exist, looked at key technology.sky130.sky130_nda
+[<global>] Level.WARNING: Key technology.sky130.sram22_sky130_macros is not associated with a type
+[tech] Level.INFO: Modifying CDL netlist: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_sc_hd/cdl/sky130_fd_sc_hd.cdl -> /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/sky130_fd_sc_hd.cdl
+[tech] Level.INFO: Modifying Verilog netlist: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v -> /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/sky130_fd_sc_hd.v
+[tech] Level.INFO: Modifying Verilog netlist: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_sc_hd/verilog/primitives.v -> /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v
+[tech] Level.INFO: Modifying Technology LEF: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef -> /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/sky130_fd_sc_hd__nom.tlef
+[tech] Level.INFO: Modifying IO LEF: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lef/sky130_ef_io.lef -> /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/sky130_ef_io.lef
+[<global>] Level.INFO: Starting simulation with tool 'vcs'
+[sim] Level.DEBUG: Running sub-step 'write_gl_files'
+[sim] Level.DEBUG: Running sub-step 'run_vcs'
+[<global>] Level.WARNING: Key sim.vcs.vcs_bin is not associated with a type
+[<global>] Level.WARNING: Key sim.vcs.fgp is not associated with a type
+[<global>] Level.WARNING: Key sim.vcs.vcs_home is not associated with a type
+[<global>] Level.WARNING: Key sim.vcs.verdi_home is not associated with a type
+[sim] Level.DEBUG: Executing subprocess: /home/ff/eecs151/hammer-tools/synopsys/vcs/P-2019.06/bin/vcs -full64 -lca -debug_access+all -timescale=1ns/10ps -CC -I$(VCS_HOME)/include -notice -line +lint=all,noVCDE +v2k -debug -sverilog /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/token_control.v /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo_cell.v /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo_tb.v /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/sky130_fd_sc_hd.v /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_ef_io.v /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v +define+FUNCTIONAL +define+UNIT_DELAY=#1 +define+CLOCK_PERIOD=2.00 +define+FIFO_SIZE=41 +notimingcheck +delay_mode_zero -top ad_fifo_tb -o /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/simv
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Warning-[DBGACC_DBG] Multiple debug options being used
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The debug switches '-debug_access' and '-debug*' are being used together.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   For better performance, consider using only '-debug_access'.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Error-[VERDI_VCS_MM] Possible VERDI_HOME and VCS_HOME mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The Verdi tab and pli.a cannot be added to the 'vcs' compile command because
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   the file '/pli.a' could not be found.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Please check to make sure VERDI_HOME and VCS_HOME point to installations
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   that are either both 32-bits or both 64-bits.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:                          Chronologic VCS (TM)
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:          Version P-2019.06_Full64 -- Fri Apr 12 00:43:18 2024
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:                Copyright (c) 1991-2019 by Synopsys Inc.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:                          ALL RIGHTS RESERVED
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: This program is proprietary and confidential information of Synopsys Inc.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: and may be used and disclosed only as authorized in a license agreement
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: controlling such use and disclosure.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Warning-[LCA_FEATURES_ENABLED] Usage warning
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   LCA features enabled by '-lca' argument on the command line.  For more
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   information regarding list of LCA features please refer to Chapter "LCA
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   features" in the VCS Release Notes
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Warning-[DEBUG_DEP] Option will be deprecated
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The option 'debug=4' will be deprecated in a future release.  Please use
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   '-debug_acc+pp+f+fn+dmptf -debug_region+cell+encrypt' instead.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Parsing design file '/scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v'
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Parsing design file '/scratch/eecs251b-aaw/sp24-project-usb2-generator/src/token_control.v'
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Parsing design file '/scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo_cell.v'
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Warning-[OPD] Override previous declaration
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo_cell.v, 1
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Previously declared
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   at:"/scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v", 2
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   This module will be overridden by the last declaration.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Warning-[IPDASP] Identifier in ANSI port declaration
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo_cell.v, 10
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Redeclaration of ANSI ports not allowed for 'token', this will be an error
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   in a future release
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Parsing design file '/scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo_tb.v'
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Parsing design file '/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v'
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 412
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   410
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    ?    r    0    : ?: 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   412
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    ?    p    0    : 0: 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 413
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   411
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    0    r    1    : ?: 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   413
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    0    p    1    : 1: 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 497
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   495
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    ?    r    0    ?    1    0    : ?: 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   497
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    ?    p    0    ?    1    0    : 0: 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 498
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   496
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    0    r    1    ?    1    0    : ?: 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   498
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    0    p    1    ?    1    0    : 1: 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 721
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   716
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    1    : ?: 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   721
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    x    ?    : 0: 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 799
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   794
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    1    ?    1    0    : ?: 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   799
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    x    ?    ?    1    0    : 0: 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 876
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   870
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    1    : ?: 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   876
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    x    ?    : 1: 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 954
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   948
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    1    ?    1    0    : ?: 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   954
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    x    ?    ?    1    0    : 1: 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1320
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1317
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    1    0    : ?: 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1320
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    1    ?    : ?: 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1320
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1319
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    1    : ?: 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1320
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    1    ?    : ?: 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1480
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1478
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    0    ?    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1480
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    ?    0    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1481
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1479
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    1    ?    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1481
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    ?    0    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1482
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1478
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    0    ?    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1482
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    0    1    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1483
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1479
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    1    ?    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1483
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    1    1    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1546
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1542
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    ?    0    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1546
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    0    ?    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1546
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1544
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    0    1    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1546
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    0    ?    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1547
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1543
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    ?    0    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1547
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    1    ?    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1547
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1545
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    1    1    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1547
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    1    ?    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1620
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1612
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    ?    ?    ?    0    0    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1620
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    0    0    0    ?    ?    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1620
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1614
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    0    ?    ?    1    0    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1620
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    0    0    0    ?    ?    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1620
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1616
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    0    ?    0    1    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1620
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    0    0    0    ?    ?    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1620
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1618
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    ?    0    1    1    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1620
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    0    0    0    ?    ?    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1621
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1613
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    ?    ?    ?    0    0    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1621
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    1    1    1    ?    ?    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1621
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1615
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    1    ?    ?    1    0    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1621
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    1    1    1    ?    ?    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1621
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1617
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    1    ?    0    1    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1621
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    1    1    1    ?    ?    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1621
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1619
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    ?    1    1    1    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1621
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    1    1    1    ?    ?    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1622
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1612
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    ?    ?    ?    0    0    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1622
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    0    ?    ?    ?    0    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1622
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1614
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    0    ?    ?    1    0    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1622
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    0    ?    ?    ?    0    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1622
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1620
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    0    0    0    ?    ?    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1622
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    0    ?    ?    ?    0    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1623
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1613
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    ?    ?    ?    0    0    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1623
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    1    ?    ?    ?    0    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1623
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1615
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    1    ?    ?    1    0    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1623
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    1    ?    ?    ?    0    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1623
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1621
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    1    1    1    ?    ?    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1623
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    1    ?    ?    ?    0    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1624
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1616
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    0    ?    0    1    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1624
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    0    0    ?    1    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1624
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1618
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    ?    0    1    1    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1624
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    0    0    ?    1    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1624
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1620
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    0    0    0    ?    ?    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1624
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    0    0    ?    1    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1625
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1617
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    1    ?    0    1    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1625
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    1    1    ?    1    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1625
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1619
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    ?    1    1    1    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1625
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    1    1    ?    1    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1625
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1621
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    1    1    1    ?    ?    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1625
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    1    1    ?    1    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1626
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1612
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    ?    ?    ?    0    0    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1626
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    ?    0    ?    0    ?    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1626
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1616
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    0    ?    0    1    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1626
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    ?    0    ?    0    ?    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1626
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1620
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    0    0    0    ?    ?    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1626
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    ?    0    ?    0    ?    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1626
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1622
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    0    ?    ?    ?    0    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1626
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    ?    0    ?    0    ?    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1626
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1624
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    0    0    ?    1    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1626
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    ?    0    ?    0    ?    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1627
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1613
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    ?    ?    ?    0    0    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1627
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    ?    1    ?    0    ?    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1627
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1617
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    1    ?    0    1    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1627
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    ?    1    ?    0    ?    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1627
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1621
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    1    1    1    ?    ?    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1627
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    ?    1    ?    0    ?    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1627
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1623
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    1    ?    ?    ?    0    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1627
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    ?    1    ?    0    ?    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1627
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1625
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    1    1    ?    1    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1627
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    ?    1    ?    0    ?    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1628
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1614
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    0    ?    ?    1    0    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1628
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    0    ?    0    1    ?    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1628
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1618
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    ?    0    1    1    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1628
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    0    ?    0    1    ?    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1628
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1620
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    0    0    0    ?    ?    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1628
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    0    ?    0    1    ?    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1628
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1622
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    0    ?    ?    ?    0    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1628
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    0    ?    0    1    ?    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1628
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1624
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    0    0    ?    1    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1628
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    0    ?    0    1    ?    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1629
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1615
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    1    ?    ?    1    0    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1629
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    1    ?    1    1    ?    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1629
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1619
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    ?    1    1    1    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1629
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    1    ?    1    1    ?    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1629
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1621
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    1    1    1    ?    ?    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1629
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    1    ?    1    1    ?    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1629
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1623
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1    1    ?    ?    ?    0    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1629
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    1    ?    1    1    ?    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1629
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1625
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    1    1    ?    1    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1629
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    1    ?    1    1    ?    : 1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[OUDPE] UDP Entries Overlap
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v, 1829
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following UDP entries overlap each other as possibly they could have exactly
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   same set of input and output values.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1822
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   0    1    0    ?    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v",
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   1829
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   ?    ?    0    1    : 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Parsing design file '/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/sky130_fd_sc_hd.v'
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Parsing design file '/home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_ef_io.v'
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Parsing design file '/home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v'
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[NCEID] Non-Constant Expression In Delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v, 1903
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following delay expression must be a constant.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info: slow_delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[NCEID] Non-Constant Expression In Delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v, 1904
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following delay expression must be a constant.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info: slow_delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[NCEID] Non-Constant Expression In Delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v, 1905
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following delay expression must be a constant.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info: slow_delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[NCEID] Non-Constant Expression In Delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v, 1906
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following delay expression must be a constant.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info: slow_delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[NCEID] Non-Constant Expression In Delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v, 1907
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following delay expression must be a constant.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info: slow_delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[NCEID] Non-Constant Expression In Delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v, 1908
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following delay expression must be a constant.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info: slow_delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[NS] Null statement
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v, 2243
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Null statement is used in following verilog source.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info:     #1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[NCEID] Non-Constant Expression In Delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v, 5114
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following delay expression must be a constant.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info: slow_delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[NCEID] Non-Constant Expression In Delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v, 5115
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following delay expression must be a constant.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info: slow_delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[NCEID] Non-Constant Expression In Delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v, 5116
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following delay expression must be a constant.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info: slow_delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[NCEID] Non-Constant Expression In Delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v, 5117
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following delay expression must be a constant.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info: slow_delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[NCEID] Non-Constant Expression In Delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v, 5118
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following delay expression must be a constant.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info: slow_delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[NCEID] Non-Constant Expression In Delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v, 5119
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following delay expression must be a constant.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info: slow_delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[NS] Null statement
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v, 5412
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Null statement is used in following verilog source.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info:     #1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[NS] Null statement
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v, 7916
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Null statement is used in following verilog source.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info:     #1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[NCEID] Non-Constant Expression In Delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v, 9462
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following delay expression must be a constant.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info: slow_delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[NCEID] Non-Constant Expression In Delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v, 9463
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following delay expression must be a constant.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info: slow_delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[NCEID] Non-Constant Expression In Delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v, 9464
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following delay expression must be a constant.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info: slow_delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[NCEID] Non-Constant Expression In Delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v, 9465
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following delay expression must be a constant.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info: slow_delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[NCEID] Non-Constant Expression In Delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v, 9466
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following delay expression must be a constant.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info: slow_delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[NCEID] Non-Constant Expression In Delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v, 9467
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Following delay expression must be a constant.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info: slow_delay
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[NS] Null statement
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v, 9604
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Null statement is used in following verilog source.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info:     #1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[NS] Null statement
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v, 11861
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Null statement is used in following verilog source.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info:     #1;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Top Level Modules:
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:        ad_fifo_tb
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: TimeScale is 1 ns / 1 ps
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[WMIA-L] Width mismatch in assignment
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/token_control.v, 53
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Width mismatch between LHS and RHS is found in assignment:
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 32-bit wide expression is assigned to a 1-bit LHS target:
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info: add_q <= 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: add_q
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[WMIA-L] Width mismatch in assignment
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/token_control.v, 54
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Width mismatch between LHS and RHS is found in assignment:
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 32-bit wide expression is assigned to a 1-bit LHS target:
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info: drop_q <= 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: drop_q
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[WMIA-L] Width mismatch in assignment
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/token_control.v, 55
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Width mismatch between LHS and RHS is found in assignment:
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 32-bit wide expression is assigned to a 1-bit LHS target:
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info: ptr_q <= 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: ptr_q
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[WMIA-L] Width mismatch in assignment
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo_cell.v, 49
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Width mismatch between LHS and RHS is found in assignment:
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 32-bit wide expression is assigned to a 1-bit LHS target:
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info: crd_q <= 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: crd_q
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[WMIA-L] Width mismatch in assignment
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo_tb.v, 8
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Width mismatch between LHS and RHS is found in assignment:
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 32-bit wide expression is assigned to a 1-bit LHS target:
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Source info: Clock = 0;
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: Clock
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[0].cell_inst( .crd_left (crd[0]),  .add_left (add[0]),  .drop_left (drop[0]),  .ptr_left (ptr[0]),  .ptl_right (ptl[(0 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(0 + 1)]),  .add_right (add[(0 + 1)]),  .drop_right (drop[(0 + 1)]),  .ptr_right (ptr[(0 + 1)]),  .ptl_left (ptl[0]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[0]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[0].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[1].cell_inst( .crd_left (crd[1]),  .add_left (add[1]),  .drop_left (drop[1]),  .ptr_left (ptr[1]),  .ptl_right (ptl[(1 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(1 + 1)]),  .add_right (add[(1 + 1)]),  .drop_right (drop[(1 + 1)]),  .ptr_right (ptr[(1 + 1)]),  .ptl_left (ptl[1]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[1]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[1].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[2].cell_inst( .crd_left (crd[2]),  .add_left (add[2]),  .drop_left (drop[2]),  .ptr_left (ptr[2]),  .ptl_right (ptl[(2 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(2 + 1)]),  .add_right (add[(2 + 1)]),  .drop_right (drop[(2 + 1)]),  .ptr_right (ptr[(2 + 1)]),  .ptl_left (ptl[2]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[2]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[2].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[3].cell_inst( .crd_left (crd[3]),  .add_left (add[3]),  .drop_left (drop[3]),  .ptr_left (ptr[3]),  .ptl_right (ptl[(3 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(3 + 1)]),  .add_right (add[(3 + 1)]),  .drop_right (drop[(3 + 1)]),  .ptr_right (ptr[(3 + 1)]),  .ptl_left (ptl[3]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[3]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[3].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[4].cell_inst( .crd_left (crd[4]),  .add_left (add[4]),  .drop_left (drop[4]),  .ptr_left (ptr[4]),  .ptl_right (ptl[(4 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(4 + 1)]),  .add_right (add[(4 + 1)]),  .drop_right (drop[(4 + 1)]),  .ptr_right (ptr[(4 + 1)]),  .ptl_left (ptl[4]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[4]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[4].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[5].cell_inst( .crd_left (crd[5]),  .add_left (add[5]),  .drop_left (drop[5]),  .ptr_left (ptr[5]),  .ptl_right (ptl[(5 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(5 + 1)]),  .add_right (add[(5 + 1)]),  .drop_right (drop[(5 + 1)]),  .ptr_right (ptr[(5 + 1)]),  .ptl_left (ptl[5]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[5]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[5].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[6].cell_inst( .crd_left (crd[6]),  .add_left (add[6]),  .drop_left (drop[6]),  .ptr_left (ptr[6]),  .ptl_right (ptl[(6 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(6 + 1)]),  .add_right (add[(6 + 1)]),  .drop_right (drop[(6 + 1)]),  .ptr_right (ptr[(6 + 1)]),  .ptl_left (ptl[6]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[6]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[6].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[7].cell_inst( .crd_left (crd[7]),  .add_left (add[7]),  .drop_left (drop[7]),  .ptr_left (ptr[7]),  .ptl_right (ptl[(7 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(7 + 1)]),  .add_right (add[(7 + 1)]),  .drop_right (drop[(7 + 1)]),  .ptr_right (ptr[(7 + 1)]),  .ptl_left (ptl[7]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[7]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[7].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[8].cell_inst( .crd_left (crd[8]),  .add_left (add[8]),  .drop_left (drop[8]),  .ptr_left (ptr[8]),  .ptl_right (ptl[(8 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(8 + 1)]),  .add_right (add[(8 + 1)]),  .drop_right (drop[(8 + 1)]),  .ptr_right (ptr[(8 + 1)]),  .ptl_left (ptl[8]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[8]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[8].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[9].cell_inst( .crd_left (crd[9]),  .add_left (add[9]),  .drop_left (drop[9]),  .ptr_left (ptr[9]),  .ptl_right (ptl[(9 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(9 + 1)]),  .add_right (add[(9 + 1)]),  .drop_right (drop[(9 + 1)]),  .ptr_right (ptr[(9 + 1)]),  .ptl_left (ptl[9]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[9]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[9].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[10].cell_inst( .crd_left (crd[10]),  .add_left (add[10]),  .drop_left (drop[10]),  .ptr_left (ptr[10]),  .ptl_right (ptl[(10 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(10 + 1)]),  .add_right (add[(10 + 1)]),  .drop_right (drop[(10 + 1)]),  .ptr_right (ptr[(10 + 1)]),  .ptl_left (ptl[10]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[10]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[10].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[11].cell_inst( .crd_left (crd[11]),  .add_left (add[11]),  .drop_left (drop[11]),  .ptr_left (ptr[11]),  .ptl_right (ptl[(11 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(11 + 1)]),  .add_right (add[(11 + 1)]),  .drop_right (drop[(11 + 1)]),  .ptr_right (ptr[(11 + 1)]),  .ptl_left (ptl[11]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[11]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[11].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[12].cell_inst( .crd_left (crd[12]),  .add_left (add[12]),  .drop_left (drop[12]),  .ptr_left (ptr[12]),  .ptl_right (ptl[(12 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(12 + 1)]),  .add_right (add[(12 + 1)]),  .drop_right (drop[(12 + 1)]),  .ptr_right (ptr[(12 + 1)]),  .ptl_left (ptl[12]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[12]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[12].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[13].cell_inst( .crd_left (crd[13]),  .add_left (add[13]),  .drop_left (drop[13]),  .ptr_left (ptr[13]),  .ptl_right (ptl[(13 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(13 + 1)]),  .add_right (add[(13 + 1)]),  .drop_right (drop[(13 + 1)]),  .ptr_right (ptr[(13 + 1)]),  .ptl_left (ptl[13]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[13]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[13].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[14].cell_inst( .crd_left (crd[14]),  .add_left (add[14]),  .drop_left (drop[14]),  .ptr_left (ptr[14]),  .ptl_right (ptl[(14 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(14 + 1)]),  .add_right (add[(14 + 1)]),  .drop_right (drop[(14 + 1)]),  .ptr_right (ptr[(14 + 1)]),  .ptl_left (ptl[14]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[14]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[14].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[15].cell_inst( .crd_left (crd[15]),  .add_left (add[15]),  .drop_left (drop[15]),  .ptr_left (ptr[15]),  .ptl_right (ptl[(15 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(15 + 1)]),  .add_right (add[(15 + 1)]),  .drop_right (drop[(15 + 1)]),  .ptr_right (ptr[(15 + 1)]),  .ptl_left (ptl[15]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[15]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[15].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[16].cell_inst( .crd_left (crd[16]),  .add_left (add[16]),  .drop_left (drop[16]),  .ptr_left (ptr[16]),  .ptl_right (ptl[(16 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(16 + 1)]),  .add_right (add[(16 + 1)]),  .drop_right (drop[(16 + 1)]),  .ptr_right (ptr[(16 + 1)]),  .ptl_left (ptl[16]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[16]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[16].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[17].cell_inst( .crd_left (crd[17]),  .add_left (add[17]),  .drop_left (drop[17]),  .ptr_left (ptr[17]),  .ptl_right (ptl[(17 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(17 + 1)]),  .add_right (add[(17 + 1)]),  .drop_right (drop[(17 + 1)]),  .ptr_right (ptr[(17 + 1)]),  .ptl_left (ptl[17]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[17]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[17].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[18].cell_inst( .crd_left (crd[18]),  .add_left (add[18]),  .drop_left (drop[18]),  .ptr_left (ptr[18]),  .ptl_right (ptl[(18 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(18 + 1)]),  .add_right (add[(18 + 1)]),  .drop_right (drop[(18 + 1)]),  .ptr_right (ptr[(18 + 1)]),  .ptl_left (ptl[18]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[18]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[18].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[19].cell_inst( .crd_left (crd[19]),  .add_left (add[19]),  .drop_left (drop[19]),  .ptr_left (ptr[19]),  .ptl_right (ptl[(19 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(19 + 1)]),  .add_right (add[(19 + 1)]),  .drop_right (drop[(19 + 1)]),  .ptr_right (ptr[(19 + 1)]),  .ptl_left (ptl[19]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[19]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[19].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[20].cell_inst( .crd_left (crd[20]),  .add_left (add[20]),  .drop_left (drop[20]),  .ptr_left (ptr[20]),  .ptl_right (ptl[(20 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(20 + 1)]),  .add_right (add[(20 + 1)]),  .drop_right (drop[(20 + 1)]),  .ptr_right (ptr[(20 + 1)]),  .ptl_left (ptl[20]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[20]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[20].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[21].cell_inst( .crd_left (crd[21]),  .add_left (add[21]),  .drop_left (drop[21]),  .ptr_left (ptr[21]),  .ptl_right (ptl[(21 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(21 + 1)]),  .add_right (add[(21 + 1)]),  .drop_right (drop[(21 + 1)]),  .ptr_right (ptr[(21 + 1)]),  .ptl_left (ptl[21]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[21]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[21].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[22].cell_inst( .crd_left (crd[22]),  .add_left (add[22]),  .drop_left (drop[22]),  .ptr_left (ptr[22]),  .ptl_right (ptl[(22 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(22 + 1)]),  .add_right (add[(22 + 1)]),  .drop_right (drop[(22 + 1)]),  .ptr_right (ptr[(22 + 1)]),  .ptl_left (ptl[22]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[22]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[22].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[23].cell_inst( .crd_left (crd[23]),  .add_left (add[23]),  .drop_left (drop[23]),  .ptr_left (ptr[23]),  .ptl_right (ptl[(23 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(23 + 1)]),  .add_right (add[(23 + 1)]),  .drop_right (drop[(23 + 1)]),  .ptr_right (ptr[(23 + 1)]),  .ptl_left (ptl[23]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[23]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[23].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[24].cell_inst( .crd_left (crd[24]),  .add_left (add[24]),  .drop_left (drop[24]),  .ptr_left (ptr[24]),  .ptl_right (ptl[(24 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(24 + 1)]),  .add_right (add[(24 + 1)]),  .drop_right (drop[(24 + 1)]),  .ptr_right (ptr[(24 + 1)]),  .ptl_left (ptl[24]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[24]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[24].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[25].cell_inst( .crd_left (crd[25]),  .add_left (add[25]),  .drop_left (drop[25]),  .ptr_left (ptr[25]),  .ptl_right (ptl[(25 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(25 + 1)]),  .add_right (add[(25 + 1)]),  .drop_right (drop[(25 + 1)]),  .ptr_right (ptr[(25 + 1)]),  .ptl_left (ptl[25]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[25]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[25].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[26].cell_inst( .crd_left (crd[26]),  .add_left (add[26]),  .drop_left (drop[26]),  .ptr_left (ptr[26]),  .ptl_right (ptl[(26 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(26 + 1)]),  .add_right (add[(26 + 1)]),  .drop_right (drop[(26 + 1)]),  .ptr_right (ptr[(26 + 1)]),  .ptl_left (ptl[26]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[26]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[26].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[27].cell_inst( .crd_left (crd[27]),  .add_left (add[27]),  .drop_left (drop[27]),  .ptr_left (ptr[27]),  .ptl_right (ptl[(27 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(27 + 1)]),  .add_right (add[(27 + 1)]),  .drop_right (drop[(27 + 1)]),  .ptr_right (ptr[(27 + 1)]),  .ptl_left (ptl[27]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[27]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[27].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[28].cell_inst( .crd_left (crd[28]),  .add_left (add[28]),  .drop_left (drop[28]),  .ptr_left (ptr[28]),  .ptl_right (ptl[(28 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(28 + 1)]),  .add_right (add[(28 + 1)]),  .drop_right (drop[(28 + 1)]),  .ptr_right (ptr[(28 + 1)]),  .ptl_left (ptl[28]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[28]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[28].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[29].cell_inst( .crd_left (crd[29]),  .add_left (add[29]),  .drop_left (drop[29]),  .ptr_left (ptr[29]),  .ptl_right (ptl[(29 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(29 + 1)]),  .add_right (add[(29 + 1)]),  .drop_right (drop[(29 + 1)]),  .ptr_right (ptr[(29 + 1)]),  .ptl_left (ptl[29]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[29]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[29].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[30].cell_inst( .crd_left (crd[30]),  .add_left (add[30]),  .drop_left (drop[30]),  .ptr_left (ptr[30]),  .ptl_right (ptl[(30 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(30 + 1)]),  .add_right (add[(30 + 1)]),  .drop_right (drop[(30 + 1)]),  .ptr_right (ptr[(30 + 1)]),  .ptl_left (ptl[30]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[30]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[30].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[31].cell_inst( .crd_left (crd[31]),  .add_left (add[31]),  .drop_left (drop[31]),  .ptr_left (ptr[31]),  .ptl_right (ptl[(31 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(31 + 1)]),  .add_right (add[(31 + 1)]),  .drop_right (drop[(31 + 1)]),  .ptr_right (ptr[(31 + 1)]),  .ptl_left (ptl[31]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[31]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[31].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[32].cell_inst( .crd_left (crd[32]),  .add_left (add[32]),  .drop_left (drop[32]),  .ptr_left (ptr[32]),  .ptl_right (ptl[(32 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(32 + 1)]),  .add_right (add[(32 + 1)]),  .drop_right (drop[(32 + 1)]),  .ptr_right (ptr[(32 + 1)]),  .ptl_left (ptl[32]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[32]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[32].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[33].cell_inst( .crd_left (crd[33]),  .add_left (add[33]),  .drop_left (drop[33]),  .ptr_left (ptr[33]),  .ptl_right (ptl[(33 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(33 + 1)]),  .add_right (add[(33 + 1)]),  .drop_right (drop[(33 + 1)]),  .ptr_right (ptr[(33 + 1)]),  .ptl_left (ptl[33]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[33]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[33].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[34].cell_inst( .crd_left (crd[34]),  .add_left (add[34]),  .drop_left (drop[34]),  .ptr_left (ptr[34]),  .ptl_right (ptl[(34 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(34 + 1)]),  .add_right (add[(34 + 1)]),  .drop_right (drop[(34 + 1)]),  .ptr_right (ptr[(34 + 1)]),  .ptl_left (ptl[34]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[34]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[34].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[35].cell_inst( .crd_left (crd[35]),  .add_left (add[35]),  .drop_left (drop[35]),  .ptr_left (ptr[35]),  .ptl_right (ptl[(35 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(35 + 1)]),  .add_right (add[(35 + 1)]),  .drop_right (drop[(35 + 1)]),  .ptr_right (ptr[(35 + 1)]),  .ptl_left (ptl[35]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[35]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[35].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[36].cell_inst( .crd_left (crd[36]),  .add_left (add[36]),  .drop_left (drop[36]),  .ptr_left (ptr[36]),  .ptl_right (ptl[(36 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(36 + 1)]),  .add_right (add[(36 + 1)]),  .drop_right (drop[(36 + 1)]),  .ptr_right (ptr[(36 + 1)]),  .ptl_left (ptl[36]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[36]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[36].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[37].cell_inst( .crd_left (crd[37]),  .add_left (add[37]),  .drop_left (drop[37]),  .ptr_left (ptr[37]),  .ptl_right (ptl[(37 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(37 + 1)]),  .add_right (add[(37 + 1)]),  .drop_right (drop[(37 + 1)]),  .ptr_right (ptr[(37 + 1)]),  .ptl_left (ptl[37]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[37]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[37].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[38].cell_inst( .crd_left (crd[38]),  .add_left (add[38]),  .drop_left (drop[38]),  .ptr_left (ptr[38]),  .ptl_right (ptl[(38 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(38 + 1)]),  .add_right (add[(38 + 1)]),  .drop_right (drop[(38 + 1)]),  .ptr_right (ptr[(38 + 1)]),  .ptl_left (ptl[38]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[38]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[38].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[39].cell_inst( .crd_left (crd[39]),  .add_left (add[39]),  .drop_left (drop[39]),  .ptr_left (ptr[39]),  .ptl_right (ptl[(39 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(39 + 1)]),  .add_right (add[(39 + 1)]),  .drop_right (drop[(39 + 1)]),  .ptr_right (ptr[(39 + 1)]),  .ptl_left (ptl[39]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[39]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[39].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCWM-L] Port connection width mismatch
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v, 40
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: " ad_fifo_cell cell_instance[40].cell_inst( .crd_left (crd[40]),  .add_left (add[40]),  .drop_left (drop[40]),  .ptr_left (ptr[40]),  .ptl_right (ptl[(40 + 1)]),  .clk (clk),  .reset (reset),  .crd_right (crd[(40 + 1)]),  .add_right (add[(40 + 1)]),  .drop_right (drop[(40 + 1)]),  .ptr_right (ptr[(40 + 1)]),  .ptl_left (ptl[40]),  .cell_output (cell_output),  .has_token_rst (has_token_rst[40]),  .token (token));"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The following 41-bit expression is connected to 1-bit port "token" of module
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   "ad_fifo_cell", instance "cell_instance[40].cell_inst".
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Expression: token
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   The expression is from module ad_fifo, instance dut
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCTIO-L] Ports coerced to inout
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo_cell.v, 4
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: "ptr_right"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Port "ptr_right" declared as output in module "ad_fifo_cell" may need to be
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   inout. Coercing to inout.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Lint-[PCTIO-L] Ports coerced to inout
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo_cell.v, 4
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: "token"
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   Port "token" declared as output in module "ad_fifo_cell" may need to be
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG:   inout. Coercing to inout.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Starting vcs inline pass...
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: 2 modules and 0 UDP read.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Generating code for _VCSgd_reYIK
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Generating code for _VCSgd_hGYF2
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: recompiling module ad_fifo_cell
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Generating code for _VCSgd_Ta8QS
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: recompiling module ad_fifo_tb
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: Both modules done.
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: make[1]: Entering directory '/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/csrc'
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-chipyard-weisfoo/.conda-env/bin/../lib/gcc/x86_64-conda-linux-gnu/12.3.0/../../../../x86_64-conda-linux-gnu/bin/ld: warning: rmar_nd.o: missing .note.GNU-stack section implies executable stack
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: /scratch/eecs251b-aaw/sp24-chipyard-weisfoo/.conda-env/bin/../lib/gcc/x86_64-conda-linux-gnu/12.3.0/../../../../x86_64-conda-linux-gnu/bin/ld: NOTE: This behaviour is deprecated and will be removed in a future version of the linker
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: make[1]: Leaving directory '/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/csrc'
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: make[1]: Entering directory '/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/csrc'
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: rm -f _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: if [ -x /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/simv ]; then chmod -x /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/simv; fi
+[sim] [Exec ...019.06/bin/vcs -full64 -lca -d...] Level.DEBUG: g++  -o /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/simv -no-pie    -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir -Wl,-rpath=/home/ff/eecs151/hammer-tools/synopsys/vcs/P-2019.06/linux64/lib -L/home/ff/eecs151/hammer-tools/synopsys/vcs/P-2019.06/linux64/lib  -Wl,-rpath-link=./  /usr/lib64/libnuma.so.1   objs/amcQw_d.o  _2739310_archive_1.so  SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o          -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile -luclinative /home/ff/eecs151/hammer-tools/synopsys/vcs/P-2019.06/linux64/lib/vcs_tls.o   -Wl,-whole-archive -lvcsucli -Wl,-no-whole-archive          /home/ff/eecs151/hammer-tools/synopsys/vcs/P-2019.06/linux64/lib/vcs_save_restore_new.o -ldl  -lc -lm -lpthread -ldl

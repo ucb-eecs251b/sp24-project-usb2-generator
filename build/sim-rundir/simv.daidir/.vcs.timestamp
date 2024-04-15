@@ -1,0 +1,215 @@
+0 
+53
++cli+4
++define+CLOCK_PERIOD=2.00
++define+FIFO_SIZE=41
++define+FUNCTIONAL
++define+UNIT_DELAY=#1
++delay_mode_zero
++itf+/home/ff/eecs151/hammer-tools/synopsys/vcs/P-2019.06/linux64/lib/vcsdp_lite.tab
++lint=all,noVCDE
++memcbk
++notimingcheck
++v2k
++vcsd1
++vpi
++vpi
+-Mamsrun=
+-Masflags=
+-Mcc=gcc
+-Mcfl= -pipe -fPIC -I$(VCS_HOME)/include -O -I/home/ff/eecs151/hammer-tools/synopsys/vcs/P-2019.06/include
+-Mcplusplus=g++
+-Mcrt0=
+-Mcrtn=
+-Mcsrc=
+-Mexternalobj=
+-Mldflags= -rdynamic
+-Mobjects= /home/ff/eecs151/hammer-tools/synopsys/vcs/P-2019.06/linux64/lib/libvirsim.so /home/ff/eecs151/hammer-tools/synopsys/vcs/P-2019.06/linux64/lib/liberrorinf.so /home/ff/eecs151/hammer-tools/synopsys/vcs/P-2019.06/linux64/lib/libsnpsmalloc.so /home/ff/eecs151/hammer-tools/synopsys/vcs/P-2019.06/linux64/lib/libvfs.so
+-Mout=/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/simv
+-Msaverestoreobj=/home/ff/eecs151/hammer-tools/synopsys/vcs/P-2019.06/linux64/lib/vcs_save_restore_new.o
+-Msyslibs=-ldl
+-Mvcsaceobjs=
+-Mxcflags= -pipe -fPIC -I/home/ff/eecs151/hammer-tools/synopsys/vcs/P-2019.06/include
+-Xcbug=0x1
+-Xnotice=1
+-debug=4
+-debug_access+all
+-full64
+-gen_obj
+-lca
+-line
+-o /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/simv
+-picarchive
+-sverilog
+-timescale=1ns/10ps
+-top
+/home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_ef_io.v
+/home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v
+/home/ff/eecs151/hammer-tools/synopsys/vcs/P-2019.06/linux64/bin/vcs1
+/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v
+/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/sky130_fd_sc_hd.v
+/scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v
+/scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo_cell.v
+/scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo_tb.v
+/scratch/eecs251b-aaw/sp24-project-usb2-generator/src/token_control.v
+ad_fifo_tb
+141
+which_declare=declare -f
+_CE_M=
+_CE_CONDA=
+XML_CATALOG_FILES=file:///scratch/eecs251b-aaw/sp24-chipyard-weisfoo/.conda-env/etc/xml/catalog file:///etc/xml/catalog
+XDG_SESSION_ID=4777
+XDG_RUNTIME_DIR=/run/user/48556
+XDG_DATA_DIRS=/home/cc/eecs251b/sp24/class/eecs251b-aaw/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
+XA_HOME=/home/ff/eecs151/tools/xa/G-2012.06-SP2
+XA_64=1
+VSCODE_IPC_HOOK_CLI=/run/user/48556/vscode-ipc-aae02ed9-01ef-4711-af4e-108ad5577038.sock
+VSCODE_GIT_IPC_HANDLE=/run/user/48556/vscode-git-c6b17bafa7.sock
+VSCODE_GIT_ASKPASS_NODE=/home/cc/eecs251b/sp24/class/eecs251b-aaw/.vscode-server/cli/servers/Stable-1e790d77f81672c49be070e04474901747115651/server/node
+VSCODE_GIT_ASKPASS_MAIN=/home/cc/eecs251b/sp24/class/eecs251b-aaw/.vscode-server/cli/servers/Stable-1e790d77f81672c49be070e04474901747115651/server/extensions/git/dist/askpass-main.js
+VSCODE_GIT_ASKPASS_EXTRA_ARGS=
+VMR_MODE_FLAG=64
+VIRTUAL_ENV_PROMPT=(venv_151) 
+VIRTUAL_ENV=/home/cc/eecs251b/sp24/class/eecs251b-aaw/venv_151
+VERDI_HOME=/home/ff/eecs151/hammer-tools/synopsys/verdi/P-2019.06
+VCS_PATH=/home/ff/eecs151/hammer-tools/synopsys/vcs/P-2019.06/bin
+VCS_MX_HOME_INTERNAL=1
+VCS_MODE_FLAG=64
+VCS_LCAMSG_PRINT_OFF=1
+VCS_HOME=/home/ff/eecs151/hammer-tools/synopsys/vcs/P-2019.06
+VCS_DEPTH=0
+VCS_ARG_ADDED_FOR_TMP=1
+VCS_ARCH_OVERRIDE=linux
+VCS_ARCH=linux64
+UNAME=/bin/uname
+UCB_VLSI_HOME=/home/ff/eecs151
+UCB_VLSI_HOME2=/home/ff/eecs151
+UCB_STDCELLS=synopsys-32nm/multi_vt
+TOOL_HOME=/home/ff/eecs151/hammer-tools/synopsys/vcs/P-2019.06/linux64
+TERM_PROGRAM_VERSION=1.87.1
+TERM_PROGRAM=vscode
+S_COLORS=auto
+SYNOPSYS_SYSTYPE=linux
+SYNOPSYS_ROOT=/home/ff/cs250/tools/synopsys
+SYNOPSYS_NCX_ROOT=/home/ff/eecs151/tools/ncx/G-2012.06-SP3
+STAR_HOME=/home/ff/eecs151/tools/starrcxt/G-2012.06-SP3
+SSL_CERT_FILE=/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
+SSL_CERT_DIR=/etc/pki/tls/certs
+SSH_CONNECTION=10.136.128.209 49797 128.32.42.212 22
+SSH_CLIENT=10.136.128.209 49797 22
+SNPS_VCS_INTERNAL_UBUNTU_PRE_LDFLAGS= -no-pie 
+SELINUX_USE_CURRENT_RANGE=
+SELINUX_ROLE_REQUESTED=
+SELINUX_LEVEL_REQUESTED=
+SCRNAME=vcs
+SCRIPT_NAME=vcs
+RUNAS=/share/b/runas/x86_64
+RISCV=/scratch/eecs251b-aaw/sp24-chipyard-weisfoo/.conda-env/riscv-tools
+PT_PATH=/home/ff/cs250/tools/synopsys/pt/current/bin
+PT_HOME=/home/ff/cs250/tools/synopsys/pt/current
+PEGASUS_LVS=/home/ff/eecs251b/sky130/sky130_cds/sky130_release_0.0.1/Sky130_LVS
+PEGASUS_DRC=/home/ff/eecs251b/sky130/sky130_cds/sky130_release_0.0.1/Sky130_DRC
+PDK_DIR=/home/ff/eecs251b/asap7/asap7PDK_r1p7
+OVA_UUM=0
+OS=Linux
+OA_UNSUPPORTED_PLAT=linux_rhel50_gcc48x
+OA_HOME=/share/instsww/cadence/IC617/oa_v22.50.095
+NNTPSERVER=news.csua.berkeley.edu
+NCX_HOME=/home/ff/eecs151/tools/ncx/G-2012.06-SP3
+MW_PATH=/home/ff/cs250/tools/synopsys/mw/current/bin/AMD.64
+MW_HOME=/home/ff/cs250/tools/synopsys/mw/current
+MODULES_RUN_QUARANTINE=LD_LIBRARY_PATH LD_PRELOAD
+MODULES_CMD=/usr/share/Modules/libexec/modulecmd.tcl
+MODULESHOME=/usr/share/Modules
+MODULEPATH_modshare=/usr/share/Modules/modulefiles:2:/etc/modulefiles:2:/usr/share/modulefiles:2
+MODULEPATH=/etc/scl/modulefiles:/etc/scl/modulefiles:/usr/share/Modules/modulefiles:/etc/modulefiles:/usr/share/modulefiles
+MGLS_LICENSE_FILE=1717@bwrcflex-1.eecs.berkeley.edu:1717@bwrcflex-2.eecs.berkeley.edu
+MGC_HOME=/share/instsww/mgc/CALIBRE
+MFLAGS=
+MASTERDIR=/home/ff/eecs251b
+MASTER=eecs251b
+MAKE_TERMOUT=/dev/pts/33
+MAKE_TERMERR=/dev/pts/33
+MAKELEVEL=1
+MAKEFLAGS=
+LOADEDMODULES=
+LM_PROJECT=bwrc_users
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+LC_ALL=C
+JLSHOME=/share/instsww/cadence/JLS191
+JAVA_LD_LIBRARY_PATH_BACKUP=
+JAVA_LD_LIBRARY_PATH=/scratch/eecs251b-aaw/sp24-chipyard-weisfoo/.conda-env/lib/jvm/lib/server
+JAVA_HOME_CONDA_BACKUP=
+JAVA_HOME=/scratch/eecs251b-aaw/sp24-chipyard-weisfoo/.conda-env/lib/jvm
+IPDK_SYN_28NM=/home/ff/eecs151/synopsys-32nm
+INV_PATH=/share/instsww/cadence/INNOVUS/bin
+INV_HOME=/share/instsww/cadence/INNOVUS
+INSTALLER_PATH=/home/ff/cs250/tools/synopsys/installer/current
+ICC_PATH=/home/ff/eecs151/tools/icc/bin
+ICC_HOME=/home/ff/eecs151/tools/icc
+HSP_HOME=/home/ff/eecs151/tools/hspice/G-2012.06-SP1/hspice
+HSPICE_HOME=/home/ff/eecs151/tools/hspice/G-2012.06-SP1
+HISTCONTROL=ignoredups
+HERCULES_HOME_DIR=/home/ff/eecs151/tools/hercules/B-2008.09-SP5
+HAMMER_DATABASE=/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/config_db_tmp.json
+GSETTINGS_SCHEMA_DIR_CONDA_BACKUP=
+GSETTINGS_SCHEMA_DIR=/scratch/eecs251b-aaw/sp24-chipyard-weisfoo/.conda-env/share/glib-2.0/schemas
+GIT_ASKPASS=/home/cc/eecs251b/sp24/class/eecs251b-aaw/.vscode-server/cli/servers/Stable-1e790d77f81672c49be070e04474901747115651/server/extensions/git/dist/askpass.sh
+GEN_PATH=/share/instsww/cadence/GENUS/bin
+GEN_HOME=/share/instsww/cadence/GENUS
+GDK_BACKEND=x11
+FORMALITY_HOME=/home/ff/cs250/tools/synopsys/fm/current
+FORMALITY_BIN=/home/ff/cs250/tools/synopsys/fm/current/bin
+ENABLE_SBT_THIN_CLIENT=1
+EECS251B_HOME=/home/ff/eecs251b
+DC_PATH=/share/instsww/synopsys/J-2014.09-SP3/bin
+DC_HOME=/share/instsww/synopsys/J-2014.09-SP3
+DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-hJ2M4ryo70,guid=35332396fa33d648281dc1496618c224
+CVS_RSH=ssh
+CONDA_SHLVL=2
+CONDA_PYTHON_EXE=/scratch/eecs251b-aaw/conda/bin/python
+CONDA_PROMPT_MODIFIER=(/scratch/eecs251b-aaw/sp24-chipyard-weisfoo/.conda-env) 
+CONDA_PREFIX_1=/scratch/eecs251b-aaw/conda
+CONDA_PREFIX=/scratch/eecs251b-aaw/sp24-chipyard-weisfoo/.conda-env
+CONDA_EXE=/scratch/eecs251b-aaw/conda/bin/conda
+CONDA_DEFAULT_ENV=/scratch/eecs251b-aaw/sp24-chipyard-weisfoo/.conda-env
+CONDA_BACKUP_PATH=/scratch/eecs251b-aaw/sp24-chipyard-weisfoo/.conda-env/bin:/scratch/eecs251b-aaw/conda/condabin:/share/b/grading/bin:/home/ff/eecs251b/bin:/home/ff/eecs251b/bin/arch/x86_64:/home/cc/eecs251b/sp24/class/eecs251b-aaw/.vscode-server/cli/servers/Stable-1e790d77f81672c49be070e04474901747115651/server/bin/remote-cli:/share/instsww/cadence/PEGASUS221/bin:/share/instsww/cadence/QUANTUS221/bin:/share/instsww/cadence/IC618/bin:/share/instsww/cadence/INCISIVE/tools/simvision/bin:/share/instsww/cadence/JLS191/bin:/share/instsww/cadence/LIBERATE/bin:/share/instsww/cadence/LIBERATE/tools.lnx86/spectre/bin:/home/ff/ee241/tools/hspice/G-2012.06-SP1/hspice/bin:/share/instsww/mgc/CALIBRE/bin:/share/instsww/synopsys-new/vcs/P-2019.06/bin:/home/ff/eecs251b/tools/install/bin:/share/b/grading/bin:/home/ff/eecs251b/bin:/home/ff/eecs251b/bin/arch/x86_64:/share/instsww/cadence/PEGASUS221/bin:/share/instsww/cadence/QUANTUS221/bin:/share/instsww/cadence/IC618/bin:/share/instsww/cadence/INCISIVE/tools/simvision/bin:/share/instsww/cadence/JLS191/bin:/share/instsww/cadence/LIBERATE/bin:/share/instsww/cadence/LIBERATE/tools.lnx86/spectre/bin:/home/ff/ee241/tools/hspice/G-2012.06-SP1/hspice/bin:/share/instsww/mgc/CALIBRE/bin:/share/instsww/synopsys-new/vcs/P-2019.06/bin:/home/ff/eecs251b/tools/install/bin:/share/b/grading/bin:/home/ff/eecs251b/bin:/home/ff/eecs251b/bin/arch/x86_64:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/share/b/grading/bin:/share/b/grading/sbin:/share/b/runas/x86_64:/share/b/bin:/share/b/grading/bin:/share/b/grading/sbin:/share/b/runas/x86_64:/share/b/bin:/share/b/grading/bin:/share/b/grading/sbin:/share/b/runas/x86_64:/share/b/bin
+COLORTERM=truecolor
+CHISEL=/home/ff/cs250/install/chisel
+CDS_ROOT=/share/instsww/cadence/IC615.151
+CDS_Netlisting_Mode=Analog
+CDS_LOAD_ENV=CSF
+CDS_LIC_FILE=5280@license-srv.eecs.berkeley.edu
+CDS_INST_DIR=/share/instsww/cadence/IC615.151
+CDS_HOME=/share/instsww/cadence
+CDS_AUTO_64BIT=ALL
+CDSHOME=/share/instsww/cadence/IC615.151
+CALIBRE_PATH=/share/instsww/mgc/calibre2017/aoi_cal_2017.4_19.14/bin
+CALIBRE_HOME=/share/instsww/mgc/calibre2017/aoi_cal_2017.4_19.14
+BASH_FUNC_which%%=() {  ( alias;_ eval ${which_declare} ) | /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot $@_}
+BASH_FUNC_switchml%%=() {  typeset swfound=1;_ if [ "${MODULES_USE_COMPAT_VERSION:-0}" = '1' ]; then_ typeset swname='main';_ if [ -e /usr/share/Modules/libexec/modulecmd.tcl ]; then_ typeset swfound=0;_ unset MODULES_USE_COMPAT_VERSION;_ fi;_ else_ typeset swname='compatibility';_ if [ -e /usr/share/Modules/libexec/modulecmd-compat ]; then_ typeset swfound=0;_ MODULES_USE_COMPAT_VERSION=1;_ export MODULES_USE_COMPAT_VERSION;_ fi;_ fi;_ if [ $swfound -eq 0 ]; then_ echo "Switching to Modules $swname version";_ source /usr/share/Modules/init/bash;_ else_ echo "Cannot switch to Modules $swname version, command not found";_ return 1;_ fi_}
+BASH_FUNC_scl%%=() {  if [ "$1" = "load" -o "$1" = "unload" ]; then_ eval "module $@";_ else_ /usr/bin/scl "$@";_ fi_}
+BASH_FUNC_module%%=() {  unset _mlshdbg;_ if [ "${MODULES_SILENT_SHELL_DEBUG:-0}" = '1' ]; then_ case "$-" in _ *v*x*)_ set +vx;_ _mlshdbg='vx'_ ;;_ *v*)_ set +v;_ _mlshdbg='v'_ ;;_ *x*)_ set +x;_ _mlshdbg='x'_ ;;_ *)_ _mlshdbg=''_ ;;_ esac;_ fi;_ unset _mlre _mlIFS;_ if [ -n "${IFS+x}" ]; then_ _mlIFS=$IFS;_ fi;_ IFS=' ';_ for _mlv in ${MODULES_RUN_QUARANTINE:-};_ do_ if [ "${_mlv}" = "${_mlv##*[!A-Za-z0-9_]}" -a "${_mlv}" = "${_mlv#[0-9]}" ]; then_ if [ -n "`eval 'echo ${'$_mlv'+x}'`" ]; then_ _mlre="${_mlre:-}${_mlv}_modquar='`eval 'echo ${'$_mlv'}'`' ";_ fi;_ _mlrv="MODULES_RUNENV_${_mlv}";_ _mlre="${_mlre:-}${_mlv}='`eval 'echo ${'$_mlrv':-}'`' ";_ fi;_ done;_ if [ -n "${_mlre:-}" ]; then_ eval `eval ${_mlre} /usr/bin/tclsh /usr/share/Modules/libexec/modulecmd.tcl bash '"$@"'`;_ else_ eval `/usr/bin/tclsh /usr/share/Modules/libexec/modulecmd.tcl bash "$@"`;_ fi;_ _mlstatus=$?;_ if [ -n "${_mlIFS+x}" ]; then_ IFS=$_mlIFS;_ else_ unset IFS;_ fi;_ unset _mlre _mlv _mlrv _mlIFS;_ if [ -n "${_mlshdbg:-}" ]; then_ set -$_mlshdbg;_ fi;_ unset _mlshdbg;_ return $_mlstatus_}
+BASH_FUNC_ml%%=() {  module ml "$@"_}
+ARCH=x86_64
+ALTOSHOME=/share/instsww/cadence/LIBERATE
+AGILEESOFD_LICENSE_FILE=27000@license-srv.eecs.berkeley.edu
+ADS_LICENSE_FILE=27000@license-srv.eecs.berkeley.edu
+0
+9
+1693359834 /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v
+1693359834 /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_ef_io.v
+1712908045 /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/sky130_fd_sc_hd.v
+1712908045 /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v
+1712683807 /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo_tb.v
+1712908032 /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo_cell.v
+1712907269 /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/token_control.v
+1712908041 /scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v
+1559359020 /home/ff/eecs151/hammer-tools/synopsys/vcs/P-2019.06/linux64/lib/vcsdp_lite.tab
+4
+1559360489 /home/ff/eecs151/hammer-tools/synopsys/vcs/P-2019.06/linux64/lib/libvirsim.so
+1559360051 /home/ff/eecs151/hammer-tools/synopsys/vcs/P-2019.06/linux64/lib/liberrorinf.so
+1559360008 /home/ff/eecs151/hammer-tools/synopsys/vcs/P-2019.06/linux64/lib/libsnpsmalloc.so
+1559360050 /home/ff/eecs151/hammer-tools/synopsys/vcs/P-2019.06/linux64/lib/libvfs.so
+1712908050 /scratch/eecs251b-aaw/sp24-project-usb2-generator/build/sim-rundir/simv.daidir
+-1 partitionlib

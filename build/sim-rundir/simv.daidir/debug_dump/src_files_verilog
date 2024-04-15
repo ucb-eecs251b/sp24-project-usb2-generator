@@ -1,0 +1,8 @@
+/home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_ef_io.v
+/home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v
+/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/primitives.v
+/scratch/eecs251b-aaw/sp24-project-usb2-generator/build/tech-sky130-cache/sky130_fd_sc_hd.v
+/scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo.v
+/scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo_cell.v
+/scratch/eecs251b-aaw/sp24-project-usb2-generator/src/ad_fifo_tb.v
+/scratch/eecs251b-aaw/sp24-project-usb2-generator/src/token_control.v

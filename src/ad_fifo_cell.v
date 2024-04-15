@@ -1,8 +1,9 @@
 module ad_fifo_cell
 (
     input crd_left, add_left, drop_left, ptr_left, ptl_right, clk, reset,
-    output crd_right, add_right, drop_right, ptr_right, ptl_left,
-    output reg cell_output
+    output crd_right, add_right, drop_right, ptr_right, ptl_left, token_out,
+    output reg cell_output,
+    input has_token_rst
 );
 
 // create internal wires
@@ -11,19 +12,24 @@ wire token;
 // create internal registers
 reg crd_d, crd_q;
 
+assign crd_d = crd_left;
+assign crd_right = crd_q;
+assign token_out = token;
+
 // instantiate and token control module
 token_control TC(
     .clk(clk),
     .reset(reset),
     .add_left(add_left),
     .drop_left(drop_left),
-    .ptr_left(ptl_left),
-    .ptl_right(ptr_right),
+    .ptr_left(ptr_left),
+    .ptl_right(ptl_right),
     .add_right(add_right),
     .drop_right(drop_right),
     .ptr_right(ptr_right),
     .ptl_left(ptl_left),
-    .token(token)
+    .token(token),
+    .has_token_rst(has_token_rst)
 );
 
 always @* begin

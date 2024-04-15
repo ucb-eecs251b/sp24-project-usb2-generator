@@ -16,5 +16,6 @@ sim.inputs:
   top_module: "ad_fifo"
   tb_name: "ad_fifo_tb"
   defines: 
-    - "CLOCK_PERIOD=1.00"
+    - "CLOCK_PERIOD=2.00"
+    - "FIFO_SIZE=41"
   defines_meta: append
