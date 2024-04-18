@@ -8,7 +8,7 @@ import freechips.rocketchip.regmapper._
 import freechips.rocketchip.subsystem._
 import freechips.rocketchip.tilelink._
 
-class Usb2TxTop(dWidth: Int) extends Module {
+class USBTx(dWidth: Int) extends Module {
   /**  Explicit parameterization might not be needed
     *  Otherwise can use dWidth/2 (with requrire(dWidth % 2 == 0))
     */
@@ -18,13 +18,16 @@ class Usb2TxTop(dWidth: Int) extends Module {
 
     val in = Flipped(Decoupled(UInt(dWidth.W)))
 
+    val tx_busy = Output(Bool())
+
     /**  TX driver signals */
-    val rpuEn     = Output(Bool())
-    val vpo       = Output(Bool())
-    val oeb       = Output(Bool())
-    val hsData    = Output(Bool())
-    val hsDriveEn = Output(Bool())
-    val hsCsEn    = Output(Bool())
+    /* Pull-up resistor enable */
+    val rpuEn     = Output(UInt(1.W))
+    val vpo       = Output(UInt(1.W))
+    val oeb       = Output(UInt(1.W))
+    val hsData    = Output(UInt(1.W))
+    val hsDriveEn = Output(UInt(1.W))
+    val hsCsEn    = Output(UInt(1.W))
   })
 
   /** FSM */

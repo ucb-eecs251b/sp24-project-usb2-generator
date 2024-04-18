@@ -3,7 +3,7 @@ package usb2
 import chisel3._
 import chisel3.util._
 
-class Usb2tx_serializer(dWidth: Int) extends Module {
+class USBTxSerializer(dWidth: Int) extends Module {
   val io = IO(new Bundle {
     val dataIn    = Input(UInt(dWidth.W))
     val load      = Input(Bool())

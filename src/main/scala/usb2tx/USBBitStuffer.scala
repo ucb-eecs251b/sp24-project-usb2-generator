@@ -1,8 +1,9 @@
+package usb2
+
 import chisel3._
 import chisel3.util._
 
-
-/** BitStuffer
+/** USBBitStuffer
   *
   * This module is used to insert the incoming with a 0 after 6 consecutive 1s.
   * Not sure if decoupled ready-valid is the best way to do it.
@@ -12,7 +13,7 @@ import chisel3.util._
   * @param dataOut : output to NRZI
   */
 
-class BitStuffer extends Module {
+class USBBitStuffer extends Module {
   val io = IO(new Bundle {
     /** Enable global to pass-through 
      *  This is specified in the UTMI spec. doc
