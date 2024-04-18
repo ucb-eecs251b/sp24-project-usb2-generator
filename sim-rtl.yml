@@ -23,4 +23,5 @@ sim.inputs:
   defines: 
     - "CLOCK_PERIOD=2.00"
     - "FIFO_SIZE=41"
+    - "FUNCTIONAL"
   defines_meta: append

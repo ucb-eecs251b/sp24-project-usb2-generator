@@ -4,8 +4,8 @@ module dr_toplevel
     output data_out
 );
 
-wire VDD = 1'b1;
-wire GND = 1'b0;
+//wire VDD = 1'b1;
+//wire GND = 1'b0;
 wire [9:0] clock_x10;
 
 data_recovery dr(
@@ -13,9 +13,10 @@ data_recovery dr(
     .reset(reset),
     .clock_480(clock_480),
     .clock_240(clock_x10),
-    .data_out(data_out),
-    .VDD(VDD),
-    .GND(GND)
+    .data_out(data_out)
+    //,
+    //.VDD(VDD),
+    //.GND(GND)
 );
 
 clock_gen_x10 ten_phase_clk(
@@ -23,3 +24,4 @@ clock_gen_x10 ten_phase_clk(
     .reset(reset),
     .clock_x10(clock_x10)
 );
+endmodule

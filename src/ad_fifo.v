@@ -1,12 +1,12 @@
 // Define signal AD-FIFO cell module
-module ad_fifo_cell
-(
-    input crd_left, add_left, drop_left, ptr_left, ptl_right, clk, reset,
-    output crd_right, add_right, drop_right, ptr_right, ptl_left, token,
-    output reg cell_output,
-    input has_token_rst
-);
-endmodule
+// module ad_fifo_cell
+// (
+//     input crd_left, add_left, drop_left, ptr_left, ptl_right, clk, reset,
+//     output crd_right, add_right, drop_right, ptr_right, ptl_left, token,
+//     output reg cell_output,
+//     input has_token_rst
+// );
+// endmodule
 
 module ad_fifo #(parameter N = 41) // AD-FIFO size is 2N+1 = 41
 (

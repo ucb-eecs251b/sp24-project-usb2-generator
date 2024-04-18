@@ -2,8 +2,9 @@ module data_recovery
 (
     input data_in, clock_480, reset,
     input [9:0] clock_240,
-    output data_out,
-    inout VDD, GND
+    output data_out
+    //,
+    //inout VDD, GND
 );
 
 wire [4:0] dout_sampler;
@@ -14,9 +15,10 @@ wire fifo_underflow, fifo_overflow;
 sampler sampler(
     .Din(data_in),
     .clock(clock_240),
-    .Dout(data_out),
-    .VDD(VDD),
-    .GND(GND)
+    .Dout(data_out)
+    //,
+    //.VDD(VDD),
+    //.GND(GND)
 );
 
 // Initialize CDR
