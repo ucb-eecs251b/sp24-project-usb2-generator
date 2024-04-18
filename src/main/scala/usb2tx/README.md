@@ -11,8 +11,11 @@ UTM interface pins:
 ## Structure
 
 - Top
+    TODO: FSM
+    TODO: CLKOUT30 / CLKOUT60 -- system byte clock
+    TODO: Need clock stable pin from UTMI?
 - Serializer
 - BitStuffing
-- NRZI Encoding (TODO)
+- NRZI Encoding
 
 Work in progress
