@@ -31,7 +31,9 @@ class USBTx(dWidth: Int) extends Module {
   })
 
   /** FSM */
-  val txFSM = Module(new Usb2tx_fsm(io.validH, io.in.valid, io.in.bits))
+  //val txFSM = Module(new Usb2tx_fsm(io.validH, io.in.valid, io.in.bits))
+  
+  // All FSMs are here
 
   val serializer  = Module(new Usb2tx_serializer(dWidth))
   val bitStuffer  = Module(new Usb2tx_bitstuffer(serializer.io.dataOut))
