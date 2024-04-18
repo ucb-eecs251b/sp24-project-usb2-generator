@@ -2,11 +2,11 @@ import chisel3._
 
 class USBNrziEncoder extends Module {
   val io = IO(new Bundle {
-    val enable = Input(Bool())
-    val dataIn = Input(UInt(1.W))
+    val en = Input(Bool())
+    val dataIn = Input(Bool())
     /* External clock */
     val clk = Input(Clock())
-    val nrziOut = Output(UInt(1.W))
+    val nrziOut = Output(Bool())
   })
 
   val lastState = RegInit(false.B)

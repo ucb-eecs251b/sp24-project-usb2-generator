@@ -27,7 +27,7 @@ class USBBitStuffer extends Module {
   val count     = RegInit(0.U(3.W))
   val stuffing  = RegInit(false.B)
 
-  when(io.enable) {
+  when(io.en) {
     when(io.dataIn.valid && io.dataOut.ready) {
       when(stuffing) {
 
