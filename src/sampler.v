@@ -1,31 +1,41 @@
 module Sampler(
-    input [4:0] clock, // A fixed 480MHz
+    input clock_0,
+    input clock_1,
+    input clock_2,
+    input clock_3,
+    input clock_4,
     input reset,
     input data_in,
-    output reg [4:0] data_out
+    output reg [4:0] data
 );
-
-always @(posedge clock[0]) begin
+reg [4:0] data_out;
+always @(posedge clock_0) begin
     if (reset) data_out[0] <= 1'b0;
     else data_out[0] <= data_in;
 end
 
-always @(posedge clock[1]) begin
+always @(posedge clock_1) begin
     if (reset) data_out[1] <= 1'b0;
     else data_out[1] <= data_in;
 end
 
-always @(posedge clock[2]) begin
-    if (reset) data_out[2] <= 1'b0;
-    else data_out[2] <= data_in;
+always @(posedge clock_2) begin
+    if (reset) begin
+        data_out[2] <= 1'b0;
+        data <= 5'b0;
+    end
+    else begin
+        data_out[2] <= data_in;
+        data <= data_out;
+    end
 end
 
-always @(posedge clock[3]) begin
+always @(posedge clock_3) begin
     if (reset) data_out[3] <= 1'b0;
     else data_out[3] <= data_in;
 end
 
-always @(posedge clock[4]) begin
+always @(posedge clock_4) begin
     if (reset) data_out[4] <= 1'b0;
     else data_out[4] <= data_in;
 end

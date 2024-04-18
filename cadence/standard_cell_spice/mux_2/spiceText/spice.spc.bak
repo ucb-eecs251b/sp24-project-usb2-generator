@@ -1,0 +1,8 @@
+* "spice" description for "standard_cell_spice", "mux_2", "spiceText" 
+
+
+simulator lang=spice
+
+.SUBCKT mux_2
+
+.ENDS

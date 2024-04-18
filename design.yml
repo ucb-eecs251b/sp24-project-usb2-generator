@@ -7,8 +7,8 @@ vlsi.inputs.clocks: [
 
 # Synthesis Constraints
 synthesis.inputs:
-  top_module: "ad_fifo"
-  input_files: ["src/ad_fifo.v", "src/token_control.v", "src/ad_fifo_cell.v"]
+  top_module: "Sampler"
+  input_files: ["src/sampler.v"]
 
 # Placement Constraints
 vlsi.inputs.placement_constraints:
