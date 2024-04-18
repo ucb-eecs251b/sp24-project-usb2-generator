@@ -13,28 +13,26 @@ class Usb2TxTop(dWidth: Int) extends Module {
     *  Otherwise can use dWidth/2 (with requrire(dWidth % 2 == 0))
     */
   val io = IO(new Bundle {
-    /** UTMI signals
-      *  INPUT
-      */
-    //val din_lo8 = Input(UInt(8.W))
-    //val din_hi8 = Input(UInt(8.W))
+    /** UTMI signals */
     val validH = Input(Bool())
 
-    /** Use queue instead ? */
-    //val tx_ready_o = Output(Bool())
-    //val tx_valid_i = Input(Bool())
-    val in = Flipped(Decoupled(UInt(8.W)))
+    val in = Flipped(Decoupled(UInt(dWidth.W)))
 
-
-    /**  TX driver signals
-      *  OUTPUT 
-      */
+    /**  TX driver signals */
     val rpuEn     = Output(Bool())
-      
     val vpo       = Output(Bool())
     val oeb       = Output(Bool())
     val hsData    = Output(Bool())
     val hsDriveEn = Output(Bool())
     val hsCsEn    = Output(Bool())
   })
+
+  /** FSM */
+  val txFSM = Module(new Usb2tx_fsm(io.validH, io.in.valid, io.in.bits))
+
+  val serializer  = Module(new Usb2tx_serializer(dWidth))
+  val bitStuffer  = Module(new Usb2tx_bitstuffer(serializer.io.dataOut))
+  val nrziEncoder = Module(new Usb2tx_nrzi(bitStuffer.io.dataOut))
+
+  /** Output assignment */
 }
