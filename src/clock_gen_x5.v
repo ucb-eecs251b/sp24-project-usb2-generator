@@ -1,4 +1,4 @@
-module clock_gen(
+module clock_gen_x5(
     input clock,
     input reset,
     output [4:0] clock_x5

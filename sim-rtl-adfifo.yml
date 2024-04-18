@@ -1,15 +1,10 @@
 # RTL Simulation Variables
 sim.inputs:
   input_files:
-    - "src/ad_fifo_cell.v"
     - "src/ad_fifo.v"
-    - "src/clock_gen_x10.v"
-    - "src/crd.v"
-    - "src/dr_syn.v"
-    - "src/dr_tb.v"
-    - "src/dr_toplevel.v"
-    - "src/sampler_v2.v"
     - "src/token_control.v"
+    - "src/ad_fifo_cell.v"
+    - "src/ad_fifo_tb.v"
   timescale: "1ns/10ps"
   options:
     - "-notice"
@@ -18,8 +13,8 @@ sim.inputs:
     - "+v2k"
     - "-debug"
     - "-sverilog"
-  top_module: "dr_toplevel"
-  tb_name: "dr_tb"
+  top_module: "ad_fifo"
+  tb_name: "ad_fifo_tb"
   defines: 
     - "CLOCK_PERIOD=2.00"
     - "FIFO_SIZE=41"
