@@ -18,7 +18,7 @@ assign drop_right = drop_q;
 assign ptr_right = ptr_q;
 // assign ptl_left = ptl_q;
 
-assign token = has_token_q | ptr_right;
+assign token = has_token_q | ptr_q;
 
 // pass token right on next cycle if adding and cell has the token
 always @* begin
@@ -31,7 +31,7 @@ end
 
 // pass token left on next cycle if dropping and cell has token
 always @* begin
-    if ((has_token_q | ptl_right) & drop_left) begin
+    if (has_token_q & drop_left) begin
         ptl_left = 1'b1;
     end else begin
         ptl_left = 1'b0;

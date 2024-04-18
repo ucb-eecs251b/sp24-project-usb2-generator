@@ -80,8 +80,8 @@ $vcdpluson;
     repeat (`FIFO_SIZE / 2) begin // continuous Add; push token to right end
         @(negedge Clock)
         CRD <= 1'b1;
-        Add <= 1'b1;
-        Drop <= 1'b0;
+        Add <= 1'b0;
+        Drop <= 1'b1;
         @(negedge Clock)
         CRD <= 1'b0;
         Add <= 1'b1;
