@@ -1,6 +1,6 @@
 module dr_toplevel
 (
-    input data_in, reset, clock_480, clock_240,
+    input data_in, reset, clock_480, clock_5x,
     output data_out
 );
 
@@ -12,7 +12,7 @@ data_recovery dr(
     .data_in(data_in),
     .reset(reset),
     .clock_480(clock_480),
-    .clock_240(clock_x10),
+    .clock_x10(clock_x10),
     .data_out(data_out)
     //,
     //.VDD(VDD),
@@ -20,7 +20,7 @@ data_recovery dr(
 );
 
 clock_gen_x10 ten_phase_clk(
-    .clock(clock_240),
+    .clock(clock_5x),
     .reset(reset),
     .clock_x10(clock_x10)
 );

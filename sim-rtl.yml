@@ -21,7 +21,7 @@ sim.inputs:
   top_module: "dr_toplevel"
   tb_name: "dr_tb"
   defines: 
-    - "CLOCK_PERIOD=2.00"
+    - "CLOCK_PERIOD=2.083"
     - "FIFO_SIZE=41"
     - "FUNCTIONAL"
   defines_meta: append

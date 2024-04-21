@@ -1,7 +1,7 @@
 module data_recovery
 (
     input data_in, clock_480, reset,
-    input [9:0] clock_240,
+    input [9:0] clock_x10,
     output data_out
     //,
     //inout VDD, GND
@@ -14,7 +14,7 @@ wire fifo_underflow, fifo_overflow;
 // Initialize sampler
 sampler sampler(
     .Din(data_in),
-    .clock(clock_240),
+    .clock(clock_x10),
     .Dout(data_out)
     //,
     //.VDD(VDD),
