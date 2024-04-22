@@ -10,7 +10,7 @@ real OFFSET; // offset of Tx clock period in ns. 1000ppm = 0.1% = 0.002ns
 
 // Generate 480 MHz clock for Rx
 initial clock_Rx = 1;
-always #(`CLOCK_PERIOD/2) clock_Rx <= ~clock_Rx;
+always #(`CLOCK_PERIOD / 2) clock_Rx <= ~clock_Rx;
 
 // Generate 2.4 GHz clock for 10 phase clock generator
 initial clock_10x = 1;
@@ -116,7 +116,7 @@ $vcdpluson;
     reset <= 1'b0;
     enable_Tx <= 1;
 
-    // for (int i = 0; i < 100; i++) begin
+    // for (int i = 0; i < 100; i=i+1) begin
     //     OFFSET = $urandom_range(-2, 2) / 1000;  // Convert from ps to ns
     //     @(negedge clock_Tx)
     //     data_in <= $urandom_range(0, 1);  // Uniformly random 0 or 1
