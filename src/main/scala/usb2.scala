@@ -19,9 +19,8 @@ import freechips.rocketchip.util.UIntIsOneOf
 
 // IO Declarations
 class Usb2TopIO extends Bundle {
-  // D+
-  // D-
-
+  val DP = Analog(1.W) // Analog type (equivalent to Verilog inout)
+  val DM = Analog(1.W)
 }
 
 case class Usb2Params(
@@ -29,31 +28,57 @@ case class Usb2Params(
   // TODO: use real params, these are just for the loopback
 	address: BigInt = 0x7000,
   depth: Int = 32, 
-  width: Int = 32,
+  width: Int = 8,
 )
 
+class UTMI(params: Usb2Params, beatBytes: Int)
+    extends Module {
+  val io = IO(new Bundle {
+    // UTMI Controls
+    val utmi_xcvr_select = Input(UInt(1.W))  // Transceiver Select
+    val utmi_term_select = Input(UInt(1.W))  // Termination Select
+    val utmi_suspend_n   = Input(UInt(1.W))  // Active-Low Suspend 
+    val utmi_line_state  = Output(UInt(2.W)) // Received Line State
+    val utmi_opmode      = Input(UInt(2.W))  // Operation Mode
+
+    // UTMI TX 
+    val utmi_datain      = Input(UInt(params.width.W)) // TX Data Input
+    val utmi_tx_valid    = Input(Bool())               // TX Valid 
+    val utmi_tx_ready    = Output(Bool())              // TX Ready
+
+    // UTMI RX 
+    val utmi_dataout     = Output(UInt(params.width.W)) // RX Data Output
+    val utmi_rx_valid    = Output(Bool())               // RX Valid
+    val utmi_rx_active   = Output(Bool())               // RX Active
+    val utmi_rx_error    = Output(Bool())               // RX Error
+
+    val utmi_sync_en     = Output(Bool())               // %% Do we need this?
+  })
+
+  // TODO: %% FSM and RX + TX here (Or put RX, TX in Usb2Top?)
+
+  }
 
 class Usb2Top(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extends ClockSinkDomain(ClockSinkParameters())(p) {
-	// TODO: turn this UTMI verilog interface into chisel
-	/*
-  	// UTMI Interface 
-	output utmi_clk, // FIXME: whether this will be separate from the analog-interface clock 
-	// UTMI Controls 
-	input utmi_xcvr_select, // Transceiver Select
-	input utmi_term_select, // Termination Select
-	input utmi_suspend_n, // Active-Low Suspend 
-	output [1:0] utmi_line_state, // Received Line State
-	input [1:0] utmi_opmode, // Operation Mode
-	// UTMI TX 
-	input [7:0] utmi_datain, // TX Data Input
-	input utmi_tx_valid, // TX Valid 
-	output utmi_tx_ready, // TX Ready
-	// UTMI RX 
-	output [7:0] utmi_dataout, // RX Data Output
-	output utmi_rx_valid, // RX Valid
-	output utmi_rx_active, // RX Active
-	output utmi_rx_error, // RX Error
-	*/
+
+  val io: Usb2TopIO
+  val clock: Clock
+  val reset: Reset
+
+  // Allow restart of UTMI at any point.
+  ex.ready := true.B
+  // Hold reset for at least one full cycle after EX register written.
+  val pastValid = RegInit(false.B)
+  pastValid := ex.valid
+  utmiReset := false.B
+  when (ex.valid || pastValid) {
+    utmiReset := true.B
+  }
+
+  val utmi = withReset(utmiReset) {
+    Module(new UTMI(params, beatBytes))
+  }
+
     val mmio_device = new SimpleDevice("LoopBack", Seq("eecs251b,usb2")) 
     val mmio_node = TLRegisterNode(Seq(AddressSet(params.address, 4096-1)), mmio_device, "reg/control", beatBytes=beatBytes)
 
