@@ -6,7 +6,7 @@ sim.inputs:
     - "src/clock_gen_x10.v"
     - "src/crd.v"
     - "src/dr_syn.v"
-    - "src/dr_tb.v"
+    - "src/dr_tb_v2.v"
     - "src/dr_toplevel.v"
     - "src/sampler_v2.v"
     - "src/token_control.v"

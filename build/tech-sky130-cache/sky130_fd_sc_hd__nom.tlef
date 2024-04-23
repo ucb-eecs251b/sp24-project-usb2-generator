@@ -58,7 +58,7 @@ LAYER pwell
 END pwell
 
 LAYER licon
-  TYPE MASTERSLICE ;
+  TYPE CUT ;
 END licon
 
 LAYER li1

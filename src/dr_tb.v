@@ -4,7 +4,7 @@ module dr_tb();
 
 reg data_in, reset, clock_Rx, clock_10x, clock_Tx, enable_Tx;
 wire data_out;
-reg [22:0] data_in_buffer;
+reg [24:0] data_in_buffer;
 
 real OFFSET; // offset of Tx clock period in ns. 1000ppm = 0.1% = 0.002ns
 
@@ -24,7 +24,7 @@ initial begin
     enable_Tx = 1; // Enable clock toggling initially
     forever begin
         if (enable_Tx) begin
-            #((`CLOCK_PERIOD / 2) + OFFSET) clock_Tx = ~clock_Tx;
+            #((`CLOCK_PERIOD / 2) + OFFSET/2) clock_Tx = ~clock_Tx;
         end
         else begin
             clock_Tx = 0;
@@ -49,46 +49,43 @@ initial begin
 $vcdpluson;
     // Test 1: Tx same as Rx
     // Reset protocol
-    reset <= 1'b1;
-    enable_Tx <= 0;
-    OFFSET = 0.0;
-    data_in_buffer = 20'bx;
-    repeat(2) @(negedge clock_Rx);
-    reset <= 1'b0;
-    enable_Tx <= 1;
-
-    repeat (10) begin
-        @(posedge clock_Tx)
-        data_in <= $urandom_range(0, 1);  // Uniformly random 0 or 1
-
-        data_in_buffer <= {data_in_buffer[21:0], data_in};
-    end
-    #(23) repeat (10) begin
-        @(posedge clock_Tx)
-        if (reset === 1'b0 && data_out !== 1'bx) begin
-            assert(data_in_buffer[22] === data_out) else $display("Mismatch detected at time %t", $time);
-        end
-    end
-
-    // Test 2: Tx slower than Rx by +1000ppm = 0.002ns
-    // Reset protocol
     // reset <= 1'b1;
     // enable_Tx <= 0;
-    // OFFSET = 0.002;
-    // data_in_buffer = 20'bx;
+    // OFFSET = 0.0;
+    // data_in_buffer = 25'bx;
     // repeat(2) @(negedge clock_Rx);
     // reset <= 1'b0;
     // enable_Tx <= 1;
 
-    // repeat (100) begin
-    //     @(negedge clock_Tx)
+    // repeat (50) begin
+    //     @(posedge clock_Tx)
     //     data_in <= $urandom_range(0, 1);  // Uniformly random 0 or 1
 
-    //     data_in_buffer <= {data_in_buffer[18:0], data_in};
+    //     data_in_buffer <= {data_in_buffer[23:0], data_in};
+    // end
+    // repeat (50) begin
+    //     @(posedge clock_Tx)
     //     if (reset === 1'b0 && data_out !== 1'bx) begin
-    //         assert(data_in_buffer[19] === data_out) else $display("Mismatch detected at time %t", $time);
+    //         assert(data_in_buffer[24] === data_out) else $display("Mismatch detected at time %t", $time);
     //     end
     // end
+
+    // Test 2: Tx slower than Rx by +1000ppm = 0.002ns
+    // Reset protocol
+    reset <= 1'b1;
+    enable_Tx <= 0;
+    OFFSET = 0.004;
+    data_in_buffer = 25'bx;
+    repeat(2) @(negedge clock_Rx);
+    reset <= 1'b0;
+    enable_Tx <= 1;
+
+    repeat (1600) begin
+        @(posedge clock_Tx)
+        data_in <= $urandom_range(0, 1);  // Uniformly random 0 or 1
+
+        data_in_buffer <= {data_in_buffer[23:0], data_in};
+    end
 
     // Test 3: Tx faster than Rx by -1000ppm = -0.002ns
     // Reset protocol
