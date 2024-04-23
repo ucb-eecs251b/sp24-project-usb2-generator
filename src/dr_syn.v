@@ -15,7 +15,7 @@ wire fifo_underflow, fifo_overflow;
 sampler sampler(
     .Din(data_in),
     .clock(clock_x10),
-    .Dout(data_out)
+    .Dout(dout_sampler)
     //,
     //.VDD(VDD),
     //.GND(GND)

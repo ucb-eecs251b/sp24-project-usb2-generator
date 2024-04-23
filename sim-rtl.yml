@@ -10,7 +10,7 @@ sim.inputs:
     - "src/dr_toplevel.v"
     - "src/sampler_v2.v"
     - "src/token_control.v"
-  timescale: "1ns/10ps"
+  timescale: "1ns/1fs"
   options:
     - "-notice"
     - "-line"
