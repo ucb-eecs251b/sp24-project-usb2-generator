@@ -32,8 +32,8 @@ case class Usb2Params(
 )
 
 class UTMI(params: Usb2Params, beatBytes: Int)
-    extends Module {
-  val io = IO(new Bundle {
+  extends Module {
+    val io = IO(new Bundle {
     // UTMI Controls
     val utmi_xcvr_select = Input(UInt(1.W))  // Transceiver Select
     val utmi_term_select = Input(UInt(1.W))  // Termination Select
@@ -52,12 +52,43 @@ class UTMI(params: Usb2Params, beatBytes: Int)
     val utmi_rx_active   = Output(Bool())               // RX Active
     val utmi_rx_error    = Output(Bool())               // RX Error
 
-    val utmi_sync_en     = Output(Bool())               // %% Do we need this?
+    // %%% Do we need to specify a clock and a reset for our block?
+    val clock = Input(Clock()) // %%% Clock()? The 480MHz clk
+    val reset = Input(Bool())
+    val utmi_clk = Output(UInt(1.W)) // %%% UInt(1.W)? The 30/60MHz clk
   })
 
-  // TODO: %% FSM and RX + TX here (Or put RX, TX in Usb2Top?)
+  // %%% RX + TX here (Or put RX, TX in Usb2Top?) Also, where should we put the async FIFO?
+  val Usb2RxTop = Module(new Usb2RxTop(params.width.W))
+  Usb2RxTop.io.utmi_datain // %%% To Rx team: This should be a single bit data. Where can we get this data, from DP/DM? 
+  // %%% If we need DP/DM, should we just write this UTMI module inside Usb2Top?
+  Usb2RxTop.io.utmi_clk   := io.utmi_clk
+  Usb2RxTop.io.utmi_reset := io.reset
+  io.utmi_dataout         := Usb2RxTop.io.utmi_dataout
+  io.utmi_rx_valid        := Usb2RxTop.io.utmi_rx_valid
+  io.utmi_rx_active       := Usb2RxTop.io.utmi_rx_active
+  io.utmi_rx_error        := Usb2RxTop.io.utmi_rx_error
+  // %%% How should we handle these signals?
+  Usb2RxTop.io.cru_fs_vp     := io.cru_fs_vp    
+  Usb2RxTop.io.cru_fs_vm     := io.cru_fs_vm    
+  Usb2RxTop.io.cru_hs_vp     := io.cru_hs_vp    
+  Usb2RxTop.io.cru_hs_vm     := io.cru_hs_vm    
+  Usb2RxTop.io.cru_hs_toggle := io.cru_hs_toggle
+  Usb2RxTop.io.cru_clk       := io.cru_clk      
 
-  }
+  val Usb2TxTop = Module(new USBTx(params.width.W))
+  Usb2TxTop.io.in.bits  := io.utmi_datain
+  Usb2TxTop.io.in.valid := io.utmi_tx_valid
+  io.utmi_tx_ready      := Usb2TxTop.io.in.ready
+  // %%% How should we handle these signals?
+  io.rpuEn     := Usb2TxTop.io.rpuEn    
+  io.vpo       := Usb2TxTop.io.vpo      
+  io.oeb       := Usb2TxTop.io.oeb      
+  io.hsData    := Usb2TxTop.io.hsData   
+  io.hsDriveEn := Usb2TxTop.io.hsDriveEn
+  io.hsCsEn    := Usb2TxTop.io.hsCsEn   
+
+}
 
 class Usb2Top(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extends ClockSinkDomain(ClockSinkParameters())(p) {
 
