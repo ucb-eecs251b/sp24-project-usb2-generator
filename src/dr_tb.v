@@ -58,13 +58,13 @@ $vcdpluson;
     enable_Tx <= 1;
 
     repeat (10) begin
-        @(negedge clock_Tx)
+        @(posedge clock_Tx)
         data_in <= $urandom_range(0, 1);  // Uniformly random 0 or 1
 
         data_in_buffer <= {data_in_buffer[21:0], data_in};
     end
     #(23) repeat (10) begin
-        @(negedge clock_Tx)
+        @(posedge clock_Tx)
         if (reset === 1'b0 && data_out !== 1'bx) begin
             assert(data_in_buffer[22] === data_out) else $display("Mismatch detected at time %t", $time);
         end
