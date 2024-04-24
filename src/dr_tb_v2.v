@@ -2,12 +2,14 @@
 
 module dr_tb();
 
-parameter TESTCASE = 500;
+parameter TESTCASE = 8192;
 reg data_in, reset, clock_Rx, clock_10x, clock_Tx, enable_Tx;
 wire data_out;
 reg [TESTCASE-1:0] data_in_buffer, data_out_buffer;
 
 real OFFSET; // offset of Tx clock period in ns. 1000ppm = 0.1% = 0.002ns
+integer DIN_BUFFER_WAIT;
+integer DOUT_BUFFER_WAIT;
 
 
 // Generate 480 MHz clock for Rx
@@ -77,17 +79,17 @@ integer i;
 always begin
     data_in <= 0;
     data_in_buffer <= {TESTCASE-1{1'bx}};
-    for(i=0; i<=TESTCASE; i=i+1) begin
+    for(i=0; i<=(TESTCASE); i=i+1) begin
         @(posedge clock_Tx)
         data_in <= $urandom_range(0, 1);  // Uniformly random 0 or 1
         data_in_buffer <= {data_in_buffer[TESTCASE-2:0], data_in};
     end
-    repeat(27) @(posedge clock_Tx);
+    repeat(DIN_BUFFER_WAIT) @(posedge clock_Tx);
 end
 integer j;
 always begin
     data_out_buffer <= {TESTCASE-1{1'bx}};
-    for(j=0; j<=(TESTCASE+28); j=j+1) begin
+    for(j=0; j<=(TESTCASE+DOUT_BUFFER_WAIT); j=j+1) begin
         @(posedge clock_Rx)
         data_out_buffer <= {data_out_buffer[TESTCASE-2:0], data_out};
     end
@@ -104,6 +106,8 @@ $vcdpluson;
     reset <= 1'b1;
     enable_Tx <= 0;
     OFFSET = 0.0;
+    DIN_BUFFER_WAIT = 27;
+    DOUT_BUFFER_WAIT = 28;
     repeat(2) @(negedge clock_Rx);
     reset <= 1'b0;
     enable_Tx <= 1;
@@ -118,6 +122,8 @@ $vcdpluson;
     reset <= 1'b1;
     enable_Tx <= 0;
     OFFSET = 0.004;
+    DIN_BUFFER_WAIT = 27;
+    DOUT_BUFFER_WAIT = 28;
     repeat(2) @(negedge clock_Rx);
     reset <= 1'b0;
     enable_Tx <= 1;
@@ -132,11 +138,13 @@ $vcdpluson;
     reset <= 1'b1;
     enable_Tx <= 0;
     OFFSET = -0.004;
+    DIN_BUFFER_WAIT = 42;
+    DOUT_BUFFER_WAIT = 39;
     repeat(2) @(negedge clock_Rx);
     reset <= 1'b0;
     enable_Tx <= 1;
 
-    repeat(TESTCASE+29) @(negedge clock_Rx);
+    repeat(TESTCASE+43) @(negedge clock_Rx);
 
     if(data_in_buffer === data_out_buffer) $display("##### TEST 3 PASSED! #####");
     else $display("Mismatch detected in TEST 3 ><");
@@ -146,6 +154,8 @@ $vcdpluson;
     reset <= 1'b1;
     enable_Tx <= 0;
     OFFSET = 0.0;
+    DIN_BUFFER_WAIT = 27;
+    DOUT_BUFFER_WAIT = 28;
     repeat(2) @(negedge clock_Rx);
     reset <= 1'b0;
     enable_Tx <= 1;
@@ -158,7 +168,7 @@ $vcdpluson;
     //     OFFSET <= $urandom_range(-2, 2) / 1000;  // Convert from ps to ns
     // end
 
-    repeat(27) @(negedge clock_Rx);
+    repeat(28) @(negedge clock_Rx);
 
     if(data_in_buffer === data_out_buffer) $display("##### TEST 4 PASSED! #####");
     else $display("Mismatch detected in TEST 4 ><");
