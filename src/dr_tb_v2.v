@@ -2,7 +2,7 @@
 
 module dr_tb();
 
-parameter TESTCASE = 100;
+parameter TESTCASE = 500;
 reg data_in, reset, clock_Rx, clock_10x, clock_Tx, enable_Tx;
 wire data_out;
 reg [TESTCASE-1:0] data_in_buffer, data_out_buffer;
@@ -82,12 +82,12 @@ always begin
         data_in <= $urandom_range(0, 1);  // Uniformly random 0 or 1
         data_in_buffer <= {data_in_buffer[TESTCASE-2:0], data_in};
     end
-    repeat(26) @(posedge clock_Tx);
+    repeat(27) @(posedge clock_Tx);
 end
 integer j;
 always begin
     data_out_buffer <= {TESTCASE-1{1'bx}};
-    for(j=0; j<=(TESTCASE+27); j=j+1) begin
+    for(j=0; j<=(TESTCASE+28); j=j+1) begin
         @(posedge clock_Rx)
         data_out_buffer <= {data_out_buffer[TESTCASE-2:0], data_out};
     end
@@ -122,7 +122,7 @@ $vcdpluson;
     reset <= 1'b0;
     enable_Tx <= 1;
 
-    repeat(TESTCASE+26) @(negedge clock_Rx);
+    repeat(TESTCASE+27) @(negedge clock_Rx);
 
     if(data_in_buffer === data_out_buffer) $display("##### TEST 2 PASSED! #####");
     else $display("Mismatch detected in TEST 2 ><");
@@ -136,7 +136,7 @@ $vcdpluson;
     reset <= 1'b0;
     enable_Tx <= 1;
 
-    repeat(TESTCASE+27) @(negedge clock_Rx);
+    repeat(TESTCASE+29) @(negedge clock_Rx);
 
     if(data_in_buffer === data_out_buffer) $display("##### TEST 3 PASSED! #####");
     else $display("Mismatch detected in TEST 3 ><");
