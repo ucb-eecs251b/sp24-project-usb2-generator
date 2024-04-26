@@ -29,6 +29,7 @@ case class Usb2Params(
 	address: BigInt = 0x7000,
   depth: Int = 32, 
   width: Int = 8,
+  asyncQueueSz: Int = 8 // May change this?
 )
 
 class Usb2Top(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extends ClockSinkDomain(ClockSinkParameters())(p) {
@@ -37,11 +38,9 @@ class Usb2Top(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extend
   val clock: Clock // 480MHz
   val reset: Reset
 
-  // Question: Where should we put the async FIFO?
-
   // RX
   val usb2RxLogic = Module(new Usb2RxTop(params.width.W))
-  usb2RxLogic.io.utmi_datain // To Rx team: This should be a single bit data. Question: where can we get this data, from DP/DM? 
+  usb2RxLogic.io.utmi_datain // To Rx team: This should be a single bit data (You don't need this). Question: where can we get this data, from DP/DM or cru? 
   usb2RxLogic.io.utmi_clk   := pll.io.utmi_clk // Question: where can we get this clock? From pll?
   usb2RxLogic.io.utmi_reset := reset
   // Question: How should we handle these signals? From cru?
@@ -51,10 +50,23 @@ class Usb2Top(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extend
   usb2RxLogic.io.cru_hs_vp     := cru.io.cru_hs_vp    
   usb2RxLogic.io.cru_hs_vm     := cru.io.cru_hs_vm    
   usb2RxLogic.io.cru_hs_toggle := cru.io.cru_hs_toggle
-  usb2RxLogic.io.cru_clk       := cru.io.cru_clk      
+  usb2RxLogic.io.cru_clk       := cru.io.cru_clk    
+
+  // Async FIFO for CDC between 480MHz and 30/60MHz, located between SIE and RX hold register. Assuming the RX Logic is clocked entirely against 480MHz.
+  val rx_async = Module(new AsyncQueue(UInt(params.width.W), AsyncQueueParams(depth=params.asyncQueueSz)))
+  rx_async.io.enq_clock := cru.io.cru_clk // 480MHz
+  rx_async.io.enq_reset := reset
+  rx_async.io.deq_clock := pll.io.utmi_clk // 30/60MHz
+  rx_async.io.deq_reset := false.B 
+  rx_async.io.enq.bits  := usb2RxLogic.io.utmi_dataout
+  rx_async.io.enq.valid := usb2RxLogic.io.utmi_rx_valid
+  // rx_async.io.enq.ready
+  rx_async.io.deq.ready := true.B  
 
   // TX
-  val usb2TxLogic = Module(new USBTx(params.width.W))
+  withClockAndReset(clock, reset) { // Reset ??
+    val usb2TxLogic = Module(new USBTx(params.width.W))
+  }
   val utmi_datain = RegInit(0.U(params.width.W))
   usb2TxLogic.io.in.bits  := utmi_datain
   val utmi_tx_valid = RegInit(false.B)
@@ -88,13 +100,13 @@ class Usb2Top(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extend
               0x04 -> Seq(
                 RegField.r(params.width, data_buffer.io.deq)),
               0x08 -> Seq(
-                RegField.r(params.width, usb2RxLogic.io.utmi_dataout)),
+                RegField.r(params.width, rx_async.io.deq.bits)),
               0x0C -> Seq(
-                RegField.r(1, usb2RxLogic.io.utmi_rx_valid)),  
+                RegField.r(1, rx_async.io.deq.valid)),
               0x10 -> Seq(
                 RegField.r(1, usb2RxLogic.io.utmi_rx_active)), 
               0x10 -> Seq(
-                RegField.r(1, usb2RxLogic.io.utmi_rx_error)),
+                RegField.r(1, usb2RxLogic.io.utmi_rx_error)), // Question: Will async FIFO cause us not accurately reflecting error?
               0x14 -> Seq(
                 RegField.w(params.width, utmi_datain)),
               0x18 -> Seq(
