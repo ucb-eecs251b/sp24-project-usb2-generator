@@ -29,7 +29,7 @@ case class Usb2Params(
 	address: BigInt = 0x7000,
   depth: Int = 32, 
   width: Int = 8,
-  asyncQueueSz: Int = 8 // May change this?
+  asyncQueueSz: Int = 8 // May change this? Is 1 enough?
 )
 
 class Usb2Top(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extends ClockSinkDomain(ClockSinkParameters())(p) {
@@ -52,7 +52,8 @@ class Usb2Top(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extend
   usb2RxLogic.io.cru_hs_toggle := cru.io.cru_hs_toggle
   usb2RxLogic.io.cru_clk       := cru.io.cru_clk    
 
-  // Async FIFO for CDC between 480MHz and 30/60MHz, located between SIE and RX hold register. Assuming the RX Logic is clocked entirely against 480MHz.
+  // Async FIFO for CDC between 480MHz and 30/60MHz, located between SIE and RX hold register. Assuming the RX Logic is clocked "entirely" against 480MHz.
+  // Currently the RX FSM seems to be clocked against 30/60MHz.
   val rx_async = Module(new AsyncQueue(UInt(params.width.W), AsyncQueueParams(depth=params.asyncQueueSz)))
   rx_async.io.enq_clock := cru.io.cru_clk // 480MHz
   rx_async.io.enq_reset := reset
@@ -63,7 +64,8 @@ class Usb2Top(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extend
   // rx_async.io.enq.ready
   rx_async.io.deq.ready := true.B  
 
-  // TX
+  // TX, Question: I guess normally we will want a async FIFO to do CDC, but is it necessary when using MMIO?
+  // "load" signal not connected in USBTxSerializer.
   withClockAndReset(clock, reset) { // Reset ??
     val usb2TxLogic = Module(new USBTx(params.width.W))
   }
@@ -92,9 +94,9 @@ class Usb2Top(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extend
         // Instantiate TileLink communication module
         withClockAndReset(clock, reset) {
 
-           val data_buffer = Module(new Queue(UInt(params.width.W), params.depth)) // Question: What is this?
+           val data_buffer = Module(new Queue(UInt(params.width.W), params.depth)) // Question: What is this used for?
 
-           mmio_node.regmap( // Question: MMIO takes multiple cycles
+           mmio_node.regmap( // Question: MMIO takes multiple cycles, need to write FSM to control?
               0x00 -> Seq(
                 RegField.w(params.width, data_buffer.io.enq)),
               0x04 -> Seq(
@@ -102,16 +104,16 @@ class Usb2Top(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extend
               0x08 -> Seq(
                 RegField.r(params.width, rx_async.io.deq.bits)),
               0x0C -> Seq(
-                RegField.r(1, rx_async.io.deq.valid)),
+                RegField.r(1, rx_async.io.deq.valid)), // Question: This is coming from slower clock domain, will asserting too many times cause problem?
               0x10 -> Seq(
-                RegField.r(1, usb2RxLogic.io.utmi_rx_active)), 
-              0x10 -> Seq(
-                RegField.r(1, usb2RxLogic.io.utmi_rx_error)), // Question: Will async FIFO cause us not accurately reflecting error?
+                RegField.r(1, usb2RxLogic.io.utmi_rx_active)), // Question: Will async FIFO cause us not accurately reflecting active?
               0x14 -> Seq(
+                RegField.r(1, usb2RxLogic.io.utmi_rx_error)), // Question: Will async FIFO cause us not accurately reflecting error?
+              0x18 -> Seq(
                 RegField.w(params.width, utmi_datain)),
-              0x18 -> Seq(
+              0x1C -> Seq(
                 RegField.w(1, utmi_tx_valid)),
-              0x18 -> Seq(
+              0x20 -> Seq(
                 RegField.r(1, usb2TxLogic.io.in.ready))
            )
             
