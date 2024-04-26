@@ -1,4 +1,4 @@
-# Post-Synthesis Gate-Level Simulation Variables
+# Post-PAR Gate-Level Simulation Variables
 sim.inputs:
   input_files:
     - "src/ad_fifo_cell.v"
@@ -11,8 +11,10 @@ sim.inputs:
     - "src/sampler_v2.v"
     - "src/token_control.v"
   input_files_meta: append
-  level: "syn"
+  level: "gl"
   timing_annotated: true
+  saif:
+    mode: "full"
   timescale: "1ns/1fs"
   options:
     - "-notice"
@@ -20,8 +22,14 @@ sim.inputs:
     - "+lint=all"
     - "+v2k"
     - "-debug"
+    - "+vcs+lic+wait"
+    - "+udpsched"
     - "+neg_tchk"
+    - "+sdfverbose"
+    - "-negdelay"
+    - "+evalorder"
     - "-sverilog"
+    - "-lca"
   top_module: "dr_toplevel"
   tb_name: "dr_tb"
   defines: 
@@ -29,3 +37,7 @@ sim.inputs:
     - "FIFO_SIZE=41"
     - "FUNCTIONAL"
     - "UNIT_DELAY=#1"
+
+power.inputs:
+  database: "build/par-rundir/data_recovery_FINAL"
+  tb_name: "dr_tb"
