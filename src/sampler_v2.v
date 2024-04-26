@@ -12,6 +12,7 @@ module sampler(
     input clock_7,
     input clock_8,
     input clock_9,
+    input clock_480,
     output [4:0] Dout
     //,
     //inout VDD,
@@ -20,6 +21,7 @@ module sampler(
 
 wire [9:0] Q_sam, Q_sam_2, Q_sam_3;
 wire Q_sam_d0, Q_sam_d5;
+wire [4:0] Dout_mux;
 
 sky130_fd_sc_hd__dfxtp_2 row0_0 (.Q(Q_sam[0]), .CLK(clock_0), .D(Din));//, .VPWR(VDD), .VGND(GND), .VPB(VDD), .VNB(GND));
 sky130_fd_sc_hd__dfxtp_2 row0_1 (.Q(Q_sam[1]), .CLK(clock_1), .D(Din));//, .VPWR(VDD), .VGND(GND), .VPB(VDD), .VNB(GND));
@@ -35,16 +37,19 @@ sky130_fd_sc_hd__dfxtp_2 row1_4 (.Q(Q_sam[9]), .CLK(clock_9), .D(Din));//, .VPWR
 
 inv_delay row0_delay (.Din(Q_sam[0]), .Dout(Q_sam_d0));//, .VDD(VDD), .GND(GND));
 inv_delay row1_delay (.Din(Q_sam[5]), .Dout(Q_sam_d5));//, .VDD(VDD), .GND(GND));
-inv_delay mux_delay0 (.Din(Q_sam_2[0]), .Dout(Q_sam_3[0]));
-inv_delay mux_delay1 (.Din(Q_sam_2[1]), .Dout(Q_sam_3[1]));
-inv_delay mux_delay2 (.Din(Q_sam_2[2]), .Dout(Q_sam_3[2]));
-inv_delay mux_delay3 (.Din(Q_sam_2[3]), .Dout(Q_sam_3[3]));
-inv_delay mux_delay4 (.Din(Q_sam_2[4]), .Dout(Q_sam_3[4]));
-inv_delay mux_delay5 (.Din(Q_sam_2[5]), .Dout(Q_sam_3[5]));
-inv_delay mux_delay6 (.Din(Q_sam_2[6]), .Dout(Q_sam_3[6]));
-inv_delay mux_delay7 (.Din(Q_sam_2[7]), .Dout(Q_sam_3[7]));
-inv_delay mux_delay8 (.Din(Q_sam_2[8]), .Dout(Q_sam_3[8]));
-inv_delay mux_delay9 (.Din(Q_sam_2[9]), .Dout(Q_sam_3[9]));
+
+assign Q_sam_3[0] = Q_sam_2[0];
+assign Q_sam_3[1] = Q_sam_2[1];
+assign Q_sam_3[2] = Q_sam_2[2];
+assign Q_sam_3[3] = Q_sam_2[3];
+assign Q_sam_3[4] = Q_sam_2[4];
+assign Q_sam_3[5] = Q_sam_2[5];
+assign Q_sam_3[6] = Q_sam_2[6];
+assign Q_sam_3[7] = Q_sam_2[7];
+assign Q_sam_3[8] = Q_sam_2[8];
+assign Q_sam_3[9] = Q_sam_2[9];
+
+
 
 sky130_fd_sc_hd__dfxtp_2 row0_02 (.Q(Q_sam_2[0]), .CLK(clock_0), .D(Q_sam_d0));//, .VPWR(VDD), .VGND(GND), .VPB(VDD), .VNB(GND));
 sky130_fd_sc_hd__dfxtp_2 row0_12 (.Q(Q_sam_2[1]), .CLK(clock_0), .D(Q_sam[1]));//, .VPWR(VDD), .VGND(GND), .VPB(VDD), .VNB(GND));
@@ -58,11 +63,17 @@ sky130_fd_sc_hd__dfxtp_2 row1_22 (.Q(Q_sam_2[7]), .CLK(clock_5), .D(Q_sam[7]));/
 sky130_fd_sc_hd__dfxtp_2 row1_32 (.Q(Q_sam_2[8]), .CLK(clock_5), .D(Q_sam[8]));//, .VPWR(VDD), .VGND(GND), .VPB(VDD), .VNB(GND));
 sky130_fd_sc_hd__dfxtp_2 row1_42 (.Q(Q_sam_2[9]), .CLK(clock_5), .D(Q_sam[9]));//, .VPWR(VDD), .VGND(GND), .VPB(VDD), .VNB(GND));
 
-sky130_fd_sc_hd__mux2_1 mux0 (.X(Dout[0]), .A0(Q_sam_3[5]), .A1(Q_sam_3[0]), .S(clock_0));//, .VPWR(VDD), .VGND(GND), .VPB(VDD), .VNB(GND));
-sky130_fd_sc_hd__mux2_1 mux1 (.X(Dout[1]), .A0(Q_sam_3[6]), .A1(Q_sam_3[1]), .S(clock_0));//, .VPWR(VDD), .VGND(GND), .VPB(VDD), .VNB(GND));
-sky130_fd_sc_hd__mux2_1 mux2 (.X(Dout[2]), .A0(Q_sam_3[7]), .A1(Q_sam_3[2]), .S(clock_0));//, .VPWR(VDD), .VGND(GND), .VPB(VDD), .VNB(GND));
-sky130_fd_sc_hd__mux2_1 mux3 (.X(Dout[3]), .A0(Q_sam_3[8]), .A1(Q_sam_3[3]), .S(clock_0));//, .VPWR(VDD), .VGND(GND), .VPB(VDD), .VNB(GND));
-sky130_fd_sc_hd__mux2_1 mux4 (.X(Dout[4]), .A0(Q_sam_3[9]), .A1(Q_sam_3[4]), .S(clock_0));//, .VPWR(VDD), .VGND(GND), .VPB(VDD), .VNB(GND));
+sky130_fd_sc_hd__mux2_1 mux0 (.X(Dout_mux[0]), .A0(Q_sam_3[5]), .A1(Q_sam_3[0]), .S(clock_0));//, .VPWR(VDD), .VGND(GND), .VPB(VDD), .VNB(GND));
+sky130_fd_sc_hd__mux2_1 mux1 (.X(Dout_mux[1]), .A0(Q_sam_3[6]), .A1(Q_sam_3[1]), .S(clock_0));//, .VPWR(VDD), .VGND(GND), .VPB(VDD), .VNB(GND));
+sky130_fd_sc_hd__mux2_1 mux2 (.X(Dout_mux[2]), .A0(Q_sam_3[7]), .A1(Q_sam_3[2]), .S(clock_0));//, .VPWR(VDD), .VGND(GND), .VPB(VDD), .VNB(GND));
+sky130_fd_sc_hd__mux2_1 mux3 (.X(Dout_mux[3]), .A0(Q_sam_3[8]), .A1(Q_sam_3[3]), .S(clock_0));//, .VPWR(VDD), .VGND(GND), .VPB(VDD), .VNB(GND));
+sky130_fd_sc_hd__mux2_1 mux4 (.X(Dout_mux[4]), .A0(Q_sam_3[9]), .A1(Q_sam_3[4]), .S(clock_0));//, .VPWR(VDD), .VGND(GND), .VPB(VDD), .VNB(GND));
+
+sky130_fd_sc_hd__dfxtp_2 mux_out_0 (.Q(Dout[0]), .CLK(clock_480), .D(Dout_mux[0]));//, .VPWR(VDD), .VGND(GND), .VPB(VDD), .VNB(GND));
+sky130_fd_sc_hd__dfxtp_2 mux_out_1 (.Q(Dout[1]), .CLK(clock_480), .D(Dout_mux[1]));//, .VPWR(VDD), .VGND(GND), .VPB(VDD), .VNB(GND));
+sky130_fd_sc_hd__dfxtp_2 mux_out_2 (.Q(Dout[2]), .CLK(clock_480), .D(Dout_mux[2]));//, .VPWR(VDD), .VGND(GND), .VPB(VDD), .VNB(GND));
+sky130_fd_sc_hd__dfxtp_2 mux_out_3 (.Q(Dout[3]), .CLK(clock_480), .D(Dout_mux[3]));//, .VPWR(VDD), .VGND(GND), .VPB(VDD), .VNB(GND));
+sky130_fd_sc_hd__dfxtp_2 mux_out_4 (.Q(Dout[4]), .CLK(clock_480), .D(Dout_mux[4]));//, .VPWR(VDD), .VGND(GND), .VPB(VDD), .VNB(GND));
 
 endmodule
 
