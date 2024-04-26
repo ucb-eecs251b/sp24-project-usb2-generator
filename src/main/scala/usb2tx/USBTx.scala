@@ -87,6 +87,15 @@ class USBTxStates(dWidth: Int) extends Module {
           }
         }
       }
+
+      data := data >> 1
+      when(data(0)) {
+        stuff_cnt := Mux(stuff_cnt === 6.U, 0.U, stuff_cnt + 1.U)
+        nrzi := Mux(stuff_cnt === 6.U, !nrzi, nrzi)
+      }.otherwise {
+        stuff_cnt := 0.U
+        nrzi := !nrzi
+      }
     }
   }
 }
