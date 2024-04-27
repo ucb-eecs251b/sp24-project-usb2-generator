@@ -21,6 +21,26 @@ import freechips.rocketchip.util.UIntIsOneOf
 class Usb2TopIO extends Bundle {
   val DP = Analog(1.W) // Analog type (equivalent to Verilog inout)
   val DM = Analog(1.W)
+
+  // PLL clock (Type?)
+  val utmi_clk = Analog(1.W)
+  val clk_480  = Analog(1.W)
+
+  // RxLogic input signals (Type?)
+  val cru_fs_vp     = Analog(1.W)
+  val cru_fs_vm     = Analog(1.W)
+  val cru_hs_vp     = Analog(1.W)
+  val cru_hs_vm     = Analog(1.W)
+  val cru_hs_toggle = Analog(1.W)
+  val cru_clk       = Analog(1.W)
+
+  // TxLogic output signals (Type?)
+  val rpuEn     = Analog(1.W)
+  val vpo       = Analog(1.W)
+  val oeb       = Analog(1.W)
+  val hsData    = Analog(1.W)
+  val hsDriveEn = Analog(1.W)
+  val hsCsEn    = Analog(1.W)
 }
 
 case class Usb2Params(
@@ -35,52 +55,49 @@ case class Usb2Params(
 class Usb2Top(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extends ClockSinkDomain(ClockSinkParameters())(p) {
 
   val io: Usb2TopIO
-  val clock: Clock // 480MHz
+  val clock: Clock // This is 500MHz?
   val reset: Reset
 
   // RX
   val usb2RxLogic = Module(new Usb2RxTop(params.width.W))
-  usb2RxLogic.io.utmi_datain // To Rx team: This should be a single bit data (You don't need this). Question: where can we get this data, from DP/DM or cru? 
-  usb2RxLogic.io.utmi_clk   := pll.io.utmi_clk // Question: where can we get this clock? From pll?
+  // usb2RxLogic.io.utmi_datain
+  usb2RxLogic.io.utmi_clk   := io.utmi_clk
   usb2RxLogic.io.utmi_reset := reset
-  // Question: How should we handle these signals? From cru?
-  // val cru = Module(new ??)
-  usb2RxLogic.io.cru_fs_vp     := cru.io.cru_fs_vp    
-  usb2RxLogic.io.cru_fs_vm     := cru.io.cru_fs_vm    
-  usb2RxLogic.io.cru_hs_vp     := cru.io.cru_hs_vp    
-  usb2RxLogic.io.cru_hs_vm     := cru.io.cru_hs_vm    
-  usb2RxLogic.io.cru_hs_toggle := cru.io.cru_hs_toggle
-  usb2RxLogic.io.cru_clk       := cru.io.cru_clk    
+  // RxLogic input from TopIO
+  usb2RxLogic.io.cru_fs_vp     := io.cru_fs_vp    
+  usb2RxLogic.io.cru_fs_vm     := io.cru_fs_vm    
+  usb2RxLogic.io.cru_hs_vp     := io.cru_hs_vp    
+  usb2RxLogic.io.cru_hs_vm     := io.cru_hs_vm    
+  usb2RxLogic.io.cru_hs_toggle := io.cru_hs_toggle
+  usb2RxLogic.io.cru_clk       := io.cru_clk    
 
   // Async FIFO for CDC between 480MHz and 30/60MHz, located between SIE and RX hold register. Assuming the RX Logic is clocked "entirely" against 480MHz.
   // Currently the RX FSM seems to be clocked against 30/60MHz.
   val rx_async = Module(new AsyncQueue(UInt(params.width.W), AsyncQueueParams(depth=params.asyncQueueSz)))
-  rx_async.io.enq_clock := cru.io.cru_clk // 480MHz
+  rx_async.io.enq_clock := io.cru_clk // 480MHz
   rx_async.io.enq_reset := reset
-  rx_async.io.deq_clock := pll.io.utmi_clk // 30/60MHz
+  rx_async.io.deq_clock := io.utmi_clk // 30/60MHz
   rx_async.io.deq_reset := false.B 
   rx_async.io.enq.bits  := usb2RxLogic.io.utmi_dataout
   rx_async.io.enq.valid := usb2RxLogic.io.utmi_rx_valid
   // rx_async.io.enq.ready
   rx_async.io.deq.ready := true.B  
 
-  // TX, Question: I guess normally we will want a async FIFO to do CDC, but is it necessary when using MMIO?
-  // "load" signal not connected in USBTxSerializer.
-  withClockAndReset(clock, reset) { // Reset ??
+
+  withClockAndReset(clk_480, reset) { // Reset?
     val usb2TxLogic = Module(new USBTx(params.width.W))
   }
   val utmi_datain = RegInit(0.U(params.width.W))
   usb2TxLogic.io.in.bits  := utmi_datain
   val utmi_tx_valid = RegInit(false.B)
   usb2TxLogic.io.in.valid := utmi_tx_valid
-  // Question: How should we handle these signals? To TX?
-  // val tx = Module(new ??)
-  tx.io.rpuEn     := usb2TxLogic.io.rpuEn    
-  tx.io.vpo       := usb2TxLogic.io.vpo      
-  tx.io.oeb       := usb2TxLogic.io.oeb      
-  tx.io.hsData    := usb2TxLogic.io.hsData   
-  tx.io.hsDriveEn := usb2TxLogic.io.hsDriveEn
-  tx.io.hsCsEn    := usb2TxLogic.io.hsCsEn   
+  // TxLogic output to TopIO
+  io.rpuEn     := usb2TxLogic.io.rpuEn    
+  io.vpo       := usb2TxLogic.io.vpo      
+  io.oeb       := usb2TxLogic.io.oeb      
+  io.hsData    := usb2TxLogic.io.hsData   
+  io.hsDriveEn := usb2TxLogic.io.hsDriveEn
+  io.hsCsEn    := usb2TxLogic.io.hsCsEn   
 
     val mmio_device = new SimpleDevice("LoopBack", Seq("eecs251b,usb2")) 
     val mmio_node = TLRegisterNode(Seq(AddressSet(params.address, 4096-1)), mmio_device, "reg/control", beatBytes=beatBytes)
