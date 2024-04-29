@@ -23,7 +23,7 @@ class Usb2TopIO extends Bundle {
   val DM = Analog(1.W)
 
   // PLL clock (Type?)
-  val utmi_clk = Analog(1.W)
+  val utmi_clk = Analog(1.W) // 30/60MHz
   val clk_480  = Analog(1.W)
 
   // RxLogic input signals (Type?)
@@ -55,14 +55,29 @@ case class Usb2Params(
 class Usb2Top(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extends ClockSinkDomain(ClockSinkParameters())(p) {
 
   val io: Usb2TopIO
-  val clock: Clock // This is 500MHz?
+  val clock: Clock // TL clock (500 or 200 MHz)
   val reset: Reset
 
   // RX
   val usb2RxLogic = Module(new Usb2RxTop(params.width.W))
-  // usb2RxLogic.io.utmi_datain
   usb2RxLogic.io.utmi_clk   := io.utmi_clk
   usb2RxLogic.io.utmi_reset := reset
+
+  // RX data bundle
+  val rx_bundle = Wire(new DecoupledIO(UInt((params.width + 2).W))) // [RXError, RXActive, RXDataOut]
+  // AsyncFIFO from 30/60MHz to TL clock domain
+  val rx_async = Module(new AsyncQueue(UInt(params.width.W), AsyncQueueParams(depth=params.asyncQueueSz)))
+  rx_async.io.enq_clock := io.utmi_clk // 30/60MHz
+  rx_async.io.enq_reset := reset
+  rx_async.io.deq_clock := clock // TL clock
+  rx_async.io.deq_reset := false.B 
+  rx_async.io.enq.bits  := Cat(Cat(usb2RxLogic.io.utmi_rx_error, usb2RxLogic.io.utmi_rx_active), usb2RxLogic.io.utmi_dataout)
+  rx_async.io.enq.valid := usb2RxLogic.io.utmi_rx_valid
+  // rx_async.io.enq.ready
+  rx_async.io.deq.ready := rx_bundle.ready
+  rx_bundle.bits        := rx_async.io.deq.bits
+  rx_bundle.valid       := rx_async.io.deq.valid 
+
   // RxLogic input from TopIO
   usb2RxLogic.io.cru_fs_vp     := io.cru_fs_vp    
   usb2RxLogic.io.cru_fs_vm     := io.cru_fs_vm    
@@ -71,26 +86,26 @@ class Usb2Top(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extend
   usb2RxLogic.io.cru_hs_toggle := io.cru_hs_toggle
   usb2RxLogic.io.cru_clk       := io.cru_clk    
 
-  // Async FIFO for CDC between 480MHz and 30/60MHz, located between SIE and RX hold register. Assuming the RX Logic is clocked "entirely" against 480MHz.
-  // Currently the RX FSM seems to be clocked against 30/60MHz.
-  val rx_async = Module(new AsyncQueue(UInt(params.width.W), AsyncQueueParams(depth=params.asyncQueueSz)))
-  rx_async.io.enq_clock := io.cru_clk // 480MHz
-  rx_async.io.enq_reset := reset
-  rx_async.io.deq_clock := io.utmi_clk // 30/60MHz
-  rx_async.io.deq_reset := false.B 
-  rx_async.io.enq.bits  := usb2RxLogic.io.utmi_dataout
-  rx_async.io.enq.valid := usb2RxLogic.io.utmi_rx_valid
-  // rx_async.io.enq.ready
-  rx_async.io.deq.ready := true.B  
-
-
+  // TX
   withClockAndReset(clk_480, reset) { // Reset?
     val usb2TxLogic = Module(new USBTx(params.width.W))
   }
-  val utmi_datain = RegInit(0.U(params.width.W))
-  usb2TxLogic.io.in.bits  := utmi_datain
-  val utmi_tx_valid = RegInit(false.B)
-  usb2TxLogic.io.in.valid := utmi_tx_valid
+  // MMIO tx_datain
+  val utmi_datain = Wire(new Flipped(DecoupledIO(UInt(params.width.W))))
+
+  // AsyncFIFO from TL clock domain to 30/60MHz
+  val tx_async = Module(new AsyncQueue(UInt(params.width.W), AsyncQueueParams(depth=params.asyncQueueSz)))
+  tx_async.io.enq_clock   := clock // TL clock
+  tx_async.io.enq_reset   := reset
+  tx_async.io.deq_clock   := io.utmi_clk // 30/60MHz
+  tx_async.io.deq_reset   := false.B 
+  tx_async.io.enq.bits    := utmi_datain.bits
+  tx_async.io.enq.valid   := utmi_datain.valid
+  utmi_datain.ready       := tx_async.io.enq.ready
+  tx_async.io.deq.ready   := usb2TxLogic.io.in.ready
+  usb2TxLogic.io.in.bits  := tx_async.io.deq.bits
+  usb2TxLogic.io.in.valid := tx_async.io.deq.valid
+
   // TxLogic output to TopIO
   io.rpuEn     := usb2TxLogic.io.rpuEn    
   io.vpo       := usb2TxLogic.io.vpo      
@@ -119,19 +134,9 @@ class Usb2Top(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extend
               0x04 -> Seq(
                 RegField.r(params.width, data_buffer.io.deq)),
               0x08 -> Seq(
-                RegField.r(params.width, rx_async.io.deq.bits)),
-              0x0C -> Seq(
-                RegField.r(1, rx_async.io.deq.valid)), // Question: This is coming from slower clock domain, will asserting too many times cause problem?
-              0x10 -> Seq(
-                RegField.r(1, usb2RxLogic.io.utmi_rx_active)), // Question: Will async FIFO cause us not accurately reflecting active?
-              0x14 -> Seq(
-                RegField.r(1, usb2RxLogic.io.utmi_rx_error)), // Question: Will async FIFO cause us not accurately reflecting error?
+                RegField.r(params.width+2, rx_bundle)),
               0x18 -> Seq(
                 RegField.w(params.width, utmi_datain)),
-              0x1C -> Seq(
-                RegField.w(1, utmi_tx_valid)),
-              0x20 -> Seq(
-                RegField.r(1, usb2TxLogic.io.in.ready))
            )
             
         }
