@@ -7,24 +7,27 @@ import freechips.rocketchip.diplomacy._
 import freechips.rocketchip.tilelink._
 import freechips.rocketchip.regmapper._
 import freechips.rocketchip.subsystem._
-
-
-import chisel3.experimental.{IntParam, BaseModule}
+//import chisel3.experimental._ // Analog
+import chisel3.experimental.{Analog, IntParam, BaseModule}
 import freechips.rocketchip.prci._
 import freechips.rocketchip.util.UIntIsOneOf
-
+import freechips.rocketchip.util._
 
 // TODO confirm
 // I think we should do UTMI over mmio but have explicit ios for the differential output
 
 // IO Declarations
 class Usb2TopIO extends Bundle {
+  // clock & reset
+  val reset = Input(Bool())
+  val clock = Input(Clock())
+
   val DP = Analog(1.W) // Analog type (equivalent to Verilog inout)
   val DM = Analog(1.W)
 
   // PLL clock (Type?)
   val utmi_clk = Analog(1.W) // 30/60MHz
-  val clk_480  = Analog(1.W)
+  val clk_480  = Clock()
 
   // RxLogic input signals (Type?)
   val cru_fs_vp     = Analog(1.W)
@@ -54,12 +57,13 @@ case class Usb2Params(
 
 class Usb2Top(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extends ClockSinkDomain(ClockSinkParameters())(p) {
 
-  val io: Usb2TopIO
   val clock: Clock // TL clock (500 or 200 MHz)
   val reset: Reset
-
+  
+  val io = IO(new Usb2TopIO) 
+  
   // RX
-  val usb2RxLogic = Module(new Usb2RxTop(params.width.W))
+  val usb2RxLogic = Module(new Usb2RxTop(params.width)) 
   usb2RxLogic.io.utmi_clk   := io.utmi_clk
   usb2RxLogic.io.utmi_reset := reset
 
@@ -87,11 +91,11 @@ class Usb2Top(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extend
   usb2RxLogic.io.cru_clk       := io.cru_clk    
 
   // TX
-  withClockAndReset(clk_480, reset) { // Reset?
-    val usb2TxLogic = Module(new USBTx(params.width.W))
-  }
+  //withClockAndReset(io.clk_480, reset) { // Reset?
+  val usb2TxLogic = Module(new USBTx(params.width))
+  //}
   // MMIO tx_datain
-  val utmi_datain = Wire(new Flipped(DecoupledIO(UInt(params.width.W))))
+  val utmi_datain = Flipped(DecoupledIO(UInt(params.width.W)))
 
   // AsyncFIFO from TL clock domain to 30/60MHz
   val tx_async = Module(new AsyncQueue(UInt(params.width.W), AsyncQueueParams(depth=params.asyncQueueSz)))
