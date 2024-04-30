@@ -1,23 +1,18 @@
-package usb2
+package usbtx
 
 import chisel3._
 import chisel3.util._
-import org.chipsalliance.cde.config.{Parameters, Field, Config}
-import freechips.rocketchip.diplomacy._
-import freechips.rocketchip.regmapper._
-import freechips.rocketchip.subsystem._
-import freechips.rocketchip.tilelink._
-import scala.annotation.switch
+import _root_.circt.stage.ChiselStage
 
-object USBTxTransitions {
+object TxStates{
   object State extends ChiselEnum {
-    val Idle, SyncGenerate, DataTransmit, EOPGenerate = Value
+    val Idle, SyncGen, DataTx, EndPGen = Value
   }
 }
 
-class USBTxStates(dWidth: Int) extends Module {
-  import USBTxTransitions.State
-  import USBTxTransitions.State._
+class TxFSM(dWidth: Int) extends Module {
+  import TxStates.State
+  import TxStates.State._
 
   val io = IO(new Bundle {
     val rst_i = Input(Bool())
@@ -130,3 +125,4 @@ class USBTx(dWidth: Int) extends Module {
 
 
 }
+
