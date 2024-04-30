@@ -26,24 +26,24 @@ class Usb2TopIO extends Bundle {
   val DM = Analog(1.W)
 
   // PLL clock (Type?)
-  val utmi_clk = Analog(1.W) // 30/60MHz
+  val utmi_clk = Clock() // 30/60MHz
   val clk_480  = Clock()
 
   // RxLogic input signals (Type?)
-  val cru_fs_vp     = Analog(1.W)
-  val cru_fs_vm     = Analog(1.W)
-  val cru_hs_vp     = Analog(1.W)
-  val cru_hs_vm     = Analog(1.W)
-  val cru_hs_toggle = Analog(1.W)
-  val cru_clk       = Analog(1.W)
+  val cru_fs_vp     = SInt(1.W)
+  val cru_fs_vm     = SInt(1.W)
+  val cru_hs_vp     = SInt(1.W)
+  val cru_hs_vm     = SInt(1.W)
+  val cru_hs_toggle = UInt(1.W)
+  val cru_clk       = Clock()
 
-  // TxLogic output signals (Type?)
-  val rpuEn     = Analog(1.W)
-  val vpo       = Analog(1.W)
-  val oeb       = Analog(1.W)
-  val hsData    = Analog(1.W)
-  val hsDriveEn = Analog(1.W)
-  val hsCsEn    = Analog(1.W)
+  // TxLogic output signals (Type? - analog)
+  val rpuEn     = UInt(1.W)
+  val vpo       = UInt(1.W)
+  val oeb       = UInt(1.W)
+  val hsData    = UInt(1.W)
+  val hsDriveEn = UInt(1.W)
+  val hsCsEn    = UInt(1.W)
 }
 
 case class Usb2Params(
@@ -57,11 +57,12 @@ case class Usb2Params(
 
 class Usb2Top(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extends ClockSinkDomain(ClockSinkParameters())(p) {
 
-  val clock: Clock // TL clock (500 or 200 MHz)
-  val reset: Reset
+  //val clock: Clock // TL clock (500 or 200 MHz)
+  //val reset: Reset
   
   val io = IO(new Usb2TopIO) 
-  
+  val clock = io.clock
+  val reset = io.reset
   // RX
   val usb2RxLogic = Module(new Usb2RxTop(params.width)) 
   usb2RxLogic.io.utmi_clk   := io.utmi_clk
@@ -78,9 +79,10 @@ class Usb2Top(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extend
   rx_async.io.enq.bits  := Cat(Cat(usb2RxLogic.io.utmi_rx_error, usb2RxLogic.io.utmi_rx_active), usb2RxLogic.io.utmi_dataout)
   rx_async.io.enq.valid := usb2RxLogic.io.utmi_rx_valid
   // rx_async.io.enq.ready
-  rx_async.io.deq.ready := rx_bundle.ready
-  rx_bundle.bits        := rx_async.io.deq.bits
-  rx_bundle.valid       := rx_async.io.deq.valid 
+  //rx_async.io.deq.ready := rx_bundle.ready.B
+  rx_bundle <> rx_async.io.deq
+  //rx_bundle.bits        := rx_async.io.deq.bits
+  //rx_bundle.valid       := rx_async.io.deq.valid 
 
   // RxLogic input from TopIO
   usb2RxLogic.io.cru_fs_vp     := io.cru_fs_vp    
@@ -95,7 +97,7 @@ class Usb2Top(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extend
   val usb2TxLogic = Module(new USBTx(params.width))
   //}
   // MMIO tx_datain
-  val utmi_datain = Flipped(DecoupledIO(UInt(params.width.W)))
+  val utmi_datain = Wire(Flipped(DecoupledIO(UInt(params.width.W))))
 
   // AsyncFIFO from TL clock domain to 30/60MHz
   val tx_async = Module(new AsyncQueue(UInt(params.width.W), AsyncQueueParams(depth=params.asyncQueueSz)))
@@ -106,9 +108,10 @@ class Usb2Top(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extend
   tx_async.io.enq.bits    := utmi_datain.bits
   tx_async.io.enq.valid   := utmi_datain.valid
   utmi_datain.ready       := tx_async.io.enq.ready
-  tx_async.io.deq.ready   := usb2TxLogic.io.in.ready
-  usb2TxLogic.io.in.bits  := tx_async.io.deq.bits
-  usb2TxLogic.io.in.valid := tx_async.io.deq.valid
+  //tx_async.io.deq.ready   := usb2TxLogic.io.in.ready
+  //usb2TxLogic.io.in.bits  := tx_async.io.deq.bits
+  //usb2TxLogic.io.in.valid := tx_async.io.deq.valid
+  usb2TxLogic.io.in <> tx_async.io.deq
 
   // TxLogic output to TopIO
   io.rpuEn     := usb2TxLogic.io.rpuEn    
