@@ -113,6 +113,8 @@ class USBTx(dWidth: Int) extends Module {
 
   val fsm        = Module(new TxFSM(dWidth))
   val serializer = Module(new USBTxSerializer(dWidth))
+  val bitStuffer = Module(new USBBitStuffer)
+  val nrziEnc    = Module(new USBNrziEncoder)
   
   // Inputs
   fsm.io.tx_valid_i := io.pDin_packet.valid
@@ -127,9 +129,24 @@ class USBTx(dWidth: Int) extends Module {
   fsm.io.tx_ready_i           := serializer.io.pDataIn.ready
 
   // Serializer <-> IO, for now
-  io.hsDout := serializer.io.sDataOut.bits
-  io.valid := serializer.io.sDataOut.valid
-  serializer.io.sDataOut.ready := true.B  // Driver's always ready
+  //io.hsDout := serializer.io.sDataOut.bits
+  //io.valid := serializer.io.sDataOut.valid
+  //serializer.io.sDataOut.ready := true.B  // Driver's always ready
+
+  // NRZI Encoder <-> Bit Stuffer in lock-step, no handshake
+  withClock(io.serialClk) {
+    bitStuffer.io.en := true.B
+    bitStuffer.io.dataIn.valid := serializer.io.sDataOut.valid
+    bitStuffer.io.dataIn.bits  := serializer.io.sDataOut.bits
+    serializer.io.sDataOut.ready := bitStuffer.io.dataIn.ready
+    io.valid := true.B
+
+    nrziEnc.io.en := true.B
+    nrziEnc.io.dIn := bitStuffer.io.dataOut.bits
+    bitStuffer.io.dataOut.ready := true.B              // This is incorrect, but for now, ok
+
+    io.hsDout := nrziEnc.io.dOut
+  }
 
   io.txBusy := fsm.io.tx_ready_o
   io.pDin_packet.ready := fsm.io.tx_ready_o
@@ -144,5 +161,5 @@ class USBTx(dWidth: Int) extends Module {
 }
 
 object USBTx extends App {
-  ChiselStage.emitSystemVerilogFile(new USBTx(16))
+  ChiselStage.emitSystemVerilogFile(new USBTx(8))
 }
