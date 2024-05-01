@@ -90,21 +90,27 @@ class TxFSM(dWidth: Int) extends Module {
 
 // Main USBTx module incorporating the TxFSM and USBTxSerializer
 // No need for LS, the initial handshake with device must happen at FS per USB 2.0 Spec
+// System clock is either: 
+//   * 60 MHz HS/FS 8-bit 
+//   * 30 MHz HS/FS 16-bit
+//   * 48 MHz FS 8-bit
 class USBTx(dWidth: Int) extends Module {
   val io = IO(new Bundle {
     val pDin_packet = Flipped(Decoupled(UInt(dWidth.W)))
-    val txBusy      = Output(Bool())                         // to macrocell arbiter (UTMI, ULPI, whatever is upstream)
-
-    // Some Analog ?
-    val rpuEn       = Output(UInt(1.W))                      // Pull-up resistor enable: Asserted when the device is ready
 
     val serialClk   = Input(Clock())                        // From PLL, external clock is assumed to be in phase
     val xcvrSel     = Input(UInt(1.W))                      // 0: HS (480 MHz), 1: FS (12 MHz)
     val valid       = Output(UInt(1.W))                     // Pull-up is low when actively communicating, not sure if valid need to be exposed
+    val opMode      = Input(UInt(2.W))                      // Highest priority. 
+                                                            // 00: Normal, 
+                                                            // 01: Non-driving (propagate to Tx Driver => remove termination)
+                                                            // 10: BitStuffing and NRZI disabled
 
     val fsDout      = Output(UInt(1.W))                     
     val seo         = Output(UInt(1.W))
     val oe          = Output(UInt(1.W))
+
+    val rpuEn       = Output(UInt(1.W))                      // Pull-up resistor enable: Asserted when the device is ready
 
     val hsDout      = Output(UInt(1.W))
     val hsDriveEn   = Output(UInt(1.W))
@@ -135,7 +141,7 @@ class USBTx(dWidth: Int) extends Module {
   //serializer.io.sDataOut.ready := true.B  // Driver's always ready
 
   withClock(io.serialClk) {
-    bitStuffer.io.en := true.B
+    bitStuffer.io.en := true.B                                  // Need to assert when SYNC is generated
     bitStuffer.io.dataIn.valid := serializer.io.sDataOut.valid
     bitStuffer.io.dataIn.bits  := serializer.io.sDataOut.bits
     serializer.io.sDataOut.ready := bitStuffer.io.dataIn.ready
@@ -148,7 +154,6 @@ class USBTx(dWidth: Int) extends Module {
     io.hsDout := nrziEnc.io.dOut
   }
 
-  io.txBusy := fsm.io.tx_ready_o
   io.pDin_packet.ready := fsm.io.tx_ready_o
 
   io.rpuEn      := 1.U // Condition of pull-up resistor ?
