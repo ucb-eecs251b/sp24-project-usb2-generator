@@ -89,19 +89,20 @@ class TxFSM(dWidth: Int) extends Module {
 }
 
 // Main USBTx module incorporating the TxFSM and USBTxSerializer
+// No need for LS, the initial handshake with device must happen at FS per USB 2.0 Spec
 class USBTx(dWidth: Int) extends Module {
   val io = IO(new Bundle {
     val pDin_packet = Flipped(Decoupled(UInt(dWidth.W)))
-    val txBusy      = Output(Bool())
+    val txBusy      = Output(Bool())                         // to macrocell arbiter (UTMI, ULPI, whatever is upstream)
 
     // Some Analog ?
-    val rpuEn       = Output(UInt(1.W))
+    val rpuEn       = Output(UInt(1.W))                      // Pull-up resistor enable: Asserted when the device is ready
 
-    val serialClk   = Input(Clock())   // From PLL
-    val xcvrSel     = Input(UInt(1.W)) // Essentially, set to 1
-    val valid       = Output(UInt(1.W)) // Serializer valid
+    val serialClk   = Input(Clock())                        // From PLL, external clock is assumed to be in phase
+    val xcvrSel     = Input(UInt(1.W))                      // 0: HS (480 MHz), 1: FS (12 MHz)
+    val valid       = Output(UInt(1.W))                     // Pull-up is low when actively communicating, not sure if valid need to be exposed
 
-    val fsDout      = Output(UInt(1.W))
+    val fsDout      = Output(UInt(1.W))                     
     val seo         = Output(UInt(1.W))
     val oe          = Output(UInt(1.W))
 
@@ -133,7 +134,6 @@ class USBTx(dWidth: Int) extends Module {
   //io.valid := serializer.io.sDataOut.valid
   //serializer.io.sDataOut.ready := true.B  // Driver's always ready
 
-  // NRZI Encoder <-> Bit Stuffer in lock-step, no handshake
   withClock(io.serialClk) {
     bitStuffer.io.en := true.B
     bitStuffer.io.dataIn.valid := serializer.io.sDataOut.valid
@@ -143,7 +143,7 @@ class USBTx(dWidth: Int) extends Module {
 
     nrziEnc.io.en := true.B
     nrziEnc.io.dIn := bitStuffer.io.dataOut.bits
-    bitStuffer.io.dataOut.ready := true.B              // This is incorrect, but for now, ok
+    bitStuffer.io.dataOut.ready := true.B
 
     io.hsDout := nrziEnc.io.dOut
   }
