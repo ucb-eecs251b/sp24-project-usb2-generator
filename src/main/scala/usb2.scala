@@ -55,7 +55,7 @@ case class Usb2Params(
   asyncQueueSz: Int = 8 // May change this? Is 1 enough?
 )
 
-class Usb2Top(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extends ClockSinkDomain(ClockSinkParameters())(p) {
+class Usb2Top(params: Usb2Params = Usb2Params(), beatBytes: Int)(implicit p: Parameters) extends ClockSinkDomain(ClockSinkParameters())(p) {
 
   //val clock: Clock // TL clock (500 or 200 MHz)
   //val reset: Reset
