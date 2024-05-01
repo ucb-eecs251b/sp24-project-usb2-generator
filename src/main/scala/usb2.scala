@@ -52,7 +52,8 @@ case class Usb2Params(
 	address: BigInt = 0x7000,
   depth: Int = 32, 
   width: Int = 8,
-  asyncQueueSz: Int = 8 // May change this? Is 1 enough?
+  asyncQueueSz: Int = 8, // May change this? Is 1 enough?
+  loopback: Boolean = false // for integration test only
 )
 
 class Usb2Top(params: Usb2Params = Usb2Params(), beatBytes: Int)(implicit p: Parameters) extends ClockSinkDomain(ClockSinkParameters())(p) {
@@ -120,6 +121,15 @@ class Usb2Top(params: Usb2Params = Usb2Params(), beatBytes: Int)(implicit p: Par
   io.hsData    := usb2TxLogic.io.hsData   
   io.hsDriveEn := usb2TxLogic.io.hsDriveEn
   io.hsCsEn    := usb2TxLogic.io.hsCsEn   
+
+  // Loopback for integration tests
+  if (params.loopback) {
+    io.cru_fs_vp := io.vpo
+    io.cru_fs_vm := ~io.vpo
+    io.cru_hs_vp := io.vpo
+    io.cru_hs_vm := ~io.vpo
+    io.cru_hs_toggle := true.B // Tie to 1 in HS mode
+  }
 
     val mmio_device = new SimpleDevice("LoopBack", Seq("eecs251b,usb2")) 
     val mmio_node = TLRegisterNode(Seq(AddressSet(params.address, 4096-1)), mmio_device, "reg/control", beatBytes=beatBytes)
