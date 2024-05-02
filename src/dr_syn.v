@@ -33,6 +33,7 @@ sampler sampler(
     .clock_7(clock_7),
     .clock_8(clock_8),
     .clock_9(clock_9),
+    .clock_480(clock_480),
     .Dout(dout_sampler)
     //,
     //.VDD(VDD),

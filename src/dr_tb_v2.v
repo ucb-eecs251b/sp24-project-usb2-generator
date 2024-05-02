@@ -10,6 +10,9 @@ reg [TESTCASE-1:0] data_in_buffer, data_out_buffer;
 real OFFSET; // offset of Tx clock period in ns. 1000ppm = 0.1% = 0.002ns
 integer DIN_BUFFER_WAIT;
 integer DOUT_BUFFER_WAIT;
+integer SCALE = 1;
+
+reg random_bit;
 
 
 // Generate 480 MHz clock for Rx
@@ -49,32 +52,6 @@ dr_toplevel dut
 );
 
 
-// integer i;
-// always begin
-//     if(reset) begin
-//         data_in <= 0;
-//         data_in_buffer <= {TESTCASE-1{1'bx}};
-//     end
-//     else begin
-//         for(i=0; i<=TESTCASE; i=i+1) begin
-//             @(posedge clock_Tx)
-//             data_in <= $urandom_range(0, 1);  // Uniformly random 0 or 1
-//             data_in_buffer <= {data_in_buffer[TESTCASE-2:0], data_in};
-//         end
-//         repeat(25) @(posedge clock_Tx);
-//     end
-// end
-// integer j;
-// always begin
-//     if(reset) data_out_buffer <= {TESTCASE-1{1'bx}};
-//     else begin
-//         for(j=0; j<=(TESTCASE+26); j=j+1) begin
-//             @(posedge clock_Rx)
-//             data_out_buffer <= {data_out_buffer[TESTCASE-2:0], data_out};
-//         end
-//         repeat(2) @(posedge clock_Rx);
-//     end
-// end
 integer i;
 always begin
     data_in <= 0;
@@ -106,13 +83,13 @@ $vcdpluson;
     reset <= 1'b1;
     enable_Tx <= 0;
     OFFSET = 0.0;
-    DIN_BUFFER_WAIT = 27;
-    DOUT_BUFFER_WAIT = 28;
+    DIN_BUFFER_WAIT = 28;
+    DOUT_BUFFER_WAIT = 29;
     repeat(2) @(negedge clock_Rx);
     reset <= 1'b0;
     enable_Tx <= 1;
 
-    repeat(TESTCASE+26) @(negedge clock_Rx);
+    repeat(TESTCASE+27) @(negedge clock_Rx);
 
     if(data_in_buffer === data_out_buffer) $display("##### TEST 1 PASSED! #####");
     else $display("Mismatch detected in TEST 1 ><");
@@ -122,13 +99,13 @@ $vcdpluson;
     reset <= 1'b1;
     enable_Tx <= 0;
     OFFSET = 0.004;
-    DIN_BUFFER_WAIT = 27;
-    DOUT_BUFFER_WAIT = 28;
+    DIN_BUFFER_WAIT = 28;
+    DOUT_BUFFER_WAIT = 29;
     repeat(2) @(negedge clock_Rx);
     reset <= 1'b0;
     enable_Tx <= 1;
 
-    repeat(TESTCASE+27) @(negedge clock_Rx);
+    repeat(TESTCASE+28) @(negedge clock_Rx);
 
     if(data_in_buffer === data_out_buffer) $display("##### TEST 2 PASSED! #####");
     else $display("Mismatch detected in TEST 2 ><");
@@ -138,13 +115,13 @@ $vcdpluson;
     reset <= 1'b1;
     enable_Tx <= 0;
     OFFSET = -0.004;
-    DIN_BUFFER_WAIT = 42;
-    DOUT_BUFFER_WAIT = 39;
+    DIN_BUFFER_WAIT = 43;
+    DOUT_BUFFER_WAIT = 40;
     repeat(2) @(negedge clock_Rx);
     reset <= 1'b0;
     enable_Tx <= 1;
 
-    repeat(TESTCASE+43) @(negedge clock_Rx);
+    repeat(TESTCASE+44) @(negedge clock_Rx);
 
     if(data_in_buffer === data_out_buffer) $display("##### TEST 3 PASSED! #####");
     else $display("Mismatch detected in TEST 3 ><");
@@ -154,26 +131,43 @@ $vcdpluson;
     reset <= 1'b1;
     enable_Tx <= 0;
     OFFSET = 0.0;
-    DIN_BUFFER_WAIT = 27;
-    DOUT_BUFFER_WAIT = 28;
+    DIN_BUFFER_WAIT = 28;
+    DOUT_BUFFER_WAIT = 29;
     repeat(2) @(negedge clock_Rx);
     reset <= 1'b0;
     enable_Tx <= 1;
 
-
-
     repeat(TESTCASE) @(negedge clock_Tx) OFFSET = real'($bits($urandom_range(-2, 2)) / 1000);
 
-    // for (k = 0; k < TESTCASE; k=k+1) begin
-    //     OFFSET <= $urandom_range(-2, 2) / 1000;  // Convert from ps to ns
-    // end
-
-    repeat(28) @(negedge clock_Rx);
+    repeat(29) @(negedge clock_Rx);
 
     if(data_in_buffer === data_out_buffer) $display("##### TEST 4 PASSED! #####");
     else $display("Mismatch detected in TEST 4 ><");
 
-    @(negedge clock_Rx);
+    // Test 5: Tx jitters relative to Rx by +/-1000ppm = 0.002ns
+    // Reset protocol
+    reset <= 1'b1;
+    enable_Tx <= 0;
+    OFFSET = 0.0;
+    DIN_BUFFER_WAIT = 28;
+    DOUT_BUFFER_WAIT = 29;
+    repeat(2) @(negedge clock_Rx);
+    reset <= 1'b0;
+    enable_Tx <= 1;
+
+    repeat(TESTCASE/512) begin
+        random_bit = $urandom_range(0, 1); // Generate a random bit (0 or 1)
+        repeat(512) begin
+            @(negedge clock_Tx) OFFSET = (random_bit == 0) ? 0.004 : -0.004; // Assign +0.004 if random_bit is 0, otherwise assign -0.004
+        end
+    end
+
+    OFFSET = 0.0;
+    repeat(27) @(negedge clock_Rx);
+
+    if(data_in_buffer === data_out_buffer) $display("##### TEST 5 PASSED! #####");
+    else $display("Mismatch detected in TEST 5 ><");
+
     reset <= 1'b1;
     @(negedge clock_Rx);
 

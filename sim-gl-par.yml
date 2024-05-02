@@ -11,7 +11,7 @@ sim.inputs:
     - "src/sampler_v2.v"
     - "src/token_control.v"
   input_files_meta: append
-  level: "gl"
+  level: "par"
   timing_annotated: true
   saif:
     mode: "full"
