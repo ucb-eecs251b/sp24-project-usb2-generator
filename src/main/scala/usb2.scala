@@ -23,7 +23,7 @@ case class Usb2Params(
 
 case object Usb2Key extends Field[Option[Usb2Params]](None)
 
-class Usb2IO(params: Usb2Params = Usb2Params()) extends Bundle {
+class Usb2IO(params: Usb2Params) extends Bundle {
   // clock & reset
   val reset = Input(Bool())
   val clock = Input(Clock())
@@ -33,7 +33,7 @@ class Usb2IO(params: Usb2Params = Usb2Params()) extends Bundle {
 
   // PLL clock (Type?)
   val utmi_clk = Input(Clock()) // 30/60MHz
-  val clk_480  = Input(Clock())
+  // val clk_480  = Clock()
 
   // RxLogic input signals (Type?)
   val cru_fs_vp     = Input(SInt(1.W))
@@ -71,8 +71,8 @@ trait HasUsb2TopIO {
   def io: Usb2TopIO
 }
 
-class Usb2MMIOChiselModule(params: Usb2Params = Usb2Params()) extends Module {
-  val io = IO(new Usb2IO)
+class Usb2MMIOChiselModule(params: Usb2Params) extends Module {
+  val io = IO(new Usb2IO(params))
   // RX
   val usb2RxLogic = Module(new Usb2RxTop(params.width)) 
   usb2RxLogic.io.utmi_clk   := io.utmi_clk
@@ -155,7 +155,7 @@ class Usb2TL(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extends
       val rx_bundle = Wire(new DecoupledIO(UInt((params.width + 2).W))) // [RXError, RXActive, RXDataOut]
       val utmi_datain = Wire(Flipped(DecoupledIO(UInt(params.width.W))))
 
-      val impl = Module(new Usb2MMIOChiselModule())
+      val impl = Module(new Usb2MMIOChiselModule(params))
 
       impl.io.clock := clock
       impl.io.reset := reset.asBool
@@ -169,6 +169,15 @@ class Usb2TL(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extends
       rx_bundle.valid       := impl.io.mmio_rx_valid
 
       io.tx_busy := impl.io.busy
+
+      impl.io.cru_fs_vp      := 0.S
+      impl.io.cru_fs_vm      := 0.S
+      impl.io.cru_hs_vp      := 0.S
+      impl.io.cru_hs_vm      := 0.S
+      impl.io.cru_hs_toggle  := 0.U
+
+      impl.io.cru_clk := clock
+      impl.io.utmi_clk := clock
 
       mmio_node.regmap( // Question: MMIO takes multiple cycles, need to write FSM to control?
               0x00 -> Seq(
