@@ -67,7 +67,6 @@ class USBBitStuffer extends Module {
   }.otherwise {
     /* Pass-through when disabled */
     io.dataOut := io.dataIn.bits
-    io.dataIn.ready := true.B
   }
 
 }

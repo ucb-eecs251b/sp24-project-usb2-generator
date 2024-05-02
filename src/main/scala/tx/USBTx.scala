@@ -25,6 +25,7 @@ class TxFSM(dWidth: Int) extends Module {
     val tx_data_o  = Output(UInt(dWidth.W))  // Data output to downstream
     val tx_valid_o = Output(Bool())          // Valid output to downstream
     val tx_ready_o = Output(Bool())          // Ready output to upstream
+    val bStuffDis = Output(Bool())
   })
 
   val state   = RegInit(State.Idle)
@@ -35,6 +36,7 @@ class TxFSM(dWidth: Int) extends Module {
   io.tx_data_o := DontCare
   io.tx_valid_o := false.B
   io.tx_ready_o := false.B  // It should be false initially
+  io.bStuffDis := false.B
 
   withClock(io.serial_clk) {
     switch(state) {
@@ -71,13 +73,15 @@ class TxFSM(dWidth: Int) extends Module {
       is(State.DataTx) {
         io.tx_data_o  := io.tx_data_i
         io.tx_valid_o := true.B
+        io.bStuffDis := true.B
         when(io.tx_valid_i && io.tx_ready_i) {
           state := State.EOPGen
           io.tx_data_o := "b01111111".U
-          bit_cnt := 3.U
+          bit_cnt := 8.U
         }
       }
       is(State.EOPGen) {
+
         when(bit_cnt === 0.U && io.tx_ready_i) {
           state := State.Idle
           io.tx_valid_o := false.B 
@@ -142,7 +146,7 @@ class USBTx(dWidth: Int) extends Module {
 
   withClock(io.serialClk) {
     when(io.opMode === 0.U) {
-      bitStuffer.io.en := true.B
+      bitStuffer.io.en := !fsm.io.bStuffDis
       nrziEnc.io.en := true.B
     }.otherwise {
       bitStuffer.io.en := false.B
