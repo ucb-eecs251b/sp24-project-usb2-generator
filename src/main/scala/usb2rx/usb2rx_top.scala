@@ -52,79 +52,78 @@ class Usb2RxTop(val dataWidth: Int = 16) extends Module {
         RxStateMachine.io.datain := Serial2ParallelConverter.io.dataOut
         RxStateMachine.io.hs_toggle := io.cru_hs_toggle
         RxStateMachine.io.bitunstufferror := BitUnstuffer.io.error
+        RxStateMachine.io.serial_ready := Serial2ParallelConverter.io.ready
         io.utmi_dataout := RxStateMachine.io.dataout
         io.utmi_rx_active := RxStateMachine.io.rx_active
         io.utmi_rx_error := RxStateMachine.io.rx_error
         io.utmi_rx_valid := RxStateMachine.io.rx_valid
+        
     }
 }
 
 class RxStateMachine(dataWidth: Int) extends Module {
     val io = IO(new Bundle {
-        val dataout = Output(UInt(dataWidth.W)); // Note that usb2.scala currently says 8-bit?  
-        val datain = Input(UInt(dataWidth.W)); // Need to discuss bidirectionality 
+        val dataout = Output(UInt(dataWidth.W)) // Note that usb2.scala currently says 8-bit?  
+        val datain = Input(UInt(dataWidth.W)) // Need to discuss bidirectionality 
 
-        val rx_valid = Output(UInt(1.W)); // Dataout is valid
-        val rx_active = Output(UInt(1.W)); // High when state machine detects SYNC packet in data
-        val rx_error = Output(UInt(1.W)); // High when the Rx block catches invalid data etc
-
+        val rx_valid = Output(UInt(1.W)) // Dataout is valid
+        val rx_active = Output(UInt(1.W)) // High when state machine detects SYNC packet in data
+        val rx_error = Output(UInt(1.W)) // High when the Rx block catches invalid data etc
+        val serial_ready = Input(UInt(1.W))
         val bitunstufferror = Input(UInt(1.W))
 
-        val hs_toggle = Input(UInt(1.W)); // High if HS (CDRU)
+        val hs_toggle = Input(UInt(1.W)) // High if HS (CDRU)
     })
 
-    // object State extends ChiselEnum {
-    //     val RX_WAIT, STRIP_EOP, STRIP_SYNC,
-    //         RX_DATA, ERROR, ABORT, TERMINATE = Value
-    // }
+    object State extends ChiselEnum {
+        val RX_WAIT, STRIP_EOP, STRIP_SYNC,
+            RX_DATA, ERROR, ABORT, TERMINATE = Value
+    }
 
-    // val state = RegInit(State.RX_WAIT) // inital state
-    // when (io.reset) {
-    //     //TODO
-    // }.otherwise {
-    //     switch(state) {
-    //         // is(State.RESET) {
-    //         //     when(io.in) {
-    //         //         state := State.sOne1
-    //         //     }
-    //         // }
-    //         is(State.RX_WAIT) {
-    //             when(io.in) {
-    //                 state := State.sOne1
-    //             }
-    //         }
-    //         is(State.STRIP_SYNC) {
-    //             when(io.in) {
-    //                 state := State.sTwo1s
-    //             }.otherwise {
-    //                 state := State.sNone
-    //             }
-    //         }
-    //         is(State.RX_DATA) {
-    //             when(!io.in) {
-    //                 state := State.sNone
-    //             }
-    //         }
-    //         is(State.STRIP_EOP) {
-    //             when(!io.in) {
-    //                 state := State.sNone
-    //             }
-    //         }
-    //         is(State.ERROR) {
-    //             when(!io.in) {
-    //                 state := State.sNone
-    //             }
-    //         }
-    //         is(State.ABORT) {
-    //             when(!io.in) {
-    //                 state := State.sNone
-    //             }
-    //         }
-    //         is(State.TERMINATE) {
-    //             when(!io.in) {
-    //                 state := State.sNone
-    //             }
-    //         }
-    //     }
-    // }
+    val state = RegInit(State.RX_WAIT) // inital state
+        switch(state) {
+            // is(State.RESET) {
+            //     when(io.in) {
+            //         state := State.sOne1
+            //     }
+            // }
+            is(State.RX_WAIT) {
+                when(io.in) {
+                    state := State.sOne1
+                }
+            }
+            is(State.STRIP_SYNC) {
+                when(io.in) {
+                    state := State.sTwo1s
+                }.otherwise {
+                    state := State.sNone
+                }
+            }
+            is(State.RX_DATA) {
+                when(!io.in) {
+                    state := State.sNone
+                }
+            }
+            is(State.STRIP_EOP) {
+                when(!io.in) {
+                    state := State.sNone
+                }
+            }
+            is(State.ERROR) {
+                when(!io.in) {
+                    state := State.sNone
+                }
+            }
+            is(State.ABORT) {
+                when(!io.in) {
+                    state := State.sNone
+                }
+            }
+            is(State.TERMINATE) {
+                when(!io.in) {
+                    state := State.sNone
+                }
+            }
+        
+    }
 }
