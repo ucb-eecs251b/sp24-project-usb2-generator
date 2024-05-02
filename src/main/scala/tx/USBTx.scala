@@ -28,8 +28,8 @@ class TxFSM(dWidth: Int) extends Module {
   })
 
   val state   = RegInit(State.Idle)
-  val data    = RegInit(0.U(dWidth.W))
-  val bit_cnt = RegInit((7.U(4.W)))  // 8 bits per byte
+  val data    = RegInit(0.U(32.W))
+  val bit_cnt = RegInit((31.U(5.W)))
 
   // Initialize outputs
   io.tx_data_o := DontCare
@@ -42,43 +42,48 @@ class TxFSM(dWidth: Int) extends Module {
         io.tx_ready_o := true.B  // FSM is ready to receive data
         when(io.tx_valid_i) {
           state := State.SyncGen
-          data := "b1000_0000".U  // Sync field
+          data := "hAAAAAAAB".U
           io.tx_valid_o := true.B
         }
       }
       is(State.SyncGen) {
-        io.tx_data_o  := DontCare
-        io.tx_valid_o := true.B
-        when(bit_cnt === 0.U && io.tx_ready_i) {  // Proceed only if downstream is ready
+        when(io.tx_ready_i && (bit_cnt === 0.U)) {
           state := State.DataTx
-          io.tx_data_o := io.tx_data_i
-          io.tx_valid_o := false.B  // End of Sync Phase
-        }.elsewhen(bit_cnt < 7.U && bit_cnt > 0.U) {
+        }
+        when(io.tx_ready_i && (bit_cnt > 24.U && bit_cnt <= 32.U)) {
+          io.tx_data_o := data(31, 24)
           bit_cnt := bit_cnt - 1.U
-          io.tx_valid_o := io.tx_valid_i
           state := State.SyncGen
-        }.otherwise {
-          bit_cnt := 0.U
+        }.elsewhen(io.tx_ready_i && (bit_cnt > 16.U && bit_cnt <= 24.U)) {
+          io.tx_data_o := data(23, 16)
+          bit_cnt := bit_cnt - 1.U
+          state := State.SyncGen
+        }.elsewhen(io.tx_ready_i && (bit_cnt > 8.U && bit_cnt <= 16.U)) {
+          io.tx_data_o := data(15, 8)
+          bit_cnt := bit_cnt - 1.U
+          state := State.SyncGen
+        }.elsewhen(io.tx_ready_i && (bit_cnt > 0.U && bit_cnt <= 8.U)) {
+          io.tx_data_o := data(7, 0)
+          bit_cnt := bit_cnt - 1.U
           state := State.SyncGen
         }
       }
       is(State.DataTx) {
-        io.tx_data_o  := DontCare
-        io.tx_valid_o := io.tx_valid_i
+        io.tx_data_o  := io.tx_data_i
+        io.tx_valid_o := true.B
         when(io.tx_valid_i && io.tx_ready_i) {
           state := State.EOPGen
-          io.tx_data_o := "b1111_1001".U  // EOP field
-          bit_cnt := 7.U
+          io.tx_data_o := "b01111111".U
+          bit_cnt := 3.U
         }
       }
       is(State.EOPGen) {
-        io.tx_data_o := DontCare
         when(bit_cnt === 0.U && io.tx_ready_i) {
           state := State.Idle
-          io.tx_valid_o := false.B  // Ensure valid is low when transitioning to Idle
-        }.elsewhen(bit_cnt > 0.U && bit_cnt < 7.U) {
+          io.tx_valid_o := false.B 
+        }.elsewhen(bit_cnt > 0.U && bit_cnt < 3.U) {
           bit_cnt := bit_cnt - 1.U
-          io.tx_valid_o := io.tx_valid_i
+          io.tx_valid_o := true.B
         }.otherwise {
           bit_cnt := 0.U
           state := State.EOPGen
@@ -98,19 +103,19 @@ class USBTx(dWidth: Int) extends Module {
   val io = IO(new Bundle {
     val pDin_packet = Flipped(Decoupled(UInt(dWidth.W)))
 
-    val serialClk   = Input(Clock())                        // From PLL, external clock is assumed to be in phase
-    val xcvrSel     = Input(UInt(1.W))                      // 0: HS (480 MHz), 1: FS (12 MHz)
-    val valid       = Output(UInt(1.W))                     // Pull-up is low when actively communicating, not sure if valid need to be exposed
-    val opMode      = Input(UInt(2.W))                      // Highest priority. 
-                                                            // 00: Normal, 
-                                                            // 01: Non-driving (propagate to Tx Driver => remove termination)
-                                                            // 10: BitStuffing and NRZI disabled
+    val serialClk   = Input(Clock())      // From PLL, external clock is assumed to be in phase
+    val xcvrSel     = Input(UInt(1.W))    // 0: HS (480 MHz), 1: FS (12 MHz)
+    val valid       = Output(UInt(1.W))   // Pull-up is low when actively communicating, not sure if valid need to be exposed
+    val opMode      = Input(UInt(2.W))    // Highest priority. 
+                                          // 00: Normal, 
+                                          // 01: Non-driving (propagate to Tx Driver => remove termination)
+                                          // 10: BitStuffing and NRZI disabled
 
-    val fsDout      = Output(UInt(1.W))                     
+    val fsDout      = Output(UInt(1.W))   
     val seo         = Output(UInt(1.W))
     val oe          = Output(UInt(1.W))
 
-    val rpuEn       = Output(UInt(1.W))                      // Pull-up resistor enable: Asserted when the device is ready
+    val rpuEn       = Output(UInt(1.W))    // Pull-up resistor enable: Asserted when the device is ready
 
     val hsDout      = Output(UInt(1.W))
     val hsDriveEn   = Output(UInt(1.W))
@@ -135,22 +140,19 @@ class USBTx(dWidth: Int) extends Module {
   serializer.io.xcvrSelect    := io.xcvrSel
   fsm.io.tx_ready_i           := serializer.io.pDataIn.ready
 
-  // Serializer <-> IO, for now
-  //io.hsDout := serializer.io.sDataOut.bits
-  //io.valid := serializer.io.sDataOut.valid
-  //serializer.io.sDataOut.ready := true.B  // Driver's always ready
-
   withClock(io.serialClk) {
-    bitStuffer.io.en := true.B                                  // Need to assert when SYNC is generated
-    bitStuffer.io.dataIn.valid := serializer.io.sDataOut.valid
-    bitStuffer.io.dataIn.bits  := serializer.io.sDataOut.bits
-    serializer.io.sDataOut.ready := bitStuffer.io.dataIn.ready
+    when(io.opMode === 0.U) {
+      bitStuffer.io.en := true.B
+      nrziEnc.io.en := true.B
+    }.otherwise {
+      bitStuffer.io.en := false.B
+      nrziEnc.io.en := false.B
+    }
+
+    serializer.io.sDataOut <> bitStuffer.io.dataIn
+    nrziEnc.io.dIn := bitStuffer.io.dataOut
+
     io.valid := true.B
-
-    nrziEnc.io.en := true.B
-    nrziEnc.io.dIn := bitStuffer.io.dataOut.bits
-    bitStuffer.io.dataOut.ready := true.B
-
     io.hsDout := nrziEnc.io.dOut
   }
 

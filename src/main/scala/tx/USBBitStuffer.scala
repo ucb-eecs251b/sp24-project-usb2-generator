@@ -21,7 +21,7 @@ class USBBitStuffer extends Module {
     val en = Input(Bool())
     /** Data in from the serializer (fifo ?) */
     val dataIn = Flipped(Decoupled(UInt(1.W)))
-    val dataOut = Decoupled(UInt(1.W))
+    val dataOut = Output(UInt(1.W))
     //val cnt = Output(UInt(3.W))
   })
 
@@ -30,48 +30,44 @@ class USBBitStuffer extends Module {
   //io.cnt    := count
 
   io.dataIn.ready  := true.B
-  io.dataOut.valid := false.B
-  io.dataOut.bits  := DontCare
+  io.dataOut := DontCare
 
   when(io.en) {
-    when(io.dataIn.valid && io.dataOut.ready) {
+    when(io.dataIn.valid) {
 
       when(stuffing) {
         
         stuffing := false.B
-        io.dataOut.bits := 0.U
+        io.dataOut := 0.U
         io.dataIn.ready := true.B
 
       }.elsewhen(count === 5.U && io.dataIn.bits === 1.U) {
 
         stuffing := true.B
-        io.dataOut.bits := io.dataIn.bits
+        io.dataOut := io.dataIn.bits
         count := 0.U
         io.dataIn.ready := false.B
 
       }.otherwise {
 
-        io.dataOut.valid := true.B
         io.dataIn.ready := true.B
-        io.dataOut.bits := io.dataIn.bits
+        io.dataOut := io.dataIn.bits
         count := Mux(io.dataIn.bits === 1.U, count + 1.U, 0.U)
 
       }
 
     }.otherwise {
       
-      io.dataOut.valid := false.B
-      io.dataIn.ready := io.dataOut.ready
-      io.dataOut.bits := DontCare
+      io.dataIn.ready := true.B
+      io.dataOut := DontCare
       count := 0.U
 
     }
 
   }.otherwise {
     /* Pass-through when disabled */
-    io.dataOut.bits  := io.dataIn.bits
-    io.dataOut.valid := io.dataIn.valid
-    io.dataIn.ready  := io.dataOut.ready
+    io.dataOut := io.dataIn.bits
+    io.dataIn.ready := true.B
   }
 
 }
