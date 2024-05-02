@@ -3,16 +3,16 @@ package usb2
 // Standard imports
 import chisel3._
 import chisel3.util._
-import org.chipsalliance.cde.config.{Parameters, Field, Config}
-import freechips.rocketchip.diplomacy._
-import freechips.rocketchip.regmapper._
-import freechips.rocketchip.subsystem._
-import freechips.rocketchip.tilelink._
+// import org.chipsalliance.cde.config.{Parameters, Field, Config}
+// import freechips.rocketchip.diplomacy._
+// import freechips.rocketchip.regmapper._
+// import freechips.rocketchip.subsystem._
+// import freechips.rocketchip.tilelink._
 
-import chisel3.experimental.{IntParam, BaseModule}
-import chisel3.experimental.{withClock, withReset, withClockAndReset} // Might not need
-import freechips.rocketchip.prci._
-import freechips.rocketchip.util.UIntIsOneOf
+// import chisel3.experimental.{IntParam, BaseModule}
+// import chisel3.experimental.{withClock, withReset, withClockAndReset} // Might not need
+// import freechips.rocketchip.prci._
+// import freechips.rocketchip.util.UIntIsOneOf
 
 /* 
  * NRZI Decoder
@@ -24,16 +24,16 @@ import freechips.rocketchip.util.UIntIsOneOf
  * wrapper in usb2rx_top.scala.
  */
 
-class NRZIDecoder(dataWidth: Int) extends Module {
+class NRZIDecoder extends Module {
     val io = IO(new Bundle {
-        val dataout = Output(UInt());
-        val datain = Input(UInt());         
+        val dataOut = Output(UInt(1.W))
+        val dataIn = Input(UInt(1.W))         
     })
     
     // Buffer with an implicit reset to 0
-    var prev = RegInit(UInt(1.W), 0.U)
-    prev := datain
-    dataout := prev === datain
+    var prev = RegInit(1.U(1.W))
+    io.dataOut := ~(io.dataIn ^ prev)
+    prev := io.dataIn
 }
 
 

@@ -1,5 +1,5 @@
 // See README.md for license details.
-
+// REMOVE THIS AFTER YOU ARE DONE JASON
 ThisBuild / scalaVersion     := "2.13.12"
 ThisBuild / version          := "0.1.0"
 ThisBuild / organization     := "ucb-eecs251b"
@@ -8,7 +8,7 @@ val chiselVersion = "5.1.0"
 
 lazy val root = (project in file("."))
   .settings(
-    name := "srambist",
+    name := "usb2",
     libraryDependencies ++= Seq(
       "org.chipsalliance" %% "chisel" % chiselVersion,
       "edu.berkeley.cs" %% "chiseltest" % "5.0.2" % "test",

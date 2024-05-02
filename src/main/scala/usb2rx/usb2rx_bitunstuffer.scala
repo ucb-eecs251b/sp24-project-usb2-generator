@@ -3,16 +3,16 @@ package usb2
 // Standard imports
 import chisel3._
 import chisel3.util._
-import org.chipsalliance.cde.config.{Parameters, Field, Config}
-import freechips.rocketchip.diplomacy._
-import freechips.rocketchip.regmapper._
-import freechips.rocketchip.subsystem._
-import freechips.rocketchip.tilelink._
+// import org.chipsalliance.cde.config.{Parameters, Field, Config}
+// import freechips.rocketchip.diplomacy._
+// import freechips.rocketchip.regmapper._
+// import freechips.rocketchip.subsystem._
+// import freechips.rocketchip.tilelink._
 
-import chisel3.experimental.{IntParam, BaseModule}
-import chisel3.experimental.{withClock, withReset, withClockAndReset} // Might not need
-import freechips.rocketchip.prci._
-import freechips.rocketchip.util.UIntIsOneOf
+// //import chisel3.experimental.{IntParam, BaseModule}
+// //import chisel3.experimental.{withClock, withReset, withClockAndReset} // Might not need
+// import freechips.rocketchip.prci._
+// import freechips.rocketchip.util.UIntIsOneOf
 
 /* 
  * Bit Unstuffer
@@ -24,33 +24,23 @@ import freechips.rocketchip.util.UIntIsOneOf
  * transitions once every seven bits.
  */
 
-class BitUnstuffer(dataWidth: Int) extends Module {
+class BitUnstuffer extends Module {
     val io = IO(new Bundle {
-        val dataout = Output(UInt());
-        val datain = Input(UInt());         
-        val reset = Input(UInt()); 
-        val clk = Input(Clock());
+        val error = Output(UInt(1.W))     // bit stuffing error
+        val valid = Output(UInt(1.W))      // bit stuffing inserts a 0 bit, we should ignore it in the S2P if it is bit stuffed
+        val dataOut = Output(UInt(1.W))   
+        val dataIn = Input(UInt(1.W))     // from NRZI (decoded data)     
     })
-    
-    // Buffer with an implicit reset to 0
-    val buffer = RegInit(UInt(6.W), 0.U)
-    // If six consecutive 1s, send a 0 and reset
-    when(buffer === 63.U ) {  // 63 is decimal for 111_111
-        buffer := 0.U
-        io.dataout := 0.U
-    }
-    // If a 0 appears, send datain and reset 
-    .elsewhen(io.datain === 0.U) {
-        buffer := 0.U
-        io.dataout := io.datain
-    }
-    // Else send datain and shift registers
-    .otherwise {
-        buffer := buffer << 1 + io.datain
-        io.dataout := io.datain
+    // 6 consecutive ones you add a stuffed bit, so remove that.
+    val dataReg = RegInit(0.U(7.W))
+    dataReg := Cat(dataReg(5, 0), io.dataIn)
+    io.error := ((dataReg === "h7F".U) && (io.dataIn =/= 0.U)) // 7th bit is not zero 
+    io.dataOut := io.dataIn
+    // unstuff the bit if 7th bit is 0 after 6 consecutive 1s
+    when ((io.dataIn === 0.U) && (dataReg === "h3F".U)) { 
+        io.valid := 0.U
+        dataReg := 0.U
+    }.otherwise {
+        io.valid := 1.U
     }
 }
-
-println(s"Testing BitUnstuffer")
-// Plz test me xd
-println(s"Testing NRZIDecoder: Not Implemented")

@@ -4,3 +4,4 @@ target/*
 .scala-build/
 project/
 .bloop/
+test_run_dir/
