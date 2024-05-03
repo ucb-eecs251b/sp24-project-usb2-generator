@@ -29,6 +29,7 @@ class Usb2RxTop(val dataWidth: Int = 16) extends Module {
         val data_k = Input(UInt(1.W))  // D-
         val reset = Input(Reset()); 
         val clk = Input(Clock()); // 480 MHz
+        val squelch = Input(UInt(1.W)) // Squelch for linestate HS mode
 
         val cru_hs_toggle = Input(UInt(1.W)); // XcvrSelect = 0
     })
@@ -58,6 +59,7 @@ class Usb2RxTop(val dataWidth: Int = 16) extends Module {
         RxStateMachine.io.reset := io.reset
         RxStateMachine.io.data_j := io.data_j
         RxStateMachine.io.data_k := io.data_k
+        RxStateMachine.io.squel := io.squelch
 
         io.utmi_linestate := RxStateMachine.io.linestate 
         io.utmi_dataout := RxStateMachine.io.dataout
@@ -84,6 +86,7 @@ class RxStateMachine(dataWidth: Int) extends Module {
         val data_j = Input(UInt(1.W))
         val data_k = Input(UInt(1.W))
         val linestate = Output(UInt(2.W))
+        val squel = Input(UInt(1.W))
     })
 
     // TODO FIX ME JASON
@@ -109,6 +112,7 @@ class RxStateMachine(dataWidth: Int) extends Module {
     }
 
     val state = RegInit(State.RX_RESET) // inital state
+    val abort2 = RegInit(0.U(UInt(1.W)))
     switch(state) {
         is(State.RX_RESET) {
             when(io.reset.asBool === 0.U) {
@@ -138,6 +142,11 @@ class RxStateMachine(dataWidth: Int) extends Module {
             when(io.serial_ready) {
                 state := State.STRIP_EOP
             }.elsewhen (io.bitunstufferror | io.error) {
+                if (io.bitunstufferror === 1.U) {
+                    abort2 := 1.U
+                }.otherwise {
+                    abort2 := 0.U
+                }
                 io.rx_valid := 1.U
                 state := State.ERROR
             }.otherwise {
@@ -156,8 +165,8 @@ class RxStateMachine(dataWidth: Int) extends Module {
         }
         is(State.ERROR) {
             io.rx_error := 1.U
-            when(!io.in) {
-                state := State.sNone
+            when(abort2 =/= 1.U) {
+                state := State.ABORT1
             }.otherwise{
                 state := State.ABORT2
             }
