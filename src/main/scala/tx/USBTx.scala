@@ -59,19 +59,20 @@ class TxFSM(dWidth: Int) extends Module {
         }
       }
       is(State.SyncGen) {
-        when(io.serReady && (bit_cnt === 0.U)) {
-          state := State.DataTx
-        }.elsewhen(io.serReady && (bit_cnt > 0.U && bit_cnt <= 32.U)) {
-          val byteIdx = (bit_cnt - 1.U) >> 3
-          io.tx_data_o := MuxCase(DontCare, Array(
-            (byteIdx === 3.U) -> data(31, 24),
-            (byteIdx === 2.U) -> data(23, 16),
-            (byteIdx === 1.U) -> data(15, 8),
-            (byteIdx === 0.U) -> data(7, 0)
-          ).toIndexedSeq)
-          io.tx_valid_o := true.B
-          state := State.SyncGen
-          bit_cnt := bit_cnt - 1.U
+        when(io.serReady) {
+          when(bit_cnt === 0.U) {
+          }.otherwise {
+            val byteIdx = (bit_cnt - 1.U) >> 3
+            io.tx_data_o := MuxCase(DontCare, Array(
+              (byteIdx === 3.U) -> data(31, 24),
+              (byteIdx === 2.U) -> data(23, 16),
+              (byteIdx === 1.U) -> data(15, 8),
+              (byteIdx === 0.U) -> data(7, 0)
+            ).toIndexedSeq)
+            io.tx_valid_o := true.B
+            state   := State.SyncGen
+            bit_cnt := bit_cnt - 1.U
+          }
         }.otherwise {
           state := State.SyncGen
         }
