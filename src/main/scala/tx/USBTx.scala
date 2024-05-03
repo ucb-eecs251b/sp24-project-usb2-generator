@@ -12,8 +12,9 @@ object TxStates {
 }
 
 object Delimiters {
-  val hsEOP = "h7F".U(8.W)
+  val hsEOP = "h7F".U(8.W)                   //This is incorrect, should be based on last bit of DataTx
   val hsSOFEOP = "h7FFFFFFFF".U(40.W)
+  val hsSYNC = "hAAAAAAAB".U(32.W)
 }
 
 
@@ -24,21 +25,41 @@ class TxFSM(dWidth: Int) extends Module {
   import Delimiters._
 
   val io = IO(new Bundle {
-    val tx_valid_i = Input(Bool())           // Valid input from upstream
-    val tx_data_i  = Input(UInt(dWidth.W))   // Data input from upstream
-    val serial_clk = Input(Clock())          // Clock input
-    val serReady = Input(Bool())           
-    val sofDetect = Input(Bool())
+    val utmiValid_i = Input(Bool())           // Valid input from upstream
+    val utmiData_i  = Input(UInt(dWidth.W))   // Data input from upstream
+    val serial_clk  = Input(Clock())          // Clock input
+    val serReady    = Input(Bool())           
+    val sofDetect   = Input(Bool())
     
     val tx_data_o  = Output(UInt(dWidth.W))  // Data output to downstream
     val tx_valid_o = Output(Bool())          // Valid output to downstream
     val tx_ready_o = Output(Bool())          // Ready output to upstream
-    val bStuffDis = Output(Bool())
+    val bStuffDis  = Output(Bool())
   })
 
   val state   = RegInit(State.Idle)
   val data    = RegInit(0.U(32.W))
   val bit_cnt = RegInit((0.U(6.W)))
+
+  // Will make dry later, good enough for now
+  def selectByte40(byteIdx: UInt, dByte: UInt): UInt = {
+    MuxCase(0.U, Array(
+      (byteIdx === 4.U) -> dByte(39, 32),
+      (byteIdx === 3.U) -> dByte(31, 24),
+      (byteIdx === 2.U) -> dByte(23, 16),
+      (byteIdx === 1.U) -> dByte(15, 8),
+      (byteIdx === 0.U) -> dByte(7, 0)
+    ).toIndexedSeq)
+  }
+
+  def selectByte32(byteIdx: UInt, dByte: UInt): UInt = {
+    MuxCase(0.U, Array(
+      (byteIdx === 3.U) -> dByte(31, 24),
+      (byteIdx === 2.U) -> dByte(23, 16),
+      (byteIdx === 1.U) -> dByte(15, 8),
+      (byteIdx === 0.U) -> dByte(7, 0)
+    ).toIndexedSeq)
+  }
 
   // Initialize outputs
   io.tx_data_o := DontCare
@@ -49,9 +70,9 @@ class TxFSM(dWidth: Int) extends Module {
   withClock(io.serial_clk) {
     switch(state) {
       is(State.Idle) {
-        when(io.tx_valid_i) {
+        when(io.utmiValid_i) {
           state := State.SyncGen
-          data := "hAAAAAAAB".U
+          data := Delimiters.hsSYNC
           bit_cnt := 32.U
         }.otherwise {
           state := State.Idle
@@ -61,14 +82,11 @@ class TxFSM(dWidth: Int) extends Module {
       is(State.SyncGen) {
         when(io.serReady) {
           when(bit_cnt === 0.U) {
+            state := State.DataTx
+            bit_cnt := 7.U
           }.otherwise {
             val byteIdx = (bit_cnt - 1.U) >> 3
-            io.tx_data_o := MuxCase(DontCare, Array(
-              (byteIdx === 3.U) -> data(31, 24),
-              (byteIdx === 2.U) -> data(23, 16),
-              (byteIdx === 1.U) -> data(15, 8),
-              (byteIdx === 0.U) -> data(7, 0)
-            ).toIndexedSeq)
+            io.tx_data_o := selectByte32(byteIdx, data)
             io.tx_valid_o := true.B
             state   := State.SyncGen
             bit_cnt := bit_cnt - 1.U
@@ -78,30 +96,37 @@ class TxFSM(dWidth: Int) extends Module {
         }
       }
       is(State.DataTx) {
-        io.tx_data_o  := io.tx_data_i
+        io.tx_data_o  := io.utmiData_i
         io.tx_valid_o := true.B
-        when(!io.tx_valid_i && io.serReady) {
+
+        when(!io.utmiValid_i) {
           io.bStuffDis := true.B
           state := State.EOPGen
-          when(io.sofDetect) {
-            io.tx_data_o := Delimiters.hsSOFEOP(39, 32)
-            bit_cnt := 40.U
-          }.otherwise {
-            io.tx_data_o := Delimiters.hsEOP
-            bit_cnt := 8.U
+          bit_cnt := Mux(io.sofDetect, 39.U, 7.U)
+        }.otherwise {
+          when(io.serReady) {
+            bit_cnt := Mux(bit_cnt === 0.U, 7.U, bit_cnt - 1.U)
+            when(bit_cnt === 0.U) {
+              io.tx_data_o := io.utmiData_i
+            }
           }
+          state := State.DataTx
         }
+
       }
       is(State.EOPGen) {
-        when(bit_cnt === 0.U && io.serReady) {
-          state := State.Idle
-          io.tx_valid_o := false.B 
-        }.elsewhen(bit_cnt > 0.U && bit_cnt < 3.U) {
-          bit_cnt := bit_cnt - 1.U
-          io.tx_valid_o := true.B
-        }.otherwise {
-          bit_cnt := 0.U
-          state := State.EOPGen
+        io.bStuffDis := true.B
+        when(io.serReady) {
+          when(bit_cnt === 0.U) {
+            state := State.Idle
+            bit_cnt := 0.U
+          }.otherwise {
+            val byteIdx = (bit_cnt - 1.U) >> 3
+            io.tx_data_o := selectByte40(byteIdx, Delimiters.hsSOFEOP)
+            io.tx_valid_o := true.B
+            state := State.EOPGen
+            bit_cnt := bit_cnt - 1.U
+          }
         }
       }
     }
@@ -144,15 +169,15 @@ class USBTx(dWidth: Int) extends Module {
   val nrziEnc    = Module(new USBNrziEncoder)
   
   // Inputs
-  fsm.io.tx_valid_i := io.pDin_packet.valid
-  fsm.io.tx_data_i  := io.pDin_packet.bits
+  fsm.io.utmiValid_i := io.pDin_packet.valid
+  fsm.io.utmiData_i  := io.pDin_packet.bits
   fsm.io.serial_clk := io.serialClk
   fsm.io.sofDetect  := io.sofDetectSIE
 
   // FSM <-> Serializer
   serializer.io.pDataIn.valid := fsm.io.tx_valid_o
   serializer.io.pDataIn.bits  := fsm.io.tx_data_o
-  serializer.io.clockOut      := io.serialClk
+  serializer.io.hsClk      := io.serialClk
   serializer.io.xcvrSelect    := io.xcvrSel
   fsm.io.serReady             := serializer.io.pDataIn.ready
 

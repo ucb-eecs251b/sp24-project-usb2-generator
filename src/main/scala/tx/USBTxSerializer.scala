@@ -8,7 +8,8 @@ class USBTxSerializer(dWidth: Int) extends Module {
   val io = IO(new Bundle {
     val pDataIn     = Flipped(Decoupled(UInt(dWidth.W))) 
     val sDataOut    = Decoupled(UInt(1.W))               
-    val clockOut    = Input(Clock())                    
+    val fsClk       = Input(Clock())                    
+    val hsClk      = Input(Clock())
 
     val xcvrSelect  = Input(UInt(1.W))  //  0: HS, 480 MHz, 1: FS, 12 MHz
   })
