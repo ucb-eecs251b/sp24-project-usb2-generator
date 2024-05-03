@@ -3,6 +3,8 @@ package usb2
 // Standard imports
 import chisel3._
 import chisel3.util._
+// import _root_.circt.stage.ChiselStage
+
 // import org.chipsalliance.cde.config.{Parameters, Field, Config}
 // import freechips.rocketchip.diplomacy._
 // import freechips.rocketchip.regmapper._
@@ -52,3 +54,10 @@ class Serial2ParallelConverter(val dataWidth: Int = 16) extends Module {
     }
     io.dataOut := holdReg
 }
+
+// object Serial2ParallelConverterDriver extends App {
+//   ChiselStage.emitSystemVerilogFile(
+//     new Serial2ParallelConverter,
+//     firtoolOpts = Array("-disable-all-randomization", "-strip-debug-info")
+//   )
+// }

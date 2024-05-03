@@ -5,7 +5,7 @@ ThisBuild / version          := "0.1.0"
 ThisBuild / organization     := "ucb-eecs251b"
 
 val chiselVersion = "5.1.0"
-
+// val chiselVersion = "6.2.0" // switch to this version to change to verilog
 lazy val root = (project in file("."))
   .settings(
     name := "usb2",
