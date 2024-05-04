@@ -8,8 +8,8 @@ class USBTxSerializer(dWidth: Int) extends Module {
   val io = IO(new Bundle {
     val pDataIn     = Flipped(Decoupled(UInt(dWidth.W))) 
     val sDataOut    = Decoupled(UInt(1.W))               
-    val fsClk       = Input(Clock())                    
-    val hsClk      = Input(Clock())
+    val fsClk       = Input(Clock())
+    val hsClk       = Input(Clock())
 
     val xcvrSelect  = Input(UInt(1.W))  //  0: HS, 480 MHz, 1: FS, 12 MHz
   })
@@ -35,18 +35,23 @@ class USBTxSerializer(dWidth: Int) extends Module {
       fifo.io.deq.ready := false.B
     }                             
 
-    when(dataReady) {
-      shiftReg := shiftReg >> 1
-      bitCounter := bitCounter + 1.U
+    when(dataReady && io.sDataOut.ready) {
+      io.sDataOut.bits  := shiftReg(0)
+      io.sDataOut.valid := true.B
+      shiftReg          := shiftReg >> 1
+      bitCounter        := bitCounter + 1.U
       when(bitCounter === (7).U) {
         dataReady := false.B
-        io.sDataOut.valid := false.B
       }
+    }
+    /* Deassert valid in the next cycle after the last bit has been sent out */
+    when(!dataReady && io.sDataOut.valid) {
+      io.sDataOut.valid := false.B
     }
 
   }
 }
 
 object USBTxSerializer extends App {
-  ChiselStage.emitSystemVerilog(new USBTxSerializer(16))
+  ChiselStage.emitSystemVerilogFile(new USBTxSerializer(16))
 }
