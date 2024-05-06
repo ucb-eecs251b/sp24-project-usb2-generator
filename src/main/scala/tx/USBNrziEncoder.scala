@@ -15,20 +15,26 @@ class USBNrziEncoder extends Module {
 
   when(io.en) {
     when(io.dIn === 1.U) {
-      /* If dataIn is '1' -> no change in output (maintain last state) */
+      // dataIn == 1 -> maintain prev val
       io.dOut := lastState
     }.otherwise {
-      /* If '0', invert the output */
+      // dataIn == 0 -> invert prev val
       io.dOut := !lastState
     }
   }.otherwise {
     io.dOut := io.dIn
   }
 
-  /* Update for the next cycle */
   lastState := io.dOut
 }
 
 object USBNrziEncoder extends App {
-  ChiselStage.emitSystemVerilogFile(new USBNrziEncoder)
+  def apply[T <: Data](en: Bool, dIn: T): UInt = {
+    val n = Module(new USBNrziEncoder)
+    n.io.en := en
+    n.io.dIn := dIn
+    n.io.dOut
+  }
+
+  //ChiselStage.emitSystemVerilogFile(new USBNrziEncoder)
 }
