@@ -6,7 +6,7 @@ import _root_.circt.stage.ChiselStage
 
 /** USBBitStuffer
   *
-  * This module is used to insert the incoming with a 0 after 6 consecutive 1s.
+  * Inserts the incoming with a 0 after 6 consecutive 1s.
   * It is assumed that the upstream module pauses transmission then stuffer isn't ready
   *
   * @param dataIn  : ready-valid from serializer
@@ -19,15 +19,12 @@ class USBBitStuffer extends Module {
      *  This is specified in the UTMI spec. doc
      */
     val en = Input(Bool())
-    /** Data in from the serializer (fifo ?) */
     val dataIn = Flipped(Decoupled(UInt(1.W)))
     val dataOut = Output(UInt(1.W))
-    //val cnt = Output(UInt(3.W))
   })
 
   val count = RegInit(0.U(3.W))
   val stuffing  = RegInit(false.B)
-  //io.cnt    := count
 
   io.dataIn.ready  := true.B
   io.dataOut := DontCare
@@ -71,6 +68,15 @@ class USBBitStuffer extends Module {
 
 }
 
-object USBBitStuffer extends App {
+object USBBitStuffer extends App{  // App inheritance for testing, remove later
+  def apply[T <: Data](en: Bool, dataIn: DecoupledIO[T]): UInt = {
+    val b = Module(new USBBitStuffer)
+    b.io.en := en
+    b.io.dataIn.valid := dataIn.valid
+    b.io.dataIn.bits := dataIn.bits
+    dataIn.ready := b.io.dataIn.ready
+    b.io.dataOut
+  }
+
   ChiselStage.emitSystemVerilogFile(new USBBitStuffer)
 }
