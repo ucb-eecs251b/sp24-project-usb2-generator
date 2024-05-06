@@ -1,1 +1,7 @@
-target/*
+.bsp/
+.metals/
+.scala-build/
+
+project/
+src/main/scala/tx/target/
+target/
