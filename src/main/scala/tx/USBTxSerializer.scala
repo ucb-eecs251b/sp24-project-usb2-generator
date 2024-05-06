@@ -20,41 +20,35 @@ class USBTxSerializer(dWidth: Int) extends Module {
     val xcvrSelect  = Input(UInt(1.W))  //  
   })
 
-  io.sDataOut.bits := 0.U
-  io.sDataOut.valid := false.B
-
   val fifo = Module(new Queue(UInt(dWidth.W), 16))
   fifo.io.enq <> io.pDataIn
-  fifo.io.deq.ready := false.B
 
   withClock(io.clockOut) {
-    val shiftReg   = RegInit(0.U(dWidth.W))
-    val bitCounter = RegInit(0.U(log2Ceil(dWidth + 1).W))
-    val dataReady  = RegInit(false.B)
+    val shiftReg      = RegInit(0.U(dWidth.W))
+    val bitCounter    = RegInit(0.U(log2Ceil(dWidth + 1).W))
+    val dataReady     = RegInit(false.B)
+
+    fifo.io.deq.ready := !dataReady
+    io.sDataOut.bits := 0.U
 
     when(fifo.io.deq.valid && !dataReady) {
       shiftReg := fifo.io.deq.bits
-      fifo.io.deq.ready := true.B
       bitCounter := 0.U
       dataReady := true.B
-    }.otherwise { 
-      fifo.io.deq.ready := false.B
-    }                             
+    }
 
-    when(dataReady && io.sDataOut.ready) {
+    when(dataReady) {
       io.sDataOut.bits  := shiftReg(0)
       io.sDataOut.valid := true.B
       shiftReg          := shiftReg >> 1
       bitCounter        := bitCounter + 1.U
-      when(bitCounter === dWidth.U) {
+      when(bitCounter === 7.U) {
         dataReady := false.B
+        io.sDataOut.valid := false.B
       }
-    }
-    // Deassert valid in the next cycle after the last bit has been sent out
-    when(!dataReady) {
+    }.otherwise {
       io.sDataOut.valid := false.B
     }
-
   }
 }
 

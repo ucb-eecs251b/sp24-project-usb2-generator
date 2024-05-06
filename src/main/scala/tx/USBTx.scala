@@ -11,7 +11,7 @@ object TxStates {
   }
 }
 
-object Delimiters {
+case object Delimiters {
   val hsEOP = "h7F".U(8.W)                   //This is incorrect, should be based on last bit of DataTx
   val hsSOFEOP = "h7FFFFFFFF".U(40.W)
   val hsSYNC = "hAAAAAAAB".U(32.W)
@@ -27,7 +27,7 @@ class TxFSM(dWidth: Int) extends Module {
   val io = IO(new Bundle {
     val utmiValid_i = Input(Bool())           // Valid input from upstream
     val utmiData_i  = Input(UInt(dWidth.W))   // Data input from upstream
-    val serial_clk  = Input(Clock())          // Clock input
+    val serClk      = Input(Clock())          // Clock input
     val serReady    = Input(Bool())           
     val sofDetect   = Input(Bool())
     
@@ -67,7 +67,7 @@ class TxFSM(dWidth: Int) extends Module {
   io.tx_ready_o := false.B
   io.bStuffDis := false.B
 
-  withClock(io.serial_clk) {
+  withClock(io.serClk) {
     switch(state) {
       is(State.Idle) {
         when(io.utmiValid_i) {
@@ -171,8 +171,8 @@ class USBTx(dWidth: Int) extends Module {
   // Inputs
   fsm.io.utmiValid_i := io.pDin_packet.valid
   fsm.io.utmiData_i  := io.pDin_packet.bits
-  fsm.io.serial_clk := io.serialClk
-  fsm.io.sofDetect  := io.sofDetectSIE
+  fsm.io.serClk      := io.serialClk
+  fsm.io.sofDetect   := io.sofDetectSIE
 
   // FSM <-> Serializer
   serializer.io.pDataIn.valid := fsm.io.tx_valid_o
