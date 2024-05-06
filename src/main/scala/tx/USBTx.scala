@@ -177,7 +177,7 @@ class USBTx(dWidth: Int) extends Module {
   // FSM <-> Serializer
   serializer.io.pDataIn.valid := fsm.io.tx_valid_o
   serializer.io.pDataIn.bits  := fsm.io.tx_data_o
-  serializer.io.hsClk      := io.serialClk
+  serializer.io.clockOut      := io.serialClk
   serializer.io.xcvrSelect    := io.xcvrSel
   fsm.io.serReady             := serializer.io.pDataIn.ready
 

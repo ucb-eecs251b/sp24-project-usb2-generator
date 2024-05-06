@@ -1,4 +1,4 @@
-ThisBuild / scalaVersion     := "2.13.10"
+ThisBuild / scalaVersion     := "2.13.12"
 ThisBuild / version          := "0.1.0"
 ThisBuild / organization     := "251b"
 
@@ -10,7 +10,6 @@ lazy val root = (project in file("."))
     libraryDependencies ++= Seq(
       "org.chipsalliance" %% "chisel" % chiselVersion,
       "org.scalatest" %% "scalatest" % "3.2.16" % "test",
-      "edu.berkeley.cs" %% "rocketchip" % "1.6.0"
     ),
     scalacOptions ++= Seq(
       "-language:reflectiveCalls",
