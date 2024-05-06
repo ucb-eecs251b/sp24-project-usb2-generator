@@ -6,7 +6,7 @@ Data: May 6, 2024
 
 Purpose: Recovers serial data send from transmitter to recevier without the Tx clock.
 
-I/0:
+I/0:  
 ----- Inputs ----- | ----- Purpose -----  
 data_in            | 1-bit input serial data from transmitter  
 clock_480          | 480MHz clock (main clock for receiver)  
