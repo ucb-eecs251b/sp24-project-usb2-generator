@@ -4,12 +4,12 @@ import chisel3._
 import chisel3.util._
 import chisel3.experimental.{Analog, IntParam, BaseModule}
 import freechips.rocketchip.prci._
-import freechips.rocketchip.subsystem.{BaseSubsystem, PBUS}
+import freechips.rocketchip.subsystem.{BaseSubsystem, PBUS} // delete pbus?
 import org.chipsalliance.cde.config.{Parameters, Field, Config}
 import freechips.rocketchip.diplomacy._
-import freechips.rocketchip.regmapper._
+import freechips.rocketchip.regmapper.{HasRegMap, RegField}
 import freechips.rocketchip.tilelink._
-import freechips.rocketchip.util._
+import freechips.rocketchip.util.{UIntIsOneOf, AsyncQueue, AsyncQueueParams}
 
 case class Usb2Params(
 	// config params
@@ -26,13 +26,13 @@ case object Usb2Key extends Field[Option[Usb2Params]](None)
 class Usb2IO(params: Usb2Params) extends Bundle {
   // clock & reset
   val reset = Input(Bool())
-  val clock = Input(Clock())
+  // val clock = Input(Clock())
 
   val DP = Analog(1.W) // Analog type (equivalent to Verilog inout)
   val DM = Analog(1.W)
 
   // PLL clock (Type?)
-  val utmi_clk = Input(Clock()) // 30/60MHz
+  // val utmi_clk = Input(Clock()) // 30/60MHz
   // val clk_480  = Clock()
 
   // RxLogic input signals (Type?)
@@ -41,7 +41,7 @@ class Usb2IO(params: Usb2Params) extends Bundle {
   val cru_hs_vp     = Input(SInt(1.W))
   val cru_hs_vm     = Input(SInt(1.W))
   val cru_hs_toggle = Input(UInt(1.W))
-  val cru_clk       = Input(Clock())
+  // val cru_clk       = Input(Clock())
 
   // TxLogic output signals (Type? - analog)
   val rpuEn     = Output(UInt(1.W))
@@ -50,6 +50,11 @@ class Usb2IO(params: Usb2Params) extends Bundle {
   val hsData    = Output(UInt(1.W))
   val hsDriveEn = Output(UInt(1.W))
   val hsCsEn    = Output(UInt(1.W))
+
+  // chisel test
+  val asyncQ_tx_data = Output(UInt(params.width.W))
+
+  val why = Input(Bool())
 
   // MMIO
   val busy = Output(Bool())
@@ -61,6 +66,7 @@ class Usb2IO(params: Usb2Params) extends Bundle {
   val mmio_rx_data = Output(UInt((params.width + 2).W))
   val mmio_rx_ready = Input(Bool())
   val mmio_rx_valid = Output(Bool())
+
 }
 
 class Usb2TopIO extends Bundle {
@@ -71,18 +77,18 @@ trait HasUsb2TopIO {
   def io: Usb2TopIO
 }
 
-class Usb2MMIOChiselModule(params: Usb2Params) extends Module {
+class Usb2Top(params: Usb2Params) extends Module { // Usb2MMIOChiselModule - not MMIO
   val io = IO(new Usb2IO(params))
   // RX
   val usb2RxLogic = Module(new Usb2RxTop(params.width)) 
-  usb2RxLogic.io.utmi_clk   := io.utmi_clk
+  usb2RxLogic.io.utmi_clk   := clock // io.utmi_clk
   usb2RxLogic.io.utmi_reset := reset
 
   // AsyncFIFO from 30/60MHz to TL clock domain
   val rx_async = Module(new AsyncQueue(UInt((params.width + 2).W), AsyncQueueParams(depth=params.asyncQueueSz)))
-  rx_async.io.enq_clock := io.utmi_clk // 30/60MHz
+  rx_async.io.enq_clock := clock // io.utmi_clk // 30/60MHz
   rx_async.io.enq_reset := reset
-  rx_async.io.deq_clock := clock // TL clock
+  rx_async.io.deq_clock := clock // TL clock [vs io.clk?]
   rx_async.io.deq_reset := false.B 
   rx_async.io.enq.bits  := Cat(Cat(usb2RxLogic.io.utmi_rx_error, usb2RxLogic.io.utmi_rx_active), usb2RxLogic.io.utmi_dataout)
   rx_async.io.enq.valid := usb2RxLogic.io.utmi_rx_valid
@@ -98,7 +104,7 @@ class Usb2MMIOChiselModule(params: Usb2Params) extends Module {
   usb2RxLogic.io.cru_hs_vp     := io.cru_hs_vp    
   usb2RxLogic.io.cru_hs_vm     := io.cru_hs_vm    
   usb2RxLogic.io.cru_hs_toggle := io.cru_hs_toggle
-  usb2RxLogic.io.cru_clk       := io.cru_clk    
+  usb2RxLogic.io.cru_clk       := clock // io.cru_clk    
 
   // TX
   //withClockAndReset(io.clk_480, reset) { // Reset?
@@ -109,7 +115,7 @@ class Usb2MMIOChiselModule(params: Usb2Params) extends Module {
   val tx_async = Module(new AsyncQueue(UInt(params.width.W), AsyncQueueParams(depth=params.asyncQueueSz)))
   tx_async.io.enq_clock   := clock // TL clock
   tx_async.io.enq_reset   := reset
-  tx_async.io.deq_clock   := io.utmi_clk // 30/60MHz
+  tx_async.io.deq_clock   := clock // io.utmi_clk // 30/60MHz
   tx_async.io.deq_reset   := false.B 
   tx_async.io.enq.bits    := io.mmio_tx_data
   tx_async.io.enq.valid   := io.mmio_tx_valid
@@ -118,6 +124,8 @@ class Usb2MMIOChiselModule(params: Usb2Params) extends Module {
   //usb2TxLogic.io.in.bits  := tx_async.io.deq.bits
   //usb2TxLogic.io.in.valid := tx_async.io.deq.valid
   usb2TxLogic.io.in <> tx_async.io.deq
+
+  io.asyncQ_tx_data := "h00000000".asUInt(8.W)
 
   // TxLogic output to TopIO
   io.rpuEn     := usb2TxLogic.io.rpuEn    
@@ -148,17 +156,19 @@ class Usb2TL(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extends
   override lazy val module = new Usb2Impl
   class Usb2Impl extends Impl with HasUsb2TopIO {
     val io = IO(new Usb2TopIO)
-    withClockAndReset(clock, reset) {
+    withClockAndReset(clock, reset) { // implicit clock from LazyModule
       val data_buffer = Module(new Queue(UInt(params.width.W), params.depth)) // Question: What is this used for?
 
       // How many clock cycles in a PWM cycle?
       val rx_bundle = Wire(new DecoupledIO(UInt((params.width + 2).W))) // [RXError, RXActive, RXDataOut]
       val utmi_datain = Wire(Flipped(DecoupledIO(UInt(params.width.W))))
 
-      val impl = Module(new Usb2MMIOChiselModule(params))
+      val impl = Module(new Usb2Top(params))
 
-      impl.io.clock := clock
+      // impl.io.clock := clock
       impl.io.reset := reset.asBool
+
+      impl.io.asyncQ_tx_data := "h00000000".asUInt(8.W)
 
       impl.io.mmio_tx_data  := utmi_datain.bits // need to add impl ports
       impl.io.mmio_tx_valid := utmi_datain.valid
@@ -170,14 +180,18 @@ class Usb2TL(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extends
 
       io.tx_busy := impl.io.busy
 
+      // 200MHz simulation clock
+      // Divide by 33 -> 60MHz TX clock
+      // Divide by 33 -> 60MHz RX clock
       impl.io.cru_fs_vp      := 0.S
       impl.io.cru_fs_vm      := 0.S
       impl.io.cru_hs_vp      := 0.S
       impl.io.cru_hs_vm      := 0.S
       impl.io.cru_hs_toggle  := 0.U
 
-      impl.io.cru_clk := clock
-      impl.io.utmi_clk := clock
+      // 200 -> 60
+      // impl.io.cru_clk := clock
+      // impl.io.utmi_clk := clock
 
       mmio_node.regmap( // Question: MMIO takes multiple cycles, need to write FSM to control?
               0x00 -> Seq(
@@ -196,13 +210,13 @@ class Usb2TL(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extends
 trait CanHavePeripheryUsb2 { this: BaseSubsystem =>
   private val portName = "usb2"
 
-  //private val pbus = locateTLBusWrapper(PBUS)
+  // private val pbus = locateTLBusWrapper(PBUS)
 
   // Only build if we are using the TL (nonAXI4) version
   val tx_busy = p(Usb2Key) match {
     case Some(params) => {
-      val usb2 = LazyModule(new Usb2TL(params, pbus.beatBytes)(p))
-      usb2.clockNode := pbus.fixedClockNode
+      val usb2 = pbus { LazyModule(new Usb2TL(params, pbus.beatBytes)(p)) }
+      // usb2.clockNode := pbus.fixedClockNode
       pbus.coupleTo(portName) { usb2.mmio_node := TLFragmenter(pbus.beatBytes, pbus.blockBytes) := _ }
         
       val tx_busy = InModuleBody {

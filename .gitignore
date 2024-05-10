@@ -1,1 +1,4 @@
-target/*
+target
+test_run_dir
+project
+.bloop
