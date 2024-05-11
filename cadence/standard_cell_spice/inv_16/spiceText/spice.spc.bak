@@ -1,8 +1,0 @@
-* "spice" description for "standard_cell_spice", "inv_16", "spiceText" 
-
-
-simulator lang=spice
-
-.SUBCKT inv_16
-
-.ENDS
