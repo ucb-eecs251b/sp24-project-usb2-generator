@@ -216,8 +216,8 @@ trait CanHavePeripheryUsb2 { this: BaseSubsystem =>
   // Only build if we are using the TL (nonAXI4) version
   val tx_busy = p(Usb2Key) match {
     case Some(params) => {
-      val usb2 = pbus { LazyModule(new Usb2TL(params, pbus.beatBytes)(p)) }
-      // usb2.clockNode := pbus.fixedClockNode
+      val usb2 = LazyModule(new Usb2TL(params, pbus.beatBytes)(p)) 
+      usb2.clockNode := pbus.fixedClockNode
       pbus.coupleTo(portName) { usb2.mmio_node := TLFragmenter(pbus.beatBytes, pbus.blockBytes) := _ }
         
       val tx_busy = InModuleBody {
