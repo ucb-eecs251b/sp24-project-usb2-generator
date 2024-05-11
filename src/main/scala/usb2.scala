@@ -147,11 +147,29 @@ class Usb2Top(params: Usb2Params) extends Module { // Usb2MMIOChiselModule - not
 // DOC include end: usb2 chisel
 
 // DOC include start: usb2 router
+
+/* 
+ * USB2.0 TileLink
+ * The USB 2.0 generator is set up as a tilelink node with a basic 'loopback' functionality. 
+ * */
+
 class Usb2TL(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extends ClockSinkDomain(ClockSinkParameters())(p) {
+  /* 
+   * While you can directly specify a manager node and write all of the logic to handle TileLink requests, 
+   * it is usually much easier to use a register node. This type of node provides a regmap method that 
+   * allows you to specify control/status registers and automatically generates the logic to handle the TileLink protocol. 
+   * .. Below is the Register Node specification.
+   */
   val mmio_device = new SimpleDevice("LoopBack", Seq("eecs251b,usb2")) 
   val mmio_node = TLRegisterNode(Seq(AddressSet(params.address, 4096-1)), mmio_device, "reg/control", beatBytes=beatBytes)
 
   override lazy val module = new Usb2Impl
+
+  /* 
+   * To create a RegisterRouter-based peripheral, you will need to specify a parameter case class for the configuration settings, 
+   * a bundle trait with the extra top-level ports, and a module implementation containing the actual RTL.
+   * ...Below is the actual RTL, I think. 
+   */
   class Usb2Impl extends Impl with HasUsb2TopIO {
     val io = IO(new Usb2TopIO)
     withClockAndReset(clock, reset) { // implicit clock from LazyModule
@@ -192,6 +210,13 @@ class Usb2TL(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extends
       // impl.io.cru_clk := clock
       // impl.io.utmi_clk := clock
 
+      /* 
+      * While you can directly specify a manager node and write all of the logic to handle TileLink requests, 
+      * it is usually much easier to use a register node. This type of node provides a regmap method that 
+      * allows you to specify control/status registers and automatically generates the logic to handle the TileLink protocol. 
+      * .. Below is the regmap for above register node.
+      */
+
       mmio_node.regmap( // Question: MMIO takes multiple cycles, need to write FSM to control?
               0x00 -> Seq(
                 RegField.w(params.width, data_buffer.io.enq)),
@@ -205,6 +230,12 @@ class Usb2TL(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extends
     }
   }
 }
+
+/* 
+ * To create a RegisterRouter-based peripheral, you will need to specify a parameter case class for the configuration settings, 
+ * a bundle trait with the extra top-level ports, and a module implementation containing the actual RTL.
+ * ...Below is the trait with extra top-level ports, I think. 
+ */
 
 trait CanHavePeripheryUsb2 { this: BaseSubsystem =>
   private val portName = "usb2"
@@ -228,6 +259,8 @@ trait CanHavePeripheryUsb2 { this: BaseSubsystem =>
     case None => None
   }
 }
+
+/* These are parameters to be passed through the config mixin, I think. */
 
 // TODO: what other params should be passed?
 class WithUsb2(params: Usb2Params) extends Config((site, here, up) => {

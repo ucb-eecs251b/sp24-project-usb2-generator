@@ -21,9 +21,10 @@ This segment will be updated with a proper overview once full-USB PAR is made po
 
 How do I compile locally?
 - Comment out your preferred sbt file that's renamed to txt file and run `sbt run`
+- UTMI's seems to work the best right now
 
 How do I run PAR with Chipyard?
-- In the `vlsi` folder: `make CONFIG=... par`
+- In the `vlsi` folder: `make CONFIG=... par` i.e. `make CONFIG=Usb2Config par`
 
 Sad ``java.lang.RuntimeException`` noises?
 - Usually a firtool issue
