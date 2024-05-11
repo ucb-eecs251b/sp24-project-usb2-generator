@@ -26,7 +26,7 @@ import chisel3.util._
  * abstracted as cru_hs_toggle.
  */
 
-class Usb2RxTop(val dataWidth: Int = 16) extends Module {
+class USB_RX(val dataWidth: Int = 16) extends Module {
     val io = IO(new Bundle {
         // UTMI Outputs - renamed to same names as usb2.scala
         val utmi_dataout = Output(UInt(dataWidth.W)); // Output data
@@ -91,16 +91,14 @@ class RxStateMachine(dataWidth: Int) extends Module {
         val reset = Input(Reset())
         val serial_ready = Input(UInt(1.W))  // S2P is ready
         val bitunstufferror = Input(UInt(1.W)) // Bit unstuffing error
-        val error = Input(UInt(1.W))           // SE1
         val hs_toggle = Input(UInt(1.W)) // High if HS (CDRU)
-        val idle = Input(UInt(1.W))   // idle state beginning
         val data_d_plus = Input(UInt(1.W)) // D+
         val data_d_minus = Input(UInt(1.W)) // D-
         //val squel = Input(UInt(1.W)) // High Pass 
     })
     
     // SYNC, EOP, Linestate Handler 
-    val SYNC_EOP_LS =  Module(new SYNC_EOP_LS());
+    val SYNC_EOP_LS =  Module(new SYNC_EOP_LS())
     SYNC_EOP_LS.io.data_d_plus := io.data_d_plus
     SYNC_EOP_LS.io.data_d_minus := io.data_d_minus
     SYNC_EOP_LS.io.hs_toggle := io.hs_toggle
@@ -144,7 +142,7 @@ class RxStateMachine(dataWidth: Int) extends Module {
             }
         }
         is(State.RX_DATA) {
-            when((io.bitunstufferror | io.error) === 1.U) {
+            when((io.bitunstufferror | SYNC_EOP_LS.io.se1) === 1.U) {
                 io.rx_error := 1.U
                 io.data_decode := 0.U
                 when (io.bitunstufferror === 1.U) {
