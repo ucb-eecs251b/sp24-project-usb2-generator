@@ -75,10 +75,8 @@ class SYNC_EOP_LS extends Module {
     val pattern_eop_fs = RegInit(0.U(3.W))  // {SE0, SE0, J}
     val pattern_eop_hs = RegInit(0.U(8.W))  // K * 8 || J * 8
 
-    val sync = RegInit(0.U(1.W))   // High if SYNC pattern detected
-    val eop = RegInit(0.U(1.W))    // High if EOP pattern detected
-    eop := Mux(io.hs_toggle === 1.U, (pattern_eop_hs === "hFF".U), (pattern_eop_fs === "h7".U))
-    sync := Mux(io.hs_toggle === 1.U, (pattern_hs === "h55555554".U), (pattern_fs === "h54".U))
+    io.eop := Mux(io.hs_toggle === 1.U, (pattern_eop_hs === "hFF".U), (pattern_eop_fs === "h7".U))
+    io.sync := Mux(io.hs_toggle === 1.U, (pattern_hs === "h55555554".U), (pattern_fs === "h54".U))
     when (io.hs_toggle === 1.U) {
         pattern_hs := Cat(pattern_hs(30, 0), io.j)
         pattern_eop_hs := Cat(pattern_eop_hs(6, 0), io.j | io.k)
