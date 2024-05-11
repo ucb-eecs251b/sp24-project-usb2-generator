@@ -27,13 +27,16 @@ import chisel3.util._
 class NRZIDecoder extends Module {
     val io = IO(new Bundle {
         val dataOut = Output(UInt(1.W))
-        val dataIn = Input(UInt(1.W))         
+        val dataIn = Input(UInt(1.W))  
+        val enable = Input(UInt(1.W))       
     })
     
     // Buffer with an implicit reset to 0
     var prev = RegInit(1.U(1.W))
-    io.dataOut := ~(io.dataIn ^ prev)
-    prev := io.dataIn
+    when (io.enable === 1.U) {
+        io.dataOut := ~(io.dataIn ^ prev)
+        prev := io.dataIn
+    }
 }
 
 
