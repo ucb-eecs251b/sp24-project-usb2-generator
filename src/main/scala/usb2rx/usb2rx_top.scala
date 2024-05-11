@@ -154,7 +154,7 @@ class RxStateMachine(dataWidth: Int) extends Module {
         is(State.RX_DATA) {
             when((io.bitunstufferror | SYNC_EOP_LS.io.se1) === 1.U) {
                 rxerror := 1.U
-                dataDecode := 0.U
+                // dataDecode := 0.U
                 when (io.bitunstufferror === 1.U) {
                     abort2 := 1.U
                 } .otherwise {
@@ -162,12 +162,14 @@ class RxStateMachine(dataWidth: Int) extends Module {
                 }
                 rxvalid := 1.U
                 state := State.ERROR
-            }.elsewhen (io.serial_ready === 1.U) {
-                dataDecode := 0.U
+            }
+            .elsewhen (io.serial_ready === 1.U) {
+                // dataDecode := 0.U
                 rxvalid := 1.U   //data valid
                 dataOut := io.datain
                 state := State.STRIP_EOP
-            }.otherwise {
+            }
+            .otherwise {
                 rxvalid := 0.U
                 state := State.RX_DATA
             }
@@ -175,6 +177,7 @@ class RxStateMachine(dataWidth: Int) extends Module {
         is(State.STRIP_EOP) {
             rxactive := 0.U
             rxvalid := 0.U
+            dataDecode := 0.U
             when(SYNC_EOP_LS.io.eop === 1.U) {  
                 state := State.RX_WAIT
             }.otherwise {
@@ -183,6 +186,7 @@ class RxStateMachine(dataWidth: Int) extends Module {
         }
         is(State.ERROR) {
             // rxerror := 1.U
+            io.data_decode := 0.U
             when(abort2 =/= 1.U) {
                 state := State.ABORT1
             }.otherwise{
