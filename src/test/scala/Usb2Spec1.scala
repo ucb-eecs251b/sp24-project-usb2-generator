@@ -22,8 +22,6 @@ class Usb2UtmiTest(
     val mmio_tx_valid = Input(Bool())
     val mmio_tx_ready = Output(Bool())
     val asyncQ_tx_data = Output(UInt(dataWidth.W))
-    // val a = Output(UInt(dataWidth.W))
-    // val why = Input(UInt(1.W)) // just testing how to initialize io - doesn't work
 
     val mmio_tx_busy = Output(Bool())
 
@@ -31,14 +29,16 @@ class Usb2UtmiTest(
     val mmio_rx_valid = Output(Bool())
     val mmio_rx_data = Output(UInt(dataWidth.W+2)) // right?
 
-    val cru_fs_vp = Input(SInt(1.W))
-    val cru_fs_vm = Input(SInt(1.W))
-    val cru_hs_vp = Input(SInt(1.W))
-    val cru_hs_vm = Input(SInt(1.W))
-    val cru_hs_toggle = Input(UInt(1.W))
+    // val utmi_linestate = Output(UInt(2.W)); 
+    // val data_d_plus = Input(UInt(1.W));
+    // val data_d_minus = Input(UInt(1.W));  
+    // val cru_hs_toggle = Input(UInt(1.W))
+
+    // val xcvrSel     = Input(UInt(1.W))
+    // val opMode      = Input(UInt(2.W))
+    // val sofDetectSIE = Input(UInt(1.W)) // to TX
   })
   val usb2 = Module(new Usb2Top(Usb2Params()))
-  // usb2.io.why := io.why
   usb2.io.mmio_tx_data := io.mmio_tx_data
   usb2.io.mmio_tx_valid := io.mmio_tx_valid
   io.asyncQ_tx_data := usb2.io.asyncQ_tx_data // unsure if this will work
@@ -52,13 +52,15 @@ class Usb2UtmiTest(
   io.mmio_tx_busy := usb2.io.busy // unsure
 
   // todo check rx logic if necessary
-  usb2.io.cru_fs_vp      := io.cru_fs_vp
-  usb2.io.cru_fs_vm      := io.cru_fs_vm
-  usb2.io.cru_hs_vp      := io.cru_hs_vp
-  usb2.io.cru_hs_vm      := io.cru_hs_vm
-  usb2.io.cru_hs_toggle  := io.cru_hs_toggle
-}
+  usb2.io.cru_hs_toggle  := 0.U
+  // io.utmi_linestate := usb2.io.utmi_linestate //todo
+  usb2.io.data_d_plus := 0.U
+  usb2.io.data_d_minus := 0.U
 
+  usb2.io.xcvrSel := 0.U
+  usb2.io.opMode := 0.U
+  usb2.io.sofDetectSIE := 0.U
+}
 /** This is a trivial example of how to run this Specification From within sbt
   * use:
   * {{{
