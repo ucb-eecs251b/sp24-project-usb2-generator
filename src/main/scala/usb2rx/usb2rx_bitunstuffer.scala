@@ -29,18 +29,23 @@ class BitUnstuffer extends Module {
         val error = Output(UInt(1.W))     // bit stuffing error
         val valid = Output(UInt(1.W))      // bit stuffing inserts a 0 bit, we should ignore it in the S2P if it is bit stuffed
         val dataOut = Output(UInt(1.W))   
-        val dataIn = Input(UInt(1.W))     // from NRZI (decoded data)     
+        val dataIn = Input(UInt(1.W))     // from NRZI (decoded data)  
+        val enable = Input(UInt(1.W))   
     })
     // 6 consecutive ones you add a stuffed bit, so remove that.
     val dataReg = RegInit(0.U(7.W))
-    dataReg := Cat(dataReg(5, 0), io.dataIn)
+    when (io.enable === 1.U) {
+        dataReg := Cat(dataReg(5, 0), io.dataIn)
+    }
     io.error := ((dataReg === "h7F".U) && (io.dataIn =/= 0.U)) // 7th bit is not zero 
     io.dataOut := io.dataIn
     // unstuff the bit if 7th bit is 0 after 6 consecutive 1s
     when ((io.dataIn === 0.U) && (dataReg === "h3F".U)) { 
         io.valid := 0.U
         dataReg := 0.U
-    }.otherwise {
+    }.elsewhen(io.enable === 1.U) {
         io.valid := 1.U
+    }.otherwise {
+        io.valid := 0.U
     }
 }
