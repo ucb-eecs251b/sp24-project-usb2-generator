@@ -89,7 +89,7 @@ class Usb2Top(params: Usb2Params) extends Module { // Usb2MMIOChiselModule - not
   // RxLogic input from TopIO
   usb2RxLogic.io.cru_hs_toggle := io.cru_hs_toggle
   usb2RxLogic.io.clk   := clock // io.cru_clk  (60MHz)
-  usb2RxLogic.io.reset := reset
+  // usb2RxLogic.io.reset := reset
   usb2RxLogic.io.data_d_plus := io.data_d_plus
   usb2RxLogic.io.data_d_minus := io.data_d_minus
   io.utmi_linestate := usb2RxLogic.io.utmi_linestate
