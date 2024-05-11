@@ -122,4 +122,4 @@ Below are some waveforms from the tests we ran. We can observe that there is an 
 
 # Full Report
 
-If the authors forget to add a link to the paper here, please email srevi@berkeley.edu and it'll be fixed, maybe possibly.
+[Final Report ](https://drive.google.com/file/d/11gZbgfyL5_FKiPavifnPZaLmK8Hp6I0c/view?usp=sharing)Update link lucy -jason
