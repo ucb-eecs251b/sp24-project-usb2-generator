@@ -6,17 +6,22 @@ import chisel3.util._
 /* 
  * Linestate segment of state machine.
  * 
- * A better description should be written here, but if forgotten,
- * the README has documentation.
+ * Within the state machine, we have a module called SYNC_EOP_LS that
+ * will handle all of the SOP, SYNC, EOP detection. It will also handle 
+ * the line state signals that will be send to the UTMI. Based on whether 
+ * is it high speed or full speed, it will handle the detections and stripping accordingly. 
  * 
  */
 
-/* SYNC STRIP 
+/* 
+SYNC STRIP 
 LS/FS = KJKJKJKK
 HS    = KJ * 15 + KK,
 EOP STRIP, 
 Linestate handler,
-Start of Packet (SOP) indicator*/
+Start of Packet (SOP) indicator
+*/
+
 class SYNC_EOP_LS extends Module {
     val io = IO(new Bundle {
         val data_d_plus = Input(UInt(1.W))  // D+

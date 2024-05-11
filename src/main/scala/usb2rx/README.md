@@ -7,7 +7,7 @@ This folder contains Scala for USB2.0 RX logic, meant to integrate with the larg
 
 This documentation covers the implementation of a USB 2.0 receiver within the SKY130 process technology for integration into Chipyard, an agile RISC-V SoC design framework. The receiver consists of a **finite state machine, NRZI decoder, bit unstuffer, and a serial to parallel data converter**, which will integrate into the top-level USB 2.0 Chipyard generator, invoked into an SoC with a configuration mixin. While the USB protocol is one of the most common interfaces, there was no previous USB support in Chipyard. This work will allow for improved host-to-peripheral communication and continued development of the open-source SoC design space with the SKY130 PDK.
 
-![Screenshot 2024-05-02 at 6.41.12 PM.png](img/Screenshot_2024-05-02_at_6.41.12_PM.png)
+![RX_DataFlow.png](../../../.././figs/RX_DataFlow.png)
 
 The current top level I/O list is shown below. 
 
@@ -28,7 +28,7 @@ The current top level I/O list is shown below.
 
 The serial data will first go through our NRZI decoder because we do bit stuffing on the original data before it is NRZI encoded. By decoding our NRZI data first, we can see which bit to unstuff. To implement this, we store the previous value and compare it with an XNOR operation with the J chirp data. The previous register initial value is 1 because the USB synchronization starts with 00000001. The output of the NRZI decoder is our original data that may have a stuffed bit or not. The enable signal comes from the state machine, and is high when it is in RX_DATA state to start decoding data. 
 
-![NRZI encoded data. Note how 0 is the transition and 1 is no transition (i.e. at 0 we see a change in level). Looking at Chirp J, we only need to XNOR this with the previous value, assuming the initial value of the previous register is 1. ](img/bc5b65dd-de9b-43cc-9a1f-917d643fa475.png)
+![NRZI encoded data. Note how 0 is the transition and 1 is no transition (i.e. at 0 we see a change in level). Looking at Chirp J, we only need to XNOR this with the previous value, assuming the initial value of the previous register is 1. ](../../../.././figs/RX_NRZI.png)
 
 NRZI encoded data. Note how 0 is the transition and 1 is no transition (i.e. at 0 we see a change in level). Looking at Chirp J, we only need to XNOR this with the previous value, assuming the initial value of the previous register is 1. 
 
@@ -69,7 +69,7 @@ Below are the I/Os, we currently have a valid signal from the bit unstuffer to t
 
 The RX finite state machine handles handshake signals received and outputted to the UTMI interface, serves as a control to the other blocks, and detects SYNC and EOP packets. Given a handshake, it will output data to the UTMI. It is parametrizable based on `datawidth`. The receiver state diagram is shown below.
 
-![Screenshot 2024-05-02 at 6.17.32 PM.png](img/d859a512-d4ca-4bed-af83-7aa31f26f06f.png)
+![RX_StateMachine.png](../../../.././figs/RX_StateMachine.png)
 
 1. We first initialize our state to the `RESET` state. At this state, the active and valid signals are not turned on. Once reset is finished we will go to the `RX_WAIT` state. We are assuming that we do not have to do reset detection and extraction from the packets. We are getting a reset input, but it seems like currently that is coming from UTMI. 
 2. After we are in the RX wait state, we will have to detect the start of the packet (SOP), which is when it goes from idle state to K state. For FS (full-speed), the idle state is the J state, and for HS (high speed), the idle state is SE0 (both D+ and D- low). Once we detect the start of the packet, we transition to the `STRIP_SYNC` state and toggle our active signal. 

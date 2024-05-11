@@ -1,7 +1,7 @@
 # USB 2.0 Chipyard Generator
 
 This branch is the combination of the dedicated USB2.0 submodule branches as of May 10, midnight.
-Note that that considering the teams' various implemetations, the fool-proof way of merging into main without polluting invididual branches is:
+Note that that considering the teams' various implementations, the fool-proof way of merging into main without polluting invididual branches is:
 
 - Checkout the branch in question (```checkout slowy-rx```) 
 - Make a clone of the branch in question (```checkout -b slowy-rx-clone```) 
@@ -21,9 +21,10 @@ This segment will be updated with a proper overview once full-USB PAR is made po
 
 How do I compile locally?
 - Comment out your preferred sbt file that's renamed to txt file and run `sbt run`
+- UTMI's seems to work the best right now
 
 How do I run PAR with Chipyard?
-- In the `vlsi` folder: `make CONFIG=... par`
+- In the `vlsi` folder: `make CONFIG=... par` i.e. `make CONFIG=Usb2Config par`
 
 Sad ``java.lang.RuntimeExceptio`` noises?
 - Usually a FIRRTL issue
