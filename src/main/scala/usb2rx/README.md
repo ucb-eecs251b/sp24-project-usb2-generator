@@ -2,6 +2,7 @@
 This folder contains Scala for USB2.0 RX logic, meant to integrate with the larger USB2.0 project integrated into Chipyard.
 - The High Speed Mode takes in 480 MHz and outputs 30 Mhz to UTMI.
 - The Fast Speed Mode takes in 12 MHz and outputs .75 MHz to UTMI. 
+
 # RX At-A-Glance
 
 This documentation covers the implementation of a USB 2.0 receiver within the SKY130 process technology for integration into Chipyard, an agile RISC-V SoC design framework. The receiver consists of a **finite state machine, NRZI decoder, bit unstuffer, and a serial to parallel data converter**, which will integrate into the top-level USB 2.0 Chipyard generator, invoked into an SoC with a configuration mixin. While the USB protocol is one of the most common interfaces, there was no previous USB support in Chipyard. This work will allow for improved host-to-peripheral communication and continued development of the open-source SoC design space with the SKY130 PDK.
