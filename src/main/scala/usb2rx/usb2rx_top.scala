@@ -26,7 +26,7 @@ import chisel3.util._
  * abstracted as cru_hs_toggle.
  */
 
-class Usb2RxTop(val dataWidth: Int = 16) extends Module {
+class USB_RX(val dataWidth: Int = 16) extends Module {
     val io = IO(new Bundle {
         // UTMI Outputs - renamed to same names as usb2.scala
         val utmi_dataout = Output(UInt(dataWidth.W)); // Output data
@@ -98,7 +98,7 @@ class RxStateMachine(dataWidth: Int) extends Module {
     })
     
     // SYNC, EOP, Linestate Handler 
-    val SYNC_EOP_LS =  Module(new SYNC_EOP_LS());
+    val SYNC_EOP_LS =  Module(new SYNC_EOP_LS())
     SYNC_EOP_LS.io.data_d_plus := io.data_d_plus
     SYNC_EOP_LS.io.data_d_minus := io.data_d_minus
     SYNC_EOP_LS.io.hs_toggle := io.hs_toggle
