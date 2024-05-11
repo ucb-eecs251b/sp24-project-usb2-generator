@@ -1,0 +1,9 @@
+DEFINE analogLib    $CDSHOME/tools/dfII/etc/cdslib/artist/analogLib
+DEFINE basic        $CDSHOME/tools/dfII/etc/cdslib/basic
+DEFINE avTech /share/instsww/cadence/ASSURA41-618/tools.lnx86/assura/etc/avtech/avTech
+DEFINE sky130_fd_pr_main /home/ff/eecs251b/sky130/sky130_cds/sky130_release_0.0.3/libs/sky130_fd_pr_main
+DEFINE sky130_fd_sc_hd /home/ff/eecs251b/sky130_virtuoso/sky130_fd_sc_hd
+DEFINE sky130_scl_9T /home/ff/eecs251b/sky130/sky130_cds/sky130_scl_9T_0.0.3/oa/sky130_scl_9T
+DEFINE test /scratch/eecs251b-aaz/sp24-project-usb2-generator/cadence/test
+DEFINE final_project /scratch/eecs251b-aaz/sp24-project-usb2-generator/cadence/final_project
+DEFINE standard_cell_spice /scratch/eecs251b-aaz/sp24-project-usb2-generator/cadence/standard_cell_spice

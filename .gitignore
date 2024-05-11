@@ -1,4 +1,11 @@
-target
-test_run_dir
-project
-.bloop
+target/*
+.vscode
+.metals/
+.scala-build/
+project/
+.bloop/
+test_run_dir/
+target/
+*.sv
+.bsp/
+src/main/scala/tx/target/

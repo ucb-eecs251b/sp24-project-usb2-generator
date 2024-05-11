@@ -1,0 +1,51 @@
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDM-License-Identifier: Apache-2.0
+
+
+.subckt sky130_fd_sc_hd__inv_16 A VGND VNB VPB VPWR Y
+M0 VGND A Y VNB nfet_01v8 w=0.65u l=0.15u
+M1 VGND A Y VNB nfet_01v8 w=0.65u l=0.15u
+M2 VPWR A Y VPB pfet_01v8_hvt w=1u l=0.15u
+M3 VPWR A Y VPB pfet_01v8_hvt w=1u l=0.15u
+M4 Y A VGND VNB nfet_01v8 w=0.65u l=0.15u
+M5 Y A VPWR VPB pfet_01v8_hvt w=1u l=0.15u
+M6 VGND A Y VNB nfet_01v8 w=0.65u l=0.15u
+M7 VPWR A Y VPB pfet_01v8_hvt w=1u l=0.15u
+M8 VGND A Y VNB nfet_01v8 w=0.65u l=0.15u
+M9 VPWR A Y VPB pfet_01v8_hvt w=1u l=0.15u
+M10 Y A VGND VNB nfet_01v8 w=0.65u l=0.15u
+M11 VPWR A Y VPB pfet_01v8_hvt w=1u l=0.15u
+M12 VPWR A Y VPB pfet_01v8_hvt w=1u l=0.15u
+M13 Y A VGND VNB nfet_01v8 w=0.65u l=0.15u
+M14 Y A VPWR VPB pfet_01v8_hvt w=1u l=0.15u
+M15 Y A VGND VNB nfet_01v8 w=0.65u l=0.15u
+M16 Y A VPWR VPB pfet_01v8_hvt w=1u l=0.15u
+M17 VGND A Y VNB nfet_01v8 w=0.65u l=0.15u
+M18 VGND A Y VNB nfet_01v8 w=0.65u l=0.15u
+M19 Y A VPWR VPB pfet_01v8_hvt w=1u l=0.15u
+M20 Y A VGND VNB nfet_01v8 w=0.65u l=0.15u
+M21 Y A VGND VNB nfet_01v8 w=0.65u l=0.15u
+M22 Y A VGND VNB nfet_01v8 w=0.65u l=0.15u
+M23 VPWR A Y VPB pfet_01v8_hvt w=1u l=0.15u
+M24 Y A VPWR VPB pfet_01v8_hvt w=1u l=0.15u
+M25 Y A VPWR VPB pfet_01v8_hvt w=1u l=0.15u
+M26 Y A VGND VNB nfet_01v8 w=0.65u l=0.15u
+M27 Y A VPWR VPB pfet_01v8_hvt w=1u l=0.15u
+M28 Y A VPWR VPB pfet_01v8_hvt w=1u l=0.15u
+M29 VGND A Y VNB nfet_01v8 w=0.65u l=0.15u
+M30 VGND A Y VNB nfet_01v8 w=0.65u l=0.15u
+M31 VPWR A Y VPB pfet_01v8_hvt w=1u l=0.15u
+.ends
