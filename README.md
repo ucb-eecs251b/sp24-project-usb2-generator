@@ -31,6 +31,25 @@ This block consists of the following pins:
 - `reset`: global reset signal
 - `DP`: data plus / USB positive data pin
 - `DM`: data minus / USB negatative data pin
+- `utmi_clk`: clock for parallel data (30/60 MHz)
+- `clk_480`: clock for RX/TX Logic
+- `cru_hs_toggle`: specifies mode for RX Logic
+- `xcvrSelect`: from SIE, select FS/HS transceivers 
+- `opMode`: from SIE, select operational mode 
+- `sofDetectSIE`: Start of Frame detection from SIE
+- `fsDout`: TX Logic output to analog frontend 
+- `seo`: TX Logic output to analog frontend
+- `oe`: TX Logic output to analog frontend
+- `rpuEn`: TX Logic output to analog frontend
+- `hsDout`: TX Logic output to analog frontend
+- `hsDriveEn`: TX Logic output to analog frontend
+- `hsCurrEn`: TX Logic output to analog frontend
+- `mmio_tx_data`: receives data from SIE
+- `mmio_tx_ready`: TX Logic ready to receive data
+- `mmio_tx_valid`: mmio_tx_data contains valid data
+- `mmio_rx_data`: transfers data (containing RxError & RxActive signal) to SIE
+- `mmio_rx_ready`: SIE ready to receive data
+- `mmio_rx_valid`: mmio_rx_data contains valid data
 
 This block consists of the following interface signals: TODO table
 
@@ -56,8 +75,8 @@ Chisel Testbench
 The MMIO controller exposes the following memory-mapped registers.
 | Name     | Width | Direction     | Description         | 
 | -------- | ----- | ------------- | ------------------- |
-| `signal1` | 1   | R/W | descript |
-| `signal1` | 8   | R/W | descript |
+| `rx_bundle` | 10   | RO | (RXError, RXActive, DataOut[7:0]) from RX Logic |
+| `utmi_datain` | 8   | WO | DataIn[7:0] to TX |
 
 Widths are specified in bits. For the direction field:
 
@@ -81,5 +100,7 @@ The majority of the analog frontend has yet to be implemented.
 + RX \& TX analog logic
 
 ## References
-1. Intel Specification: TODO insert links
-2. Microchip Specification: 
+1. [Intel Specification](https://www.intel.com/content/dam/www/public/us/en/documents/technical-specifications/usb2-transceiver-macrocell-interface-specifications.pdf)
+2. [Microchip Specification](https://www.microchip.com/en-us/product/usb3250#document-table)
+
+
