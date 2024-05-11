@@ -35,25 +35,30 @@ class Usb2IO(params: Usb2Params) extends Bundle {
   // val utmi_clk = Input(Clock()) // 30/60MHz
   // val clk_480  = Clock()
 
-  // RxLogic input signals (Type?)
+  // RxLogic input signals 
   val cru_hs_toggle = Input(UInt(1.W))
-  val utmi_linestate = Output(UInt(2.W)) //todo
-  val data_d_plus = Input(UInt(1.W)) //todo
-  val data_d_minus = Input(UInt(1.W))  //todo
+  val utmi_linestate = Output(UInt(2.W)) 
+  val data_d_plus = Input(UInt(1.W)) 
+  val data_d_minus = Input(UInt(1.W))  
   // val cru_clk       = Input(Clock())
 
+  // TxLogic input signals
+  val xcvrSel     = Input(UInt(1.W))
+  val opMode      = Input(UInt(2.W))
+  val sofDetectSIE = Input(UInt(1.W)) // to TX
+
   // TxLogic output signals (Type? - analog)
-  val rpuEn     = Output(UInt(1.W))
-  val vpo       = Output(UInt(1.W))
-  val oeb       = Output(UInt(1.W))
-  val hsData    = Output(UInt(1.W))
-  val hsDriveEn = Output(UInt(1.W))
-  val hsCsEn    = Output(UInt(1.W))
+
+  val fsDout       = Output(UInt(1.W))  // new
+  val seo          = Output(UInt(1.W))  // new
+  val oe           = Output(UInt(1.W))  // oeb
+  val rpuEn        = Output(UInt(1.W)) 
+  val hsDout       = Output(UInt(1.W))  // hsData
+  val hsDriveEn    = Output(UInt(1.W))
+  val hsCurrEn     = Output(Bool())     // hsCsEn
 
   // chisel test
   val asyncQ_tx_data = Output(UInt(params.width.W))
-
-  // val why = Input(Bool())
 
   // MMIO
   val busy = Output(Bool())
@@ -104,9 +109,7 @@ class Usb2Top(params: Usb2Params) extends Module { // Usb2MMIOChiselModule - not
   io.mmio_rx_valid      := rx_async.io.deq.valid 
 
   // TX
-  //withClockAndReset(io.clk_480, reset) { // Reset?
   val usb2TxLogic = Module(new USBTx(params.width))
-  //}
 
   // AsyncFIFO from TL clock domain to 30/60MHz
   val tx_async = Module(new AsyncQueue(UInt(params.width.W), AsyncQueueParams(depth=params.asyncQueueSz)))
@@ -119,19 +122,24 @@ class Usb2Top(params: Usb2Params) extends Module { // Usb2MMIOChiselModule - not
   io.mmio_tx_ready        := tx_async.io.enq.ready
   io.asyncQ_tx_data := tx_async.io.deq.bits 
 
-  //tx_async.io.deq.ready   := usb2TxLogic.io.in.ready
-  //usb2TxLogic.io.in.bits  := tx_async.io.deq.bits
-  //usb2TxLogic.io.in.valid := tx_async.io.deq.valid
-  usb2TxLogic.io.in <> tx_async.io.deq
-
+  //tx_async.io.deq.ready   := usb2TxLogic.io.pDin_packet.ready 
+  //usb2TxLogic.io.pDin_packet.bits  := tx_async.io.deq.bits
+  //usb2TxLogic.io.pDin_packet.valid := tx_async.io.deq.valid
+  usb2TxLogic.io.pDin_packet <> tx_async.io.deq
+  usb2TxLogic.io.serialClk := clock // utmi_clk
+  usb2TxLogic.io.xcvrSel := io.xcvrSel
+  usb2TxLogic.io.opMode := io.opMode
+  usb2TxLogic.io.sofDetectSIE := io.sofDetectSIE
+  // exclude usb2TxLogic.io.valid
 
   // TxLogic output to TopIO
-  io.rpuEn     := usb2TxLogic.io.rpuEn    
-  io.vpo       := usb2TxLogic.io.vpo      
-  io.oeb       := usb2TxLogic.io.oeb      
-  io.hsData    := usb2TxLogic.io.hsData   
-  io.hsDriveEn := usb2TxLogic.io.hsDriveEn
-  io.hsCsEn    := usb2TxLogic.io.hsCsEn  
+  io.fsDout       := usb2TxLogic.io.fsDout     // new
+  io.seo          := usb2TxLogic.io.seo        // new
+  io.oe           := usb2TxLogic.io.oe         // oeb
+  io.rpuEn        := usb2TxLogic.io.rpuEn     
+  io.hsDout       := usb2TxLogic.io.hsDout     // hsData
+  io.hsDriveEn    := usb2TxLogic.io.hsDriveEn
+  io.hsCurrEn     := usb2TxLogic.io.hsCurrEn   // hsCsEn 
 
   io.busy := ~(tx_async.io.enq.ready)
 
@@ -175,6 +183,10 @@ class Usb2TL(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extends
       impl.io.cru_hs_toggle  := 0.U
       impl.io.data_d_plus := 0.U
       impl.io.data_d_minus := 0.U
+
+      impl.io.xcvrSel := 0.U
+      impl.io.opMode := 0.U
+      impl.io.sofDetectSIE := 0.U
 
       // 200 -> 60
       // impl.io.cru_clk := clock
