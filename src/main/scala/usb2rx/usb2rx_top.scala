@@ -109,13 +109,14 @@ class RxStateMachine(dataWidth: Int) extends Module {
             RX_DATA, ERROR, ABORT1, ABORT2, TERMINATE = Value
     }
     
-    val state = RegInit(State.RX_RESET) // initial state
+    val state = RegInit(State.RX_WAIT) // initial state
     val abort2 = RegInit(0.U(1.W))
     val dataOut = WireInit(0.U(dataWidth.W))
     val dataDecode = WireInit(0.U(1.W))
     val rxvalid = WireInit(0.U(1.W))
     val rxactive = WireInit(0.U(1.W))
     val rxerror = WireInit(0.U(1.W))
+
     io.dataout := dataOut
     io.data_decode := dataDecode
     io.rx_valid := rxvalid
@@ -152,9 +153,9 @@ class RxStateMachine(dataWidth: Int) extends Module {
             }
         }
         is(State.RX_DATA) {
-            when((io.bitunstufferror | SYNC_EOP_LS.io.se1) === 1.U) {
+            dataDecode := 1.U
+            when (((io.bitunstufferror | SYNC_EOP_LS.io.se1) === 1.U)) {
                 rxerror := 1.U
-                // dataDecode := 0.U
                 when (io.bitunstufferror === 1.U) {
                     abort2 := 1.U
                 } .otherwise {
@@ -164,7 +165,6 @@ class RxStateMachine(dataWidth: Int) extends Module {
                 state := State.ERROR
             }
             .elsewhen (io.serial_ready === 1.U) {
-                // dataDecode := 0.U
                 rxvalid := 1.U   //data valid
                 dataOut := io.datain
                 state := State.STRIP_EOP
@@ -185,7 +185,7 @@ class RxStateMachine(dataWidth: Int) extends Module {
             }
         }
         is(State.ERROR) {
-            // rxerror := 1.U
+            rxerror := 1.U
             io.data_decode := 0.U
             when(abort2 =/= 1.U) {
                 state := State.ABORT1
