@@ -38,7 +38,7 @@ class SYNC_EOP_LS extends Module {
     })
 
     // Linestate Handler 
-    val prev_linestate = RegInit(0.U(2.W)) 
+    val prev_linestate = Reg(UInt(2.W)) 
     prev_linestate := io.linestate
     // SOP happens when you go from IDLE state to K state 
     // How long should it be in this state to be considered IDLE? 
