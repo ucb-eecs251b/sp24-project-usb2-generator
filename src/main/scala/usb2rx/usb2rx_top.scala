@@ -10,10 +10,21 @@ import chisel3.util._
 // import freechips.rocketchip.subsystem._
 // import freechips.rocketchip.tilelink._
 
-//import chisel3.experimental.{IntParam, BaseModule}
-//import chisel3.experimental.{withClock, withReset, withClockAndReset} // Might not need
+// import chisel3.experimental.{IntParam, BaseModule}
+// import chisel3.experimental.{withClock, withReset, withClockAndReset} // Might not need
 // import freechips.rocketchip.prci._
 // import freechips.rocketchip.util.UIntIsOneOf
+
+/* 
+ * RX Top Level
+ *  
+ * This Rx Module takes in a differential serial data pair (D+ and D-) from PHY 
+ * and outputs handshake, linestate, and output dataWidth data to UTMI. 
+ * A fuller implementation would coordinate with the PHY, clock and data recovery
+ * teams to ensure linestate functionality based off analog voltage levels 
+ * and differentiation between PHY and data recovery HS/FS data, currently
+ * abstracted as cru_hs_toggle.
+ */
 
 class Usb2RxTop(val dataWidth: Int = 16) extends Module {
     val io = IO(new Bundle {
