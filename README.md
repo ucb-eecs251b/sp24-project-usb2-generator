@@ -1,7 +1,7 @@
 # USB 2.0 Chipyard Generator
 
 This branch is the combination of the dedicated USB2.0 submodule branches as of May 10, midnight.
-Note that that considering the teams' various implemetations, the fool-proof way of merging into main without polluting invididual branches is:
+Note that that considering the teams' various implementations, the fool-proof way of merging into main without polluting invididual branches is:
 
 - Checkout the branch in question (```checkout slowy-rx```) 
 - Make a clone of the branch in question (```checkout -b slowy-rx-clone```) 
