@@ -51,8 +51,7 @@ This block consists of the following pins:
 - `mmio_rx_ready`: SIE ready to receive data
 - `mmio_rx_valid`: mmio_rx_data contains valid data
 
-This block consists of the following interface signals: TODO table
-
+<!-- This block consists of the following interface signals: TODO table -->
 
 There are four modes of operation:
 - HS/FS (30MHz)
@@ -64,12 +63,13 @@ We currently only support 8 bit unidirectional HS/FS.
 
 ### Ready / Valid Interface
 
-#### TX Async Queue
-
-#### RX Async Queue
+#### TX/RX Async Queue
+Since the Tilelink system operates at 200MHz, which is different from the frequency specified in the UTMI standard, we employed asynchronous queues between the MMIO registers and the TX/RX logic to cross the different clock domains.
+To ensure proper communication and desired behavior of the logic block, the ready-valid signals specified in the UTMI standard are employed between the asynchronous queues and the logic blocks, rather than directly interfacing with the SIE. The status of the queues (full or empty) will be used to handshake with the SIE side.
 
 #### Testing
 Chisel Testbench
+A chisel testbench is developed to verify the functionality of the ready-valid handshake and the asynchronous queues. We generate random data sequences, with lengths exceeding the depth of the queues, and validate that the logic block receives the correct data in the expected order.
 
 ### MMIO Structure
 The MMIO controller exposes the following memory-mapped registers.
@@ -85,7 +85,8 @@ Widths are specified in bits. For the direction field:
 - WO means the register is write-only.
 
 #### Testing
-C tests
+C test
+A comprehensive C test is under development to perform end-to-end testing for the integrated design. The test involves sending data to the UTMI TX block through the MMIO system and verifying that the data is correctly received back at the MMIO system through the UTMI RX block.
 
 
 ## Analog FrontEnd
