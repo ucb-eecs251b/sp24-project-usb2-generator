@@ -1,0 +1,20 @@
+# Cadence Genus(TM) Synthesis Solution, Version 19.15-s090_1, built Sep 29 2020 11:43:45
+
+# Date: Fri Apr 12 19:14:47 2024
+# Host: eda-2.EECS.Berkeley.EDU (x86_64 w/Linux 4.18.0-513.18.1.el8_9.x86_64) (8cores*64cpus*4physical cpus*Intel(R) Xeon(R) CPU E5-4620 v2 @ 2.60GHz 20480KB)
+# OS:   Red Hat Enterprise Linux release 8.9 (Ootpa)
+
+source syn_trial.tcl
+report_clocks
+get_port
+get_ports
+get_port clock_1
+[get_port clock_1]
+create_generated_clock -name clk_1 -source [get_clocks clk] [get_port clk_1]
+get_clocks
+create_generated_clock -name clk_1 -source [get_clocks clk_0] [get_port clk_1]
+get_port
+create_generated_clock -name clock_1 -source [get_clocks clock_0] [get_port clock_1]
+create_clock clock_0 -name clock_0 -period 2.08333
+create_generated_clock -name clock_1 -source [get_clocks clock_0] [get_port clock_1]
+exit

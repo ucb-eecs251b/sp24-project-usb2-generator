@@ -1,0 +1,19 @@
+{
+    "vlsi.builtins.is_complete": false,
+    "synthesis.outputs.output_files": [
+        "/scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/data_recovery.mapped.v"
+    ],
+    "synthesis.inputs.input_files": [
+        "src/ad_fifo.v",
+        "src/crd.v",
+        "src/sampler_v2.v",
+        "src/ad_fifo_cell.v",
+        "src/dr_syn.v",
+        "src/token_control.v"
+    ],
+    "synthesis.inputs.top_module": "data_recovery",
+    "synthesis.outputs.sdc": "/scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/data_recovery.mapped.sdc",
+    "synthesis.outputs.seq_cells": "/scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/find_regs_cells.json",
+    "synthesis.outputs.all_regs": "/scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/find_regs_paths.json",
+    "synthesis.outputs.sdf_file": "/scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/data_recovery.mapped.sdf"
+}
