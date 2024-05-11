@@ -58,7 +58,7 @@ class RXTOP extends AnyFreeSpec with ChiselScalatestTester {
       // {SYNC, DATA, EOP}
       // Stay in IDLE so bunch of 1s at the start (5 ones)
       val dataPlus = Seq(1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1)
-      val dataMinus = Seq(1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+      val dataMinus = Seq(0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
       dataPlus.zip(dataMinus).foreach { case (plus, minus) =>
         // println(dut.io.dataout.peek())
         println(plus)
@@ -87,8 +87,9 @@ class RXTOP extends AnyFreeSpec with ChiselScalatestTester {
       dut.io.hs_mode.poke(1.U)
       // {SYNC, DATA, EOP}
       // Stay in IDLE so bunch of 1s at the start (5 ones)
+      // I guess this is one cleaner way to right it thanks google
       val dataPlus = Seq(1, 1, 1, 1, 1) ++ repeatPattern(Seq(0, 1), 15) ++ Seq(0, 0) ++  Seq(0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0) ++ Seq(1, 1, 1, 1, 1, 1, 1, 1)
-      val dataMinus = Seq(1, 1, 1, 1, 1) ++ repeatPattern(Seq(1, 0), 15) ++ Seq(1, 1) ++ Seq(1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1) ++ Seq(0, 0, 0, 0, 0, 0, 0, 0)
+      val dataMinus = Seq(0, 0, 0, 0, 0) ++ repeatPattern(Seq(1, 0), 15) ++ Seq(1, 1) ++ Seq(1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1) ++ Seq(0, 0, 0, 0, 0, 0, 0, 0)
       dataPlus.zip(dataMinus).foreach { case (plus, minus) =>
         if (dut.io.rx_valid.peekInt() === 1) {
           // println("WEEEEE")
