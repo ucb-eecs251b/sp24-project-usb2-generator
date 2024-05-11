@@ -31,10 +31,9 @@ class Usb2UtmiTest(
     val mmio_rx_valid = Output(Bool())
     val mmio_rx_data = Output(UInt(dataWidth.W+2)) // right?
 
-    val cru_fs_vp = Input(SInt(1.W))
-    val cru_fs_vm = Input(SInt(1.W))
-    val cru_hs_vp = Input(SInt(1.W))
-    val cru_hs_vm = Input(SInt(1.W))
+    val utmi_linestate = Output(UInt(2.W)); 
+    val data_d_plus = Input(UInt(1.W));
+    val data_d_minus = Input(UInt(1.W));  
     val cru_hs_toggle = Input(UInt(1.W))
   })
   val usb2 = Module(new Usb2Top(Usb2Params()))
@@ -52,11 +51,10 @@ class Usb2UtmiTest(
   io.mmio_tx_busy := usb2.io.busy // unsure
 
   // todo check rx logic if necessary
-  usb2.io.cru_fs_vp      := io.cru_fs_vp
-  usb2.io.cru_fs_vm      := io.cru_fs_vm
-  usb2.io.cru_hs_vp      := io.cru_hs_vp
-  usb2.io.cru_hs_vm      := io.cru_hs_vm
   usb2.io.cru_hs_toggle  := io.cru_hs_toggle
+  io.utmi_linestate := usb2.io.utmi_linestate //todo
+  usb2.io.data_d_plus := io.data_d_plus //todo
+  usb2.io.data_d_minus := io.data_d_minus  //todo
 }
 
 /** This is a trivial example of how to run this Specification From within sbt

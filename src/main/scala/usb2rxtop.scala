@@ -2,48 +2,36 @@ package usb2
 
 // Standard imports
 import chisel3._
+import java.io.Serial
 import chisel3.util._
-import org.chipsalliance.cde.config.{Parameters, Field, Config}
-import freechips.rocketchip.diplomacy._
-import freechips.rocketchip.regmapper._
-import freechips.rocketchip.subsystem._
-import freechips.rocketchip.tilelink._
 
-import chisel3.experimental.{IntParam, BaseModule}
-//import chisel3.experimental.{withClock, withReset, withClockAndReset} // Might not need
-import freechips.rocketchip.prci._
-import freechips.rocketchip.util.UIntIsOneOf
+/* 
+ * RX Top Level
+ *  
+ * This Rx Module takes in a differential serial data pair (D+ and D-) from PHY 
+ * and outputs handshake, linestate, and output dataWidth data to UTMI. 
+ * A fuller implementation would coordinate with the PHY, clock and data recovery
+ * teams to ensure linestate functionality based off analog voltage levels 
+ * and differentiation between PHY and data recovery HS/FS data, currently
+ * abstracted as cru_hs_toggle.
+ */
 
-class Usb2RxTop(dataWidth: Int) extends Module {
+class USB_RX(dataWidth: Int) extends Module {
     val io = IO(new Bundle {
         // UTMI Outputs - renamed to same names as usb2.scala
-        val utmi_dataout = Output(UInt(dataWidth.W)); // Note that usb2.scala currently says 8-bit?  
-        // val utmi_datain = Input(SInt(dataWidth.W)); // Need to discuss bidirectionality
-        val utmi_rx_valid = Output(Bool()); // Dataout is valid
-        val utmi_rx_active = Output(Bool()); // High when state machine detects SYNC packet in data
-        val utmi_rx_error = Output(Bool()); // High when the Rx block catches invalid data etc
-        // Needs to be discussed more, not at usb2.scala:
-        // val utmi_linestate = Output(UInt(2.W)); // Reflects current state of the single ended receivers
+        val utmi_dataout = Output(UInt(dataWidth.W)); // Output data
+        val utmi_rx_valid = Output(UInt(1.W)); // Dataout is valid
+        val utmi_rx_active = Output(UInt(1.W)); // High when state machine detects SYNC packet in data
+        val utmi_rx_error = Output(UInt(1.W)); // High when the Rx block catches invalid data etc
+        val utmi_linestate = Output(UInt(2.W)); // Reflects current state of the single ended receivers
         
-        // UTMI Inputs
-        val utmi_reset = Input(Bool());
-        val utmi_clk = Input(Clock()); // How do we deal with implicit chisel clock if two clocks? is this unndeeded?
-
-        // Of the below, for now we can assume cru_hs_v and cru_clk are provided
-
-        // Input from Rx Front End (needs to be discussed)
-        // val cru_fs_v = Input(SInt()); // Non-differential full-speed single-ended receive data
-
-        val cru_fs_vp = Input(SInt()); // Full-speed single-ended receive data, positive terminal
-        val cru_fs_vm = Input(SInt()); // Full-speed single-ended receive data, negative terminal
-         // Input from Clock Recovery Unit (needs to be discussed)
-        // val cru_hs_v = Input(SInt()); // Non-differential high-speed single-ended receive data
-
-        val cru_hs_vp = Input(SInt()); // High-speed single-ended receive data, positive terminal
-        val cru_hs_vm = Input(SInt()); // High-speed single-ended receive data, negative terminal
-
-        val cru_hs_toggle = Input(UInt()); // High if HS (CDRU)
-        val cru_clk = Input(Clock()); // Again might be unneeded due to implicit
+        // Assuming that something will give us the appropriate D+ and D- depending on the mode (cru_hs_toggle).
+        val data_d_plus = Input(UInt(1.W));  // D+
+        val data_d_minus = Input(UInt(1.W));  // D-
+        val reset = Input(Reset()); 
+        val clk = Input(Clock()); // 480 MHz ? ? ?
+        //val squelch = Input(UInt(1.W)); // Squelch for linestate HS mode
+        val cru_hs_toggle = Input(UInt(1.W)); // XcvrSelect = 0
     })
 
     /* Differential Handling */
@@ -51,23 +39,7 @@ class Usb2RxTop(dataWidth: Int) extends Module {
     io.utmi_rx_valid := false.B
     io.utmi_rx_active := false.B
     io.utmi_rx_error := false.B
-    // Optional
-
-    /* High Speed Mode */
-    /*
-    withClockAndReset(io.utmi_clk, io.utmi_reset) { // 30 MHz HS; UTMI side
-        val RxStateMachine =  Module(new RxStateMachine(dataWidth));
-    }
-    withClock(io.cru_clk) { // 480 MHz HS; CRU side
-        val NRZIDecoder =  Module(new NRZIDecoder(dataWidth));
-        val BitUnstuffer =  Module(new BitUnstuffer(dataWidth));
-        val Serial2ParallelConverter =  Module(new Serial2ParallelConverter(dataWidth));
-    }
-    */
-
-    /* Fast Speed Mode */
-
-    // Optional
+    io.utmi_linestate := 0.U // todo
 
 }
 
