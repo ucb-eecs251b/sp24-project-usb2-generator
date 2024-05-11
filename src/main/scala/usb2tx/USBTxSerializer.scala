@@ -1,4 +1,4 @@
-package usbtx
+package usb2
 
 import chisel3._
 import chisel3.util._
@@ -52,6 +52,6 @@ class USBTxSerializer(dWidth: Int) extends Module {
   }
 }
 
-object USBTxSerializer extends App {
-  ChiselStage.emitSystemVerilogFile(new USBTxSerializer(16))
-}
+// object USBTxSerializer extends App {
+//   ChiselStage.emitSystemVerilogFile(new USBTxSerializer(16))
+// }

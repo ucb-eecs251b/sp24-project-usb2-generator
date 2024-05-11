@@ -1,4 +1,4 @@
-package usbtx
+package usb2
 
 import chisel3._
 import chisel3.util._
@@ -28,13 +28,13 @@ class USBNrziEncoder extends Module {
   lastState := io.dOut
 }
 
-object USBNrziEncoder extends App {
-  def apply[T <: Data](en: Bool, dIn: T): UInt = {
-    val n = Module(new USBNrziEncoder)
-    n.io.en := en
-    n.io.dIn := dIn
-    n.io.dOut
-  }
+// object USBNrziEncoder extends App {
+//   def apply[T <: Data](en: Bool, dIn: T): UInt = {
+//     val n = Module(new USBNrziEncoder)
+//     n.io.en := en
+//     n.io.dIn := dIn
+//     n.io.dOut
+//   }
 
-  //ChiselStage.emitSystemVerilogFile(new USBNrziEncoder)
-}
+//   //ChiselStage.emitSystemVerilogFile(new USBNrziEncoder)
+// }
