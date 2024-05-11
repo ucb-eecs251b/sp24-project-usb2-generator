@@ -26,6 +26,6 @@ How do I run PAR with Chipyard?
 - In the `vlsi` folder: `make CONFIG=... par`
 
 Sad ``java.lang.RuntimeException`` noises?
-- Usually a FIRRTL issue
+- Usually a firtool issue
 
 **COMING SOON**
