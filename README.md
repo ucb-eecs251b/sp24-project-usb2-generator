@@ -15,7 +15,9 @@ UTMI bridges TX \& RX logic, handling:
 + Clock domain crossings between USB2.0 data rates and general device logic
 
 # Organization
-A rough top-level diagram of the chip is shown below: TODO (likely not)
+A rough top-level diagram of the chip is shown below: 
+
+![UTMI TOP diagram](./figs/UTMI_top.png)
 
 A UTMI block contains the following elements:
 
@@ -79,6 +81,7 @@ The MMIO controller exposes the following memory-mapped registers.
 | -------- | ----- | ------------- | ------------------- |
 | `rx_bundle` | 10   | RO | (RXError, RXActive, DataOut[7:0]) from RX Logic |
 | `utmi_datain` | 8   | WO | DataIn[7:0] to TX |
+| `tx_busy` | 1  | RO | TX side is saturated, cannot transmit anymore data |
 
 Widths are specified in bits. For the direction field:
 
