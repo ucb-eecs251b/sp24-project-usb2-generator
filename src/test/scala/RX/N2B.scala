@@ -19,10 +19,12 @@ class NRZITest(
   val io = IO(new Bundle {
     val dataIn = Input(UInt(1.W))
     val dataOut = Output(UInt(1.W))
+    val enable = Input(UInt(1.W))
   })
   val nrzi = Module(new NRZIDecoder())
   nrzi.io.dataIn := io.dataIn
   io.dataOut := nrzi.io.dataOut
+  nrzi.io.enable := io.enable
 }
 
 // Bit Unstuffer test
@@ -34,12 +36,14 @@ class BitUnstufferTest(
     val dataOut = Output(UInt(1.W))
     val error = Output(UInt(1.W))
     val valid = Output(UInt(1.W))
+    val enable = Input(UInt(1.W))
   })
   val b_unstuff = Module(new BitUnstuffer())
   b_unstuff.io.dataIn := io.dataIn
   io.dataOut := b_unstuff.io.dataOut
   io.error := b_unstuff.io.error
   io.valid := b_unstuff.io.valid
+  b_unstuff.io.enable := io.enable
 }
 
 // NRZI decoder with bit unstuffing test
@@ -52,13 +56,16 @@ class N2BTest(
     val error = Output(UInt(1.W))
     val valid = Output(UInt(1.W))
     val ready = Output(UInt(1.W))
+    val enable = Input(UInt(1.W))
   })
   val nrzi = Module(new NRZIDecoder())
   nrzi.io.dataIn := io.dataIn
+  nrzi.io.enable := io.enable
   val b_unstuff = Module(new BitUnstuffer())
   b_unstuff.io.dataIn := nrzi.io.dataOut
   io.error := b_unstuff.io.error
   io.valid := b_unstuff.io.valid
+  b_unstuff.io.enable := io.enable
   val s2p = Module(new Serial2ParallelConverter())
   s2p.io.dataIn := b_unstuff.io.dataOut
   s2p.io.valid := b_unstuff.io.valid
@@ -84,6 +91,7 @@ class NRZI extends AnyFreeSpec with ChiselScalatestTester {
       // NRZI Encode
       val nrziEncodedData = Seq(0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0)
       var prev = 1
+      dut.io.enable.poke(1.U)
       var output = Seq[Int]()
       for (i <- nrziEncodedData) {
         dut.io.dataIn.poke(i.U)
@@ -115,6 +123,7 @@ class BitUnstuff extends AnyFreeSpec with ChiselScalatestTester {
       //                                  S (Stuffed bit)
       val data = Seq(0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0)
       var output = Seq[Int]()
+      dut.io.enable.poke(1.U)
       for (i <- data) {
         dut.io.dataIn.poke(i.U)
         dut.io.error.expect(0.U)
@@ -142,6 +151,7 @@ class BitUnstuff extends AnyFreeSpec with ChiselScalatestTester {
       val data = Seq(0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 0)
       var output = Seq[Int]()
       var counter = 0;
+      dut.io.enable.poke(1.U)
       for (i <- data) {
         dut.clock.step(1)
         dut.io.dataIn.poke(i.U)
@@ -170,7 +180,7 @@ class BitUnstuff extends AnyFreeSpec with ChiselScalatestTester {
 /** This is a trivial example of how to run this Specification From within sbt
   * use:
   * sbt 'testOnly usb2.N2B'
-  * NRZI to Bit Unstuffer
+  * NRZI to Bit Unstuffer to S2P
   */
 class N2B extends AnyFreeSpec with ChiselScalatestTester {
 
@@ -183,9 +193,8 @@ class N2B extends AnyFreeSpec with ChiselScalatestTester {
       // dummy serial data
       // Data : 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1 
       // NRZI Encode
-      // lol noob jason, the bitstuffing is inserting the zero at the data before it is nrzi encoded not
-      // inserting a zero on the nrzi encoded data. noob...you silly boy 
       val nrziEncodedData = Seq(0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0)  
+      dut.io.enable.poke(1.U)
       for (i <- nrziEncodedData) {
         dut.io.dataIn.poke(i.U)
         dut.io.error.expect(0.U)
@@ -207,10 +216,35 @@ class N2B extends AnyFreeSpec with ChiselScalatestTester {
       // Data : 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0    #stuffed bit added so length 17
       // NRZI Encode
       val nrziEncodedData = Seq(0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0)  
+      dut.io.enable.poke(1.U)
       for (i <- nrziEncodedData) {
         dut.io.dataIn.poke(i.U)
         dut.io.error.expect(0.U)
         dut.clock.step(1)
+      }
+      dut.clock.step(1)
+      dut.io.ready.expect(1.U)
+      // Data Recovered: Seq(0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0)
+      dut.io.dataOut.expect("h7FA2".U)
+    }
+  }
+
+  "N2B Test 3 (Invalid Case)" in {
+    test(
+      new N2BTest (
+        FailureMode.None
+      )
+    ).withAnnotations(Seq(WriteVcdAnnotation)) { dut =>
+      // dummy serial data
+      // Data : 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0    #stuffed bit added so length 17
+      // NRZI Encode
+      val nrziEncodedData = Seq(1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0)  
+      dut.io.enable.poke(0.U)
+      for (i <- nrziEncodedData) {
+        dut.io.dataIn.poke(i.U)
+        dut.io.error.expect(0.U)
+        dut.clock.step(1)
+        dut.io.enable.poke(1.U)
       }
       dut.clock.step(1)
       dut.io.ready.expect(1.U)
