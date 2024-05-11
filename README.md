@@ -26,7 +26,7 @@ How do I compile locally?
 How do I run PAR with Chipyard?
 - In the `vlsi` folder: `make CONFIG=... par` i.e. `make CONFIG=Usb2Config par`
 
-Sad ``java.lang.RuntimeExceptio`` noises?
-- Usually a FIRRTL issue
+Sad ``java.lang.RuntimeException`` noises?
+- Usually a firtool issue
 
 **COMING SOON**
