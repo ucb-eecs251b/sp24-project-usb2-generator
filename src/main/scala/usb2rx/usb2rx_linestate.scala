@@ -3,6 +3,14 @@ package usb2
 import chisel3._
 import chisel3.util._
 
+/* 
+ * Linestate segment of state machine.
+ * 
+ * A better description should be written here, but if forgotten,
+ * the README has documentation.
+ * 
+ */
+
 /* SYNC STRIP 
 LS/FS = KJKJKJKK
 HS    = KJ * 15 + KK,
