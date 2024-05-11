@@ -17,4 +17,12 @@ Bonus: got a whole bunch of deleted files, like build files popping up, that are
 
 This segment will be updated with a proper overview once full-USB PAR is made possible.
 
+**FAQ for the Forgetful** 
+
+How do I compile locally?
+- Comment out your preferred sbt file that's renamed to txt file and run `sbt run`
+
+How do I run PAR with Chipyard?
+- In the `vlsi` folder: `make CONFIG=... par`
+
 **COMING SOON**
