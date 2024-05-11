@@ -1,0 +1,8 @@
+* "spice" description for "standard_cell_spice", "Latch_1", "spiceText" 
+
+
+simulator lang=spice
+
+.SUBCKT Latch_1
+
+.ENDS

@@ -1,0 +1,1238 @@
+Cadence Genus(TM) Synthesis Solution.
+Copyright 2020 Cadence Design Systems, Inc. All rights reserved worldwide.
+Cadence and the Cadence logo are registered trademarks and Genus is a trademark
+of Cadence Design Systems, Inc. in the United States and other countries.
+
+Version: 19.15-s090_1, built Tue Sep 29 11:43:45 PDT 2020
+Options: -files syn_trial.tcl 
+Date:    Fri Apr 12 20:47:48 2024
+Host:    eda-2.EECS.Berkeley.EDU (x86_64 w/Linux 4.18.0-513.18.1.el8_9.x86_64) (8cores*64cpus*4physical cpus*Intel(R) Xeon(R) CPU E5-4620 v2 @ 2.60GHz 20480KB) (511271564KB)
+PID:     502311
+OS:      Red Hat Enterprise Linux release 8.9 (Ootpa)
+
+Checking out license: Genus_Synthesis
+
+Loading tool scripts...
+
+Finished loading tool scripts (27 seconds elapsed).
+
+#@ Processing -files option
+@genus 1> source syn_trial.tcl
+#@ Begin verbose source syn_trial.tcl
+@file(syn_trial.tcl) 8: puts "set_db hdl_error_on_blackbox true" 
+set_db hdl_error_on_blackbox true
+@file(syn_trial.tcl) 9: set_db hdl_error_on_blackbox true
+  Setting attribute of root '/': 'hdl_error_on_blackbox' = true
+@file(syn_trial.tcl) 10: puts "set_db max_cpus_per_server 4" 
+set_db max_cpus_per_server 4
+@file(syn_trial.tcl) 11: set_db max_cpus_per_server 4
+  Setting attribute of root '/': 'max_cpus_per_server' = 4
+@file(syn_trial.tcl) 14: puts "set_db super_thread_debug_jobs true" 
+set_db super_thread_debug_jobs true
+@file(syn_trial.tcl) 15: set_db super_thread_debug_jobs true
+  Setting attribute of root '/': 'super_thread_debug_jobs' = true
+@file(syn_trial.tcl) 16: puts "set_db super_thread_debug_directory super_thread_debug" 
+set_db super_thread_debug_directory super_thread_debug
+@file(syn_trial.tcl) 17: set_db super_thread_debug_directory super_thread_debug
+  Setting attribute of root '/': 'super_thread_debug_directory' = super_thread_debug
+@file(syn_trial.tcl) 18: puts "set_db lp_clock_gating_infer_enable  true" 
+set_db lp_clock_gating_infer_enable  true
+@file(syn_trial.tcl) 19: set_db lp_clock_gating_infer_enable  true
+  Setting attribute of root '/': 'lp_clock_gating_infer_enable' = true
+@file(syn_trial.tcl) 20: puts "set_db lp_clock_gating_prefix  {CLKGATE}" 
+set_db lp_clock_gating_prefix  {CLKGATE}
+@file(syn_trial.tcl) 21: set_db lp_clock_gating_prefix  {CLKGATE}
+  Setting attribute of root '/': 'lp_clock_gating_prefix' = CLKGATE
+@file(syn_trial.tcl) 22: puts "set_db lp_insert_clock_gating  true" 
+set_db lp_insert_clock_gating  true
+@file(syn_trial.tcl) 23: set_db lp_insert_clock_gating  true
+  Setting attribute of root '/': 'lp_insert_clock_gating' = true
+@file(syn_trial.tcl) 24: puts "set_db lp_clock_gating_register_aware true" 
+set_db lp_clock_gating_register_aware true
+@file(syn_trial.tcl) 25: set_db lp_clock_gating_register_aware true
+  Setting attribute of root '/': 'lp_clock_gating_register_aware' = true
+@file(syn_trial.tcl) 26: puts "read_mmmc /scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/mmmc.tcl" 
+read_mmmc /scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/mmmc.tcl
+@file(syn_trial.tcl) 27: read_mmmc /scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/mmmc.tcl
+Sourcing '/scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/mmmc.tcl' (Fri Apr 12 20:48:16 PDT 2024)...
+#@ Begin verbose source scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/mmmc.tcl
+@file(mmmc.tcl) 8: puts "create_constraint_mode -name my_constraint_mode -sdc_files [list /scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/clock_constraints_fragment.sdc /scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/pin_constraints_fragment.sdc] " 
+create_constraint_mode -name my_constraint_mode -sdc_files /scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/clock_constraints_fragment.sdc /scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/pin_constraints_fragment.sdc 
+@file(mmmc.tcl) 9: create_constraint_mode -name my_constraint_mode -sdc_files [list /scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/clock_constraints_fragment.sdc /scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/pin_constraints_fragment.sdc] 
+@file(mmmc.tcl) 10: puts "create_library_set -name ss_100C_1v60.setup_set -timing [list /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__gpiov2_pad_wrapped_ss_ss_100C_1v60_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped3_pad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vdda_hvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vddio_hvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssa_hvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped3_pad_ss_100C_1v60_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped_pad_ss_100C_1v60_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssio_hvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_gpiov2_ss_ss_100C_1v60_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_ground_hvc_wpad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_ground_lvc_wpad_ss_100C_1v60_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_power_hvc_wpad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_power_lvc_wpad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_xres4v2_ss_ss_100C_1v60_3v00.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_1024x32m8w8/sram22_1024x32m8w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x32m4w32/sram22_64x32m4w32_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_1024x32m8w32/sram22_1024x32m8w32_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x32m4w32/sram22_512x32m4w32_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_2048x32m8w8/sram22_2048x32m8w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x32m4w8/sram22_512x32m4w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_4096x32m8w8/sram22_4096x32m8w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x4m4w2/sram22_64x4m4w2_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_256x32m4w8/sram22_256x32m4w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_4096x8m8w8/sram22_4096x8m8w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x32m4w8/sram22_64x32m4w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x24m4w24/sram22_64x24m4w24_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x64m4w8/sram22_512x64m4w8_tt_025C_1v80.rc.lib]" 
+create_library_set -name ss_100C_1v60.setup_set -timing /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__gpiov2_pad_wrapped_ss_ss_100C_1v60_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped3_pad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vdda_hvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vddio_hvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssa_hvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped3_pad_ss_100C_1v60_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped_pad_ss_100C_1v60_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssio_hvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_gpiov2_ss_ss_100C_1v60_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_ground_hvc_wpad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_ground_lvc_wpad_ss_100C_1v60_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_power_hvc_wpad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_power_lvc_wpad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_xres4v2_ss_ss_100C_1v60_3v00.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_1024x32m8w8/sram22_1024x32m8w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x32m4w32/sram22_64x32m4w32_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_1024x32m8w32/sram22_1024x32m8w32_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x32m4w32/sram22_512x32m4w32_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_2048x32m8w8/sram22_2048x32m8w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x32m4w8/sram22_512x32m4w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_4096x32m8w8/sram22_4096x32m8w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x4m4w2/sram22_64x4m4w2_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_256x32m4w8/sram22_256x32m4w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_4096x8m8w8/sram22_4096x8m8w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x32m4w8/sram22_64x32m4w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x24m4w24/sram22_64x24m4w24_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x64m4w8/sram22_512x64m4w8_tt_025C_1v80.rc.lib
+@file(mmmc.tcl) 11: create_library_set -name ss_100C_1v60.setup_set -timing [list /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__gpiov2_pad_wrapped_ss_ss_100C_1v60_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped3_pad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vdda_hvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vddio_hvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssa_hvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped3_pad_ss_100C_1v60_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped_pad_ss_100C_1v60_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssio_hvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_gpiov2_ss_ss_100C_1v60_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_ground_hvc_wpad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_ground_lvc_wpad_ss_100C_1v60_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_power_hvc_wpad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_power_lvc_wpad_ss_100C_1v60_3v00_3v00.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_xres4v2_ss_ss_100C_1v60_3v00.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_1024x32m8w8/sram22_1024x32m8w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x32m4w32/sram22_64x32m4w32_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_1024x32m8w32/sram22_1024x32m8w32_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x32m4w32/sram22_512x32m4w32_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_2048x32m8w8/sram22_2048x32m8w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x32m4w8/sram22_512x32m4w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_4096x32m8w8/sram22_4096x32m8w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x4m4w2/sram22_64x4m4w2_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_256x32m4w8/sram22_256x32m4w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_4096x8m8w8/sram22_4096x8m8w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x32m4w8/sram22_64x32m4w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x24m4w24/sram22_64x24m4w24_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x64m4w8/sram22_512x64m4w8_tt_025C_1v80.rc.lib]
+@file(mmmc.tcl) 12: puts "create_timing_condition -name ss_100C_1v60.setup_cond -library_sets [list ss_100C_1v60.setup_set]" 
+create_timing_condition -name ss_100C_1v60.setup_cond -library_sets ss_100C_1v60.setup_set
+@file(mmmc.tcl) 13: create_timing_condition -name ss_100C_1v60.setup_cond -library_sets [list ss_100C_1v60.setup_set]
+@file(mmmc.tcl) 14: puts "create_rc_corner -name ss_100C_1v60.setup_rc -temperature 100.0 " 
+create_rc_corner -name ss_100C_1v60.setup_rc -temperature 100.0 
+@file(mmmc.tcl) 15: create_rc_corner -name ss_100C_1v60.setup_rc -temperature 100.0 
+@file(mmmc.tcl) 16: puts "create_delay_corner -name ss_100C_1v60.setup_delay -timing_condition ss_100C_1v60.setup_cond -rc_corner ss_100C_1v60.setup_rc" 
+create_delay_corner -name ss_100C_1v60.setup_delay -timing_condition ss_100C_1v60.setup_cond -rc_corner ss_100C_1v60.setup_rc
+@file(mmmc.tcl) 17: create_delay_corner -name ss_100C_1v60.setup_delay -timing_condition ss_100C_1v60.setup_cond -rc_corner ss_100C_1v60.setup_rc
+@file(mmmc.tcl) 18: puts "create_analysis_view -name ss_100C_1v60.setup_view -delay_corner ss_100C_1v60.setup_delay -constraint_mode my_constraint_mode" 
+create_analysis_view -name ss_100C_1v60.setup_view -delay_corner ss_100C_1v60.setup_delay -constraint_mode my_constraint_mode
+@file(mmmc.tcl) 19: create_analysis_view -name ss_100C_1v60.setup_view -delay_corner ss_100C_1v60.setup_delay -constraint_mode my_constraint_mode
+@file(mmmc.tcl) 20: puts "create_library_set -name ff_n40C_1v95.hold_set -timing [list /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95_ccsnoise.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__gpiov2_pad_wrapped_ff_ff_n40C_1v95_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped3_pad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vdda_hvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vddio_hvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssa_hvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped3_pad_ff_n40C_1v95_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped_pad_ff_n40C_1v95_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssio_hvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_gpiov2_ff_ff_n40C_1v95_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_ground_hvc_wpad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_ground_lvc_wpad_ff_n40C_1v95_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_power_hvc_wpad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_power_lvc_wpad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_xres4v2_ff_ff_n40C_1v95_5v50.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_1024x32m8w8/sram22_1024x32m8w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x32m4w32/sram22_64x32m4w32_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_1024x32m8w32/sram22_1024x32m8w32_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x32m4w32/sram22_512x32m4w32_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_2048x32m8w8/sram22_2048x32m8w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x32m4w8/sram22_512x32m4w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_4096x32m8w8/sram22_4096x32m8w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x4m4w2/sram22_64x4m4w2_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_256x32m4w8/sram22_256x32m4w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_4096x8m8w8/sram22_4096x8m8w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x32m4w8/sram22_64x32m4w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x24m4w24/sram22_64x24m4w24_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x64m4w8/sram22_512x64m4w8_tt_025C_1v80.rc.lib]" 
+create_library_set -name ff_n40C_1v95.hold_set -timing /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95_ccsnoise.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__gpiov2_pad_wrapped_ff_ff_n40C_1v95_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped3_pad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vdda_hvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vddio_hvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssa_hvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped3_pad_ff_n40C_1v95_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped_pad_ff_n40C_1v95_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssio_hvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_gpiov2_ff_ff_n40C_1v95_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_ground_hvc_wpad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_ground_lvc_wpad_ff_n40C_1v95_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_power_hvc_wpad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_power_lvc_wpad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_xres4v2_ff_ff_n40C_1v95_5v50.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_1024x32m8w8/sram22_1024x32m8w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x32m4w32/sram22_64x32m4w32_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_1024x32m8w32/sram22_1024x32m8w32_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x32m4w32/sram22_512x32m4w32_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_2048x32m8w8/sram22_2048x32m8w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x32m4w8/sram22_512x32m4w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_4096x32m8w8/sram22_4096x32m8w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x4m4w2/sram22_64x4m4w2_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_256x32m4w8/sram22_256x32m4w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_4096x8m8w8/sram22_4096x8m8w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x32m4w8/sram22_64x32m4w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x24m4w24/sram22_64x24m4w24_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x64m4w8/sram22_512x64m4w8_tt_025C_1v80.rc.lib
+@file(mmmc.tcl) 21: create_library_set -name ff_n40C_1v95.hold_set -timing [list /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95_ccsnoise.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__gpiov2_pad_wrapped_ff_ff_n40C_1v95_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped3_pad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vdda_hvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vddio_hvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssa_hvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped3_pad_ff_n40C_1v95_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped_pad_ff_n40C_1v95_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssio_hvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_gpiov2_ff_ff_n40C_1v95_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_ground_hvc_wpad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_ground_lvc_wpad_ff_n40C_1v95_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_power_hvc_wpad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_power_lvc_wpad_ff_n40C_1v95_5v50_5v50.lib /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_xres4v2_ff_ff_n40C_1v95_5v50.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_1024x32m8w8/sram22_1024x32m8w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x32m4w32/sram22_64x32m4w32_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_1024x32m8w32/sram22_1024x32m8w32_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x32m4w32/sram22_512x32m4w32_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_2048x32m8w8/sram22_2048x32m8w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x32m4w8/sram22_512x32m4w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_4096x32m8w8/sram22_4096x32m8w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x4m4w2/sram22_64x4m4w2_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_256x32m4w8/sram22_256x32m4w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_4096x8m8w8/sram22_4096x8m8w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x32m4w8/sram22_64x32m4w8_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x24m4w24/sram22_64x24m4w24_tt_025C_1v80.rc.lib /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x64m4w8/sram22_512x64m4w8_tt_025C_1v80.rc.lib]
+@file(mmmc.tcl) 22: puts "create_timing_condition -name ff_n40C_1v95.hold_cond -library_sets [list ff_n40C_1v95.hold_set]" 
+create_timing_condition -name ff_n40C_1v95.hold_cond -library_sets ff_n40C_1v95.hold_set
+@file(mmmc.tcl) 23: create_timing_condition -name ff_n40C_1v95.hold_cond -library_sets [list ff_n40C_1v95.hold_set]
+@file(mmmc.tcl) 24: puts "create_rc_corner -name ff_n40C_1v95.hold_rc -temperature -40.0 " 
+create_rc_corner -name ff_n40C_1v95.hold_rc -temperature -40.0 
+@file(mmmc.tcl) 25: create_rc_corner -name ff_n40C_1v95.hold_rc -temperature -40.0 
+@file(mmmc.tcl) 26: puts "create_delay_corner -name ff_n40C_1v95.hold_delay -timing_condition ff_n40C_1v95.hold_cond -rc_corner ff_n40C_1v95.hold_rc" 
+create_delay_corner -name ff_n40C_1v95.hold_delay -timing_condition ff_n40C_1v95.hold_cond -rc_corner ff_n40C_1v95.hold_rc
+@file(mmmc.tcl) 27: create_delay_corner -name ff_n40C_1v95.hold_delay -timing_condition ff_n40C_1v95.hold_cond -rc_corner ff_n40C_1v95.hold_rc
+@file(mmmc.tcl) 28: puts "create_analysis_view -name ff_n40C_1v95.hold_view -delay_corner ff_n40C_1v95.hold_delay -constraint_mode my_constraint_mode" 
+create_analysis_view -name ff_n40C_1v95.hold_view -delay_corner ff_n40C_1v95.hold_delay -constraint_mode my_constraint_mode
+@file(mmmc.tcl) 29: create_analysis_view -name ff_n40C_1v95.hold_view -delay_corner ff_n40C_1v95.hold_delay -constraint_mode my_constraint_mode
+@file(mmmc.tcl) 30: puts "set_analysis_view -setup { ss_100C_1v60.setup_view } -hold { ff_n40C_1v95.hold_view  } " 
+set_analysis_view -setup { ss_100C_1v60.setup_view } -hold { ff_n40C_1v95.hold_view  } 
+@file(mmmc.tcl) 31: set_analysis_view -setup { ss_100C_1v60.setup_view } -hold { ff_n40C_1v95.hold_view  } 
+
+Threads Configured:4
+Warning : Missing pg_pin group in the library. [LBR-702]
+        : No pg_pin with name 'VNB' has been read in the cell 'sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_1'. The attribute 'related_bias_pin' specified for the pg_pin 'VGND' is being ignored. (File /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib, Line 82150)
+Warning : Missing pg_pin group in the library. [LBR-702]
+        : No pg_pin with name 'VNB' has been read in the cell 'sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_2'. The attribute 'related_bias_pin' specified for the pg_pin 'VGND' is being ignored. (File /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib, Line 82284)
+Warning : Missing pg_pin group in the library. [LBR-702]
+        : No pg_pin with name 'VNB' has been read in the cell 'sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_4'. The attribute 'related_bias_pin' specified for the pg_pin 'VGND' is being ignored. (File /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib, Line 82418)
+Warning : Missing pg_pin group in the library. [LBR-702]
+        : No pg_pin with name 'VNB' has been read in the cell 'sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_1'. The attribute 'related_bias_pin' specified for the pg_pin 'VGND' is being ignored. (File /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib, Line 82695)
+Warning : Missing pg_pin group in the library. [LBR-702]
+        : No pg_pin with name 'VNB' has been read in the cell 'sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_2'. The attribute 'related_bias_pin' specified for the pg_pin 'VGND' is being ignored. (File /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib, Line 82829)
+Warning : Missing pg_pin group in the library. [LBR-702]
+        : No pg_pin with name 'VNB' has been read in the cell 'sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_4'. The attribute 'related_bias_pin' specified for the pg_pin 'VGND' is being ignored. (File /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib, Line 82963)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_operating_conditions on line 4894 is defined after at least one cell definition. The attribute will be ignored. (File /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__gpiov2_pad_wrapped_ss_ss_100C_1v60_3v00.lib)
+Warning : Found multiple definitions. [LBR-504]
+        : Duplicate definition for attribute 'always_on' encountered. The last definition will be retained. (File /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped3_pad_ss_100C_1v60_3v00.lib, Line 167)
+        : Reload the library file by removing one of the multiple definitions of the same attribute.
+Warning : Found multiple definitions. [LBR-504]
+        : Duplicate definition for attribute 'always_on' encountered. The last definition will be retained. (File /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped_pad_ss_100C_1v60_3v00.lib, Line 156)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_operating_conditions on line 4894 is defined after at least one cell definition. The attribute will be ignored. (File /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_gpiov2_ss_ss_100C_1v60_3v00.lib)
+Warning : Found multiple definitions. [LBR-504]
+        : Duplicate definition for attribute 'always_on' encountered. The last definition will be retained. (File /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_ground_lvc_wpad_ss_100C_1v60_3v00.lib, Line 191)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_operating_conditions on line 869 is defined after at least one cell definition. The attribute will be ignored. (File /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_xres4v2_ss_ss_100C_1v60_3v00.lib)
+
+  Message Summary for Library all 29 libraries:
+  *********************************************
+  Missing pg_pin group in the library. [LBR-702]: 6
+  Missing a function attribute in the output pin definition. [LBR-518]: 52
+  An attribute is used before it is defined. [LBR-511]: 3
+  Found multiple definitions. [LBR-504]: 3
+  An unsupported construct was detected in this library. [LBR-40]: 31
+  *********************************************
+ 
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'sky130_fd_sc_hd__ss_100C_1v60' and 'sky130_ef_io__vccd_lvc_clamped3_pad_ss_100C_1v60_3v00_3v00'.
+        : This is a common source of delay calculation confusion and should be avoided.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'sky130_fd_sc_hd__ss_100C_1v60' and 'sky130_ef_io__vccd_lvc_clamped_pad_ss_100C_1v60_3v00_3v00'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'sky130_fd_sc_hd__ss_100C_1v60' and 'sky130_ef_io__vdda_hvc_clamped_pad_ss_100C_1v60_3v00_3v00'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'sky130_fd_sc_hd__ss_100C_1v60' and 'sky130_ef_io__vddio_hvc_clamped_pad_ss_100C_1v60_3v00_3v00'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'sky130_fd_sc_hd__ss_100C_1v60' and 'sky130_ef_io__vssa_hvc_clamped_pad_ss_100C_1v60_3v00_3v00'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'sky130_fd_sc_hd__ss_100C_1v60' and 'sky130_ef_io__vssio_hvc_clamped_pad_ss_100C_1v60_3v00_3v00'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'sky130_fd_sc_hd__ss_100C_1v60' and 'sky130_fd_io__top_ground_hvc_wpad_ss_100C_1v60_3v00_3v00'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'sky130_fd_sc_hd__ss_100C_1v60' and 'sky130_fd_io__top_power_hvc_wpad_ss_100C_1v60_3v00_3v00'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'sky130_fd_sc_hd__ss_100C_1v60' and 'sky130_fd_io__top_power_lvc_wpad_ss_100C_1v60_3v00_3v00'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'sky130_fd_sc_hd__ss_100C_1v60' and 'sram22_1024x32m8w8'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'sky130_fd_sc_hd__ss_100C_1v60' and 'sram22_64x32m4w32'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'sky130_fd_sc_hd__ss_100C_1v60' and 'sram22_1024x32m8w32'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'sky130_fd_sc_hd__ss_100C_1v60' and 'sram22_512x32m4w32'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'sky130_fd_sc_hd__ss_100C_1v60' and 'sram22_2048x32m8w8'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'sky130_fd_sc_hd__ss_100C_1v60' and 'sram22_512x32m4w8'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'sky130_fd_sc_hd__ss_100C_1v60' and 'sram22_4096x32m8w8'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'sky130_fd_sc_hd__ss_100C_1v60' and 'sram22_64x4m4w2'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'sky130_fd_sc_hd__ss_100C_1v60' and 'sram22_256x32m4w8'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'sky130_fd_sc_hd__ss_100C_1v60' and 'sram22_4096x8m8w8'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'sky130_fd_sc_hd__ss_100C_1v60' and 'sram22_64x32m4w8'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'sky130_fd_sc_hd__ss_100C_1v60' and 'sram22_64x24m4w24'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'sky130_fd_sc_hd__ss_100C_1v60' and 'sram22_512x64m4w8'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.600000, 100.000000) in library 'sky130_fd_sc_hd__ss_100C_1v60.lib'.
+        : The nominal operating condition is represented, either by the nominal PVT values specified in the library source (via nom_process,nom_voltage and nom_temperature respectively), or by the default PVT values (1.0,1.0,1.0).
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.600000, 100.000000) in library 'sky130_ef_io__gpiov2_pad_wrapped_ss_ss_100C_1v60_3v00.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.800000, 100.000000) in library 'sky130_ef_io__vccd_lvc_clamped3_pad_ss_100C_1v60_3v00_3v00.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.800000, 100.000000) in library 'sky130_ef_io__vccd_lvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.800000, 100.000000) in library 'sky130_ef_io__vdda_hvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.800000, 100.000000) in library 'sky130_ef_io__vddio_hvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.800000, 100.000000) in library 'sky130_ef_io__vssa_hvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.600000, 100.000000) in library 'sky130_ef_io__vssd_lvc_clamped3_pad_ss_100C_1v60_3v00.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.600000, 100.000000) in library 'sky130_ef_io__vssd_lvc_clamped_pad_ss_100C_1v60_3v00.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.800000, 100.000000) in library 'sky130_ef_io__vssio_hvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.600000, 100.000000) in library 'sky130_fd_io__top_gpiov2_ss_ss_100C_1v60_3v00.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.800000, 100.000000) in library 'sky130_fd_io__top_ground_hvc_wpad_ss_100C_1v60_3v00_3v00.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.600000, 100.000000) in library 'sky130_fd_io__top_ground_lvc_wpad_ss_100C_1v60_3v00.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.800000, 100.000000) in library 'sky130_fd_io__top_power_hvc_wpad_ss_100C_1v60_3v00_3v00.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.800000, 100.000000) in library 'sky130_fd_io__top_power_lvc_wpad_ss_100C_1v60_3v00_3v00.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.600000, 100.000000) in library 'sky130_fd_io__top_xres4v2_ss_ss_100C_1v60_3v00.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.800000, 25.000000) in library 'sram22_1024x32m8w8_tt_025C_1v80.rc.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.800000, 25.000000) in library 'sram22_64x32m4w32_tt_025C_1v80.rc.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.800000, 25.000000) in library 'sram22_1024x32m8w32_tt_025C_1v80.rc.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.800000, 25.000000) in library 'sram22_512x32m4w32_tt_025C_1v80.rc.lib'.
+Warning : Libcell has no area attribute.  Defaulting to 0 area. [LBR-43]
+        : Assigning 0 area to library cell 'sram22_1024x32m8w32/sram22_1024x32m8w32'.
+        : Specify a valid area value for the libcell.
+Warning : Libcell has no area attribute.  Defaulting to 0 area. [LBR-43]
+        : Assigning 0 area to library cell 'sram22_1024x32m8w8/sram22_1024x32m8w8'.
+Warning : Libcell has no area attribute.  Defaulting to 0 area. [LBR-43]
+        : Assigning 0 area to library cell 'sram22_2048x32m8w8/sram22_2048x32m8w8'.
+Warning : Libcell has no area attribute.  Defaulting to 0 area. [LBR-43]
+        : Assigning 0 area to library cell 'sram22_256x32m4w8/sram22_256x32m4w8'.
+Warning : Libcell has no area attribute.  Defaulting to 0 area. [LBR-43]
+        : Assigning 0 area to library cell 'sram22_4096x32m8w8/sram22_4096x32m8w8'.
+Warning : Libcell has no area attribute.  Defaulting to 0 area. [LBR-43]
+        : Assigning 0 area to library cell 'sram22_4096x8m8w8/sram22_4096x8m8w8'.
+Warning : Libcell has no area attribute.  Defaulting to 0 area. [LBR-43]
+        : Assigning 0 area to library cell 'sram22_512x32m4w32/sram22_512x32m4w32'.
+Warning : Libcell has no area attribute.  Defaulting to 0 area. [LBR-43]
+        : Assigning 0 area to library cell 'sram22_512x32m4w8/sram22_512x32m4w8'.
+Warning : Libcell has no area attribute.  Defaulting to 0 area. [LBR-43]
+        : Assigning 0 area to library cell 'sram22_512x64m4w8/sram22_512x64m4w8'.
+Warning : Libcell has no area attribute.  Defaulting to 0 area. [LBR-43]
+        : Assigning 0 area to library cell 'sram22_64x24m4w24/sram22_64x24m4w24'.
+Warning : Libcell has no area attribute.  Defaulting to 0 area. [LBR-43]
+        : Assigning 0 area to library cell 'sram22_64x32m4w32/sram22_64x32m4w32'.
+Warning : Libcell has no area attribute.  Defaulting to 0 area. [LBR-43]
+        : Assigning 0 area to library cell 'sram22_64x32m4w8/sram22_64x32m4w8'.
+Warning : Libcell has no area attribute.  Defaulting to 0 area. [LBR-43]
+        : Assigning 0 area to library cell 'sram22_64x4m4w2/sram22_64x4m4w2'.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'sky130_fd_sc_hd__decap_12' must have an output pin.
+        : Add the missing output pin(s), then reload the library. Else the library cell will be marked as timing model i.e. unusable. Timing_model means that the cell does not have any defined function. If there is no output pin, Genus will mark library cell as unusable i.e. the attribute 'usable' will be marked to 'false' on the libcell. Therefore, the cell is not used for mapping and it will not be picked up from the library for synthesis. If you query the attribute 'unusable_reason' on the libcell; result will be: 'Library cell has no output pins.'Note: The message LBR-9 is only for the logical pins and not for the power_ground pins. Genus will depend upon the output function defined in the pin group (output pin) of the cell, to use it for mapping. The pg_pin will not have any function defined.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'sky130_fd_sc_hd__decap_12' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'sky130_fd_sc_hd__decap_3' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'sky130_fd_sc_hd__decap_3' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'sky130_fd_sc_hd__decap_4' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'sky130_fd_sc_hd__decap_4' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'sky130_fd_sc_hd__decap_6' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'sky130_fd_sc_hd__decap_6' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'sky130_fd_sc_hd__decap_8' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'sky130_fd_sc_hd__decap_8' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'sky130_fd_sc_hd__diode_2' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'sky130_fd_sc_hd__diode_2' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'sky130_fd_sc_hd__lpflow_bleeder_1' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'sky130_fd_sc_hd__lpflow_bleeder_1' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'sky130_fd_sc_hd__lpflow_decapkapwr_12' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'sky130_fd_sc_hd__lpflow_decapkapwr_12' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'sky130_fd_sc_hd__lpflow_decapkapwr_3' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'sky130_fd_sc_hd__lpflow_decapkapwr_3' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'sky130_fd_sc_hd__lpflow_decapkapwr_4' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'sky130_fd_sc_hd__lpflow_decapkapwr_4' must have an output pin.
+Info    : Set default library domain. [LBR-109]
+        : The default library domain is 'library_domain:ss_100C_1v60.setup_cond'.
+#@ End verbose source scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/mmmc.tcl
+@file(syn_trial.tcl) 28: puts "read_physical -lef { /scratch/eecs251b-aaz/sp24-project-usb2-generator/build/tech-sky130-cache/sky130_fd_sc_hd__nom.tlef /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef /scratch/eecs251b-aaz/sp24-project-usb2-generator/build/tech-sky130-cache/sky130_ef_io.lef /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lef/sky130_fd_io.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_1024x32m8w8/sram22_1024x32m8w8.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x32m4w32/sram22_64x32m4w32.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_1024x32m8w32/sram22_1024x32m8w32.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x32m4w32/sram22_512x32m4w32.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_2048x32m8w8/sram22_2048x32m8w8.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x32m4w8/sram22_512x32m4w8.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_4096x32m8w8/sram22_4096x32m8w8.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x4m4w2/sram22_64x4m4w2.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_256x32m4w8/sram22_256x32m4w8.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_4096x8m8w8/sram22_4096x8m8w8.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x32m4w8/sram22_64x32m4w8.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x24m4w24/sram22_64x24m4w24.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x64m4w8/sram22_512x64m4w8.lef }" 
+read_physical -lef { /scratch/eecs251b-aaz/sp24-project-usb2-generator/build/tech-sky130-cache/sky130_fd_sc_hd__nom.tlef /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef /scratch/eecs251b-aaz/sp24-project-usb2-generator/build/tech-sky130-cache/sky130_ef_io.lef /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lef/sky130_fd_io.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_1024x32m8w8/sram22_1024x32m8w8.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x32m4w32/sram22_64x32m4w32.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_1024x32m8w32/sram22_1024x32m8w32.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x32m4w32/sram22_512x32m4w32.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_2048x32m8w8/sram22_2048x32m8w8.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x32m4w8/sram22_512x32m4w8.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_4096x32m8w8/sram22_4096x32m8w8.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x4m4w2/sram22_64x4m4w2.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_256x32m4w8/sram22_256x32m4w8.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_4096x8m8w8/sram22_4096x8m8w8.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x32m4w8/sram22_64x32m4w8.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x24m4w24/sram22_64x24m4w24.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x64m4w8/sram22_512x64m4w8.lef }
+@file(syn_trial.tcl) 29: read_physical -lef { /scratch/eecs251b-aaz/sp24-project-usb2-generator/build/tech-sky130-cache/sky130_fd_sc_hd__nom.tlef /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef /scratch/eecs251b-aaz/sp24-project-usb2-generator/build/tech-sky130-cache/sky130_ef_io.lef /home/ff/eecs151/fa23/pdk_mod/sky130/pdk/sky130A/libs.ref/sky130_fd_io/lef/sky130_fd_io.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_1024x32m8w8/sram22_1024x32m8w8.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x32m4w32/sram22_64x32m4w32.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_1024x32m8w32/sram22_1024x32m8w32.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x32m4w32/sram22_512x32m4w32.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_2048x32m8w8/sram22_2048x32m8w8.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x32m4w8/sram22_512x32m4w8.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_4096x32m8w8/sram22_4096x32m8w8.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x4m4w2/sram22_64x4m4w2.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_256x32m4w8/sram22_256x32m4w8.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_4096x8m8w8/sram22_4096x8m8w8.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x32m4w8/sram22_64x32m4w8.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_64x24m4w24/sram22_64x24m4w24.lef /home/ff/eecs151/fa23/sky130_srams/sram22_sky130_macros/sram22_512x64m4w8/sram22_512x64m4w8.lef }
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'L1M1_PR' has no resistance value.
+        : If this is the expected behavior, this message can be ignored.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'L1M1_PR_R' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'L1M1_PR_M' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'L1M1_PR_MR' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'L1M1_PR_C' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M1M2_PR' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M1M2_PR_R' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M1M2_PR_M' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M1M2_PR_MR' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M1M2_PR_C' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2M3_PR' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2M3_PR_R' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2M3_PR_M' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2M3_PR_MR' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2M3_PR_C' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3M4_PR' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3M4_PR_R' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3M4_PR_M' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3M4_PR_MR' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3M4_PR_C' has no resistance value.
+Warning : Multiple ports are found on a pin without MUSTJOINALLPORTS in the pin property in the LEF file. [PHYS-2381]
+        : Multiple ports are found on pin 'X' on cell 'sky130_fd_sc_hd__probe_p_8' without MUSTJOINALLPORTS in the pin property.
+        : This means that only one port would be connected, which may not be the expected behavior. Should consider adding MUSTJOINALLPORTS property.
+Warning : Multiple ports are found on a pin without MUSTJOINALLPORTS in the pin property in the LEF file. [PHYS-2381]
+        : Multiple ports are found on pin 'X' on cell 'sky130_fd_sc_hd__probec_p_8' without MUSTJOINALLPORTS in the pin property.
+Warning : Multiple ports are found on a pin without MUSTJOINALLPORTS in the pin property in the LEF file. [PHYS-2381]
+        : Multiple ports are found on pin 'VSSA' on cell 'sky130_ef_io__analog_pad' without MUSTJOINALLPORTS in the pin property.
+Warning : Multiple ports are found on a pin without MUSTJOINALLPORTS in the pin property in the LEF file. [PHYS-2381]
+        : Multiple ports are found on pin 'VSSD' on cell 'sky130_ef_io__analog_pad' without MUSTJOINALLPORTS in the pin property.
+Warning : Multiple ports are found on a pin without MUSTJOINALLPORTS in the pin property in the LEF file. [PHYS-2381]
+        : Multiple ports are found on pin 'AMUXBUS_B' on cell 'sky130_ef_io__analog_pad' without MUSTJOINALLPORTS in the pin property.
+Warning : Multiple ports are found on a pin without MUSTJOINALLPORTS in the pin property in the LEF file. [PHYS-2381]
+        : Multiple ports are found on pin 'AMUXBUS_A' on cell 'sky130_ef_io__analog_pad' without MUSTJOINALLPORTS in the pin property.
+Warning : Multiple ports are found on a pin without MUSTJOINALLPORTS in the pin property in the LEF file. [PHYS-2381]
+        : Multiple ports are found on pin 'VDDIO_Q' on cell 'sky130_ef_io__analog_pad' without MUSTJOINALLPORTS in the pin property.
+Warning : Multiple ports are found on a pin without MUSTJOINALLPORTS in the pin property in the LEF file. [PHYS-2381]
+        : Multiple ports are found on pin 'VDDIO' on cell 'sky130_ef_io__analog_pad' without MUSTJOINALLPORTS in the pin property.
+Warning : Multiple ports are found on a pin without MUSTJOINALLPORTS in the pin property in the LEF file. [PHYS-2381]
+        : Multiple ports are found on pin 'VSWITCH' on cell 'sky130_ef_io__analog_pad' without MUSTJOINALLPORTS in the pin property.
+Warning : Multiple ports are found on a pin without MUSTJOINALLPORTS in the pin property in the LEF file. [PHYS-2381]
+        : Multiple ports are found on pin 'VSSIO' on cell 'sky130_ef_io__analog_pad' without MUSTJOINALLPORTS in the pin property.
+Warning : Multiple ports are found on a pin without MUSTJOINALLPORTS in the pin property in the LEF file. [PHYS-2381]
+        : Multiple ports are found on pin 'VDDA' on cell 'sky130_ef_io__analog_pad' without MUSTJOINALLPORTS in the pin property.
+Warning : Multiple ports are found on a pin without MUSTJOINALLPORTS in the pin property in the LEF file. [PHYS-2381]
+        : Multiple ports are found on pin 'VCCD' on cell 'sky130_ef_io__analog_pad' without MUSTJOINALLPORTS in the pin property.
+Warning : Multiple ports are found on a pin without MUSTJOINALLPORTS in the pin property in the LEF file. [PHYS-2381]
+        : Multiple ports are found on pin 'VCCHIB' on cell 'sky130_ef_io__analog_pad' without MUSTJOINALLPORTS in the pin property.
+Warning : Multiple ports are found on a pin without MUSTJOINALLPORTS in the pin property in the LEF file. [PHYS-2381]
+        : Multiple ports are found on pin 'VSSIO_Q' on cell 'sky130_ef_io__analog_pad' without MUSTJOINALLPORTS in the pin property.
+Warning : Multiple ports are found on a pin without MUSTJOINALLPORTS in the pin property in the LEF file. [PHYS-2381]
+        : Multiple ports are found on pin 'AMUXBUS_A' on cell 'sky130_ef_io__corner_pad' without MUSTJOINALLPORTS in the pin property.
+Warning : Multiple ports are found on a pin without MUSTJOINALLPORTS in the pin property in the LEF file. [PHYS-2381]
+        : Multiple ports are found on pin 'AMUXBUS_B' on cell 'sky130_ef_io__corner_pad' without MUSTJOINALLPORTS in the pin property.
+Warning : Multiple ports are found on a pin without MUSTJOINALLPORTS in the pin property in the LEF file. [PHYS-2381]
+        : Multiple ports are found on pin 'AMUXBUS_A' on cell 'sky130_ef_io__gpiov2_pad' without MUSTJOINALLPORTS in the pin property.
+Warning : Multiple ports are found on a pin without MUSTJOINALLPORTS in the pin property in the LEF file. [PHYS-2381]
+        : Multiple ports are found on pin 'AMUXBUS_B' on cell 'sky130_ef_io__gpiov2_pad' without MUSTJOINALLPORTS in the pin property.
+Warning : Multiple ports are found on a pin without MUSTJOINALLPORTS in the pin property in the LEF file. [PHYS-2381]
+        : Multiple ports are found on pin 'AMUXBUS_A' on cell 'sky130_ef_io__gpiov2_pad_wrapped' without MUSTJOINALLPORTS in the pin property.
+Warning : Multiple ports are found on a pin without MUSTJOINALLPORTS in the pin property in the LEF file. [PHYS-2381]
+        : Multiple ports are found on pin 'AMUXBUS_B' on cell 'sky130_ef_io__gpiov2_pad_wrapped' without MUSTJOINALLPORTS in the pin property.
+
+  According to lef_library, there are total 6 routing layers [ V(3) / H(3) ]
+
+Warning : The variant range of wire parameters is too large. An example of wire parameters are, a WIDTH for layer, PITCH for layer, MINSPACING for layers, etc. [PHYS-12]
+        : The variant range (0.14, 1.6) of 'WIDTH' for layers 'met2' and 'met5' is too large.
+        : Check the consistency of the parameters, and see if you can ignore this message or you're using different LEF file with wrong parameters.
+Warning : The variant range of wire parameters is too large. An example of wire parameters are, a WIDTH for layer, PITCH for layer, MINSPACING for layers, etc. [PHYS-12]
+        : The variant range (0.0285, 12.8) of 'RPERSQ' for layers 'met5' and 'li1' is too large.
+Warning : The value of the wire parameter is too big. [PHYS-13]
+        : The 'RPERSQ: 12.8' of layer 'li1' is much bigger than others.
+        : Check the consistency of the specified wire parameter.
+Warning : The variant range of wire parameters is too large. An example of wire parameters are, a WIDTH for layer, PITCH for layer, MINSPACING for layers, etc. [PHYS-12]
+        : The variant range (0.14, 1.6) of 'MINSPACING' for layers 'met2' and 'met5' is too large.
+  Libraries have 335 usable logic and 62 usable sequential lib-cells.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model 'Huge' is non-monotonic.
+        : Non-monotonic wireload models can cause problems during synthesis and/or mapping.  Raising some of the points in the curve to give it a monotonic shape.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model 'Huge' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model 'Huge' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model 'Large' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model 'Large' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model 'Large' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model 'Medium' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model 'Medium' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model 'Medium' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model 'Small' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model 'Small' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model 'Small' is non-monotonic.
+Warning : Marking library cell 'avoid'. [PHYS-103]
+        : The library cell 'sram22_4096x32m8w8' was marked 'avoid' because there was no physical data in the LEF file.
+        : To prevent the library cell from being set to 'avoid', set attribute 'lib_lef_consistency_check_enable' to 'false'.
+Warning : Marking library cell 'avoid'. [PHYS-103]
+        : The library cell 'sram22_64x4m4w2' was marked 'avoid' because there was no physical data in the LEF file.
+Warning : Marking library cell 'avoid'. [PHYS-103]
+        : The library cell 'sram22_4096x8m8w8' was marked 'avoid' because there was no physical data in the LEF file.
+@file(syn_trial.tcl) 30: puts "read_hdl -sv { /scratch/eecs251b-aaz/sp24-project-usb2-generator/src/sampler.v }" 
+read_hdl -sv { /scratch/eecs251b-aaz/sp24-project-usb2-generator/src/sampler.v }
+@file(syn_trial.tcl) 31: read_hdl -sv { /scratch/eecs251b-aaz/sp24-project-usb2-generator/src/sampler.v }
+@file(syn_trial.tcl) 32: puts "elaborate Sampler" 
+elaborate Sampler
+@file(syn_trial.tcl) 33: elaborate Sampler
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model 'Huge' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model 'Huge' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model 'Huge' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model 'Large' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model 'Large' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model 'Large' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model 'Medium' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model 'Medium' is non-monotonic.
+Info    : Elaborating Design. [ELAB-1]
+        : Elaborating top-level block 'Sampler' from file '/scratch/eecs251b-aaz/sp24-project-usb2-generator/src/sampler.v'.
+Info    : Done Elaborating Design. [ELAB-3]
+        : Done elaborating 'Sampler'.
+Checking for analog nets...
+Check completed for analog nets.
+Checking for source RTL...
+Check completed for source RTL.
+UM:   timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                      elaborate
+@file(syn_trial.tcl) 34: puts "init_design -top Sampler" 
+init_design -top Sampler
+@file(syn_trial.tcl) 35: init_design -top Sampler
+Started checking and loading power intent for design Sampler...
+===============================================================
+No power intent for design 'Sampler'.
+Completed checking and loading power intent for design Sampler (runtime 0.00s).
+===============================================================================
+#
+# Reading SDC /scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/clock_constraints_fragment.sdc for view:ss_100C_1v60.setup_view (constraint_mode:my_constraint_mode)
+#
+Statistics for commands executed by read_sdc:
+ "create_clock"             - successful      1 , failed      0 (runtime  0.00)
+ "create_generated_clock"   - successful      4 , failed      0 (runtime  0.00)
+ "get_clocks"               - successful      5 , failed      0 (runtime  0.00)
+ "set_clock_groups"         - successful      1 , failed      0 (runtime  0.00)
+ "set_clock_uncertainty"    - successful      5 , failed      0 (runtime  0.00)
+Total runtime 0.0
+#
+# Reading SDC /scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/pin_constraints_fragment.sdc for view:ss_100C_1v60.setup_view (constraint_mode:my_constraint_mode)
+#
+Statistics for commands executed by read_sdc:
+ "all_outputs"              - successful      1 , failed      0 (runtime  0.00)
+ "set_load"                 - successful      1 , failed      0 (runtime  0.00)
+Total runtime 0.0
+  Setting attribute of root '/': 'read_qrc_tech_file_rc_corner' = true
+@file(syn_trial.tcl) 36: puts "report_timing -lint -verbose" 
+report_timing -lint -verbose
+@file(syn_trial.tcl) 37: report_timing -lint -verbose
+Info    : Timing analysis will be done for this view. [TUI-744]
+        : View is 'analysis_view:Sampler/ss_100C_1v60.setup_view'.
+        : Worst paths will be shown in this view.
+============================================================
+  Generated by:           Genus(TM) Synthesis Solution 19.15-s090_1
+  Generated on:           Apr 12 2024  08:48:19 pm
+  Module:                 Sampler
+  Library domain:         ss_100C_1v60.setup_cond
+    Domain index:         0
+    Technology libraries: sky130_fd_sc_hd__ss_100C_1v60 1.0000000000
+                          sky130_ef_io__gpiov2_pad_wrapped_ss_ss_100C_1v60_3v00 1.0
+                          sky130_ef_io__vccd_lvc_clamped3_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_ef_io__vccd_lvc_clamped_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_ef_io__vdda_hvc_clamped_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_ef_io__vddio_hvc_clamped_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_ef_io__vssa_hvc_clamped_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_ef_io__vssd_lvc_clamped3_pad_ss_100C_1v60_3v00 1.0
+                          sky130_ef_io__vssd_lvc_clamped_pad_ss_100C_1v60_3v00 1.0
+                          sky130_ef_io__vssio_hvc_clamped_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_fd_io__top_gpiov2_ss_ss_100C_1v60_3v00 1.0
+                          sky130_fd_io__top_ground_hvc_wpad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_fd_io__top_ground_lvc_wpad_ss_100C_1v60_3v00 1.0
+                          sky130_fd_io__top_power_hvc_wpad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_fd_io__top_power_lvc_wpad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_fd_io__top_xres4v2_ss_ss_100C_1v60_3v00 1.0
+                          sram22_1024x32m8w8 1.0
+                          sram22_64x32m4w32 1.0
+                          sram22_1024x32m8w32 1.0
+                          sram22_512x32m4w32 1.0
+                          sram22_2048x32m8w8 1.0
+                          sram22_512x32m4w8 1.0
+                          sram22_4096x32m8w8 1.0
+                          sram22_64x4m4w2 1.0
+                          sram22_256x32m4w8 1.0
+                          sram22_4096x8m8w8 1.0
+                          sram22_64x32m4w8 1.0
+                          sram22_64x24m4w24 1.0
+                          sram22_512x64m4w8 1.0
+  Operating conditions:   ss_100C_1v60 
+  Interconnect mode:      global
+  Area mode:              physical library
+============================================================
+
+-------------------------------------------------------------------------------
+Timing exceptions with no effect
+
+The following timing exceptions are not currently affecting timing in the       
+design in mode 'ss_100C_1v60.setup_view'.  Either no paths in the design        
+satisfy the exception's path specification, or all paths that satisfy the path  
+specification also satisfy an exception with a higher priority.  You can        
+improve runtime and memory usage by removing these exceptions if they are not   
+truly needed.  To see if there is a path in the design that satisfies the path  
+specification for an exception, or to see what other exception is overriding an 
+exception because of priority, use the command:                                 
+  report timing -paths [eval [::legacy::get_attribute paths <exception>]]
+
+exception:Sampler/ss_100C_1v60.setup_view/clock_0
+exception:Sampler/ss_100C_1v60.setup_view/clock_1
+exception:Sampler/ss_100C_1v60.setup_view/clock_3
+exception:Sampler/ss_100C_1v60.setup_view/clock_4
+exception:Sampler/ss_100C_1v60.setup_view/set_clock_groups_exception_clock_constraints_fr_line_20
+exception:Sampler/ss_100C_1v60.setup_view/set_clock_groups_exception_clock_constraints_fr_line_20_1
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+Inputs without clocked external delays
+
+The following primary inputs have no clocked external delays in mode            
+'ss_100C_1v60.setup_view'.  As a result the timing paths leading from the ports 
+have no timing constraints derived from clock waveforms.  The'external_delay'   
+command is used to create new external delays.                                  
+
+port:Sampler/data_in
+port:Sampler/reset
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+Outputs without clocked external delays
+
+The following primary outputs have no clocked external delays in mode           
+'ss_100C_1v60.setup_view'.  As a result the timing paths leading to the ports   
+have no timing constraints derived from clock waveforms.  The'external_delay'   
+command is used to create new external delays.                                  
+
+port:Sampler/data[0]
+port:Sampler/data[1]
+port:Sampler/data[2]
+port:Sampler/data[3]
+port:Sampler/data[4]
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+Inputs without external driver/transition
+
+The following primary inputs have no external driver or input transition set.   
+As a result the transition on the ports will be assumed as zero. The            
+'external_driver' attribute is used to add and external driver or the           
+'fixed_slew' attribute to add an external transition.                           
+
+port:Sampler/data_in
+port:Sampler/reset
+-------------------------------------------------------------------------------
+
+
+Lint summary
+ Unconnected/logic driven clocks                                  0
+ Sequential data pins driven by a clock signal                    0
+ Sequential clock pins without clock waveform                     0
+ Sequential clock pins with multiple clock waveforms              0
+ Generated clocks without clock waveform                          0
+ Generated clocks with incompatible options                       0
+ Generated clocks with multi-master clock                         0
+ Paths constrained with different clocks                          0
+ Loop-breaking cells for combinational feedback                   0
+ Nets with multiple drivers                                       0
+ Timing exceptions with no effect                                 6
+ Suspicious multi_cycle exceptions                                0
+ Pins/ports with conflicting case constants                       0
+ Inputs without clocked external delays                           2
+ Outputs without clocked external delays                          5
+ Inputs without external driver/transition                        2
+ Outputs without external load                                    0
+ Exceptions with invalid timing start-/endpoints                  0
+
+                                                  Total:         15
+
+@file(syn_trial.tcl) 38: puts "read_power_intent -cpf /scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/power_spec.cpf" 
+read_power_intent -cpf /scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/power_spec.cpf
+@file(syn_trial.tcl) 39: read_power_intent -cpf /scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/power_spec.cpf
+Checking out license: Genus_Low_Power_Opt
+Started reading power intent file(s) '/scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/power_spec.cpf'...
+===========================================================================================================================
+Checking file(s) '/scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/power_spec.cpf' with CPF linter (version: 18.10-d331 dated:10.09.2018).
+Completed lint check of files (runtime 0.00).
+Completed reading power intent file(s) '/scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/power_spec.cpf' (runtime 0.00s).
+===========================================================================================================================================
+Started loading library commands in CPF file(s)...
+==================================================
+Completed loading library commands in CPF file(s) (runtime 0.00s).
+==================================================================
+@file(syn_trial.tcl) 40: puts "apply_power_intent -summary" 
+apply_power_intent -summary
+@file(syn_trial.tcl) 41: apply_power_intent -summary
+Started checking and loading power intent for design Sampler...
+===============================================================
+Checking and loading file : /scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/power_spec.cpf
+Completed checking and loading power intent for design Sampler (runtime 0.00s).
+===============================================================================
+Started applying power intent constraints on design 'design:Sampler'...
+=======================================================================
+Completed applying power intent constraints on design 'design:Sampler' (runtime 0.00s).
+=======================================================================================
+Started analyzing power domain boundaries...
+============================================
+Completed analyzing power domain boundaries (runtime 0.00s).
+============================================================
+Tagging rules on existing low power cells...
+===========================================
+Completed tagging rules on low power cells (runtime  0.00).
+==============================================================
+Started making virtual pg network...
+====================================
+Completed making virtual pg network (runtime 0.00s).
+====================================================
+Started identifying always on net segments...
+=============================================
+Completed identifying always on net segments (runtime 0.00s).
+=============================================================
+Power Intent
+==========================================================================================
+Format : CPF                                                                              
+File   : /scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/power_spec.cpf
+==========================================================================================
+Summary
+===================================
+Number of Power Domains         : 1
+Number of Isolation Rules       : 0
+Number of Level Shifter Rules   : 0
+Number of State Retention Rules : 0
+Number of Power Modes           : 1
+===================================
+@file(syn_trial.tcl) 42: puts "commit_power_intent" 
+commit_power_intent
+@file(syn_trial.tcl) 43: commit_power_intent
+Started inserting low power cells...
+====================================
+Info    : No isolation rules defined. [CPI-502]
+        : Design: 'design:Sampler'.
+==========================================
+Started inserting isolation cell on zero pin SRPG instances...
+====================================
+Completed inserting 0 isolation cell(s) on Zero-Pin-SRPG cells.
+=================================================
+Info    : No level shifter rules defined. [CPI-503]
+        : Design: 'design:Sampler'.
+Info    : Completed isolation cell insertion. [CPI-517]
+        : 0 isolation cells inserted.
+Info    : Completed level shifter insertion. [CPI-518]
+        : 0 level shifter cells inserted.
+Merge cell summary: 0
+  ls_followed_by_iso_merge 0
+  iso_followed_by_ls_merge 0
+Completed inserting low power cells (runtime  0.00).
+====================================================
+REMOVED 0 floating/undriven cells.
+REMOVED 0 redundant cells.
+REMOVED 0 back to back isonor cells.
+REMOVED 0 back to back LS cells.
+@file(syn_trial.tcl) 44: puts "set_db root: .auto_ungroup none" 
+set_db root: .auto_ungroup none
+@file(syn_trial.tcl) 45: set_db root: .auto_ungroup none
+  Setting attribute of root '/': 'auto_ungroup' = none
+@file(syn_trial.tcl) 47: puts "set_dont_use \[get_db lib_cells */*sdf*\]"
+set_dont_use [get_db lib_cells */*sdf*]
+@file(syn_trial.tcl) 48: if { [get_db lib_cells */*sdf*] ne "" } {
+    set_dont_use [get_db lib_cells */*sdf*]
+} else {
+    puts "WARNING: cell */*sdf* was not found for set_dont_use"
+}
+@file(syn_trial.tcl) 55: puts "set_dont_use \[get_db lib_cells */sky130_fd_sc_hd__probe_p_*\]"
+set_dont_use [get_db lib_cells */sky130_fd_sc_hd__probe_p_*]
+@file(syn_trial.tcl) 56: if { [get_db lib_cells */sky130_fd_sc_hd__probe_p_*] ne "" } {
+    set_dont_use [get_db lib_cells */sky130_fd_sc_hd__probe_p_*]
+} else {
+    puts "WARNING: cell */sky130_fd_sc_hd__probe_p_* was not found for set_dont_use"
+}
+@file(syn_trial.tcl) 63: puts "set_dont_use \[get_db lib_cells */sky130_fd_sc_hd__probec_p_*\]"
+set_dont_use [get_db lib_cells */sky130_fd_sc_hd__probec_p_*]
+@file(syn_trial.tcl) 64: if { [get_db lib_cells */sky130_fd_sc_hd__probec_p_*] ne "" } {
+    set_dont_use [get_db lib_cells */sky130_fd_sc_hd__probec_p_*]
+} else {
+    puts "WARNING: cell */sky130_fd_sc_hd__probec_p_* was not found for set_dont_use"
+}
+@file(syn_trial.tcl) 70: puts "write_db -to_file pre_syn_generic" 
+write_db -to_file pre_syn_generic
+@file(syn_trial.tcl) 71: write_db -to_file pre_syn_generic
+Finished exporting design database to file 'pre_syn_generic' for 'Sampler' (command execution time mm:ss cpu = 00:00, real = 00:01).
+#@ End verbose source syn_trial.tcl
+WARNING: This version of the tool is 1291 days old.
+@genus:root: 2> report_clocks
+============================================================
+  Generated by:           Genus(TM) Synthesis Solution 19.15-s090_1
+  Generated on:           Apr 12 2024  08:48:56 pm
+  Module:                 Sampler
+  Library domain:         ss_100C_1v60.setup_cond
+    Domain index:         0
+    Technology libraries: sky130_fd_sc_hd__ss_100C_1v60 1.0000000000
+                          sky130_ef_io__gpiov2_pad_wrapped_ss_ss_100C_1v60_3v00 1.0
+                          sky130_ef_io__vccd_lvc_clamped3_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_ef_io__vccd_lvc_clamped_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_ef_io__vdda_hvc_clamped_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_ef_io__vddio_hvc_clamped_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_ef_io__vssa_hvc_clamped_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_ef_io__vssd_lvc_clamped3_pad_ss_100C_1v60_3v00 1.0
+                          sky130_ef_io__vssd_lvc_clamped_pad_ss_100C_1v60_3v00 1.0
+                          sky130_ef_io__vssio_hvc_clamped_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_fd_io__top_gpiov2_ss_ss_100C_1v60_3v00 1.0
+                          sky130_fd_io__top_ground_hvc_wpad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_fd_io__top_ground_lvc_wpad_ss_100C_1v60_3v00 1.0
+                          sky130_fd_io__top_power_hvc_wpad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_fd_io__top_power_lvc_wpad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_fd_io__top_xres4v2_ss_ss_100C_1v60_3v00 1.0
+                          sram22_1024x32m8w8 1.0
+                          sram22_64x32m4w32 1.0
+                          sram22_1024x32m8w32 1.0
+                          sram22_512x32m4w32 1.0
+                          sram22_2048x32m8w8 1.0
+                          sram22_512x32m4w8 1.0
+                          sram22_4096x32m8w8 1.0
+                          sram22_64x4m4w2 1.0
+                          sram22_256x32m4w8 1.0
+                          sram22_4096x8m8w8 1.0
+                          sram22_64x32m4w8 1.0
+                          sram22_64x24m4w24 1.0
+                          sram22_512x64m4w8 1.0
+  Operating conditions:   ss_100C_1v60 
+  Interconnect mode:      global
+  Area mode:              physical library
+============================================================
+
+
+ Clock Description
+ ----------------- 
+
+                          Clock                             Clock                No of   
+          Mode            Name     Period  Rise    Fall     Domain   Pin/Port  Registers 
+-----------------------------------------------------------------------------------------
+ss_100C_1v60.setup_view  clock_0   2000.0   0.0   1000.0   domain_1   clock_0      1     
+
+ Clock Network Latency / Setup Uncertainty
+ ----------------------------------------- 
+
+                                  Network   Network   Source   Source     Setup        Setup    
+                         Clock    Latency   Latency  Latency  Latency  Uncertainty  Uncertainty 
+          Mode            Name     Rise      Fall      Rise     Fall       Rise         Fall    
+------------------------------------------------------------------------------------------------
+ss_100C_1v60.setup_view clock_0       0.0       0.0      0.0      0.0       1000.0       1000.0 
+
+ Clock Relationship (with uncertainty & latency)
+ ----------------------------------------------- 
+
+            Mode              From       To      R->R    R->F   F->R    F->F  
+------------------------------------------------------------------------------
+  ss_100C_1v60.setup_view   clock_0   clock_0   1000.0    0.0    0.0   1000.0 
+@genus:root: 3> report_clocks
+============================================================
+  Generated by:           Genus(TM) Synthesis Solution 19.15-s090_1
+  Generated on:           Apr 12 2024  08:49:26 pm
+  Module:                 Sampler
+  Library domain:         ss_100C_1v60.setup_cond
+    Domain index:         0
+    Technology libraries: sky130_fd_sc_hd__ss_100C_1v60 1.0000000000
+                          sky130_ef_io__gpiov2_pad_wrapped_ss_ss_100C_1v60_3v00 1.0
+                          sky130_ef_io__vccd_lvc_clamped3_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_ef_io__vccd_lvc_clamped_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_ef_io__vdda_hvc_clamped_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_ef_io__vddio_hvc_clamped_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_ef_io__vssa_hvc_clamped_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_ef_io__vssd_lvc_clamped3_pad_ss_100C_1v60_3v00 1.0
+                          sky130_ef_io__vssd_lvc_clamped_pad_ss_100C_1v60_3v00 1.0
+                          sky130_ef_io__vssio_hvc_clamped_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_fd_io__top_gpiov2_ss_ss_100C_1v60_3v00 1.0
+                          sky130_fd_io__top_ground_hvc_wpad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_fd_io__top_ground_lvc_wpad_ss_100C_1v60_3v00 1.0
+                          sky130_fd_io__top_power_hvc_wpad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_fd_io__top_power_lvc_wpad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_fd_io__top_xres4v2_ss_ss_100C_1v60_3v00 1.0
+                          sram22_1024x32m8w8 1.0
+                          sram22_64x32m4w32 1.0
+                          sram22_1024x32m8w32 1.0
+                          sram22_512x32m4w32 1.0
+                          sram22_2048x32m8w8 1.0
+                          sram22_512x32m4w8 1.0
+                          sram22_4096x32m8w8 1.0
+                          sram22_64x4m4w2 1.0
+                          sram22_256x32m4w8 1.0
+                          sram22_4096x8m8w8 1.0
+                          sram22_64x32m4w8 1.0
+                          sram22_64x24m4w24 1.0
+                          sram22_512x64m4w8 1.0
+  Operating conditions:   ss_100C_1v60 
+  Interconnect mode:      global
+  Area mode:              physical library
+============================================================
+
+
+ Clock Description
+ ----------------- 
+
+                          Clock                             Clock                No of   
+          Mode            Name     Period  Rise    Fall     Domain   Pin/Port  Registers 
+-----------------------------------------------------------------------------------------
+ss_100C_1v60.setup_view  clock_0   2000.0   0.0   1000.0   domain_1   clock_0      1     
+
+ Clock Network Latency / Setup Uncertainty
+ ----------------------------------------- 
+
+                                  Network   Network   Source   Source     Setup        Setup    
+                         Clock    Latency   Latency  Latency  Latency  Uncertainty  Uncertainty 
+          Mode            Name     Rise      Fall      Rise     Fall       Rise         Fall    
+------------------------------------------------------------------------------------------------
+ss_100C_1v60.setup_view clock_0       0.0       0.0      0.0      0.0       1000.0       1000.0 
+
+ Clock Relationship (with uncertainty & latency)
+ ----------------------------------------------- 
+
+            Mode              From       To      R->R    R->F   F->R    F->F  
+------------------------------------------------------------------------------
+  ss_100C_1v60.setup_view   clock_0   clock_0   1000.0    0.0    0.0   1000.0 
+@genus:root: 4> 
+@genus:root: 4> 
+@genus:root: 4> clock
+wrong # args: should be "clock subcommand ?arg ...?"
+@genus:root: 5> report_summary
+No statistics data was found for design (Sampler).
+can't read "arr1(Sampler,steps)": no such element in array
+@genus:root: 6> report_clock_tree_structure
+Clock    : ss_100C_1v60.setup_view/clock_0
+Source   : clock_0 (port)
+Total FF : 0
+Max Level: 2
+(L1) port clock_0
+    (L2) data_out_reg[0]/clk (d_flop)
+
+----------------------------------------------------
+Clock    : ss_100C_1v60.setup_view/clock_1
+Source   : clock_1 (port)
+Total FF : 0
+Max Level: 2
+(L1) port clock_1
+    (L2) data_out_reg[1]/clk (d_flop)
+
+----------------------------------------------------
+Clock    : ss_100C_1v60.setup_view/clock_2
+Source   : clock_2 (port)
+Total FF : 0
+Max Level: 2
+(L1) port clock_2
+    (L2) data_out_reg[2]/clk (d_flop)
+    (L2) data_reg[0]/clk (d_flop)
+    (L2) data_reg[1]/clk (d_flop)
+    (L2) data_reg[2]/clk (d_flop)
+    (L2) data_reg[3]/clk (d_flop)
+    (L2) data_reg[4]/clk (d_flop)
+
+----------------------------------------------------
+Clock    : ss_100C_1v60.setup_view/clock_3
+Source   : clock_3 (port)
+Total FF : 0
+Max Level: 2
+(L1) port clock_3
+    (L2) data_out_reg[3]/clk (d_flop)
+
+----------------------------------------------------
+Clock    : ss_100C_1v60.setup_view/clock_4
+Source   : clock_4 (port)
+Total FF : 0
+Max Level: 2
+(L1) port clock_4
+    (L2) data_out_reg[4]/clk (d_flop)
+
+@genus:root: 7> set_clock_groups -asynchronous -allow_paths -group { clock_0 clock_1 clock_2 clock_3 clock_4 }
+Error   : SDC command requires a constraint mode specification. [SDC-235] [set_clock_groups]
+        : The 'set_clock_groups' command requires a constraint mode to be specified when in MMMC.
+        : The indicated command requires that a constraint mode be specified.  Use the 'set_interactive_constraint_modes' to indicate the constraint mode for the command.
+@genus:root: 8> report_timing -lint -verbose
+Info    : Timing analysis will be done for this view. [TUI-744]
+        : View is 'analysis_view:Sampler/ss_100C_1v60.setup_view'.
+============================================================
+  Generated by:           Genus(TM) Synthesis Solution 19.15-s090_1
+  Generated on:           Apr 12 2024  08:55:35 pm
+  Module:                 Sampler
+  Library domain:         ss_100C_1v60.setup_cond
+    Domain index:         0
+    Technology libraries: sky130_fd_sc_hd__ss_100C_1v60 1.0000000000
+                          sky130_ef_io__gpiov2_pad_wrapped_ss_ss_100C_1v60_3v00 1.0
+                          sky130_ef_io__vccd_lvc_clamped3_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_ef_io__vccd_lvc_clamped_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_ef_io__vdda_hvc_clamped_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_ef_io__vddio_hvc_clamped_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_ef_io__vssa_hvc_clamped_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_ef_io__vssd_lvc_clamped3_pad_ss_100C_1v60_3v00 1.0
+                          sky130_ef_io__vssd_lvc_clamped_pad_ss_100C_1v60_3v00 1.0
+                          sky130_ef_io__vssio_hvc_clamped_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_fd_io__top_gpiov2_ss_ss_100C_1v60_3v00 1.0
+                          sky130_fd_io__top_ground_hvc_wpad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_fd_io__top_ground_lvc_wpad_ss_100C_1v60_3v00 1.0
+                          sky130_fd_io__top_power_hvc_wpad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_fd_io__top_power_lvc_wpad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_fd_io__top_xres4v2_ss_ss_100C_1v60_3v00 1.0
+                          sram22_1024x32m8w8 1.0
+                          sram22_64x32m4w32 1.0
+                          sram22_1024x32m8w32 1.0
+                          sram22_512x32m4w32 1.0
+                          sram22_2048x32m8w8 1.0
+                          sram22_512x32m4w8 1.0
+                          sram22_4096x32m8w8 1.0
+                          sram22_64x4m4w2 1.0
+                          sram22_256x32m4w8 1.0
+                          sram22_4096x8m8w8 1.0
+                          sram22_64x32m4w8 1.0
+                          sram22_64x24m4w24 1.0
+                          sram22_512x64m4w8 1.0
+  Operating conditions:   ss_100C_1v60 
+  Interconnect mode:      global
+  Area mode:              physical library
+============================================================
+
+-------------------------------------------------------------------------------
+Timing exceptions with no effect
+
+The following timing exceptions are not currently affecting timing in the       
+design in mode 'ss_100C_1v60.setup_view'.  Either no paths in the design        
+satisfy the exception's path specification, or all paths that satisfy the path  
+specification also satisfy an exception with a higher priority.  You can        
+improve runtime and memory usage by removing these exceptions if they are not   
+truly needed.  To see if there is a path in the design that satisfies the path  
+specification for an exception, or to see what other exception is overriding an 
+exception because of priority, use the command:                                 
+  report timing -paths [eval [::legacy::get_attribute paths <exception>]]
+
+exception:Sampler/ss_100C_1v60.setup_view/clock_0
+exception:Sampler/ss_100C_1v60.setup_view/clock_1
+exception:Sampler/ss_100C_1v60.setup_view/clock_3
+exception:Sampler/ss_100C_1v60.setup_view/clock_4
+exception:Sampler/ss_100C_1v60.setup_view/set_clock_groups_exception_clock_constraints_fr_line_20
+exception:Sampler/ss_100C_1v60.setup_view/set_clock_groups_exception_clock_constraints_fr_line_20_1
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+Inputs without clocked external delays
+
+The following primary inputs have no clocked external delays in mode            
+'ss_100C_1v60.setup_view'.  As a result the timing paths leading from the ports 
+have no timing constraints derived from clock waveforms.  The'external_delay'   
+command is used to create new external delays.                                  
+
+port:Sampler/data_in
+port:Sampler/reset
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+Outputs without clocked external delays
+
+The following primary outputs have no clocked external delays in mode           
+'ss_100C_1v60.setup_view'.  As a result the timing paths leading to the ports   
+have no timing constraints derived from clock waveforms.  The'external_delay'   
+command is used to create new external delays.                                  
+
+port:Sampler/data[0]
+port:Sampler/data[1]
+port:Sampler/data[2]
+port:Sampler/data[3]
+port:Sampler/data[4]
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+Inputs without external driver/transition
+
+The following primary inputs have no external driver or input transition set.   
+As a result the transition on the ports will be assumed as zero. The            
+'external_driver' attribute is used to add and external driver or the           
+'fixed_slew' attribute to add an external transition.                           
+
+port:Sampler/data_in
+port:Sampler/reset
+-------------------------------------------------------------------------------
+
+
+Lint summary
+ Unconnected/logic driven clocks                                  0
+ Sequential data pins driven by a clock signal                    0
+ Sequential clock pins without clock waveform                     0
+ Sequential clock pins with multiple clock waveforms              0
+ Generated clocks without clock waveform                          0
+ Generated clocks with incompatible options                       0
+ Generated clocks with multi-master clock                         0
+ Paths constrained with different clocks                          0
+ Loop-breaking cells for combinational feedback                   0
+ Nets with multiple drivers                                       0
+ Timing exceptions with no effect                                 6
+ Suspicious multi_cycle exceptions                                0
+ Pins/ports with conflicting case constants                       0
+ Inputs without clocked external delays                           2
+ Outputs without clocked external delays                          5
+ Inputs without external driver/transition                        2
+ Outputs without external load                                    0
+ Exceptions with invalid timing start-/endpoints                  0
+
+                                                  Total:         15
+
+@genus:root: 9> report_timing_summary
+============================================================
+  Generated by:           Genus(TM) Synthesis Solution 19.15-s090_1
+  Generated on:           Apr 12 2024  08:55:53 pm
+  Module:                 Sampler
+  Library domain:         ss_100C_1v60.setup_cond
+    Domain index:         0
+    Technology libraries: sky130_fd_sc_hd__ss_100C_1v60 1.0000000000
+                          sky130_ef_io__gpiov2_pad_wrapped_ss_ss_100C_1v60_3v00 1.0
+                          sky130_ef_io__vccd_lvc_clamped3_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_ef_io__vccd_lvc_clamped_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_ef_io__vdda_hvc_clamped_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_ef_io__vddio_hvc_clamped_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_ef_io__vssa_hvc_clamped_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_ef_io__vssd_lvc_clamped3_pad_ss_100C_1v60_3v00 1.0
+                          sky130_ef_io__vssd_lvc_clamped_pad_ss_100C_1v60_3v00 1.0
+                          sky130_ef_io__vssio_hvc_clamped_pad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_fd_io__top_gpiov2_ss_ss_100C_1v60_3v00 1.0
+                          sky130_fd_io__top_ground_hvc_wpad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_fd_io__top_ground_lvc_wpad_ss_100C_1v60_3v00 1.0
+                          sky130_fd_io__top_power_hvc_wpad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_fd_io__top_power_lvc_wpad_ss_100C_1v60_3v00_3v00 1.0000000
+                          sky130_fd_io__top_xres4v2_ss_ss_100C_1v60_3v00 1.0
+                          sram22_1024x32m8w8 1.0
+                          sram22_64x32m4w32 1.0
+                          sram22_1024x32m8w32 1.0
+                          sram22_512x32m4w32 1.0
+                          sram22_2048x32m8w8 1.0
+                          sram22_512x32m4w8 1.0
+                          sram22_4096x32m8w8 1.0
+                          sram22_64x4m4w2 1.0
+                          sram22_256x32m4w8 1.0
+                          sram22_4096x8m8w8 1.0
+                          sram22_64x32m4w8 1.0
+                          sram22_64x24m4w24 1.0
+                          sram22_512x64m4w8 1.0
+  Operating conditions:   ss_100C_1v60 
+  Interconnect mode:      global
+  Area mode:              physical library
+============================================================
+
+# SETUP                   WNS      TNS    FEP 
+# ----------------------------------------------
+ View: ALL            -1939.1  -5695.5      5 
+    Group : in2out        N/A      N/A    N/A 
+    Group : in2reg        N/A      N/A    N/A 
+    Group : reg2out       N/A      N/A    N/A 
+    Group : reg2reg   -1939.1  -5695.5      5 
+
+# ----------------------------------------------
+# DRV                        WNS  TNS  FEP 
+# -------------------------------------------
+ View: ALL                                 
+    Check: max_transition    N/A  N/A    0 
+    Check: max_capacitance   N/A  N/A    0 
+    Check: max_fanout        N/A  N/A    0 
+
+# -------------------------------------------
+0
+@genus:root: 10> report_timing
+Warning : Timing problems have been detected in this design. [TIM-11]
+        : The design is 'Sampler'.
+        : Use 'check_timing_intent' or 'report timing -lint' to report more information.
+============================================================
+  Generated by:           Genus(TM) Synthesis Solution 19.15-s090_1
+  Generated on:           Apr 12 2024  08:56:06 pm
+  Module:                 Sampler
+  Operating conditions:   ss_100C_1v60 
+  Interconnect mode:      global
+  Area mode:              physical library
+============================================================
+
+
+Path 1: VIOLATED (-1939 ps) Setup Check with Pin data_reg[1]/clk->d
+           View: ss_100C_1v60.setup_view
+          Group: clock_2
+     Startpoint: (R) data_out_reg[1]/clk
+          Clock: (R) clock_1
+       Endpoint: (R) data_reg[1]/d
+          Clock: (R) clock_2
+
+                     Capture       Launch     
+        Clock Edge:+     800          400     
+       Src Latency:+       0            0     
+       Net Latency:+       0 (I)        0 (I) 
+           Arrival:=     800          400     
+                                              
+             Setup:-     386                  
+       Uncertainty:-    1000                  
+     Required Time:=    -586                  
+      Launch Clock:-     400                  
+         Data Path:-     953                  
+             Slack:=   -1939                  
+
+#----------------------------------------------------------------------------------------------------------
+#    Timing Point     Flags    Arc   Edge      Cell         Power Fanout Load Trans Delay Arrival Instance 
+#                                                          Domain        (fF)  (ps)  (ps)   (ps)  Location 
+#----------------------------------------------------------------------------------------------------------
+  data_out_reg[1]/clk -       -      R     (arrival)        AO         1    -     0     0     400    (-,-) 
+  data_out_reg[1]/q   (u)     clk->q R     unmapped_d_flop  AO         1  5.6     0   953    1353    (-,-) 
+  data_reg[1]/d       <<<     -      R     unmapped_d_flop  AO         1    -     -     0    1353    (-,-) 
+#----------------------------------------------------------------------------------------------------------
+
+(u) : Net has unmapped pin(s).
+
+
+@genus:root: 11> report_timing -lint -verbose
+Info    : Timing analysis will be done for this view. [TUI-744]
+        : View is 'analysis_view:Sampler/ss_100C_1v60.setup_view'.
+============================================================
+  Generated by:           Genus(TM) Synthesis Solution 19.15-s090_1
+  Generated on:           Apr 12 2024  08:56:54 pm
+  Module:                 Sampler
+  Operating conditions:   ss_100C_1v60 
+  Interconnect mode:      global
+  Area mode:              physical library
+============================================================
+
+-------------------------------------------------------------------------------
+Timing exceptions with no effect
+
+The following timing exceptions are not currently affecting timing in the       
+design in mode 'ss_100C_1v60.setup_view'.  Either no paths in the design        
+satisfy the exception's path specification, or all paths that satisfy the path  
+specification also satisfy an exception with a higher priority.  You can        
+improve runtime and memory usage by removing these exceptions if they are not   
+truly needed.  To see if there is a path in the design that satisfies the path  
+specification for an exception, or to see what other exception is overriding an 
+exception because of priority, use the command:                                 
+  report timing -paths [eval [::legacy::get_attribute paths <exception>]]
+
+exception:Sampler/ss_100C_1v60.setup_view/clock_0
+exception:Sampler/ss_100C_1v60.setup_view/clock_1
+exception:Sampler/ss_100C_1v60.setup_view/clock_3
+exception:Sampler/ss_100C_1v60.setup_view/clock_4
+exception:Sampler/ss_100C_1v60.setup_view/set_clock_groups_exception_clock_constraints_fr_line_20
+exception:Sampler/ss_100C_1v60.setup_view/set_clock_groups_exception_clock_constraints_fr_line_20_1
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+Inputs without clocked external delays
+
+The following primary inputs have no clocked external delays in mode            
+'ss_100C_1v60.setup_view'.  As a result the timing paths leading from the ports 
+have no timing constraints derived from clock waveforms.  The'external_delay'   
+command is used to create new external delays.                                  
+
+port:Sampler/data_in
+port:Sampler/reset
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+Outputs without clocked external delays
+
+The following primary outputs have no clocked external delays in mode           
+'ss_100C_1v60.setup_view'.  As a result the timing paths leading to the ports   
+have no timing constraints derived from clock waveforms.  The'external_delay'   
+command is used to create new external delays.                                  
+
+port:Sampler/data[0]
+port:Sampler/data[1]
+port:Sampler/data[2]
+port:Sampler/data[3]
+port:Sampler/data[4]
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+Inputs without external driver/transition
+
+The following primary inputs have no external driver or input transition set.   
+As a result the transition on the ports will be assumed as zero. The            
+'external_driver' attribute is used to add and external driver or the           
+'fixed_slew' attribute to add an external transition.                           
+
+port:Sampler/data_in
+port:Sampler/reset
+-------------------------------------------------------------------------------
+
+
+Lint summary
+ Unconnected/logic driven clocks                                  0
+ Sequential data pins driven by a clock signal                    0
+ Sequential clock pins without clock waveform                     0
+ Sequential clock pins with multiple clock waveforms              0
+ Generated clocks without clock waveform                          0
+ Generated clocks with incompatible options                       0
+ Generated clocks with multi-master clock                         0
+ Paths constrained with different clocks                          0
+ Loop-breaking cells for combinational feedback                   0
+ Nets with multiple drivers                                       0
+ Timing exceptions with no effect                                 6
+ Suspicious multi_cycle exceptions                                0
+ Pins/ports with conflicting case constants                       0
+ Inputs without clocked external delays                           2
+ Outputs without clocked external delays                          5
+ Inputs without external driver/transition                        2
+ Outputs without external load                                    0
+ Exceptions with invalid timing start-/endpoints                  0
+
+                                                  Total:         15
+
+@genus:root: 12> read_power_intent -cpf /scratch/eecs251b-aaz/sp24-project-usb2-generator/build/syn-rundir/power_spec.cpf
+Error   : Cannot read power intent. [PI-2] [read_power_intent]
+        : The design 'design:Sampler' has CPF constraints. To read new power intent, remove the design and read new power intent and design again.
+        : Read power intent file after removing design or in a fresh session.
+@genus:root: 13> exit
+Normal exit.
