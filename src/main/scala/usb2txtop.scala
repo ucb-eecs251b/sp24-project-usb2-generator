@@ -31,7 +31,7 @@ class USBTx(dWidth: Int) extends Module {
   })
 
   // io.in.bits  := 0.U
-  io.in.ready := false.B
+  io.in.ready := true.B
 
   io.tx_busy := false.B
   io.rpuEn     := 0.U

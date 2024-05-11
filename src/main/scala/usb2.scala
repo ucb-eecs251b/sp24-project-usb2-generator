@@ -54,7 +54,7 @@ class Usb2IO(params: Usb2Params) extends Bundle {
   // chisel test
   val asyncQ_tx_data = Output(UInt(params.width.W))
 
-  val why = Input(Bool())
+  // val why = Input(Bool())
 
   // MMIO
   val busy = Output(Bool())
@@ -120,12 +120,14 @@ class Usb2Top(params: Usb2Params) extends Module { // Usb2MMIOChiselModule - not
   tx_async.io.enq.bits    := io.mmio_tx_data
   tx_async.io.enq.valid   := io.mmio_tx_valid
   io.mmio_tx_ready        := tx_async.io.enq.ready
+  io.asyncQ_tx_data := tx_async.io.deq.bits
+  // io.asyncQ_tx_data := "hc".U(8.W)
+
   //tx_async.io.deq.ready   := usb2TxLogic.io.in.ready
   //usb2TxLogic.io.in.bits  := tx_async.io.deq.bits
   //usb2TxLogic.io.in.valid := tx_async.io.deq.valid
   usb2TxLogic.io.in <> tx_async.io.deq
 
-  io.asyncQ_tx_data := "h00000000".asUInt(8.W)
 
   // TxLogic output to TopIO
   io.rpuEn     := usb2TxLogic.io.rpuEn    
@@ -168,8 +170,7 @@ class Usb2TL(params: Usb2Params, beatBytes: Int)(implicit p: Parameters) extends
       // impl.io.clock := clock
       impl.io.reset := reset.asBool
 
-      impl.io.asyncQ_tx_data := "h00000000".asUInt(8.W)
-
+      // impl.io.asyncQ_tx_data := "d0".asUInt(8.W)
       impl.io.mmio_tx_data  := utmi_datain.bits // need to add impl ports
       impl.io.mmio_tx_valid := utmi_datain.valid
       utmi_datain.ready     := impl.io.mmio_tx_ready
