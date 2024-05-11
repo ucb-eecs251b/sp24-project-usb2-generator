@@ -1,4 +1,4 @@
-package usbtx
+package usb2
 
 import chisel3._
 import chisel3.util._
@@ -68,15 +68,15 @@ class USBBitStuffer extends Module {
 
 }
 
-object USBBitStuffer extends App{  // App inheritance for testing, remove later
-  def apply[T <: Data](en: Bool, dataIn: DecoupledIO[T]): UInt = {
-    val b = Module(new USBBitStuffer)
-    b.io.en := en
-    b.io.dataIn.valid := dataIn.valid
-    b.io.dataIn.bits := dataIn.bits
-    dataIn.ready := b.io.dataIn.ready
-    b.io.dataOut
-  }
+// object USBBitStuffer extends App{  // App inheritance for testing, remove later
+//   def apply[T <: Data](en: Bool, dataIn: DecoupledIO[T]): UInt = {
+//     val b = Module(new USBBitStuffer)
+//     b.io.en := en
+//     b.io.dataIn.valid := dataIn.valid
+//     b.io.dataIn.bits := dataIn.bits
+//     dataIn.ready := b.io.dataIn.ready
+//     b.io.dataOut
+//   }
 
-  ChiselStage.emitSystemVerilogFile(new USBBitStuffer)
-}
+//   ChiselStage.emitSystemVerilogFile(new USBBitStuffer)
+// }

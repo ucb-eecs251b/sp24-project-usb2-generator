@@ -36,7 +36,10 @@ class NRZIDecoder extends Module {
     when (io.enable === 1.U) {
         io.dataOut := ~(io.dataIn ^ prev)
         prev := io.dataIn
+    }.otherwise {
+        io.dataOut := 0.U
     }
+    
 }
 
 

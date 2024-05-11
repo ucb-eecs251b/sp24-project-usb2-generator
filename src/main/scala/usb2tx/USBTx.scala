@@ -1,4 +1,4 @@
-package usbtx
+package usb2
 
 import chisel3._
 import chisel3.util._
@@ -208,6 +208,6 @@ class USBTx(dWidth: Int) extends Module {
 
 }
 
-object USBTx extends App {
-  ChiselStage.emitSystemVerilogFile(new USBTx(8))
-}
+// object USBTx extends App {
+//   ChiselStage.emitSystemVerilogFile(new USBTx(8))
+// }
