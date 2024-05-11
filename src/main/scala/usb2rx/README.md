@@ -116,7 +116,7 @@ The I/O for the module is below.
 | sync         | Output | 1 bit | High if SYNC pattern detected |
 | eop          | Output | 1 bit | High if EOP pattern detected  |
 
-Below are some waveforms from the tests we ran. We can observe that there is an IDLE state and then a SOP gets triggered. Afterwards, the SYNC get's detected and we see the data being collected with EOP at the end. 
+Below are some waveforms from the tests we ran. We can observe that there is an IDLE state and then a SOP gets triggered. Afterwards, the SYNC get's detected and we see the data being collected with EOP at the end. Above is HS and below is FS mode.
 ![FS mode](../../../.././figs/fs_test.png)
 ![HS mode](../../../.././figs/hs_Test.png)
 
