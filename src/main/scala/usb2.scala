@@ -129,6 +129,7 @@ class Usb2Top(params: Usb2Params) extends Module { // Usb2MMIOChiselModule - not
   usb2TxLogic.io.in <> tx_async.io.deq
 
 
+
   // TxLogic output to TopIO
   io.rpuEn     := usb2TxLogic.io.rpuEn    
   io.vpo       := usb2TxLogic.io.vpo      
