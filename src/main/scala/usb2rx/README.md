@@ -113,3 +113,8 @@ The I/O for the module is below.
 | k | Output | 1 bit | K chirp |
 | sync | Output | 1 bit | High if SYNC pattern detected |
 | eop | Output | 1 bit | High if EOP pattern detected |
+
+# Full Report
+
+If the authors forget to add a link to the paper here, please email srevi@berkeley.edu and it'll be fixed, maybe possibly.
+
