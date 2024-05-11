@@ -57,16 +57,17 @@ class RXTOP extends AnyFreeSpec with ChiselScalatestTester {
       dut.io.hs_mode.poke(0.U)
       // {SYNC, DATA, EOP}
       // Stay in IDLE so bunch of 1s at the start (5 ones)
-      val dataPlus = Seq(1, 1, 1, 1, 1) ++ Seq(0, 1, 0, 1, 0, 1, 0, 0) ++  Seq(0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0) ++ Seq(0, 0, 1)
-      val dataMinus = Seq(1, 1, 1, 1, 1) ++ Seq(1, 0, 1, 0, 1, 0, 1, 1) ++ Seq(1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1) ++ Seq(0, 0, 0)
-      for (i <- dataPlus; j <- dataMinus) {
+      val dataPlus = Seq(1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1)
+      val dataMinus = Seq(1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+      dataPlus.zip(dataMinus).foreach { case (plus, minus) =>
         // println(dut.io.dataout.peek())
+        println(plus)
         if (dut.io.rx_valid.peekInt() == 1) {
           // printf("WEEEEE")
           dut.io.dataout.expect("h6A26".U(16.W))
         }
-        dut.io.data_plus.poke(i.U)
-        dut.io.data_minus.poke(j.U)
+        dut.io.data_plus.poke(plus.U)
+        dut.io.data_minus.poke(minus.U)
         dut.io.rx_error.expect(0.U)
         dut.clock.step(1)
       }
@@ -88,13 +89,13 @@ class RXTOP extends AnyFreeSpec with ChiselScalatestTester {
       // Stay in IDLE so bunch of 1s at the start (5 ones)
       val dataPlus = Seq(1, 1, 1, 1, 1) ++ repeatPattern(Seq(0, 1), 15) ++ Seq(0, 0) ++  Seq(0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0) ++ Seq(1, 1, 1, 1, 1, 1, 1, 1)
       val dataMinus = Seq(1, 1, 1, 1, 1) ++ repeatPattern(Seq(1, 0), 15) ++ Seq(1, 1) ++ Seq(1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1) ++ Seq(0, 0, 0, 0, 0, 0, 0, 0)
-      for (i <- dataPlus; j <- dataMinus) {
+      dataPlus.zip(dataMinus).foreach { case (plus, minus) =>
         if (dut.io.rx_valid.peekInt() === 1) {
           // println("WEEEEE")
           dut.io.dataout.expect("h6A26".U(16.W))
         }
-        dut.io.data_plus.poke(i.U)
-        dut.io.data_minus.poke(j.U)
+        dut.io.data_plus.poke(plus.U)
+        dut.io.data_minus.poke(minus.U)
         dut.io.rx_error.expect(0.U)
         dut.clock.step(1)
       }
