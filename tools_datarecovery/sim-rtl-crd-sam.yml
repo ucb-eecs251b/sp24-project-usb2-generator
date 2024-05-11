@@ -1,0 +1,20 @@
+# RTL Simulation Variables
+sim.inputs:
+  input_files:
+    - "src/crd.v"
+    - "src/sampler.v"
+    # - "src/clock_gen.v"
+    - "src/crd_sam_tb.v"
+  timescale: "100ps/1ps"
+  options:
+    - "-notice"
+    - "-line"
+    - "+lint=all,noVCDE"
+    - "+v2k"
+    - "-debug"
+    - "-sverilog"
+  top_module: "CRD"
+  tb_name: "CRD_SAM_tb"
+  defines: 
+    - "CLOCK_PERIOD=20.00"
+  defines_meta: append

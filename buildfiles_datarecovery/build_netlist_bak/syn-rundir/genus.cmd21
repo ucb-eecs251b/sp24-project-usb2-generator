@@ -1,0 +1,42 @@
+# Cadence Genus(TM) Synthesis Solution, Version 19.15-s090_1, built Sep 29 2020 11:43:45
+
+# Date: Tue Apr 23 17:44:48 2024
+# Host: eda-2.EECS.Berkeley.EDU (x86_64 w/Linux 4.18.0-513.24.1.el8_9.x86_64) (8cores*64cpus*4physical cpus*Intel(R) Xeon(R) CPU E5-4620 v2 @ 2.60GHz 20480KB)
+# OS:   Red Hat Enterprise Linux release 8.9 (Ootpa)
+
+source syn_netlist_trial.tcl
+report_area
+report_timing
+set_dont_touch -h
+set_dont_touch sampler
+report_instance
+report_instance sampler
+get_cell
+get_cells
+get_design
+get_designs
+report_instance
+write_hdl sampler_syn.v
+write_hdl > sampler_syn.v
+set_dont_touch_network -h
+set_dont_touch
+init_design -top sampler
+report_design_rules
+set_dont_touch sampler
+syn_generic
+syn_map
+syn_generic
+write_hdl > sampler_syn.v
+report_timing
+report_timing -unconstrained
+set_dont_touch inst:
+set_dont_touch inst:sampler/mux0
+set_dont_touch inst:sampler/row1_02.
+set_dont_touch inst:sampler/row1_02
+set_dont_touch hinst:sampler/row0_delay
+hinsts
+set_dont_touch hinst:sampler/row0_delay
+write_sdf > sampler_syn.mapped.sdf
+set_dont_touch design:sampler
+report_timing
+exit
