@@ -35,11 +35,16 @@ class TopTest(
   
 }
 
+
+
 /** This is a trivial example of how to run this Specification From within sbt
   * use:
   * sbt 'testOnly usb2.RXTOP'
   */
 class RXTOP extends AnyFreeSpec with ChiselScalatestTester {
+  def repeatPattern(pattern: Seq[Int], times: Int): Seq[Int] = {
+    (1 to times).flatMap(_ => pattern)
+  }
 
   "Top level Test 1 (FS)" in {
     test(
@@ -52,10 +57,12 @@ class RXTOP extends AnyFreeSpec with ChiselScalatestTester {
       dut.io.hs_mode.poke(0.U)
       // {SYNC, DATA, EOP}
       // Stay in IDLE so bunch of 1s at the start (5 ones)
-      val dataPlus = Seq(1, 1, 1, 1, 1,      0, 1, 0, 1, 0, 1, 0, 0,   0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0,   0, 0, 1)
-      val dataMinus = Seq(1, 1, 1, 1, 1,     1, 0, 1, 0, 1, 0, 1, 1,   1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1,   0, 0, 0)
+      val dataPlus = Seq(1, 1, 1, 1, 1) ++ Seq(0, 1, 0, 1, 0, 1, 0, 0) ++  Seq(0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0) ++ Seq(0, 0, 1)
+      val dataMinus = Seq(1, 1, 1, 1, 1) ++ Seq(1, 0, 1, 0, 1, 0, 1, 1) ++ Seq(1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1) ++ Seq(0, 0, 0)
       for (i <- dataPlus; j <- dataMinus) {
-        if (dut.io.rx_valid.peekInt() === 1) {
+        // println(dut.io.dataout.peek())
+        if (dut.io.rx_valid.peekInt() == 1) {
+          // printf("WEEEEE")
           dut.io.dataout.expect("h6A26".U(16.W))
         }
         dut.io.data_plus.poke(i.U)
@@ -68,25 +75,31 @@ class RXTOP extends AnyFreeSpec with ChiselScalatestTester {
     }
   }
 
-  //  "Top level Test 2" in {
-  //   test(
-  //     new TopTest(
-  //       16,
-  //       FailureModes.None
-  //     )
-  //   ).withAnnotations(Seq(WriteVcdAnnotation)) { dut =>
-  //     // dummy serial data
-  //     val inSeq = Seq(0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1)
-  //     dut.io.valid.poke(0.U) // trigger no valid
-  //     for (i <- inSeq) {
-  //       dut.io.dataIn.poke(i.U)
-  //       dut.clock.step(1)
-  //       dut.io.valid.poke(1.U)
-  //     }
-  //     dut.clock.step(1)
-  //     dut.io.ready.expect(1.U)
-  //     // 16 bit parallelize data
-  //     dut.io.dataOut.expect("hECD9".U(16.W))
-  //   }
-  // }
+  "Top level Test 2 (HS)" in {
+    test(
+      new TopTest(
+        16,
+        FailureModes.None
+      )
+    ).withAnnotations(Seq(WriteVcdAnnotation)) { dut =>
+
+      dut.io.hs_mode.poke(1.U)
+      // {SYNC, DATA, EOP}
+      // Stay in IDLE so bunch of 1s at the start (5 ones)
+      val dataPlus = Seq(1, 1, 1, 1, 1) ++ repeatPattern(Seq(0, 1), 15) ++ Seq(0, 0) ++  Seq(0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0) ++ Seq(1, 1, 1, 1, 1, 1, 1, 1)
+      val dataMinus = Seq(1, 1, 1, 1, 1) ++ repeatPattern(Seq(1, 0), 15) ++ Seq(1, 1) ++ Seq(1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1) ++ Seq(0, 0, 0, 0, 0, 0, 0, 0)
+      for (i <- dataPlus; j <- dataMinus) {
+        if (dut.io.rx_valid.peekInt() === 1) {
+          // println("WEEEEE")
+          dut.io.dataout.expect("h6A26".U(16.W))
+        }
+        dut.io.data_plus.poke(i.U)
+        dut.io.data_minus.poke(j.U)
+        dut.io.rx_error.expect(0.U)
+        dut.clock.step(1)
+      }
+      dut.io.rx_active.expect(0.U)
+      dut.io.rx_valid.expect(0.U)
+    }
+  }
 }
