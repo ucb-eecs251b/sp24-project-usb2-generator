@@ -32,7 +32,7 @@ class NRZIDecoder extends Module {
     })
     
     // Buffer with an implicit reset to 0
-    var prev = RegInit(1.U(1.W))
+    val prev = RegInit(1.U(1.W))
     when (io.enable === 1.U) {
         io.dataOut := ~(io.dataIn ^ prev)
         prev := io.dataIn

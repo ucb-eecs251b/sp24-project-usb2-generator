@@ -61,9 +61,7 @@ class RXTOP extends AnyFreeSpec with ChiselScalatestTester {
       val dataMinus = Seq(0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
       dataPlus.zip(dataMinus).foreach { case (plus, minus) =>
         // println(dut.io.dataout.peek())
-        println(plus)
         if (dut.io.rx_valid.peekInt() == 1) {
-          // printf("WEEEEE")
           dut.io.dataout.expect("h6A26".U(16.W))
         }
         dut.io.data_plus.poke(plus.U)
@@ -98,6 +96,36 @@ class RXTOP extends AnyFreeSpec with ChiselScalatestTester {
         dut.io.data_plus.poke(plus.U)
         dut.io.data_minus.poke(minus.U)
         dut.io.rx_error.expect(0.U)
+        dut.clock.step(1)
+      }
+      dut.io.rx_active.expect(0.U)
+      dut.io.rx_valid.expect(0.U)
+    }
+  }
+
+  "Top level Test 3 Error" in {
+    test(
+      new TopTest(
+        16,
+        FailureModes.None
+      )
+    ).withAnnotations(Seq(WriteVcdAnnotation)) { dut =>
+
+      dut.io.hs_mode.poke(1.U)
+      // {SYNC, DATA, EOP}
+      // Stay in IDLE so bunch of 1s at the start (5 ones)
+      // I guess this is one cleaner way to right it thanks google
+      val dataPlus = Seq(1, 1, 1, 1, 1) ++ repeatPattern(Seq(0, 1), 15) ++ Seq(0, 0) ++  Seq(0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 0) ++ Seq(1, 1, 1, 1, 1, 1, 1, 1)
+      val dataMinus = Seq(0, 0, 0, 0, 0) ++ repeatPattern(Seq(1, 0), 15) ++ Seq(1, 1) ++ Seq(1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1) ++ Seq(0, 0, 0, 0, 0, 0, 0, 0)
+      dataPlus.zip(dataMinus).foreach { case (plus, minus) =>
+        if (dut.io.rx_error.peekInt() === 1) {
+          println("WEEEEE")
+          dut.io.rx_error.expect(1.U)
+        } else {
+          dut.io.rx_error.expect(0.U)
+        }
+        dut.io.data_plus.poke(plus.U)
+        dut.io.data_minus.poke(minus.U)
         dut.clock.step(1)
       }
       dut.io.rx_active.expect(0.U)
