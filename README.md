@@ -1,3 +1,3 @@
-### USBTx verification
+# USB2.0
 
-This branch uses Chisel 6.2.0 with ChiselSim.
+This branch is the combination of the dedicated USB2.0 submodule branches as of May 10, 5PM.
