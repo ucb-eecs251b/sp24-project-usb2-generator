@@ -116,10 +116,14 @@ The I/O for the module is below.
 | sync         | Output | 1 bit | High if SYNC pattern detected |
 | eop          | Output | 1 bit | High if EOP pattern detected  |
 
+# Verification 
+
 Below are some waveforms from the tests we ran. We can observe that there is an IDLE state and then a SOP gets triggered. Afterwards, the SYNC get's detected and we see the data being collected with EOP at the end. Above is HS and below is FS mode.
-![FS mode](../../../.././figs/fs_test.png)
-![HS mode](../../../.././figs/hs_Test.png)
+![FS mode](../../../.././figs/RX_fs_test.png)
+![HS mode](../../../.././figs/RX_hs_test.png)
+
+In full disclosure, the current testing does not exhaust all state machine possibilities and more thorough integration testing data is desired. This section will be updated if any bugs are found.
 
 # Full Report
 
-[Final Report ](https://drive.google.com/file/d/11gZbgfyL5_FKiPavifnPZaLmK8Hp6I0c/view?usp=sharing)Update link lucy -jason
+For more information and context, please refer to the final report for this submodule: [Final Report ](https://drive.google.com/file/d/1Ab6HjgWlSD4hhpBNym1jXFyqNfeNNmeW/view?usp=drive_link)
