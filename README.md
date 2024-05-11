@@ -8,7 +8,7 @@ This repository chronicles the (yet incomplete) **USB 2.0 generator for Chipyard
 
 **Next steps** might involve implementing an analog PHY, integrating data recovery, developing a PLL, clock recovery, power, or creating more robust integration testing. Note that there is a USB Chipyard repository this generator is being tested with, which contains a great array of integration tests that did not yet get a chance to be tested on this module.
 
-Oppotunity and excitment (and debugging) abound!
+Opportunity and excitment (and debugging) abound!
 
 *Feel free to read on into the module READMEs for more information.*
 
